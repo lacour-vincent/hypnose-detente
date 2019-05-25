@@ -14,7 +14,7 @@ public class Sample implements Parcelable {
     private int duration;
     private int size;
 
-    public Sample(int id,String title,String description,String file,String url,int thumbnail,int duration, int size){
+    public Sample(int id, String title, String description, String file, String url, int thumbnail, int duration, int size) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -28,6 +28,7 @@ public class Sample implements Parcelable {
     public void setId(int id) {
         this.id = id;
     }
+
     public int getId() {
         return this.id;
     }
@@ -35,6 +36,7 @@ public class Sample implements Parcelable {
     public void setTitle(String title) {
         this.title = title;
     }
+
     public String getTitle() {
         return this.title;
     }
@@ -42,6 +44,7 @@ public class Sample implements Parcelable {
     public void setDescription(String description) {
         this.description = description;
     }
+
     public String getDescription() {
         return this.description;
     }
@@ -49,6 +52,7 @@ public class Sample implements Parcelable {
     public void setFile(String file) {
         this.file = file;
     }
+
     public String getFile() {
         return this.file;
     }
@@ -56,6 +60,7 @@ public class Sample implements Parcelable {
     public void setUrl(String url) {
         this.url = url;
     }
+
     public String getUrl() {
         return this.url;
     }
@@ -63,6 +68,7 @@ public class Sample implements Parcelable {
     public void setThumbnail(int thumbnail) {
         this.thumbnail = thumbnail;
     }
+
     public int getThumbnail() {
         return this.thumbnail;
     }
@@ -70,6 +76,7 @@ public class Sample implements Parcelable {
     public void setDuration(int duration) {
         this.duration = duration;
     }
+
     public int getDuration() {
         return this.duration;
     }
@@ -77,6 +84,7 @@ public class Sample implements Parcelable {
     public void setSize(int size) {
         this.size = size;
     }
+
     public int getSize() {
         return this.size;
     }

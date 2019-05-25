@@ -5,7 +5,6 @@ import android.content.res.Resources;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -14,7 +13,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.flyco.animation.BounceEnter.BounceTopEnter;
 import com.flyco.animation.SlideExit.SlideBottomExit;
@@ -33,7 +31,6 @@ import java.util.List;
 public class Welcome extends AppCompatActivity {
 
     private AppUtils appUtils;
-    boolean doubleBackToExitPressedOnce = false;
     private static final String PLAYSTORE_LINK = "market://details?id=com.lacour.vincent.hypnosedetente";
     private CustomMorceauAdapter CMA;
 
@@ -93,19 +90,6 @@ public class Welcome extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         CMA.notifyDataSetChanged();
-    }
-
-
-    @Override
-    public void onBackPressed() {
-        if (doubleBackToExitPressedOnce) {
-            super.onBackPressed();
-            return;
-        }
-        this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, getString(R.string.TextExit), Toast.LENGTH_SHORT).show();
-
-        new Handler().postDelayed(() -> doubleBackToExitPressedOnce = true, 2000);
     }
 
     private void OpenPlayStore() {

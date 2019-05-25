@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/HypnoseDetente.iml" filepath="$PROJECT_DIR$/HypnoseDetente.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hypnose-detente.iml" filepath="$PROJECT_DIR$/hypnose-detente.iml" />
     </modules>
   </component>
 </project>
