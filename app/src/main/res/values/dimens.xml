@@ -1,0 +1,12 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+
+    <dimen name="card_margin">5dp</dimen>
+    <dimen name="card_album_radius">0dp</dimen>
+    <dimen name="album_cover_height">160dp</dimen>
+
+    <dimen name="album_title">16sp</dimen>
+    <dimen name="songs_count">12sp</dimen>
+    <dimen name="card_text_padding">10dp</dimen>
+
+</resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#054D44</color>
+    <color name="colorPrimaryDark">#00796B</color>
+    <color name="colorAccent">#009688</color>
+    <color name="ColorBGToolbar">#009688</color>
+
+    <color name="LightWhite">#F5F5F5</color>
+    <color name="Background">#e1e6e9</color>
+
+    <color name="RedFloatingButton">#F44336</color>
+
+    <color name="SeekBarPlayerButton">#EF5350</color>
+    <color name="SeekBarPlayerProgress">#B71C1C</color>
+    <color name="SeekBarPlayerProgressSecondary">#6e4f4f</color>
+    <color name="SeekBarPlayerBackground">#CCCCCC</color>
+
+    <color name="SeekBarSoundProgress">#A2C5DF</color>
+    <color name="SeekBarSoundBackground">#448ABD</color>
+
+    <color name="grid_background">#F2F2F2</color>
+    <color name="album_title">#4c4c4c</color>
+
+</resources>
