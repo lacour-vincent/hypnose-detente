@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.PopupMenu;
 
 import com.flyco.animation.BounceEnter.BounceTopEnter;
 import com.flyco.animation.SlideExit.SlideBottomExit;
@@ -43,7 +44,7 @@ public class Welcome extends AppCompatActivity {
 
         ImageButton btn_info = findViewById(R.id.btn_info);
         btn_info.setOnClickListener(view -> {
-            showFlycoInformationDialog(getString(R.string.TitleInformation), getString(R.string.TextInformation));
+            openPopupMenu(btn_info);
         });
 
         ImageButton btn_rating = findViewById(R.id.btn_etoile);
@@ -98,6 +99,31 @@ public class Welcome extends AppCompatActivity {
         intent.setData(Uri.parse(PLAYSTORE_LINK));
         startActivity(intent);
     }
+
+    private void openPopupMenu(ImageButton button) {
+        PopupMenu popup = new PopupMenu(this, button);
+        popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
+        popup.setOnMenuItemClickListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.settings:
+                    Intent settingsIntent = new Intent(this, Settings.class);
+                    startActivity(settingsIntent);
+                    Welcome.this.overridePendingTransition(R.anim.anim_slide_in_left,
+                            R.anim.anim_slide_out_left);
+                    return true;
+                case R.id.information:
+                    Intent informationIntent = new Intent(this, Information.class);
+                    startActivity(informationIntent);
+                    Welcome.this.overridePendingTransition(R.anim.anim_slide_in_left,
+                            R.anim.anim_slide_out_left);
+                    return true;
+                default:
+                    return false;
+            }
+        });
+        popup.show();
+    }
+
 
     private void showFlycoInformationDialog(String title, String message) {
         final NormalDialog dialog = new NormalDialog(this);
@@ -215,6 +241,7 @@ public class Welcome extends AppCompatActivity {
             if (layoutManager.canScrollHorizontally()) return HORIZONTAL;
             return VERTICAL;
         }
+
     }
 
     private int dpToPx() {

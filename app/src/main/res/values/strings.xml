@@ -12,6 +12,9 @@
     <string name="loadingTitle">Chargement</string>
     <string name="loadingText">Chargement de l\'enregistrement</string>
 
+    <string name="menuSettingsLabel">Paramètres</string>
+    <string name="menuInformationsLabel">Informations</string>
+
     <string name="agreeDialogText">Compris !</string>
 
     <string name="playerErrorTitle">Erreur</string>
@@ -211,7 +214,7 @@
 
 
     <string name="AccessibilityImageReturn">Retour</string>
-    <string name="AccessibilityImageInformation">Rnformation</string>
+    <string name="AccessibilityImageInformation">Information</string>
     <string name="AccessibilityImageRating">Noter l\'application</string>
     <string name="AccessibilityImageDownload">Téléchargement</string>
     <string name="AccessibilityImageThumbnail">Vignette</string>
