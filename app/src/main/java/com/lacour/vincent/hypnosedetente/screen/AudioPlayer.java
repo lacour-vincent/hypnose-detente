@@ -127,7 +127,7 @@ public class AudioPlayer extends AppCompatActivity {
             Glide.with(this).load(sample.getThumbnail()).into(picture_audio);
             prepareAudioPlayer(sample.getFile(), sample.getUrl());
 
-            ringProgressDialog = new ProgressDialog(this, R.style.NewDialog);
+            ringProgressDialog = new ProgressDialog(this, R.style.Dialog);
             ringProgressDialog.setTitle(getString(R.string.loadingTitle));
             ringProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
             ringProgressDialog.setIndeterminate(true);

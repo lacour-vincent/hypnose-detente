@@ -3,7 +3,7 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E6E6E6"
+    android:background="@color/colorBackgroundCardActivity"
     android:fillViewport="true">
 
     <android.support.constraint.ConstraintLayout
@@ -32,7 +32,7 @@
                 android:id="@+id/card_app"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#FFFFFF"
+                android:background="@color/colorBackgroundCard"
 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +78,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/applicationLabel"
-                            android:textColor="#212121"
+                            android:textColor="@color/colorCardLabel"
                             android:textSize="20sp"
                             android:textStyle="bold"
 
@@ -92,7 +92,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/applicationTag"
-                            android:textColor="#727272"
+                            android:textColor="@color/colorCardContent"
                             android:textSize="14sp"
 
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -132,7 +132,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/versionLabel"
-                            android:textColor="#212121"
+                            android:textColor="@color/colorCardLabel"
                             android:textSize="16sp"
                             android:textStyle="bold"
 
@@ -147,7 +147,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/versionContent"
-                            android:textColor="#727272"
+                            android:textColor="@color/colorCardContent"
                             android:textSize="14sp"
 
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -168,7 +168,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
 
-                android:background="#FFFFFF"
+                android:background="@color/colorBackgroundCard"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/card_app"
@@ -188,7 +188,7 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="5dp"
                         android:text="@string/authorTitle"
-                        android:textColor="#212121"
+                        android:textColor="@color/colorCardLabel"
 
                         android:textSize="15sp"
                         android:textStyle="bold"
@@ -228,7 +228,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/authorLabel"
-                            android:textColor="#212121"
+                            android:textColor="@color/colorCardLabel"
                             android:textSize="16sp"
                             android:textStyle="bold"
 
@@ -242,7 +242,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/authorContent"
-                            android:textColor="#727272"
+                            android:textColor="@color/colorCardContent"
                             android:textSize="14sp"
 
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -285,7 +285,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/emailLabel"
-                            android:textColor="#212121"
+                            android:textColor="@color/colorCardLabel"
                             android:textSize="16sp"
                             android:textStyle="bold"
 
@@ -299,7 +299,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/emailContent"
-                            android:textColor="#727272"
+                            android:textColor="@color/colorCardContent"
                             android:textSize="14sp"
 
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -319,7 +319,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
 
-                android:background="#FFFFFF"
+                android:background="@color/colorBackgroundCard"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/card_author"
@@ -338,7 +338,7 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="5dp"
                         android:text="@string/descriptionLabel"
-                        android:textColor="#212121"
+                        android:textColor="@color/colorCardLabel"
 
                         android:textSize="15sp"
                         android:textStyle="bold"
@@ -351,10 +351,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-
                         android:layout_marginTop="15dp"
                         android:layout_marginEnd="20dp"
                         android:text="@string/descriptionContent"
+                        android:textColor="@color/colorCardContent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/title_description"
                         app:layout_constraintTop_toBottomOf="@+id/title_description" />

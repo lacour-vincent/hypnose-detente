@@ -9,6 +9,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:layout_margin="4dp"
+        android:background="@color/colorBackgroundCard"
         card_view:cardCornerRadius="@dimen/card_album_radius"
         card_view:cardElevation="3dp">
 
@@ -38,7 +39,7 @@
                 android:paddingLeft="@dimen/card_text_padding"
                 android:paddingTop="@dimen/card_text_padding"
                 android:paddingRight="@dimen/card_text_padding"
-                android:textColor="@color/album_title"
+                android:textColor="@color/colorCardLabel"
                 android:textSize="@dimen/album_title"
                 card_view:layout_constraintEnd_toEndOf="parent"
                 card_view:layout_constraintStart_toStartOf="parent"
@@ -51,6 +52,7 @@
                 android:paddingLeft="@dimen/card_text_padding"
                 android:paddingRight="@dimen/card_text_padding"
                 android:paddingBottom="@dimen/card_text_padding"
+                android:textColor="@color/colorCardLabel"
                 android:textSize="@dimen/songs_count"
                 card_view:layout_constraintEnd_toStartOf="@+id/airplaneMode"
                 card_view:layout_constraintStart_toStartOf="parent"
