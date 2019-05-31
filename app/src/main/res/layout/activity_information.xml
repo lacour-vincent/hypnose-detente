@@ -1,25 +1,370 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grid_background"
-    android:fitsSystemWindows="true"
-    android:orientation="vertical">
+    android:background="#E6E6E6"
+    android:fillViewport="true">
 
-    <include
-        android:id="@+id/information"
-        layout="@layout/toolbar_information"></include>
-
-    <TextView
-        android:layout_width="wrap_content"
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Information page"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/information" />
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/information"
+            layout="@layout/toolbar_information"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></include>
 
 
-</android.support.constraint.ConstraintLayout>
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/information">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_app"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                card_view:contentPaddingBottom="15dp"
+                card_view:contentPaddingTop="15dp">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <ImageView
+                        android:id="@+id/ic_app"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_marginStart="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+
+                        android:contentDescription="@string/AccessibilityIconApplication"
+                        android:src="@mipmap/ic_launcher"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/app"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginStart="25dp"
+                        android:layout_marginLeft="25dp"
+
+                        app:layout_constraintBottom_toBottomOf="@+id/ic_app"
+                        app:layout_constraintStart_toEndOf="@+id/ic_app"
+                        app:layout_constraintTop_toTopOf="@+id/ic_app"
+
+                        >
+
+                        <TextView
+                            android:id="@+id/title_app"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/applicationLabel"
+                            android:textColor="#212121"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/author_app"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/applicationTag"
+                            android:textColor="#727272"
+                            android:textSize="14sp"
+
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/title_app"
+                            app:layout_constraintTop_toBottomOf="@+id/title_app" />
+
+
+                    </android.support.constraint.ConstraintLayout>
+
+
+                    <ImageView
+                        android:id="@+id/ic_history"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginTop="30dp"
+                        android:contentDescription="@string/AccessibilityIconHistory"
+
+                        android:src="@drawable/ic_history"
+                        app:layout_constraintEnd_toEndOf="@+id/ic_app"
+                        app:layout_constraintStart_toStartOf="@+id/ic_app"
+                        app:layout_constraintTop_toBottomOf="@+id/ic_app" />
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/version"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        app:layout_constraintBottom_toBottomOf="@+id/ic_history"
+                        app:layout_constraintStart_toStartOf="@+id/app"
+                        app:layout_constraintTop_toTopOf="@+id/ic_history"
+
+                        >
+
+
+                        <TextView
+                            android:id="@+id/title_version"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/versionLabel"
+                            android:textColor="#212121"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+
+
+                            />
+
+                        <TextView
+                            android:id="@+id/number_version"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/versionContent"
+                            android:textColor="#727272"
+                            android:textSize="14sp"
+
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/title_version"
+                            app:layout_constraintTop_toBottomOf="@+id/title_version" />
+
+
+                    </android.support.constraint.ConstraintLayout>
+
+
+                </android.support.constraint.ConstraintLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+
+                android:background="#FFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/card_app"
+                card_view:contentPaddingBottom="15dp"
+                card_view:contentPaddingTop="15dp">
+
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/title_author"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/authorTitle"
+                        android:textColor="#212121"
+
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/ic_person"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginTop="25dp"
+                        android:contentDescription="@string/AccessibilityIconPerson"
+
+                        android:src="@drawable/ic_person"
+                        app:layout_constraintEnd_toEndOf="@+id/title_author"
+                        app:layout_constraintStart_toStartOf="@+id/title_author"
+                        app:layout_constraintTop_toBottomOf="@+id/title_author"
+
+                        />
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/author"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginStart="25dp"
+                        android:layout_marginLeft="25dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/ic_person"
+                        app:layout_constraintStart_toEndOf="@+id/ic_person"
+                        app:layout_constraintTop_toTopOf="@+id/ic_person"
+
+                        >
+
+
+                        <TextView
+                            android:id="@+id/text_author"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/authorLabel"
+                            android:textColor="#212121"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/city_author"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/authorContent"
+                            android:textColor="#727272"
+                            android:textSize="14sp"
+
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/text_author"
+                            app:layout_constraintTop_toBottomOf="@+id/text_author" />
+
+
+                    </android.support.constraint.ConstraintLayout>
+
+                    <ImageView
+                        android:id="@+id/ic_email"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginTop="35dp"
+                        android:contentDescription="@string/AccessibilityIconEmail"
+
+                        android:src="@drawable/ic_email"
+                        app:layout_constraintEnd_toEndOf="@+id/title_author"
+                        app:layout_constraintStart_toStartOf="@+id/title_author"
+                        app:layout_constraintTop_toBottomOf="@+id/ic_person"
+
+                        />
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginStart="25dp"
+                        android:layout_marginLeft="25dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/ic_email"
+                        app:layout_constraintStart_toEndOf="@+id/ic_email"
+                        app:layout_constraintTop_toTopOf="@+id/ic_email"
+
+                        >
+
+
+                        <TextView
+                            android:id="@+id/title_email"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/emailLabel"
+                            android:textColor="#212121"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/content_email"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/emailContent"
+                            android:textColor="#727272"
+                            android:textSize="14sp"
+
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/title_email"
+                            app:layout_constraintTop_toBottomOf="@+id/title_email" />
+
+
+                    </android.support.constraint.ConstraintLayout>
+
+                </android.support.constraint.ConstraintLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+
+                android:background="#FFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/card_author"
+                card_view:contentPaddingBottom="15dp"
+                card_view:contentPaddingTop="15dp">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/title_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/descriptionLabel"
+                        android:textColor="#212121"
+
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <TextView
+                        android:id="@+id/content_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="20dp"
+                        android:text="@string/descriptionContent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/title_description"
+                        app:layout_constraintTop_toBottomOf="@+id/title_description" />
+
+                </android.support.constraint.ConstraintLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>

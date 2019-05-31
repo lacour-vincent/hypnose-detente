@@ -4,7 +4,7 @@
     android:layout_gravity="top"
     android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.v7.widget.Toolbar
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/toolbar_welcome"
         android:layout_width="match_parent"
@@ -21,7 +21,6 @@
             android:layout_height="match_parent">
 
 
-            <!-- Titre -->
             <TextView
                 android:id="@+id/toolbar_title"
                 style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
@@ -31,7 +30,7 @@
                 android:layout_marginLeft="15dp"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="@string/titleToolbar"
+                android:text="@string/applicationName"
                 android:textColor="@color/LightWhite"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -41,25 +40,25 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
 
-            <!-- Image bouton etoile-->
+
             <ImageButton
                 android:id="@+id/btn_etoile"
                 style="@style/Widget.AppCompat.ActionButton"
                 android:layout_width="?android:attr/actionBarSize"
                 android:layout_height="?android:attr/actionBarSize"
-                android:contentDescription="@string/AccessibilityImageRating"
+                android:contentDescription="@string/AccessibilityIconRating"
                 android:src="@drawable/ic_star"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/btn_info"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Image bouton Info-->
+
             <ImageButton
                 android:id="@+id/btn_info"
                 style="@style/Widget.AppCompat.ActionButton"
                 android:layout_width="?android:attr/actionBarSize"
                 android:layout_height="?android:attr/actionBarSize"
-                android:contentDescription="@string/AccessibilityImageInformation"
+                android:contentDescription="@string/AccessibilityIconMenu"
                 android:src="@drawable/ic_more_vert"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

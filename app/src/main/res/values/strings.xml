@@ -1,10 +1,22 @@
 <resources>
     <string name="app_name">Hypnose</string>
-    <string name="titleToolbar">Hypnose - Détente</string>
+    <string name="applicationName">Hypnose - Détente</string>
 
-    <string name="TitleInformation">Information</string>
-    <string name="TextInformation">Pour profiter pleinement des séances, nous vous conseillons
-                                de vous installer confortablement dans un endroit calme, avec des écouteurs. Bonne séance !\n\nSi vous avez des améliorations à suggérer, vous pouvez nous contacter à l\'adresse email suivante :\nlacour.vincent.app@gmail.com</string>
+    <string name="applicationLabel">Hypnose - Détente</string>
+    <string name="applicationTag">\@LacourVincent</string>
+
+    <string name="versionLabel">Version</string>
+    <string name="versionContent">1.3.2</string>
+
+    <string name="authorTitle">Auteur</string>
+    <string name="authorLabel">Lacour Vincent</string>
+    <string name="authorContent">Paris, France</string>
+    <string name="emailLabel">Email</string>
+    <string name="emailContent">lacour.vincent.app@gmail.com</string>
+
+    <string name="descriptionLabel">Description</string>
+    <string name="descriptionContent">Pour profiter pleinement des séances, nous vous conseillons de vous installer confortablement dans un endroit calme, assis ou allongé, avec un casque audio. N\'hésitez pas à lâcher-prise. Bonnes séances !</string>
+
 
     <string name="noInternetTitle">Connexion Internet nécessaire</string>
     <string name="noInternetText">Vous devez disposer d\'une connexion à Internet pour charger les séances ou bien télécharger les enregistrements en mode hors-connexion.</string>
@@ -33,8 +45,7 @@
     <string name="TextDownloadNo">Plus tard</string>
     <string name="TextDownloadDelete">Supprimer</string>
     <string name="TitleDialogDownload">Téléchargement</string>
-    <string name="TextDialogDownload">Vous pouvez télécharger l\'enregistrement afin de l\'écouter en mode hors
-        connexion par la suite.</string>
+    <string name="TextDialogDownload">Vous pouvez télécharger l\'enregistrement afin de l\'écouter en mode hors connexion par la suite.\n\n%1$d Mo d\'espace libre nécessaire.</string>
     <string name="TitleDownloadNotif">Téléchargement en cours</string>
 
     <string name="TextDialogAlreadyDownload">Vous pouvez écouter l\'enregistrement en mode hors-connexion dès la fin du téléchargement.</string>
@@ -213,11 +224,18 @@
         Il est plus facile de se laisser emporter par l\'Inconscient que de gagner en conscience !</string>
 
 
-    <string name="AccessibilityImageReturn">Retour</string>
-    <string name="AccessibilityImageInformation">Information</string>
-    <string name="AccessibilityImageRating">Noter l\'application</string>
-    <string name="AccessibilityImageDownload">Téléchargement</string>
+    <string name="AccessibilityIconMenu">Icon menu</string>
+    <string name="AccessibilityIconApplication">Icon application</string>
+    <string name="AccessibilityIconHistory">Icon historique</string>
+    <string name="AccessibilityIconPerson">Icon personne</string>
+    <string name="AccessibilityIconEmail">Icon courrier electronique</string>
+    <string name="AccessibilityIconBack">Icon retour</string>
+    <string name="AccessibilityIconInformation">Icon information</string>
+    <string name="AccessibilityIconSound">Icon son</string>
+    <string name="AccessibilityIconRating">Icon étoile</string>
+    <string name="AccessibilityIconDownload">Icon téléchargement</string>
     <string name="AccessibilityImageThumbnail">Vignette</string>
-    <string name="AccessibilityImageAirplane">Icon avion</string>
+    <string name="AccessibilityIconAirplane">Icon mode avion</string>
+
 
 </resources>

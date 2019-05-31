@@ -34,6 +34,7 @@
         android:id="@+id/imageViewSound"
         android:layout_width="20dp"
         android:layout_height="20dp"
+        android:contentDescription="@string/AccessibilityIconSound"
         android:src="@drawable/ic_volume_up"
         app:layout_constraintBottom_toBottomOf="@+id/seekbar_sound"
         app:layout_constraintEnd_toStartOf="@+id/seekbar_sound"
@@ -58,11 +59,11 @@
         android:id="@+id/button_play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
         android:src="@android:drawable/ic_media_play"
         app:backgroundTint="@color/RedFloatingButton"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="40dp"
         app:layout_constraintEnd_toEndOf="@+id/picture_audio"
         app:layout_constraintStart_toStartOf="@+id/picture_audio" />
 

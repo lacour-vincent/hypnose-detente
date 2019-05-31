@@ -97,7 +97,7 @@ public class AudioPlayer extends AppCompatActivity {
 
         btn_info = findViewById(R.id.toolbar_btn_information);
         btn_info.setOnClickListener(view -> {
-            showFlycoInformationDialog(getString(R.string.TitleInformation), sample.getDescription());
+            showFlycoInformationDialog(getString(R.string.menuInformationsLabel), sample.getDescription());
         });
 
         btn_download = findViewById(R.id.toolbar_btn_download);
@@ -106,9 +106,7 @@ public class AudioPlayer extends AppCompatActivity {
                 showFlycoDownloadInformationDialog(getString(R.string.TitleDialogDownload), getString(R.string.TextDialogAlreadyDownload));
                 return;
             }
-            String textDialogDownload = getString(R.string.TextDialogDownload) + "\n\n";
-            textDialogDownload += String.valueOf(sample.getSize()) + " Mo d'espace libre nécessaire.";
-            showFlycoDownloadDialog(getString(R.string.TitleDialogDownload), textDialogDownload);
+            showFlycoDownloadDialog(getString(R.string.TitleDialogDownload), getString(R.string.TextDialogDownload, sample.getSize()));
         });
 
         btn_play_pause = findViewById(R.id.button_play);

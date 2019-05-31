@@ -61,7 +61,7 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_margin="6dp"
-                android:contentDescription="@string/AccessibilityImageAirplane"
+                android:contentDescription="@string/AccessibilityIconAirplane"
                 android:src="@drawable/ic_airplanemode"
                 android:visibility="gone"
                 card_view:layout_constraintBottom_toBottomOf="parent"

@@ -19,7 +19,7 @@
             style="@style/Widget.AppCompat.ActionButton"
             android:layout_width="?android:attr/actionBarSize"
             android:layout_height="?android:attr/actionBarSize"
-            android:contentDescription="@string/AccessibilityImageReturn"
+            android:contentDescription="@string/AccessibilityIconBack"
             android:src="@drawable/ic_arrow"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
