@@ -22,7 +22,6 @@ import android.widget.Toast;
 
 import com.flyco.animation.BounceEnter.BounceTopEnter;
 import com.flyco.animation.SlideExit.SlideBottomExit;
-import com.flyco.dialog.listener.OnBtnClickL;
 import com.flyco.dialog.widget.NormalDialog;
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayerFactory;
@@ -383,14 +382,7 @@ public class AudioPlayer extends AppCompatActivity {
                 .dismissAnim(new SlideBottomExit())//
                 .show();
 
-        dialog.setOnBtnClickL(
-                new OnBtnClickL() { //Simple click on "OK"
-                    @Override
-                    public void onBtnClick() {
-                        dialog.dismiss();
-                    }
-                }
-        );
+        dialog.setOnBtnClickL(() -> dialog.dismiss());
     }
 
 
@@ -408,20 +400,11 @@ public class AudioPlayer extends AppCompatActivity {
                 .show();
 
         dialog.setOnBtnClickL(
-                new OnBtnClickL() {//left btn click listener = Negative button
-                    @Override
-                    public void onBtnClick() {
-                        dialog.dismiss();
-                    }
-                },
-                new OnBtnClickL() {//right btn click listener = Positive button
-                    @Override
-                    public void onBtnClick() {
-                        makeDownloadRequest(Uri.parse(sample.getUrl()), title_toolbar.getText().toString(), sample.getFile());
-                        dialog.dismiss();
-                    }
-                }
-        );
+                () -> dialog.dismiss(),
+                () -> {
+                    makeDownloadRequest(Uri.parse(sample.getUrl()), title_toolbar.getText().toString(), sample.getFile());
+                    dialog.dismiss();
+                });
     }
 
     private void showFlycoDownloadInformationDialog(String title, String message) {
@@ -437,25 +420,15 @@ public class AudioPlayer extends AppCompatActivity {
                 .dismissAnim(new SlideBottomExit())//
                 .show();
 
-        dialog.setOnBtnClickL(
-                new OnBtnClickL() {//left btn click listener = Negative button
-                    @Override
-                    public void onBtnClick() {
-                        dialog.dismiss();
-                        if (appUtils.deleteFile(sample.getFile())) {
-                            Toast.makeText(AudioPlayer.this, getString(R.string.TextFileDeleteDPositive), Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-                        Toast.makeText(AudioPlayer.this, getString(R.string.TextFileDeleteDNegative), Toast.LENGTH_SHORT).show();
-                    }
-                },
-                new OnBtnClickL() {//right btn click listener = Positive button
-                    @Override
-                    public void onBtnClick() {
-                        dialog.dismiss();
-                    }
-                }
-        );
+        dialog.setOnBtnClickL(() -> {
+            dialog.dismiss();
+            if (appUtils.deleteFile(sample.getFile())) {
+                Toast.makeText(AudioPlayer.this, getString(R.string.TextFileDeleteDPositive), Toast.LENGTH_SHORT).show();
+                return;
+            }
+            Toast.makeText(AudioPlayer.this, getString(R.string.TextFileDeleteDNegative), Toast.LENGTH_SHORT).show();
+        }, () -> dialog.dismiss());
+
     }
 
     private class ComponentListener extends Player.DefaultEventListener {

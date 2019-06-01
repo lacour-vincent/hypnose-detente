@@ -10,14 +10,12 @@
         android:id="@+id/settings"
         layout="@layout/toolbar_settings"></include>
 
-    <TextView
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Settings page"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settings" />
+
+        app:layout_constraintTop_toBottomOf="@id/settings" />
 
 </android.support.constraint.ConstraintLayout>
 
