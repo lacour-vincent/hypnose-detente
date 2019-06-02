@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="INTERFACE">
-
+    <PreferenceCategory android:title="@string/interfaceSettingLabel">
         <ListPreference
             android:entries="@array/theme_entries"
             android:entryValues="@array/theme_entries_values"
             android:key="theme"
-            android:title="Mode Jour-Nuit" />
-
+            android:title="@string/interfaceNightModeLabel" />
     </PreferenceCategory>
-
 </PreferenceScreen>

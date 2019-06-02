@@ -15,6 +15,9 @@
     <string name="emailLabel">Email</string>
     <string name="emailContent">lacour.vincent.app@gmail.com</string>
 
+    <string name="interfaceSettingLabel">INTERFACE</string>
+    <string name="interfaceNightModeLabel">Mode Jour-Nuit</string>
+
     <string name="descriptionLabel">Description</string>
     <string name="descriptionContent">Pour profiter pleinement des séances, nous vous conseillons de vous installer confortablement dans un endroit calme, assis ou allongé, avec un casque audio. N\'hésitez pas à lâcher-prise. Bonnes séances !</string>
 

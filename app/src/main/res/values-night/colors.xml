@@ -6,12 +6,12 @@
     <color name="colorAccent">#008577</color>
 
     <color name="colorPrimaryText">#FFFFFF</color>
-    <color name="colorGradient">#56b4d3</color>
+    <color name="colorGradient">#0f2027</color>
 
-    <color name="colorCardLabel">#212121</color>
-    <color name="colorCardContent">#666666</color>
-    <color name="colorBackgroundCardActivity">#E6E6E6</color>
-    <color name="colorBackgroundCard">#FFFFFF</color>
+    <color name="colorCardLabel">#FFFFFF</color>
+    <color name="colorCardContent">#FFFFFF</color>
+    <color name="colorBackgroundCardActivity">#202124</color>
+    <color name="colorBackgroundCard">#2D2E31</color>
 
     <color name="RedFloatingButton">#F44336</color>
     <color name="SeekBarPlayerButton">#EF5350</color>
@@ -22,9 +22,9 @@
     <color name="SeekBarSoundBackground">#448ABD</color>
 
     <color name="colorDialogTitle">#61AEDC</color>
-    <color name="colorDialogContent">#383838</color>
-    <color name="colorDialogBackground">#FFFFFF</color>
-    <color name="colorDialogButtonText">#757575</color>
-    <color name="colorDialogButtonPressed">#E3E3E3</color>
+    <color name="colorDialogContent">#FFFFFF</color>
+    <color name="colorDialogBackground">#2D2E31</color>
+    <color name="colorDialogButtonText">#FFFFFF</color>
+    <color name="colorDialogButtonPressed">#202124</color>
 
 </resources>

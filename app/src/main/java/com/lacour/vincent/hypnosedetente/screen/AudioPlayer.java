@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -371,15 +372,20 @@ public class AudioPlayer extends AppCompatActivity {
      */
     private void showFlycoInformationDialog(String title, String message) {
         final NormalDialog dialog = new NormalDialog(this);
-        dialog.isTitleShow(true)//
+        dialog.isTitleShow(true)
                 .btnNum(1)
                 .title(title)
                 .titleTextSize(17)
-                .content(message)//
+                .content(message)
                 .contentTextSize(14)
-                .btnText(getString(R.string.agreeDialogText))//
-                .showAnim(new BounceTopEnter())//
-                .dismissAnim(new SlideBottomExit())//
+                .btnText(getString(R.string.agreeDialogText))
+                .titleTextColor(ContextCompat.getColor(this, R.color.colorDialogTitle))
+                .btnTextColor(ContextCompat.getColor(this, R.color.colorDialogButtonText))
+                .contentTextColor(ContextCompat.getColor(this, R.color.colorDialogContent))
+                .bgColor(ContextCompat.getColor(this, R.color.colorDialogBackground))
+                .btnPressColor(ContextCompat.getColor(this, R.color.colorDialogButtonPressed))
+                .showAnim(new BounceTopEnter())
+                .dismissAnim(new SlideBottomExit())
                 .show();
 
         dialog.setOnBtnClickL(() -> dialog.dismiss());
@@ -388,15 +394,20 @@ public class AudioPlayer extends AppCompatActivity {
 
     private void showFlycoDownloadDialog(String title, String message) {
         final NormalDialog dialog = new NormalDialog(this);
-        dialog.isTitleShow(true)//
+        dialog.isTitleShow(true)
                 .btnNum(2)
                 .title(title)
                 .titleTextSize(18)
                 .content(message)
                 .contentTextSize(15)
                 .btnText(getString(R.string.TextDownloadNo), getString(R.string.TextDownloadYes))
-                .showAnim(new BounceTopEnter())//
-                .dismissAnim(new SlideBottomExit())//
+                .titleTextColor(ContextCompat.getColor(this, R.color.colorDialogTitle))
+                .btnTextColor(ContextCompat.getColor(this, R.color.colorDialogButtonText), ContextCompat.getColor(this, R.color.colorDialogButtonText))
+                .contentTextColor(ContextCompat.getColor(this, R.color.colorDialogContent))
+                .bgColor(ContextCompat.getColor(this, R.color.colorDialogBackground))
+                .btnPressColor(ContextCompat.getColor(this, R.color.colorDialogButtonPressed))
+                .showAnim(new BounceTopEnter())
+                .dismissAnim(new SlideBottomExit())
                 .show();
 
         dialog.setOnBtnClickL(
@@ -409,15 +420,20 @@ public class AudioPlayer extends AppCompatActivity {
 
     private void showFlycoDownloadInformationDialog(String title, String message) {
         final NormalDialog dialog = new NormalDialog(this);
-        dialog.isTitleShow(true)//
+        dialog.isTitleShow(true)
                 .btnNum(2)
                 .title(title)
                 .titleTextSize(18)
                 .content(message)
                 .contentTextSize(15)
                 .btnText(getString(R.string.TextDownloadDelete), getString(R.string.agreeDialogText))
-                .showAnim(new BounceTopEnter())//
-                .dismissAnim(new SlideBottomExit())//
+                .titleTextColor(ContextCompat.getColor(this, R.color.colorDialogTitle))
+                .btnTextColor(ContextCompat.getColor(this, R.color.colorDialogButtonText), ContextCompat.getColor(this, R.color.colorDialogButtonText))
+                .contentTextColor(ContextCompat.getColor(this, R.color.colorDialogContent))
+                .bgColor(ContextCompat.getColor(this, R.color.colorDialogBackground))
+                .btnPressColor(ContextCompat.getColor(this, R.color.colorDialogButtonPressed))
+                .showAnim(new BounceTopEnter())
+                .dismissAnim(new SlideBottomExit())
                 .show();
 
         dialog.setOnBtnClickL(() -> {

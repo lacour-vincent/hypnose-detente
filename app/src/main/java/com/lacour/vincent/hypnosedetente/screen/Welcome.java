@@ -3,6 +3,7 @@ package com.lacour.vincent.hypnosedetente.screen;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -123,11 +124,16 @@ public class Welcome extends AppCompatActivity {
                 .btnNum(1)
                 .title(title)
                 .titleTextSize(18)
-                .content(message)//
+                .content(message)
                 .contentTextSize(15)
-                .btnText(getString(R.string.agreeDialogText))//
-                .showAnim(new BounceTopEnter())//
-                .dismissAnim(new SlideBottomExit())//
+                .btnText(getString(R.string.agreeDialogText))
+                .titleTextColor(ContextCompat.getColor(this, R.color.colorDialogTitle))
+                .btnTextColor(ContextCompat.getColor(this, R.color.colorDialogButtonText))
+                .contentTextColor(ContextCompat.getColor(this, R.color.colorDialogContent))
+                .bgColor(ContextCompat.getColor(this, R.color.colorDialogBackground))
+                .btnPressColor(ContextCompat.getColor(this, R.color.colorDialogButtonPressed))
+                .showAnim(new BounceTopEnter())
+                .dismissAnim(new SlideBottomExit())
                 .show();
 
         dialog.setOnBtnClickL(() -> dialog.dismiss());
@@ -136,15 +142,20 @@ public class Welcome extends AppCompatActivity {
 
     private void showFlycoRatingDialog(String title, String message) {
         final NormalDialog dialog = new NormalDialog(this);
-        dialog.isTitleShow(true)//
+        dialog.isTitleShow(true)
                 .btnNum(2)
                 .title(title)
                 .titleTextSize(18)
-                .content(message)//
+                .content(message)
                 .contentTextSize(15)
-                .btnText(getString(R.string.TextGoPlayStoreNo), getString(R.string.TextGoPlayStoreYes))//
-                .showAnim(new BounceTopEnter())//
-                .dismissAnim(new SlideBottomExit())//
+                .btnText(getString(R.string.TextGoPlayStoreNo), getString(R.string.TextGoPlayStoreYes))
+                .titleTextColor(ContextCompat.getColor(this, R.color.colorDialogTitle))
+                .btnTextColor(ContextCompat.getColor(this, R.color.colorDialogButtonText), ContextCompat.getColor(this, R.color.colorDialogButtonText))
+                .contentTextColor(ContextCompat.getColor(this, R.color.colorDialogContent))
+                .bgColor(ContextCompat.getColor(this, R.color.colorDialogBackground))
+                .btnPressColor(ContextCompat.getColor(this, R.color.colorDialogButtonPressed))
+                .showAnim(new BounceTopEnter())
+                .dismissAnim(new SlideBottomExit())
                 .show();
 
         dialog.setOnBtnClickL(() -> dialog.dismiss()
