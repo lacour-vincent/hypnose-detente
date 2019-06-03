@@ -55,7 +55,7 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="5dp"
 
-                        android:contentDescription="@string/AccessibilityIconApplication"
+                        android:contentDescription="@string/altIconApplication"
                         android:src="@mipmap/ic_launcher"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -109,7 +109,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_marginTop="30dp"
-                        android:contentDescription="@string/AccessibilityIconHistory"
+                        android:contentDescription="@string/altIconHistory"
 
                         android:src="@drawable/ic_history"
                         app:layout_constraintEnd_toEndOf="@+id/ic_app"
@@ -201,7 +201,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_marginTop="25dp"
-                        android:contentDescription="@string/AccessibilityIconPerson"
+                        android:contentDescription="@string/altIconPerson"
 
                         android:src="@drawable/ic_person"
                         app:layout_constraintEnd_toEndOf="@+id/title_author"
@@ -258,7 +258,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_marginTop="35dp"
-                        android:contentDescription="@string/AccessibilityIconEmail"
+                        android:contentDescription="@string/altIconEmail"
 
                         android:src="@drawable/ic_email"
                         app:layout_constraintEnd_toEndOf="@+id/title_author"

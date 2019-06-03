@@ -103,10 +103,10 @@ public class AudioPlayer extends AppCompatActivity {
         btn_download = findViewById(R.id.toolbar_btn_download);
         btn_download.setOnClickListener(view -> {
             if (appUtils.isFileExist(sample.getFile())) {
-                showFlycoDownloadInformationDialog(getString(R.string.TitleDialogDownload), getString(R.string.TextDialogAlreadyDownload));
+                showFlycoDownloadInformationDialog(getString(R.string.titleDialogDownload), getString(R.string.textDialogAlreadyDownload));
                 return;
             }
-            showFlycoDownloadDialog(getString(R.string.TitleDialogDownload), getString(R.string.TextDialogDownload, sample.getSize()));
+            showFlycoDownloadDialog(getString(R.string.titleDialogDownload), getString(R.string.textDialogDownload, sample.getSize()));
         });
 
         btn_play_pause = findViewById(R.id.button_play);
@@ -343,14 +343,14 @@ public class AudioPlayer extends AppCompatActivity {
 
     private void makeDownloadRequest(Uri downloadUri, String name, String fileName) {
         if (appUtils.isFileExist(fileName)) {
-            Toast.makeText(AudioPlayer.this, getString(R.string.TextFileAlreadyExist), Toast.LENGTH_LONG).show();
+            Toast.makeText(AudioPlayer.this, getString(R.string.textFileAlreadyExist), Toast.LENGTH_LONG).show();
             return;
         }
         try {
             DownloadManager.Request request = new DownloadManager.Request(downloadUri);
             request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
             request.setAllowedOverRoaming(false);
-            request.setTitle(getString(R.string.TitleDownloadNotif));
+            request.setTitle(getString(R.string.titleDownloadNotif));
             request.setDescription(name);
             request.setVisibleInDownloadsUi(true);
             request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
@@ -359,7 +359,7 @@ public class AudioPlayer extends AppCompatActivity {
             DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
             manager.enqueue(request);
         } catch (IllegalStateException e) {
-            Toast.makeText(AudioPlayer.this, getString(R.string.TextExceptionDownload), Toast.LENGTH_LONG).show();
+            Toast.makeText(AudioPlayer.this, getString(R.string.textExceptionDownload), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -400,7 +400,7 @@ public class AudioPlayer extends AppCompatActivity {
                 .titleTextSize(18)
                 .content(message)
                 .contentTextSize(15)
-                .btnText(getString(R.string.TextDownloadNo), getString(R.string.TextDownloadYes))
+                .btnText(getString(R.string.textDownloadNo), getString(R.string.textDownloadYes))
                 .titleTextColor(ContextCompat.getColor(this, R.color.colorDialogTitle))
                 .btnTextColor(ContextCompat.getColor(this, R.color.colorDialogButtonText), ContextCompat.getColor(this, R.color.colorDialogButtonText))
                 .contentTextColor(ContextCompat.getColor(this, R.color.colorDialogContent))
@@ -426,7 +426,7 @@ public class AudioPlayer extends AppCompatActivity {
                 .titleTextSize(18)
                 .content(message)
                 .contentTextSize(15)
-                .btnText(getString(R.string.TextDownloadDelete), getString(R.string.agreeDialogText))
+                .btnText(getString(R.string.textDownloadDelete), getString(R.string.agreeDialogText))
                 .titleTextColor(ContextCompat.getColor(this, R.color.colorDialogTitle))
                 .btnTextColor(ContextCompat.getColor(this, R.color.colorDialogButtonText), ContextCompat.getColor(this, R.color.colorDialogButtonText))
                 .contentTextColor(ContextCompat.getColor(this, R.color.colorDialogContent))
@@ -439,10 +439,10 @@ public class AudioPlayer extends AppCompatActivity {
         dialog.setOnBtnClickL(() -> {
             dialog.dismiss();
             if (appUtils.deleteFile(sample.getFile())) {
-                Toast.makeText(AudioPlayer.this, getString(R.string.TextFileDeleteDPositive), Toast.LENGTH_SHORT).show();
+                Toast.makeText(AudioPlayer.this, getString(R.string.textFileDeletedSuccess), Toast.LENGTH_SHORT).show();
                 return;
             }
-            Toast.makeText(AudioPlayer.this, getString(R.string.TextFileDeleteDNegative), Toast.LENGTH_SHORT).show();
+            Toast.makeText(AudioPlayer.this, getString(R.string.textFileDeletedError), Toast.LENGTH_SHORT).show();
         }, () -> dialog.dismiss());
 
     }

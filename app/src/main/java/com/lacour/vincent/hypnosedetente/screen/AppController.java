@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatDelegate;
 
 public class AppController extends Application {
 
+    final String THEME_KEY = "theme";
+    final String THEME_DEFAULT_VALUE = "-1";
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -14,8 +17,6 @@ public class AppController extends Application {
     }
 
     private void initTheme() {
-        final String THEME_KEY = "theme";
-        final String THEME_DEFAULT_VALUE = "-1";
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String prefsTheme = prefs.getString(THEME_KEY, THEME_DEFAULT_VALUE);
         if (prefsTheme == null) return;

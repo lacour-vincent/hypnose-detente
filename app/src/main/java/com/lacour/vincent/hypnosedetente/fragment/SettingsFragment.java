@@ -9,6 +9,9 @@ import com.lacour.vincent.hypnosedetente.R;
 
 public class SettingsFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
 
+    final String THEME_KEY = "theme";
+    final String THEME_DEFAULT_VALUE = "-1";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,9 +38,8 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        final String THEME_KEY = "theme";
         if (key.equals(THEME_KEY)) {
-            String dayNightMode = sharedPreferences.getString(key, "");
+            String dayNightMode = sharedPreferences.getString(key, THEME_DEFAULT_VALUE);
             if (dayNightMode == null) return;
             int mode = Integer.parseInt(dayNightMode);
             switch (mode) {

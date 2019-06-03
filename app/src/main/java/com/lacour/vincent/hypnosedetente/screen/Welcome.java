@@ -43,7 +43,7 @@ public class Welcome extends AppCompatActivity {
 
         ImageButton btn_rating = findViewById(R.id.btn_etoile);
         btn_rating.setOnClickListener(view -> {
-            showFlycoRatingDialog(getString(R.string.TitleRating), getString(R.string.TextRating));
+            showFlycoRatingDialog(getString(R.string.titleRating), getString(R.string.textRating));
         });
 
         Tracks tracks = new Tracks(this);
@@ -148,7 +148,7 @@ public class Welcome extends AppCompatActivity {
                 .titleTextSize(18)
                 .content(message)
                 .contentTextSize(15)
-                .btnText(getString(R.string.TextGoPlayStoreNo), getString(R.string.TextGoPlayStoreYes))
+                .btnText(getString(R.string.textGoPlayStoreNo), getString(R.string.textGoPlayStoreYes))
                 .titleTextColor(ContextCompat.getColor(this, R.color.colorDialogTitle))
                 .btnTextColor(ContextCompat.getColor(this, R.color.colorDialogButtonText), ContextCompat.getColor(this, R.color.colorDialogButtonText))
                 .contentTextColor(ContextCompat.getColor(this, R.color.colorDialogContent))

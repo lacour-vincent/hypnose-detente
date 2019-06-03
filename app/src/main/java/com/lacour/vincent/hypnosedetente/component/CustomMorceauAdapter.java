@@ -21,9 +21,7 @@ public class CustomMorceauAdapter extends RecyclerView.Adapter<CustomMorceauAdap
     private Context mContext;
     private AppUtils appUtils;
 
-    /**
-     * View holder class
-     */
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         private TextView txtTitle;
@@ -57,13 +55,11 @@ public class CustomMorceauAdapter extends RecyclerView.Adapter<CustomMorceauAdap
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Sample sample = sampleList.get(position);
         holder.txtTitle.setText(sample.getTitle());
-        String duration = "⏰" + "  " + String.valueOf(sample.getDuration()) + " min";
-        holder.txtDuration.setText(duration);
+        holder.txtDuration.setText(mContext.getString(R.string.sampleDuration, sample.getDuration()));
         Glide.with(mContext).load(sample.getThumbnail()).into(holder.imgThumbnail);
         if (appUtils.isFileExist(sample.getFile())) {
             holder.imgAirplane.setVisibility(View.VISIBLE);
-        }
-        else{
+        } else {
             holder.imgAirplane.setVisibility(View.GONE);
         }
     }
@@ -73,10 +69,7 @@ public class CustomMorceauAdapter extends RecyclerView.Adapter<CustomMorceauAdap
         return sampleList.size();
     }
 
-    public Object getItem(int position) {
-        return sampleList.get(position);
-    }
-
+    @Override
     public long getItemId(int position) {
         return position;
     }
