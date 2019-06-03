@@ -48,15 +48,17 @@
 
                     <ImageView
                         android:id="@+id/ic_app"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
                         android:layout_marginStart="20dp"
+
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="5dp"
-
                         android:contentDescription="@string/altIconApplication"
-                        android:src="@mipmap/ic_launcher"
+                        android:scaleType="center"
+
+
+                        android:src="@mipmap/ic_launcher_foreground"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
