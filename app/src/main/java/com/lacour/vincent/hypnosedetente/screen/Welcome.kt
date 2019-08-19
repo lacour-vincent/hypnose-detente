@@ -29,6 +29,7 @@ class Welcome : AppCompatActivity() {
     }
 
     private lateinit var appUtils: AppUtils
+    private lateinit var sampleAdapter: SampleAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +43,7 @@ class Welcome : AppCompatActivity() {
         appUtils = AppUtils(this)
 
         val (samples) = Tracks()
-        val sampleAdapter = SampleAdapter(this, samples)
+        sampleAdapter = SampleAdapter(this, samples)
         val mLayoutManager = GridLayoutManager(this, 2)
         recycler_view.adapter = sampleAdapter
         recycler_view.layoutManager = mLayoutManager
@@ -73,6 +74,11 @@ class Welcome : AppCompatActivity() {
                     }
                 })
         )
+    }
+
+    override fun onResume() {
+        super.onResume();
+        sampleAdapter.notifyDataSetChanged()
     }
 
 

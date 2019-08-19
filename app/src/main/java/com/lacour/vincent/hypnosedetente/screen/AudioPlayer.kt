@@ -169,7 +169,7 @@ class AudioPlayer : AppCompatActivity() {
                 if (appUtils.isFileExist(sample.file)) {
                     showFlycoDownloadDeleteDialog(
                         getString(R.string.download_title),
-                        getString(R.string.download_content)
+                        getString(R.string.download_content_already)
                     )
                 } else {
                     showFlycoDownloadDialog(
