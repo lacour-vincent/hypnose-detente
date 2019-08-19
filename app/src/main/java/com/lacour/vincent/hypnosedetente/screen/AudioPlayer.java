@@ -38,15 +38,15 @@ import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 import com.lacour.vincent.hypnosedetente.data.Sample;
-import com.lacour.vincent.hypnosedetente.service.ForegroundService;
 import com.lacour.vincent.hypnosedetente.R;
 import com.bumptech.glide.Glide;
-import com.lacour.vincent.hypnosedetente.utils.AppUtils;
+import com.lacour.vincent.hypnosedetente.service.ForegroundService;
 
 import java.io.File;
 import java.util.Formatter;
 import java.util.Locale;
 
+import com.lacour.vincent.hypnosedetente.utils.AppUtils;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 

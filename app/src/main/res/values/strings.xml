@@ -35,7 +35,7 @@
 
     <string name="sample_duration">\u23f0 %1$d min</string>
 
-    <string name="notificationContent">%1$s — lecture en cours</string>
+    <string name="notification_description">%1$s — lecture en cours</string>
 
     <string name="menuSettingsLabel">Paramètres</string>
     <string name="menuInformationsLabel">Informations</string>
