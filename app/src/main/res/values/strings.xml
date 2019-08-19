@@ -19,16 +19,21 @@
     <string name="interfaceNightModeLabel">Mode Jour-Nuit</string>
 
     <string name="descriptionLabel">Conseils</string>
-    <string name="descriptionContent">Pour profiter pleinement des séances, nous vous conseillons de vous installer confortablement dans un endroit calme, assis ou allongé, avec un casque audio. N\'hésitez pas à lâcher-prise. Bonnes séances !</string>
+    <string name="descriptionContent">Pour profiter pleinement des séances, nous vous conseillons de vous installer
+        confortablement dans un endroit calme, assis ou allongé, avec un casque audio. N\'hésitez pas à lâcher-prise.
+        Bonnes séances !
+    </string>
 
 
     <string name="noInternetTitle">Connexion Internet nécessaire</string>
-    <string name="noInternetText">Vous devez disposer d\'une connexion à Internet pour charger les séances ou bien télécharger les enregistrements en mode hors-connexion.</string>
+    <string name="noInternetText">Vous devez disposer d\'une connexion à Internet pour charger les séances ou bien
+        télécharger les enregistrements en mode hors-connexion.
+    </string>
 
     <string name="loadingTitle">Chargement</string>
     <string name="loadingText">Chargement de l\'enregistrement</string>
 
-    <string name="sampleDuration">\u23f0 %1$d min</string>
+    <string name="sample_duration">\u23f0 %1$d min</string>
 
     <string name="notificationContent">%1$s — lecture en cours</string>
 
@@ -38,13 +43,18 @@
     <string name="agreeDialogText">Compris !</string>
 
     <string name="playerErrorTitle">Erreur</string>
-    <string name="playerErrorText">Erreur lors du chargement de l\'enregistrement. Vous avez peut-être perdu votre connexion à Internet. Pour résoudre ce problème, vous pouvez télécharger l\'enregistrement pour l\'écouter en mode hors-connexion.</string>
+    <string name="playerErrorText">Erreur lors du chargement de l\'enregistrement. Vous avez peut-être perdu votre
+        connexion à Internet. Pour résoudre ce problème, vous pouvez télécharger l\'enregistrement pour l\'écouter en
+        mode hors-connexion.
+    </string>
 
     <string name="deviceErrorTitle">Erreur interne</string>
     <string name="deviceErrorText">Désolé, votre smartphone n\'est pas compatible avec l\'application.</string>
 
     <string name="titleRating">Noter l\'application</string>
-    <string name="textRating">Si vous souhaitez soutenir notre travail, vous pouvez noter favorablement l\'application sur le PlayStore et partager votre expérience pour les autres utilisateurs. Pour y accéder :</string>
+    <string name="textRating">Si vous souhaitez soutenir notre travail, vous pouvez noter favorablement l\'application
+        sur le PlayStore et partager votre expérience pour les autres utilisateurs. Pour y accéder :
+    </string>
     <string name="textGoPlayStoreYes">Ouvrir PlayStore</string>
     <string name="textGoPlayStoreNo">Plus tard</string>
 
@@ -52,10 +62,14 @@
     <string name="textDownloadNo">Plus tard</string>
     <string name="textDownloadDelete">Supprimer</string>
     <string name="titleDialogDownload">Téléchargement</string>
-    <string name="textDialogDownload">Vous pouvez télécharger l\'enregistrement afin de l\'écouter en mode hors connexion par la suite.\n\n%1$d Mo d\'espace libre nécessaire.</string>
+    <string name="textDialogDownload">Vous pouvez télécharger l\'enregistrement afin de l\'écouter en mode hors
+        connexion par la suite.\n\n%1$d Mo d\'espace libre nécessaire.
+    </string>
     <string name="titleDownloadNotif">Téléchargement en cours</string>
 
-    <string name="textDialogAlreadyDownload">Vous pouvez écouter l\'enregistrement en mode hors-connexion dès la fin du téléchargement.</string>
+    <string name="textDialogAlreadyDownload">Vous pouvez écouter l\'enregistrement en mode hors-connexion dès la fin du
+        téléchargement.
+    </string>
     <string name="textFileAlreadyExist">Cet enregistrement a déjà été téléchargé.</string>
     <string name="textFileDeletedSuccess">L\'enregistrement a été supprimé.</string>
     <string name="textFileDeletedError">Une erreur est survenue.</string>
