@@ -3,7 +3,8 @@ package com.lacour.vincent.hypnosedetente.fragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
-import android.support.v7.app.AppCompatDelegate;
+
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.lacour.vincent.hypnosedetente.R;
 
@@ -40,7 +41,6 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if (key.equals(THEME_KEY)) {
             String dayNightMode = sharedPreferences.getString(key, THEME_DEFAULT_VALUE);
-            if (dayNightMode == null) return;
             int mode = Integer.parseInt(dayNightMode);
             switch (mode) {
                 case AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM:

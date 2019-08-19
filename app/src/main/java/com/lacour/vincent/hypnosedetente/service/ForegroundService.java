@@ -9,7 +9,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.support.v4.app.NotificationCompat;
+import androidx.core.app.NotificationCompat;
 
 import com.lacour.vincent.hypnosedetente.R;
 import com.lacour.vincent.hypnosedetente.screen.AudioPlayer;
