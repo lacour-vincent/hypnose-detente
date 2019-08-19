@@ -12,12 +12,13 @@
     <application
             android:name=".screen.AppController"
             android:allowBackup="true"
+            android:fullBackupContent="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/appName"
-            android:resizeableActivity="false"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+
         <activity
                 android:name=".screen.Welcome"
                 android:screenOrientation="portrait">
