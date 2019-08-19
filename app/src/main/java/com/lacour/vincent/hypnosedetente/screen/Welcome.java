@@ -25,6 +25,7 @@ import com.lacour.vincent.hypnosedetente.utils.AppUtils;
 
 import java.util.List;
 
+
 public class Welcome extends AppCompatActivity {
 
     private AppUtils appUtils;
@@ -43,8 +44,8 @@ public class Welcome extends AppCompatActivity {
 
         appUtils = new AppUtils(this);
 
-        Tracks tracks = new Tracks(this);
-        final List<Sample> sampleList = tracks.getTrackList();
+        Tracks tracks = new Tracks();
+        final List<Sample> sampleList = tracks.getSamples();
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
