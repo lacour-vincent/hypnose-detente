@@ -34,11 +34,11 @@
                 android:screenOrientation="portrait"/>
 
         <activity
-                android:name=".screen.Settings"
+                android:name=".screen.Information"
                 android:screenOrientation="portrait"/>
 
         <activity
-                android:name=".screen.Information"
+                android:name=".screen.Settings"
                 android:screenOrientation="portrait"/>
 
     </application>

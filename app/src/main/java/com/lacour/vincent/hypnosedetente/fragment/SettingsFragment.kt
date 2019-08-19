@@ -4,11 +4,11 @@ import android.content.SharedPreferences
 import android.os.Bundle
 
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.preference.PreferenceFragment
+import androidx.preference.PreferenceFragmentCompat
 
 import com.lacour.vincent.hypnosedetente.R
 
-class SettingsFragment : PreferenceFragment(), SharedPreferences.OnSharedPreferenceChangeListener {
+class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPreferenceChangeListener {
 
     private val THEME_KEY = "theme"
     private val THEME_DEFAULT_VALUE = "-1"
@@ -29,7 +29,7 @@ class SettingsFragment : PreferenceFragment(), SharedPreferences.OnSharedPrefere
 
     private fun applyTheme(dayNightMode: Int) {
         AppCompatDelegate.setDefaultNightMode(dayNightMode)
-        this.activity.finish()
+        this.activity!!.finish()
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
