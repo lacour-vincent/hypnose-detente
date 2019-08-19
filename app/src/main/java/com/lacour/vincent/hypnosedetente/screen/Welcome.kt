@@ -36,7 +36,7 @@ class Welcome : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar_welcome))
 
         if (supportActionBar != null) {
-            supportActionBar!!.setTitle(R.string.applicationName)
+            supportActionBar!!.setTitle(R.string.app_name)
         }
 
         appUtils = AppUtils(this)
@@ -66,8 +66,8 @@ class Welcome : AppCompatActivity() {
                             )
                         } else {
                             showFlycoInformationDialog(
-                                getString(R.string.noInternetTitle),
-                                getString(R.string.noInternetText)
+                                getString(R.string.error_internet_title),
+                                getString(R.string.error_internet_content)
                             )
                         }
                     }
@@ -85,7 +85,7 @@ class Welcome : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
         when (item.itemId) {
             R.id.action_rating -> {
-                showFlycoRatingDialog(getString(R.string.titleRating), getString(R.string.textRating))
+                showFlycoRatingDialog(getString(R.string.rating_title), getString(R.string.rating_content))
                 true
             }
             R.id.action_settings -> {
@@ -125,7 +125,7 @@ class Welcome : AppCompatActivity() {
             .titleTextSize(18f)
             .content(message)
             .contentTextSize(15f)
-            .btnText(getString(R.string.agreeDialogText))
+            .btnText(getString(R.string.information_yes))
             .titleTextColor(ContextCompat.getColor(this, R.color.colorDialogTitle))
             .btnTextColor(ContextCompat.getColor(this, R.color.colorDialogButtonText))
             .contentTextColor(ContextCompat.getColor(this, R.color.colorDialogContent))
@@ -147,7 +147,7 @@ class Welcome : AppCompatActivity() {
             .titleTextSize(18f)
             .content(message)
             .contentTextSize(15f)
-            .btnText(getString(R.string.textGoPlayStoreNo), getString(R.string.textGoPlayStoreYes))
+            .btnText(getString(R.string.rating_no), getString(R.string.rating_yes))
             .titleTextColor(ContextCompat.getColor(this, R.color.colorDialogTitle))
             .btnTextColor(
                 ContextCompat.getColor(this, R.color.colorDialogButtonText),

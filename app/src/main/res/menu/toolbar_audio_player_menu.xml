@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".screen.AudioPlayer">
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context=".screen.AudioPlayer">
 
     <item
-        android:id="@+id/action_download"
-        android:icon="@drawable/ic_file_download"
-        android:orderInCategory="0"
-        android:title="Télécharger"
-        app:showAsAction="ifRoom" />
+            android:id="@+id/action_download"
+            android:icon="@drawable/ic_file_download"
+            android:orderInCategory="0"
+            android:title="@string/download_label"
+            app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/action_information"
-        android:icon="@drawable/ic_info"
-        android:orderInCategory="1"
-        android:title="Information"
-        app:showAsAction="ifRoom" />
+            android:id="@+id/action_information"
+            android:icon="@drawable/ic_info"
+            android:orderInCategory="1"
+            android:title="@string/information_label"
+            app:showAsAction="ifRoom"/>
 
 
 </menu>

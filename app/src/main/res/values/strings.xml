@@ -1,91 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="appName">Hypnose</string>
-    <string name="applicationName">Hypnose - Détente</string>
+    <string name="app_name">Hypnose - Détente</string>
+    <string name="short_app_name">Hypnose</string>
+    <string name="app_author">\@LacourVincent</string>
 
-    <string name="applicationLabel">Hypnose - Détente</string>
-    <string name="applicationTag">\@LacourVincent</string>
+    <string name="version_label">Version</string>
+    <string name="version_number">1.4.2</string>
 
-    <string name="versionLabel">Version</string>
-    <string name="versionContent">1.4.2</string>
+    <string name="author_label">Auteur</string>
+    <string name="author_content">Lacour Vincent</string>
+    <string name="author_location">Paris, France</string>
+    <string name="email_label">Email</string>
+    <string name="email_content">lacour.vincent.app@gmail.com</string>
 
-    <string name="authorTitle">Auteur</string>
-    <string name="authorLabel">Lacour Vincent</string>
-    <string name="authorContent">Paris, France</string>
-    <string name="emailLabel">Email</string>
-    <string name="emailContent">lacour.vincent.app@gmail.com</string>
-
-    <string name="interfaceSettingLabel">INTERFACE</string>
-    <string name="interfaceNightModeLabel">Mode Jour-Nuit</string>
-
-    <string name="descriptionLabel">Conseils</string>
-    <string name="descriptionContent">Pour profiter pleinement des séances, nous vous conseillons de vous installer
+    <string name="advise_label">Conseils</string>
+    <string name="advise_content">Pour profiter pleinement des séances, nous vous conseillons de vous installer
         confortablement dans un endroit calme, assis ou allongé, avec un casque audio. N\'hésitez pas à lâcher-prise.
         Bonnes séances !
     </string>
 
+    <string name="day_night_mode_label">Mode Jour-Nuit</string>
 
-    <string name="noInternetTitle">Connexion Internet nécessaire</string>
-    <string name="noInternetText">Vous devez disposer d\'une connexion à Internet pour charger les séances ou bien
-        télécharger les enregistrements en mode hors-connexion.
+
+    <string name="error_internet_title">Connexion Internet nécessaire</string>
+    <string name="error_internet_content">Vous devez disposer d\'une connexion à Internet pour charger les séances ou
+        bien télécharger les enregistrements en mode hors-connexion.
     </string>
 
+    <string name="sample_duration">\u23f0 %1$d min</string>
     <string name="loading_title">Chargement</string>
     <string name="loading_content">Chargement de l\'enregistrement</string>
-
-    <string name="sample_duration">\u23f0 %1$d min</string>
-
     <string name="notification_description">%1$s — lecture en cours</string>
 
-    <string name="menuSettingsLabel">Paramètres</string>
-    <string name="menuInformationsLabel">Informations</string>
+    <string name="download_label">Télécharger</string>
+    <string name="rating_label">Evaluer</string>
+    <string name="settings_label">Paramètres</string>
+    <string name="information_label">Informations</string>
 
-    <string name="agreeDialogText">Compris !</string>
+    <string name="rating_title">Noter l\'application</string>
+    <string name="rating_content">Si vous souhaitez soutenir notre travail, vous pouvez noter favorablement
+        l\'application
+        sur le PlayStore et partager votre expérience pour les autres utilisateurs. Pour y accéder :
+    </string>
+    <string name="rating_yes">Ouvrir PlayStore</string>
+    <string name="rating_no">Plus tard</string>
 
-    <string name="playerErrorTitle">Erreur</string>
-    <string name="playerErrorText">Erreur lors du chargement de l\'enregistrement. Vous avez peut-être perdu votre
+    <string name="information_title">Information</string>
+    <string name="information_yes">OK</string>
+
+    <string name="download_title">Téléchargement</string>
+    <string name="download_content">Vous pouvez télécharger l\'enregistrement afin de l\'écouter en mode hors
+        connexion par la suite.\n\n%1$d Mo d\'espace libre nécessaire.
+    </string>
+    <string name="download_yes">Télécharger</string>
+    <string name="download_no">Plus tard</string>
+    <string name="download_notification_content">Téléchargement en cours</string>
+
+    <string name="download_delete_yes">Supprimer</string>
+    <string name="download_delete_no">OK</string>
+    <string name="download_content_already">Vous pouvez écouter l\'enregistrement en mode hors-connexion dès la fin du
+        téléchargement.
+    </string>
+    <string name="download_unavailable">Le téléchargement n\'est pas compatible avec votre appareil.</string>
+
+    <string name="file_already_exist">Cet enregistrement a déjà été téléchargé.</string>
+    <string name="file_delete_success">L\'enregistrement a été supprimé.</string>
+    <string name="file_delete_failure">Une erreur est survenue.</string>
+
+    <string name="error_player_title">Erreur</string>
+    <string name="error_player_content">Erreur lors du chargement de l\'enregistrement. Vous avez peut-être perdu votre
         connexion à Internet. Pour résoudre ce problème, vous pouvez télécharger l\'enregistrement pour l\'écouter en
         mode hors-connexion.
     </string>
 
-    <string name="deviceErrorTitle">Erreur interne</string>
-    <string name="deviceErrorText">Désolé, votre smartphone n\'est pas compatible avec l\'application.</string>
+    <string name="error_device_title">Erreur interne</string>
+    <string name="error_device_content">Désolé, votre smartphone n\'est pas compatible avec l\'application.</string>
 
-    <string name="titleRating">Noter l\'application</string>
-    <string name="textRating">Si vous souhaitez soutenir notre travail, vous pouvez noter favorablement l\'application
-        sur le PlayStore et partager votre expérience pour les autres utilisateurs. Pour y accéder :
-    </string>
-    <string name="textGoPlayStoreYes">Ouvrir PlayStore</string>
-    <string name="textGoPlayStoreNo">Plus tard</string>
-
-    <string name="textDownloadYes">Télécharger</string>
-    <string name="textDownloadNo">Plus tard</string>
-    <string name="textDownloadDelete">Supprimer</string>
-    <string name="titleDialogDownload">Téléchargement</string>
-    <string name="textDialogDownload">Vous pouvez télécharger l\'enregistrement afin de l\'écouter en mode hors
-        connexion par la suite.\n\n%1$d Mo d\'espace libre nécessaire.
-    </string>
-    <string name="titleDownloadNotif">Téléchargement en cours</string>
-
-    <string name="textDialogAlreadyDownload">Vous pouvez écouter l\'enregistrement en mode hors-connexion dès la fin du
-        téléchargement.
-    </string>
-    <string name="textFileAlreadyExist">Cet enregistrement a déjà été téléchargé.</string>
-    <string name="textFileDeletedSuccess">L\'enregistrement a été supprimé.</string>
-    <string name="textFileDeletedError">Une erreur est survenue.</string>
-    <string name="textExceptionDownload">Le téléchargement n\'est pas compatible avec votre appareil.</string>
-
-    <string name="altIconMenu">Icon menu</string>
-    <string name="altIconApplication">Icon application</string>
-    <string name="altIconHistory">Icon historique</string>
-    <string name="altIconPerson">Icon personne</string>
-    <string name="altIconEmail">Icon courrier electronique</string>
-    <string name="altIconBack">Icon retour</string>
-    <string name="altIconInformation">Icon information</string>
-    <string name="altIconSound">Icon son</string>
-    <string name="altIconRating">Icon étoile</string>
-    <string name="altIconDownload">Icon téléchargement</string>
-    <string name="altImageThumbnail">Vignette</string>
-    <string name="altIconAirplane">Icon mode avion</string>
+    <string name="application_icon">Application</string>
+    <string name="history_icon">Historique</string>
+    <string name="people_icon">Personne</string>
+    <string name="email_icon">Courrier electronique</string>
+    <string name="information_icon">Information</string>
+    <string name="sound_icon">Son</string>
+    <string name="thumbnail_image">Vignette</string>
+    <string name="airplane_icon">Vvion</string>
 
 </resources>

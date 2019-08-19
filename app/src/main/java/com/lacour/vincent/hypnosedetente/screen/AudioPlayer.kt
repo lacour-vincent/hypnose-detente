@@ -123,7 +123,7 @@ class AudioPlayer : AppCompatActivity() {
 
         } catch (e: Exception) {
             button_play.isEnabled = false
-            showFlycoInformationDialog(getString(R.string.deviceErrorTitle), getString(R.string.deviceErrorText))
+            showFlycoInformationDialog(getString(R.string.error_device_title), getString(R.string.error_device_content))
         }
 
     }
@@ -167,20 +167,20 @@ class AudioPlayer : AppCompatActivity() {
             }
             R.id.action_download -> {
                 if (appUtils.isFileExist(sample.file)) {
-                    showFlycoDownloadInformationDialog(
-                        getString(R.string.titleDialogDownload),
-                        getString(R.string.textDialogAlreadyDownload)
+                    showFlycoDownloadDeleteDialog(
+                        getString(R.string.download_title),
+                        getString(R.string.download_content)
                     )
                 } else {
                     showFlycoDownloadDialog(
-                        getString(R.string.titleDialogDownload),
-                        getString(R.string.textDialogDownload, sample.size)
+                        getString(R.string.download_title),
+                        getString(R.string.download_content, sample.size)
                     )
                 }
                 true
             }
             R.id.action_information -> {
-                showFlycoInformationDialog(getString(R.string.menuInformationsLabel), sample.description)
+                showFlycoInformationDialog(getString(R.string.information_title), sample.description)
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -204,7 +204,7 @@ class AudioPlayer : AppCompatActivity() {
     private fun handlePlayPause() {
         val canPlaySample = appUtils.hasInternet() || appUtils.isFileExist(sample.file)
         if (!canPlaySample) {
-            Toast.makeText(this@AudioPlayer, getString(R.string.noInternetText), Toast.LENGTH_LONG).show()
+            Toast.makeText(this@AudioPlayer, getString(R.string.error_internet_content), Toast.LENGTH_LONG).show()
             return
         }
         if (firstPlaying) {
@@ -305,14 +305,14 @@ class AudioPlayer : AppCompatActivity() {
 
     private fun makeDownloadRequest(downloadUri: Uri, name: String, fileName: String) {
         if (appUtils.isFileExist(fileName)) {
-            Toast.makeText(this@AudioPlayer, getString(R.string.textFileAlreadyExist), Toast.LENGTH_LONG).show()
+            Toast.makeText(this@AudioPlayer, getString(R.string.file_already_exist), Toast.LENGTH_LONG).show()
             return
         }
         try {
             val request = DownloadManager.Request(downloadUri)
             request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
             request.setAllowedOverRoaming(false)
-            request.setTitle(getString(R.string.titleDownloadNotif))
+            request.setTitle(getString(R.string.download_notification_content))
             request.setDescription(name)
             request.setVisibleInDownloadsUi(true)
             request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE)
@@ -321,7 +321,7 @@ class AudioPlayer : AppCompatActivity() {
             val manager = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
             manager.enqueue(request)
         } catch (e: IllegalStateException) {
-            Toast.makeText(this@AudioPlayer, getString(R.string.textExceptionDownload), Toast.LENGTH_LONG).show()
+            Toast.makeText(this@AudioPlayer, getString(R.string.download_unavailable), Toast.LENGTH_LONG).show()
         }
 
     }
@@ -335,7 +335,7 @@ class AudioPlayer : AppCompatActivity() {
             .titleTextSize(17f)
             .content(message)
             .contentTextSize(14f)
-            .btnText(getString(R.string.agreeDialogText))
+            .btnText(getString(R.string.information_yes))
             .titleTextColor(ContextCompat.getColor(this, R.color.colorDialogTitle))
             .btnTextColor(ContextCompat.getColor(this, R.color.colorDialogButtonText))
             .contentTextColor(ContextCompat.getColor(this, R.color.colorDialogContent))
@@ -357,7 +357,7 @@ class AudioPlayer : AppCompatActivity() {
             .titleTextSize(18f)
             .content(message)
             .contentTextSize(15f)
-            .btnText(getString(R.string.textDownloadNo), getString(R.string.textDownloadYes))
+            .btnText(getString(R.string.download_no), getString(R.string.download_yes))
             .titleTextColor(ContextCompat.getColor(this, R.color.colorDialogTitle))
             .btnTextColor(
                 ContextCompat.getColor(this, R.color.colorDialogButtonText),
@@ -378,7 +378,7 @@ class AudioPlayer : AppCompatActivity() {
             })
     }
 
-    private fun showFlycoDownloadInformationDialog(title: String, message: String) {
+    private fun showFlycoDownloadDeleteDialog(title: String, message: String) {
         val dialog = NormalDialog(this)
         dialog.isTitleShow(true)
             .btnNum(2)
@@ -386,7 +386,7 @@ class AudioPlayer : AppCompatActivity() {
             .titleTextSize(18f)
             .content(message)
             .contentTextSize(15f)
-            .btnText(getString(R.string.textDownloadDelete), getString(R.string.agreeDialogText))
+            .btnText(getString(R.string.download_delete_yes), getString(R.string.download_delete_no))
             .titleTextColor(ContextCompat.getColor(this, R.color.colorDialogTitle))
             .btnTextColor(
                 ContextCompat.getColor(this, R.color.colorDialogButtonText),
@@ -401,11 +401,10 @@ class AudioPlayer : AppCompatActivity() {
 
         dialog.setOnBtnClickL(OnBtnClickL {
             dialog.dismiss()
-            if (appUtils.deleteFile(sample.file)) {
-                Toast.makeText(this@AudioPlayer, getString(R.string.textFileDeletedSuccess), Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this@AudioPlayer, getString(R.string.textFileDeletedError), Toast.LENGTH_SHORT).show()
-            }
+            val isSuccessfulDeleted: Boolean = appUtils.deleteFile(sample.file)
+            val information: String =
+                if (isSuccessfulDeleted) getString(R.string.file_delete_success) else getString(R.string.file_delete_failure)
+            Toast.makeText(this@AudioPlayer, information, Toast.LENGTH_SHORT).show()
         }, OnBtnClickL { dialog.dismiss() })
 
     }
@@ -432,7 +431,7 @@ class AudioPlayer : AppCompatActivity() {
 
         override fun onPlayerError(error: ExoPlaybackException?) {
             progressDialog.dismiss()
-            showFlycoInformationDialog(getString(R.string.playerErrorTitle), getString(R.string.playerErrorText))
+            showFlycoInformationDialog(getString(R.string.error_player_title), getString(R.string.error_player_content))
             button_play.isEnabled = false
             stopForeGroundService()
         }
