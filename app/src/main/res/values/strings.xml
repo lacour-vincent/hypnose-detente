@@ -21,7 +21,6 @@
 
     <string name="day_night_mode_label">Mode Jour-Nuit</string>
 
-
     <string name="error_internet_title">Connexion Internet nécessaire</string>
     <string name="error_internet_content">Vous devez disposer d\'une connexion à Internet pour charger les séances ou
         bien télécharger les enregistrements en mode hors-connexion.
@@ -83,6 +82,6 @@
     <string name="information_icon">Information</string>
     <string name="sound_icon">Son</string>
     <string name="thumbnail_image">Vignette</string>
-    <string name="airplane_icon">Vvion</string>
+    <string name="airplane_icon">Avion</string>
 
 </resources>

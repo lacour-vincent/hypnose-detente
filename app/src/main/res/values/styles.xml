@@ -8,15 +8,15 @@
     </style>
 
     <style name="AppTheme.Toolbar">
-        <item name="android:background">@color/colorToolbar</item>
-        <item name="android:textColorPrimary">@color/colorToolbarText</item>
-        <item name="colorControlNormal">@color/colorToolbarText</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:textColorPrimary">@color/colorPrimaryText</item>
+        <item name="colorControlNormal">@color/colorPrimaryText</item>
     </style>
 
     <style name="AppTheme.Toolbar.Transparent">
         <item name="android:background">@null</item>
-        <item name="android:textColorPrimary">@color/colorToolbarText</item>
-        <item name="colorControlNormal">@color/colorToolbarText</item>
+        <item name="android:textColorPrimary">@color/colorPrimaryText</item>
+        <item name="colorControlNormal">@color/colorPrimaryText</item>
     </style>
 
     <style name="AppTheme.Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">

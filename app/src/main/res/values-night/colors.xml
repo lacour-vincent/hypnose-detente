@@ -3,23 +3,15 @@
 
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimaryText">#FFFFFF</color>
     <color name="colorAccent">#008577</color>
 
-    <color name="colorPrimaryText">#FFFFFF</color>
     <color name="colorGradient">#0f2027</color>
 
-    <color name="colorCardLabel">#FFFFFF</color>
+    <color name="colorCardTitle">#FFFFFF</color>
     <color name="colorCardContent">#FFFFFF</color>
-    <color name="colorBackgroundCardActivity">#202124</color>
     <color name="colorBackgroundCard">#2D2E31</color>
-
-    <color name="RedFloatingButton">#F44336</color>
-    <color name="SeekBarPlayerButton">#EF5350</color>
-    <color name="SeekBarPlayerProgress">#B71C1C</color>
-    <color name="SeekBarPlayerProgressSecondary">#6e4f4f</color>
-    <color name="SeekBarPlayerBackground">#CCCCCC</color>
-    <color name="SeekBarSoundProgress">#A2C5DF</color>
-    <color name="SeekBarSoundBackground">#448ABD</color>
+    <color name="colorCardBackgroundActivity">#202124</color>
 
     <color name="colorDialogTitle">#61AEDC</color>
     <color name="colorDialogContent">#FFFFFF</color>
