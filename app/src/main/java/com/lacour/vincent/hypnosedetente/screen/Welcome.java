@@ -8,9 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.PopupMenu;
 
 import com.flyco.animation.BounceEnter.BounceTopEnter;
 import com.flyco.animation.SlideExit.SlideBottomExit;
@@ -24,7 +25,6 @@ import com.lacour.vincent.hypnosedetente.utils.AppUtils;
 
 import java.util.List;
 
-
 public class Welcome extends AppCompatActivity {
 
     private AppUtils appUtils;
@@ -35,16 +35,13 @@ public class Welcome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+        setSupportActionBar(findViewById(R.id.toolbar_welcome));
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(R.string.applicationName);
+        }
 
         appUtils = new AppUtils(this);
-
-        ImageButton btn_info = findViewById(R.id.btn_info);
-        btn_info.setOnClickListener(view -> openPopupMenu(view));
-
-        ImageButton btn_rating = findViewById(R.id.btn_etoile);
-        btn_rating.setOnClickListener(view -> {
-            showFlycoRatingDialog(getString(R.string.titleRating), getString(R.string.textRating));
-        });
 
         Tracks tracks = new Tracks(this);
         final List<Sample> sampleList = tracks.getTrackList();
@@ -80,11 +77,37 @@ public class Welcome extends AppCompatActivity {
         );
     }
 
+
     @Override
-    public void onResume() {
-        super.onResume();
-        CMA.notifyDataSetChanged();
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.toolbar_welcome_menu, menu);
+        return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_rating:
+                showFlycoRatingDialog(getString(R.string.titleRating), getString(R.string.textRating));
+                return true;
+            case R.id.action_settings:
+                Intent settingsIntent = new Intent(this, Settings.class);
+                startActivity(settingsIntent);
+                Welcome.this.overridePendingTransition(R.anim.anim_slide_in_left,
+                        R.anim.anim_slide_out_left);
+                return true;
+            case R.id.action_information:
+                Intent informationIntent = new Intent(this, Information.class);
+                startActivity(informationIntent);
+                Welcome.this.overridePendingTransition(R.anim.anim_slide_in_left,
+                        R.anim.anim_slide_out_left);
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 
     private void OpenPlayStore() {
         if (!appUtils.isPlayStoreInstalled()) return;
@@ -92,31 +115,6 @@ public class Welcome extends AppCompatActivity {
         intent.setData(Uri.parse(PLAYSTORE_LINK));
         startActivity(intent);
     }
-
-    private void openPopupMenu(View v) {
-        PopupMenu popup = new PopupMenu(this, v);
-        popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
-        popup.setOnMenuItemClickListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.settings:
-                    Intent settingsIntent = new Intent(this, Settings.class);
-                    startActivity(settingsIntent);
-                    Welcome.this.overridePendingTransition(R.anim.anim_slide_in_left,
-                            R.anim.anim_slide_out_left);
-                    return true;
-                case R.id.information:
-                    Intent informationIntent = new Intent(this, Information.class);
-                    startActivity(informationIntent);
-                    Welcome.this.overridePendingTransition(R.anim.anim_slide_in_left,
-                            R.anim.anim_slide_out_left);
-                    return true;
-                default:
-                    return false;
-            }
-        });
-        popup.show();
-    }
-
 
     private void showFlycoInformationDialog(String title, String message) {
         final NormalDialog dialog = new NormalDialog(this);

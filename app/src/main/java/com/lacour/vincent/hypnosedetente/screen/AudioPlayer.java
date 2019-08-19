@@ -14,6 +14,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -50,21 +53,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AudioPlayer extends AppCompatActivity {
 
-    ImageButton btn_retour = null;
-    TextView title_toolbar = null;
-    ImageButton btn_info = null;
-    ImageButton btn_download = null;
-
-    // PlayAudio widgets
     FloatingActionButton btn_play_pause = null;
     CircleImageView picture_audio = null;
     private ProgressDialog ringProgressDialog;
 
-    // Variables
     boolean isPlaying = false;
     boolean firstPlaying = true;
 
-    // Audio Player
     private double startTime = 0;
     private double finalTime = 0;
     private Handler myHandler = new Handler();
@@ -85,34 +80,13 @@ public class AudioPlayer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_audio_player);
+        setSupportActionBar(findViewById(R.id.toolbar_audio_player));
 
         appUtils = new AppUtils(this);
-
-        btn_retour = findViewById(R.id.btn_back_ecoute);
-        btn_retour.setOnClickListener(view -> {
-            finish();
-            AudioPlayer.this.overridePendingTransition(R.anim.anim_slide_in_right,
-                    R.anim.anim_slide_out_right);
-        });
-
-        btn_info = findViewById(R.id.toolbar_btn_information);
-        btn_info.setOnClickListener(view -> {
-            showFlycoInformationDialog(getString(R.string.menuInformationsLabel), sample.getDescription());
-        });
-
-        btn_download = findViewById(R.id.toolbar_btn_download);
-        btn_download.setOnClickListener(view -> {
-            if (appUtils.isFileExist(sample.getFile())) {
-                showFlycoDownloadInformationDialog(getString(R.string.titleDialogDownload), getString(R.string.textDialogAlreadyDownload));
-                return;
-            }
-            showFlycoDownloadDialog(getString(R.string.titleDialogDownload), getString(R.string.textDialogDownload, sample.getSize()));
-        });
 
         btn_play_pause = findViewById(R.id.button_play);
         btn_play_pause.setOnClickListener(view -> handlePlayPauseClick());
 
-        title_toolbar = findViewById(R.id.toolbar_title_ecoute);
         picture_audio = findViewById(R.id.picture_audio);
         seekBarPlayer = findViewById(R.id.seekbar_avancement);
         textCurrentTime = findViewById(R.id.textViewCurrentTime);
@@ -123,7 +97,13 @@ public class AudioPlayer extends AppCompatActivity {
         try {
             Bundle bundle = getIntent().getExtras();
             if (bundle != null) sample = bundle.getParcelable("sample");
-            if (sample != null) title_toolbar.setText(sample.getTitle());
+
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                getSupportActionBar().setDisplayShowHomeEnabled(true);
+                getSupportActionBar().setTitle(sample.getTitle());
+            }
+
             Glide.with(this).load(sample.getThumbnail()).into(picture_audio);
             prepareAudioPlayer(sample.getFile(), sample.getUrl());
 
@@ -184,8 +164,6 @@ public class AudioPlayer extends AppCompatActivity {
             });
         } catch (Exception e) {
             btn_play_pause.setEnabled(false);
-            btn_download.setEnabled(false);
-            btn_info.setEnabled(false);
             showFlycoInformationDialog(getString(R.string.deviceErrorTitle), getString(R.string.deviceErrorText));
         }
     }
@@ -210,8 +188,33 @@ public class AudioPlayer extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.toolbar_audio_player_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                AudioPlayer.this.overridePendingTransition(R.anim.anim_slide_in_right,
+                        R.anim.anim_slide_out_right);
+                return true;
+            case R.id.action_download:
+                if (appUtils.isFileExist(sample.getFile())) {
+                    showFlycoDownloadInformationDialog(getString(R.string.titleDialogDownload), getString(R.string.textDialogAlreadyDownload));
+                } else {
+                    showFlycoDownloadDialog(getString(R.string.titleDialogDownload), getString(R.string.textDialogDownload, sample.getSize()));
+                }
+                return true;
+            case R.id.action_information:
+                showFlycoInformationDialog(getString(R.string.menuInformationsLabel), sample.getDescription());
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
@@ -413,7 +416,7 @@ public class AudioPlayer extends AppCompatActivity {
         dialog.setOnBtnClickL(
                 () -> dialog.dismiss(),
                 () -> {
-                    makeDownloadRequest(Uri.parse(sample.getUrl()), title_toolbar.getText().toString(), sample.getFile());
+                    makeDownloadRequest(Uri.parse(sample.getUrl()), sample.getTitle(), sample.getFile());
                     dialog.dismiss();
                 });
     }

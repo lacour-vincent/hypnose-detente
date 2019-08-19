@@ -3,7 +3,7 @@ package com.lacour.vincent.hypnosedetente.screen;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
-import android.widget.ImageButton;
+import android.view.MenuItem;
 
 import com.lacour.vincent.hypnosedetente.R;
 import com.lacour.vincent.hypnosedetente.fragment.SettingsFragment;
@@ -14,9 +14,13 @@ public class Settings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        setSupportActionBar(findViewById(R.id.toolbar_settings));
 
-        ImageButton btn_back_settings = findViewById(R.id.btn_back_settings);
-        btn_back_settings.setOnClickListener(view -> finishActivity());
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(R.string.menuSettingsLabel);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         getFragmentManager()
                 .beginTransaction()
@@ -31,6 +35,16 @@ public class Settings extends AppCompatActivity {
             finishActivity();
         }
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finishActivity();
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
     }
 
     private void finishActivity() {

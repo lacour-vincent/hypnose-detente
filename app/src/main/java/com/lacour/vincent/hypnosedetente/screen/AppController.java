@@ -19,7 +19,6 @@ public class AppController extends Application {
     private void initTheme() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String prefsTheme = prefs.getString(THEME_KEY, THEME_DEFAULT_VALUE);
-        if (prefsTheme == null) return;
         int theme = Integer.parseInt(prefsTheme);
         switch (theme) {
             case AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM:

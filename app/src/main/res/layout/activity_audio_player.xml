@@ -8,9 +8,16 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <include
-        android:id="@+id/audio_player"
-        layout="@layout/toolbar_audio_player"></include>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_audio_player"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:theme="@style/AppTheme.Toolbar.Transparent"
+        app:titleTextAppearance="@style/AppTheme.Toolbar.TitleText" />
 
 
     <SeekBar
@@ -28,7 +35,7 @@
         app:layout_constraintBottom_toTopOf="@+id/picture_audio"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/audio_player" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_audio_player" />
 
     <ImageView
         android:id="@+id/imageViewSound"
