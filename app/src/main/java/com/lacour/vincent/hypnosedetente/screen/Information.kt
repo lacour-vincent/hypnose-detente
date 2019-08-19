@@ -1,10 +1,9 @@
 package com.lacour.vincent.hypnosedetente.screen
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.view.KeyEvent
 import android.view.MenuItem
-
+import androidx.appcompat.app.AppCompatActivity
 import com.lacour.vincent.hypnosedetente.R
 
 class Information : AppCompatActivity() {

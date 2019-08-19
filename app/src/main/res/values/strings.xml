@@ -30,8 +30,8 @@
         télécharger les enregistrements en mode hors-connexion.
     </string>
 
-    <string name="loadingTitle">Chargement</string>
-    <string name="loadingText">Chargement de l\'enregistrement</string>
+    <string name="loading_title">Chargement</string>
+    <string name="loading_content">Chargement de l\'enregistrement</string>
 
     <string name="sample_duration">\u23f0 %1$d min</string>
 
