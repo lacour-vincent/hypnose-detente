@@ -41,6 +41,11 @@
                 android:name=".screen.Settings"
                 android:screenOrientation="portrait"/>
 
+        <service
+                android:name=".service.ForegroundService"
+                android:enabled="true"
+                android:exported="false"/>
+
     </application>
 
 </manifest>

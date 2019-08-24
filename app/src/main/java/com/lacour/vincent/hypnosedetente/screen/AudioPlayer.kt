@@ -190,7 +190,7 @@ class AudioPlayer : AppCompatActivity() {
     public override fun onDestroy() {
         super.onDestroy()
         stopSound()
-        stopForeGroundService()
+        stopAudioPlayerService()
         appUtils.setStayAwakeLock(false)
         myHandler.removeCallbacksAndMessages(null)
     }
@@ -221,7 +221,7 @@ class AudioPlayer : AppCompatActivity() {
     private fun handlePlay() {
         if (isPlaying) return
         isPlaying = true
-        startForeGroundService()
+        startAudioPlayerService()
         exoPlayer.playWhenReady = true
         text_current_time.text = stringForTime(exoPlayer.currentPosition.toInt())
         text_total_time.text = stringForTime(exoPlayer.duration.toInt())
@@ -238,8 +238,8 @@ class AudioPlayer : AppCompatActivity() {
         if (!isPlaying) return
         isPlaying = false
         button_play!!.setImageResource(android.R.drawable.ic_media_play)
+        stopAudioPlayerService()
         exoPlayer.playWhenReady = false
-        stopForeGroundService()
     }
 
     private val updateSongTime = object : Runnable {
@@ -285,7 +285,7 @@ class AudioPlayer : AppCompatActivity() {
     }
 
 
-    private fun startForeGroundService() {
+    private fun startAudioPlayerService() {
         val intent = Intent(this@AudioPlayer, ForegroundService::class.java)
         intent.putExtra("SELECTED_SOUND", sample.title)
         intent.action = ForegroundService.ACTION_START_FOREGROUND_SERVICE
@@ -296,7 +296,7 @@ class AudioPlayer : AppCompatActivity() {
         this.startService(intent)
     }
 
-    private fun stopForeGroundService() {
+    private fun stopAudioPlayerService() {
         val intent = Intent(this@AudioPlayer, ForegroundService::class.java)
         intent.action = ForegroundService.ACTION_STOP_FOREGROUND_SERVICE
         this.stopService(intent)
@@ -422,7 +422,7 @@ class AudioPlayer : AppCompatActivity() {
                     exoPlayer.playWhenReady = false
                     isPlaying = false
                     exoPlayer.seekTo(0)
-                    stopForeGroundService()
+                    stopAudioPlayerService()
                 }
                 else -> {
                 }
@@ -433,7 +433,7 @@ class AudioPlayer : AppCompatActivity() {
             progressDialog.dismiss()
             showFlycoInformationDialog(getString(R.string.error_player_title), getString(R.string.error_player_content))
             button_play.isEnabled = false
-            stopForeGroundService()
+            stopAudioPlayerService()
         }
     }
 
