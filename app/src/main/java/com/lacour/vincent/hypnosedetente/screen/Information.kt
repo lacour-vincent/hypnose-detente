@@ -1,6 +1,5 @@
 package com.lacour.vincent.hypnosedetente.screen
 
-
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.KeyEvent
@@ -8,7 +7,6 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.lacour.vincent.hypnosedetente.R
 import kotlinx.android.synthetic.main.activity_information.*
-
 
 class Information : AppCompatActivity() {
 
@@ -21,12 +19,11 @@ class Information : AppCompatActivity() {
             with(supportActionBar!!) {
                 setDisplayHomeAsUpEnabled(true)
                 setDisplayShowHomeEnabled(true)
-                title = getString(R.string.information_label)
             }
         }
 
         try {
-            val pInfo = this.getPackageManager().getPackageInfo(packageName, 0)
+            val pInfo = this.packageManager.getPackageInfo(packageName, 0)
             number_version.text = pInfo.versionName
         } catch (e: PackageManager.NameNotFoundException) {
             e.printStackTrace()

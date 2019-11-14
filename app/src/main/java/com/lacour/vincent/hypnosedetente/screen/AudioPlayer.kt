@@ -123,7 +123,10 @@ class AudioPlayer : AppCompatActivity() {
 
         } catch (e: Exception) {
             button_play.isEnabled = false
-            showFlycoInformationDialog(getString(R.string.error_device_title), getString(R.string.error_device_content))
+            showFlycoInformationDialog(
+                getString(R.string.error_device_title),
+                getString(R.string.error_device_content)
+            )
         }
 
     }
@@ -180,7 +183,10 @@ class AudioPlayer : AppCompatActivity() {
                 true
             }
             R.id.action_information -> {
-                showFlycoInformationDialog(getString(R.string.information_title), sample.description)
+                showFlycoInformationDialog(
+                    getString(R.string.information_title),
+                    sample.description
+                )
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -204,7 +210,11 @@ class AudioPlayer : AppCompatActivity() {
     private fun handlePlayPause() {
         val canPlaySample = appUtils.hasInternet() || appUtils.isFileExist(sample.file)
         if (!canPlaySample) {
-            Toast.makeText(this@AudioPlayer, getString(R.string.error_internet_content), Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                this@AudioPlayer,
+                getString(R.string.error_internet_content),
+                Toast.LENGTH_LONG
+            ).show()
             return
         }
         if (firstPlaying) {
@@ -305,7 +315,11 @@ class AudioPlayer : AppCompatActivity() {
 
     private fun makeDownloadRequest(downloadUri: Uri, name: String, fileName: String) {
         if (appUtils.isFileExist(fileName)) {
-            Toast.makeText(this@AudioPlayer, getString(R.string.file_already_exist), Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                this@AudioPlayer,
+                getString(R.string.file_already_exist),
+                Toast.LENGTH_LONG
+            ).show()
             return
         }
         try {
@@ -321,7 +335,11 @@ class AudioPlayer : AppCompatActivity() {
             val manager = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
             manager.enqueue(request)
         } catch (e: IllegalStateException) {
-            Toast.makeText(this@AudioPlayer, getString(R.string.download_unavailable), Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                this@AudioPlayer,
+                getString(R.string.download_unavailable),
+                Toast.LENGTH_LONG
+            ).show()
         }
 
     }
@@ -386,7 +404,10 @@ class AudioPlayer : AppCompatActivity() {
             .titleTextSize(18f)
             .content(message)
             .contentTextSize(15f)
-            .btnText(getString(R.string.download_delete_yes), getString(R.string.download_delete_no))
+            .btnText(
+                getString(R.string.download_delete_yes),
+                getString(R.string.download_delete_no)
+            )
             .titleTextColor(ContextCompat.getColor(this, R.color.colorDialogTitle))
             .btnTextColor(
                 ContextCompat.getColor(this, R.color.colorDialogButtonText),
@@ -431,7 +452,10 @@ class AudioPlayer : AppCompatActivity() {
 
         override fun onPlayerError(error: ExoPlaybackException?) {
             progressDialog.dismiss()
-            showFlycoInformationDialog(getString(R.string.error_player_title), getString(R.string.error_player_content))
+            showFlycoInformationDialog(
+                getString(R.string.error_player_title),
+                getString(R.string.error_player_content)
+            )
             button_play.isEnabled = false
             stopAudioPlayerService()
         }

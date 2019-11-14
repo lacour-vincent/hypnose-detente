@@ -18,7 +18,6 @@ class Settings : AppCompatActivity() {
             with(supportActionBar!!) {
                 setDisplayHomeAsUpEnabled(true)
                 setDisplayShowHomeEnabled(true)
-                title = getString(R.string.settings_label)
             }
         }
 

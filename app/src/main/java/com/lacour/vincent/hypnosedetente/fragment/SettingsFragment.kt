@@ -8,7 +8,8 @@ import androidx.preference.PreferenceFragmentCompat
 
 import com.lacour.vincent.hypnosedetente.R
 
-class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPreferenceChangeListener {
+class SettingsFragment : PreferenceFragmentCompat(),
+    SharedPreferences.OnSharedPreferenceChangeListener {
 
     private val THEME_KEY = "theme"
     private val THEME_DEFAULT_VALUE = "-1"
@@ -34,10 +35,11 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
         if (key == THEME_KEY) {
-            val dayNightMode: Int = Integer.parseInt(sharedPreferences.getString(key, THEME_DEFAULT_VALUE)!!)
+            val dayNightMode: Int =
+                Integer.parseInt(sharedPreferences.getString(key, THEME_DEFAULT_VALUE)!!)
             when (dayNightMode) {
                 AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM -> applyTheme(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-                AppCompatDelegate.MODE_NIGHT_AUTO -> applyTheme(AppCompatDelegate.MODE_NIGHT_AUTO)
+                AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY -> applyTheme(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY)
                 AppCompatDelegate.MODE_NIGHT_NO -> applyTheme(AppCompatDelegate.MODE_NIGHT_NO)
                 AppCompatDelegate.MODE_NIGHT_YES -> applyTheme(AppCompatDelegate.MODE_NIGHT_YES)
                 else -> applyTheme(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
