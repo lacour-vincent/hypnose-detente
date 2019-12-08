@@ -1,7 +1,7 @@
 package com.lacour.vincent.hypnosedetente.screen
 
+import android.app.Dialog
 import android.app.DownloadManager
-import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.media.AudioManager
@@ -15,7 +15,9 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.SeekBar
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.view.ContextThemeWrapper
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.flyco.animation.BounceEnter.BounceTopEnter
@@ -45,7 +47,7 @@ class AudioPlayer : AppCompatActivity() {
     private var isPlaying = false
     private var firstPlaying = true
 
-    private lateinit var progressDialog: ProgressDialog
+    private lateinit var progressDialog: Dialog
 
     private lateinit var exoPlayer: SimpleExoPlayer
     private lateinit var audio: AudioManager
@@ -110,15 +112,9 @@ class AudioPlayer : AppCompatActivity() {
                 }
             })
 
-            progressDialog = ProgressDialog(this, R.style.AppTheme_Loading_Dialog)
-            progressDialog.setTitle(getString(R.string.loading_title))
-            progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL)
-            progressDialog.isIndeterminate = true
-            progressDialog.setProgressNumberFormat(null)
-            progressDialog.setProgressPercentFormat(null)
+            progressDialog = createLoadingDialog()
             progressDialog.setCancelable(false)
             progressDialog.show()
-
 
         } catch (e: Exception) {
             button_play.isEnabled = false
@@ -327,7 +323,6 @@ class AudioPlayer : AppCompatActivity() {
             request.setAllowedOverRoaming(false)
             request.setTitle(getString(R.string.download_notification_content))
             request.setDescription(name)
-            request.setVisibleInDownloadsUi(true)
             request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE)
             request.setDestinationInExternalFilesDir(this, filesDir.absolutePath, fileName)
 
@@ -343,6 +338,14 @@ class AudioPlayer : AppCompatActivity() {
 
     }
 
+    private fun createLoadingDialog(): Dialog {
+        val builder =
+            AlertDialog.Builder(ContextThemeWrapper(this, R.style.AppTheme_Loading_Dialog))
+        with(builder) {
+            setView(R.layout.loading_layout)
+        }
+        return builder.create()
+    }
 
     private fun showFlycoInformationDialog(title: String, message: String) {
         val dialog = NormalDialog(this)

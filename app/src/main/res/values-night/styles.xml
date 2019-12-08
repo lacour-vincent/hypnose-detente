@@ -29,9 +29,9 @@
     </style>
 
     <style name="AppTheme_Loading_Dialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textColorPrimary">@color/colorPrimary</item>
         <item name="android:background">#2D2E31</item>
     </style>
-
 
 </resources>
