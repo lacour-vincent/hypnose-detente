@@ -1,6 +1,5 @@
 package com.lacour.vincent.hypnosedetente.screen
 
-
 import android.app.DownloadManager
 import android.app.ProgressDialog
 import android.content.Context
