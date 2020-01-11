@@ -18,9 +18,7 @@ class AppController : Application() {
 
     private fun initTheme() {
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
-        val prefsTheme = prefs.getString(THEME_KEY, THEME_DEFAULT_VALUE)
-        val theme = Integer.parseInt(prefsTheme!!)
-        when (theme) {
+        when (Integer.parseInt(prefs.getString(THEME_KEY, THEME_DEFAULT_VALUE) as String)) {
             AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM -> AppCompatDelegate.setDefaultNightMode(
                 AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
             )

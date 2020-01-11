@@ -29,7 +29,6 @@ class ForegroundService : Service() {
 
 
     override fun onBind(intent: Intent): IBinder? {
-        // TODO: Return the communication channel to the service.
         throw UnsupportedOperationException("Not yet implemented")
     }
 
@@ -47,7 +46,8 @@ class ForegroundService : Service() {
         if (intent != null) {
             val action = intent.action
             val bundle = intent.extras
-            val selectedSound: String = if (bundle != null) bundle.getString("SELECTED_SOUND")!! else ""
+            val selectedSound: String =
+                if (bundle != null) bundle.getString("SELECTED_SOUND")!! else ""
             if (action != null) {
                 when (action) {
                     ACTION_START_FOREGROUND_SERVICE -> getNotification(selectedSound)
@@ -88,7 +88,8 @@ class ForegroundService : Service() {
 
             // Create the NotificationChannel, but only on API 26+ because
             // the NotificationChannel class is new and not in the support library
-            val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            val notificationManager =
+                context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             val importance = NotificationManager.IMPORTANCE_LOW
             val notificationChannel =
                 NotificationChannel(NOTIFICATION_CHANNEL_ID, NOTIFICATION_CHANNEL_NAME, importance)

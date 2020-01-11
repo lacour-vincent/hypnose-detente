@@ -77,7 +77,7 @@ class Welcome : AppCompatActivity() {
     }
 
     override fun onResume() {
-        super.onResume();
+        super.onResume()
         sampleAdapter.notifyDataSetChanged()
     }
 
@@ -91,7 +91,10 @@ class Welcome : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
         when (item.itemId) {
             R.id.action_rating -> {
-                showFlycoRatingDialog(getString(R.string.rating_title), getString(R.string.rating_content))
+                showFlycoRatingDialog(
+                    getString(R.string.rating_title),
+                    getString(R.string.rating_content)
+                )
                 true
             }
             R.id.action_settings -> {

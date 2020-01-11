@@ -11,8 +11,10 @@ import com.lacour.vincent.hypnosedetente.R
 class SettingsFragment : PreferenceFragmentCompat(),
     SharedPreferences.OnSharedPreferenceChangeListener {
 
-    private val THEME_KEY = "theme"
-    private val THEME_DEFAULT_VALUE = "-1"
+    companion object {
+        private const val THEME_KEY = "theme"
+        private const val THEME_DEFAULT_VALUE = "-1"
+    }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         addPreferencesFromResource(R.xml.preferences)
@@ -36,7 +38,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
         if (key == THEME_KEY) {
             val dayNightMode: Int =
-                Integer.parseInt(sharedPreferences.getString(key, THEME_DEFAULT_VALUE)!!)
+                Integer.parseInt(sharedPreferences.getString(key, THEME_DEFAULT_VALUE) as String)
             when (dayNightMode) {
                 AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM -> applyTheme(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
                 AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY -> applyTheme(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY)

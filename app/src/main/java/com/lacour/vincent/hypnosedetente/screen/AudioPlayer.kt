@@ -270,25 +270,27 @@ class AudioPlayer : AppCompatActivity() {
         }
     }
 
-    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
+    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean = when (keyCode) {
+        KeyEvent.KEYCODE_BACK -> {
             finish()
             this@AudioPlayer.overridePendingTransition(
                 R.anim.anim_slide_in_right,
                 R.anim.anim_slide_out_right
             )
+            true
         }
-        if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
+        KeyEvent.KEYCODE_VOLUME_UP -> {
             audio.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_RAISE, 0)
             seekbar_sound.progress = audio.getStreamVolume(AudioManager.STREAM_MUSIC)
+            true
         }
-        if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
+        KeyEvent.KEYCODE_VOLUME_DOWN -> {
             audio.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_LOWER, 0)
             seekbar_sound.progress = audio.getStreamVolume(AudioManager.STREAM_MUSIC)
+            true
         }
-        return true
+        else -> super.onKeyDown(keyCode, event)
     }
-
 
     private fun startAudioPlayerService() {
         val intent = Intent(this@AudioPlayer, ForegroundService::class.java)
