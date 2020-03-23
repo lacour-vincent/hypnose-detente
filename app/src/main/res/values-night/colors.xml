@@ -2,20 +2,29 @@
 <resources>
 
     <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimaryDark">#212121</color>
     <color name="colorPrimaryText">#FFFFFF</color>
     <color name="colorAccent">#008577</color>
 
-    <color name="colorGradient">#0f2027</color>
+    <color name="colorActivityBackground">#323232</color>
+    <color name="colorActivityText">#FFFFFF</color>
+
+    <color name="colorToolbarBackground">#2A2A2A</color>
+    <color name="colorToolbarText">#FFFFFF</color>
+
+    <color name="colorGradientStart">#2A2A2A</color>
+    <color name="colorGradientEnd">#0f2027</color>
 
     <color name="colorCardTitle">#FFFFFF</color>
-    <color name="colorCardContent">#FFFFFF</color>
-    <color name="colorBackgroundCard">#2D2E31</color>
-    <color name="colorCardBackgroundActivity">#202124</color>
+    <color name="colorCardContent">#BDBDBD</color>
+    <color name="colorCardBackground">#424242</color>
 
-    <color name="colorDialogTitle">#61AEDC</color>
+    <color name="colorProgress">#FFFFFF</color>
+
+    <color name="colorDialogTitle">#FFFFFF</color>
+    <color name="colorDialogDivider">#FFFFFF</color>
     <color name="colorDialogContent">#FFFFFF</color>
-    <color name="colorDialogBackground">#2D2E31</color>
+    <color name="colorDialogBackground">#424242</color>
     <color name="colorDialogButtonText">#FFFFFF</color>
     <color name="colorDialogButtonPressed">#202124</color>
 

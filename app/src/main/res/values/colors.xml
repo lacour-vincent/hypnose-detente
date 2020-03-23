@@ -6,17 +6,26 @@
     <color name="colorPrimaryText">#FFFFFF</color>
     <color name="colorAccent">#008577</color>
 
-    <color name="colorGradient">#56b4d3</color>
+    <color name="colorActivityBackground">#E6E6E6</color>
+    <color name="colorActivityText">#000000</color>
+
+    <color name="colorToolbarBackground">#008577</color>
+    <color name="colorToolbarText">#FFFFFF</color>
+
+    <color name="colorGradientStart">#008577</color>
+    <color name="colorGradientEnd">#56b4d3</color>
 
     <color name="colorCardTitle">#212121</color>
     <color name="colorCardContent">#666666</color>
-    <color name="colorBackgroundCard">#FFFFFF</color>
-    <color name="colorCardBackgroundActivity">#E6E6E6</color>
+    <color name="colorCardBackground">#FFFFFF</color>
 
-    <color name="colorDialogTitle">#61AEDC</color>
+    <color name="colorProgress">#008577</color>
+
+    <color name="colorDialogTitle">#008577</color>
+    <color name="colorDialogDivider">#008577</color>
     <color name="colorDialogContent">#383838</color>
     <color name="colorDialogBackground">#FFFFFF</color>
-    <color name="colorDialogButtonText">#757575</color>
+    <color name="colorDialogButtonText">#008577</color>
     <color name="colorDialogButtonPressed">#E3E3E3</color>
 
 </resources>

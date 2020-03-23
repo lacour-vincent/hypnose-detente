@@ -136,6 +136,7 @@ class Welcome : AppCompatActivity() {
             .contentTextSize(15f)
             .btnText(getString(R.string.information_yes))
             .titleTextColor(ContextCompat.getColor(this, R.color.colorDialogTitle))
+            .titleLineColor(ContextCompat.getColor(this, R.color.colorDialogDivider))
             .btnTextColor(ContextCompat.getColor(this, R.color.colorDialogButtonText))
             .contentTextColor(ContextCompat.getColor(this, R.color.colorDialogContent))
             .bgColor(ContextCompat.getColor(this, R.color.colorDialogBackground))
@@ -158,6 +159,7 @@ class Welcome : AppCompatActivity() {
             .contentTextSize(15f)
             .btnText(getString(R.string.rating_no), getString(R.string.rating_yes))
             .titleTextColor(ContextCompat.getColor(this, R.color.colorDialogTitle))
+            .titleLineColor(ContextCompat.getColor(this, R.color.colorDialogDivider))
             .btnTextColor(
                 ContextCompat.getColor(this, R.color.colorDialogButtonText),
                 ContextCompat.getColor(this, R.color.colorDialogButtonText)

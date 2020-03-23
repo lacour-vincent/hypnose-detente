@@ -359,6 +359,7 @@ class AudioPlayer : AppCompatActivity() {
             .contentTextSize(14f)
             .btnText(getString(R.string.information_yes))
             .titleTextColor(ContextCompat.getColor(this, R.color.colorDialogTitle))
+            .titleLineColor(ContextCompat.getColor(this, R.color.colorDialogDivider))
             .btnTextColor(ContextCompat.getColor(this, R.color.colorDialogButtonText))
             .contentTextColor(ContextCompat.getColor(this, R.color.colorDialogContent))
             .bgColor(ContextCompat.getColor(this, R.color.colorDialogBackground))
@@ -381,6 +382,7 @@ class AudioPlayer : AppCompatActivity() {
             .contentTextSize(15f)
             .btnText(getString(R.string.download_no), getString(R.string.download_yes))
             .titleTextColor(ContextCompat.getColor(this, R.color.colorDialogTitle))
+            .titleLineColor(ContextCompat.getColor(this, R.color.colorDialogDivider))
             .btnTextColor(
                 ContextCompat.getColor(this, R.color.colorDialogButtonText),
                 ContextCompat.getColor(this, R.color.colorDialogButtonText)
@@ -413,6 +415,7 @@ class AudioPlayer : AppCompatActivity() {
                 getString(R.string.download_delete_no)
             )
             .titleTextColor(ContextCompat.getColor(this, R.color.colorDialogTitle))
+            .titleLineColor(ContextCompat.getColor(this, R.color.colorDialogDivider))
             .btnTextColor(
                 ContextCompat.getColor(this, R.color.colorDialogButtonText),
                 ContextCompat.getColor(this, R.color.colorDialogButtonText)
