@@ -25,9 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="50dp"
-        android:layout_marginBottom="20dp"
         android:maxHeight="3dp"
         android:minHeight="3dp"
         android:progressDrawable="@drawable/seekbar_custom_sound"
@@ -50,16 +48,15 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/image_sample"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginBottom="40dp"
-        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:src="@drawable/image_0"
         app:civ_border_color="#367599"
         app:civ_border_width="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -79,7 +76,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="30dp"
         android:layout_marginEnd="50dp"
         android:maxHeight="3dp"
         android:minHeight="3dp"
@@ -113,6 +109,21 @@
         app:layout_constraintBottom_toBottomOf="@+id/seekbar_avancement"
         app:layout_constraintStart_toEndOf="@+id/seekbar_avancement"
         app:layout_constraintTop_toTopOf="@+id/seekbar_avancement" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.20" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.80" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
