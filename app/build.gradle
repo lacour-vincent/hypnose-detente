@@ -9,8 +9,8 @@ android {
         applicationId "com.lacour.vincent.hypnosedetente"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 22
-        versionName "1.4.6"
+        versionCode 23
+        versionName "1.4.7"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
