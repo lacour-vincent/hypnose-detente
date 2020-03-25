@@ -22,10 +22,8 @@
     <color name="colorProgress">#008577</color>
 
     <color name="colorDialogTitle">#008577</color>
-    <color name="colorDialogDivider">#008577</color>
     <color name="colorDialogContent">#383838</color>
     <color name="colorDialogBackground">#FFFFFF</color>
     <color name="colorDialogButtonText">#008577</color>
-    <color name="colorDialogButtonPressed">#E3E3E3</color>
 
 </resources>

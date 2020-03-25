@@ -3,17 +3,15 @@ package com.lacour.vincent.hypnosedetente.screen
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
+import androidx.appcompat.view.ContextThemeWrapper
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
-import com.flyco.animation.BounceEnter.BounceTopEnter
-import com.flyco.animation.SlideExit.SlideBottomExit
-import com.flyco.dialog.listener.OnBtnClickL
-import com.flyco.dialog.widget.NormalDialog
 import com.lacour.vincent.hypnosedetente.R
 import com.lacour.vincent.hypnosedetente.component.RecyclerItemClickListener
 import com.lacour.vincent.hypnosedetente.component.SampleAdapter
@@ -66,7 +64,7 @@ class Welcome : AppCompatActivity() {
                                 R.anim.anim_slide_out_left
                             )
                         } else {
-                            showFlycoInformationDialog(
+                            showInformationDialog(
                                 getString(R.string.error_internet_title),
                                 getString(R.string.error_internet_content)
                             )
@@ -91,7 +89,7 @@ class Welcome : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
         when (item.itemId) {
             R.id.action_rating -> {
-                showFlycoRatingDialog(
+                showRatingDialog(
                     getString(R.string.rating_title),
                     getString(R.string.rating_content)
                 )
@@ -126,61 +124,26 @@ class Welcome : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun showFlycoInformationDialog(title: String, message: String) {
-        val dialog = NormalDialog(this)
-        dialog.isTitleShow(true)//
-            .btnNum(1)
-            .title(title)
-            .titleTextSize(18f)
-            .content(message)
-            .contentTextSize(15f)
-            .btnText(getString(R.string.information_yes))
-            .titleTextColor(ContextCompat.getColor(this, R.color.colorDialogTitle))
-            .titleLineColor(ContextCompat.getColor(this, R.color.colorDialogDivider))
-            .btnTextColor(ContextCompat.getColor(this, R.color.colorDialogButtonText))
-            .contentTextColor(ContextCompat.getColor(this, R.color.colorDialogContent))
-            .bgColor(ContextCompat.getColor(this, R.color.colorDialogBackground))
-            .btnPressColor(ContextCompat.getColor(this, R.color.colorDialogButtonPressed))
-            .showAnim(BounceTopEnter())
-            .dismissAnim(SlideBottomExit())
-            .show()
-
-        dialog.setOnBtnClickL(OnBtnClickL { dialog.dismiss() })
-
+    private fun showInformationDialog(title: String, message: String) {
+        val builder = AlertDialog.Builder(ContextThemeWrapper(this, R.style.AppTheme_Dialog))
+        with(builder) {
+            setTitle(title)
+            setMessage(message)
+            setPositiveButton(getString(R.string.information_yes)) { _, _ -> }
+            show()
+        }
     }
 
-    private fun showFlycoRatingDialog(title: String, message: String) {
-        val dialog = NormalDialog(this)
-        dialog.isTitleShow(true)
-            .btnNum(2)
-            .title(title)
-            .titleTextSize(18f)
-            .content(message)
-            .contentTextSize(15f)
-            .btnText(getString(R.string.rating_no), getString(R.string.rating_yes))
-            .titleTextColor(ContextCompat.getColor(this, R.color.colorDialogTitle))
-            .titleLineColor(ContextCompat.getColor(this, R.color.colorDialogDivider))
-            .btnTextColor(
-                ContextCompat.getColor(this, R.color.colorDialogButtonText),
-                ContextCompat.getColor(this, R.color.colorDialogButtonText)
-            )
-            .contentTextColor(ContextCompat.getColor(this, R.color.colorDialogContent))
-            .bgColor(ContextCompat.getColor(this, R.color.colorDialogBackground))
-            .btnPressColor(ContextCompat.getColor(this, R.color.colorDialogButtonPressed))
-            .showAnim(BounceTopEnter())
-            .dismissAnim(SlideBottomExit())
-            .show()
-
-        dialog.setOnBtnClickL(
-            OnBtnClickL
-            { dialog.dismiss() },
-            OnBtnClickL
-            {
-                navigateToPlayStore()
-                dialog.dismiss()
-            }
-        )
-
+    private fun showRatingDialog(title: String, message: String) {
+        val builder = AlertDialog.Builder(ContextThemeWrapper(this, R.style.AppTheme_Dialog))
+        with(builder) {
+            setTitle(title)
+            setMessage(message)
+            setPositiveButton(getString(R.string.rating_yes)) { _, _ -> navigateToPlayStore() }
+            setNegativeButton(getString(R.string.rating_no)) { _, _ -> }
+            show()
+        }
     }
+
 
 }

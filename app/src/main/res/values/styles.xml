@@ -32,6 +32,12 @@
     <style name="AppTheme_Dialog" parent="Theme.AppCompat.DayNight.Dialog">
         <item name="android:textColor">@color/colorDialogTitle</item>
         <item name="android:background">@color/colorDialogBackground</item>
+        <item name="buttonBarPositiveButtonStyle">@style/AppTheme_Dialog.Buttons</item>
+        <item name="buttonBarNegativeButtonStyle">@style/AppTheme_Dialog.Buttons</item>
+    </style>
+
+    <style name="AppTheme_Dialog.Buttons" parent="@style/Widget.AppCompat.Button.Borderless">
+        <item name="android:textColor">@color/colorDialogButtonText</item>
     </style>
 
     <style name="AppTheme_Loading_Dialog" parent="Theme.AppCompat.Dialog">

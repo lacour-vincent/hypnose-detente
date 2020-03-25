@@ -18,12 +18,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ContextThemeWrapper
-import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
-import com.flyco.animation.BounceEnter.BounceTopEnter
-import com.flyco.animation.SlideExit.SlideBottomExit
-import com.flyco.dialog.listener.OnBtnClickL
-import com.flyco.dialog.widget.NormalDialog
 import com.google.android.exoplayer2.ExoPlaybackException
 import com.google.android.exoplayer2.ExoPlayerFactory
 import com.google.android.exoplayer2.Player
@@ -118,7 +113,7 @@ class AudioPlayer : AppCompatActivity() {
 
         } catch (e: Exception) {
             button_play.isEnabled = false
-            showFlycoInformationDialog(
+            showInformationDialog(
                 getString(R.string.error_device_title),
                 getString(R.string.error_device_content)
             )
@@ -165,12 +160,12 @@ class AudioPlayer : AppCompatActivity() {
             }
             R.id.action_download -> {
                 if (appUtils.isFileExist(sample.file)) {
-                    showFlycoDownloadDeleteDialog(
+                    showDownloadDeleteDialog(
                         getString(R.string.download_title),
                         getString(R.string.download_content_already)
                     )
                 } else {
-                    showFlycoDownloadDialog(
+                    showDownloadDialog(
                         getString(R.string.download_title),
                         getString(R.string.download_content, sample.size)
                     )
@@ -178,7 +173,7 @@ class AudioPlayer : AppCompatActivity() {
                 true
             }
             R.id.action_information -> {
-                showFlycoInformationDialog(
+                showInformationDialog(
                     getString(R.string.information_title),
                     sample.description
                 )
@@ -349,93 +344,52 @@ class AudioPlayer : AppCompatActivity() {
         return builder.create()
     }
 
-    private fun showFlycoInformationDialog(title: String, message: String) {
-        val dialog = NormalDialog(this)
-        dialog.isTitleShow(true)
-            .btnNum(1)
-            .title(title)
-            .titleTextSize(17f)
-            .content(message)
-            .contentTextSize(14f)
-            .btnText(getString(R.string.information_yes))
-            .titleTextColor(ContextCompat.getColor(this, R.color.colorDialogTitle))
-            .titleLineColor(ContextCompat.getColor(this, R.color.colorDialogDivider))
-            .btnTextColor(ContextCompat.getColor(this, R.color.colorDialogButtonText))
-            .contentTextColor(ContextCompat.getColor(this, R.color.colorDialogContent))
-            .bgColor(ContextCompat.getColor(this, R.color.colorDialogBackground))
-            .btnPressColor(ContextCompat.getColor(this, R.color.colorDialogButtonPressed))
-            .showAnim(BounceTopEnter())
-            .dismissAnim(SlideBottomExit())
-            .show()
 
-        dialog.setOnBtnClickL(OnBtnClickL { dialog.dismiss() })
+    private fun showInformationDialog(title: String, message: String) {
+        val builder = AlertDialog.Builder(ContextThemeWrapper(this, R.style.AppTheme_Dialog))
+        with(builder) {
+            setTitle(title)
+            setMessage(message)
+            setPositiveButton(getString(R.string.information_yes)) { _, _ -> }
+            show()
+        }
     }
 
-
-    private fun showFlycoDownloadDialog(title: String, message: String) {
-        val dialog = NormalDialog(this)
-        dialog.isTitleShow(true)
-            .btnNum(2)
-            .title(title)
-            .titleTextSize(18f)
-            .content(message)
-            .contentTextSize(15f)
-            .btnText(getString(R.string.download_no), getString(R.string.download_yes))
-            .titleTextColor(ContextCompat.getColor(this, R.color.colorDialogTitle))
-            .titleLineColor(ContextCompat.getColor(this, R.color.colorDialogDivider))
-            .btnTextColor(
-                ContextCompat.getColor(this, R.color.colorDialogButtonText),
-                ContextCompat.getColor(this, R.color.colorDialogButtonText)
-            )
-            .contentTextColor(ContextCompat.getColor(this, R.color.colorDialogContent))
-            .bgColor(ContextCompat.getColor(this, R.color.colorDialogBackground))
-            .btnPressColor(ContextCompat.getColor(this, R.color.colorDialogButtonPressed))
-            .showAnim(BounceTopEnter())
-            .dismissAnim(SlideBottomExit())
-            .show()
-
-        dialog.setOnBtnClickL(
-            OnBtnClickL { dialog.dismiss() },
-            OnBtnClickL {
-                makeDownloadRequest(Uri.parse(sample.url), sample.title, sample.file)
-                dialog.dismiss()
-            })
+    private fun showDownloadDialog(title: String, message: String) {
+        val builder = AlertDialog.Builder(ContextThemeWrapper(this, R.style.AppTheme_Dialog))
+        with(builder) {
+            setTitle(title)
+            setMessage(message)
+            setPositiveButton(getString(R.string.download_yes)) { _, _ ->
+                makeDownloadRequest(
+                    Uri.parse(
+                        sample.url
+                    ), sample.title, sample.file
+                )
+            }
+            setNegativeButton(getString(R.string.download_no)) { _, _ -> }
+            show()
+        }
     }
 
-    private fun showFlycoDownloadDeleteDialog(title: String, message: String) {
-        val dialog = NormalDialog(this)
-        dialog.isTitleShow(true)
-            .btnNum(2)
-            .title(title)
-            .titleTextSize(18f)
-            .content(message)
-            .contentTextSize(15f)
-            .btnText(
-                getString(R.string.download_delete_yes),
-                getString(R.string.download_delete_no)
-            )
-            .titleTextColor(ContextCompat.getColor(this, R.color.colorDialogTitle))
-            .titleLineColor(ContextCompat.getColor(this, R.color.colorDialogDivider))
-            .btnTextColor(
-                ContextCompat.getColor(this, R.color.colorDialogButtonText),
-                ContextCompat.getColor(this, R.color.colorDialogButtonText)
-            )
-            .contentTextColor(ContextCompat.getColor(this, R.color.colorDialogContent))
-            .bgColor(ContextCompat.getColor(this, R.color.colorDialogBackground))
-            .btnPressColor(ContextCompat.getColor(this, R.color.colorDialogButtonPressed))
-            .showAnim(BounceTopEnter())
-            .dismissAnim(SlideBottomExit())
-            .show()
-
-        dialog.setOnBtnClickL(OnBtnClickL {
-            dialog.dismiss()
-            val isSuccessfulDeleted: Boolean = appUtils.deleteFile(sample.file)
-            val information: String =
-                if (isSuccessfulDeleted) getString(R.string.file_delete_success) else getString(R.string.file_delete_failure)
-            Toast.makeText(this@AudioPlayer, information, Toast.LENGTH_SHORT).show()
-        }, OnBtnClickL { dialog.dismiss() })
-
+    private fun showDownloadDeleteDialog(title: String, message: String) {
+        val builder = AlertDialog.Builder(ContextThemeWrapper(this, R.style.AppTheme_Dialog))
+        with(builder) {
+            setTitle(title)
+            setMessage(message)
+            setPositiveButton(getString(R.string.download_delete_yes)) { _, _ ->
+                val isSuccessfulDeleted: Boolean = appUtils.deleteFile(sample.file)
+                val information: String =
+                    if (isSuccessfulDeleted) getString(R.string.file_delete_success) else getString(
+                        R.string.file_delete_failure
+                    )
+                Toast.makeText(this@AudioPlayer, information, Toast.LENGTH_SHORT).show()
+            }
+            setNegativeButton(getString(R.string.download_delete_no)) { _, _ -> }
+            show()
+        }
     }
+
 
     private inner class ComponentListener : Player.EventListener {
 
@@ -459,7 +413,7 @@ class AudioPlayer : AppCompatActivity() {
 
         override fun onPlayerError(error: ExoPlaybackException?) {
             progressDialog.dismiss()
-            showFlycoInformationDialog(
+            showInformationDialog(
                 getString(R.string.error_player_title),
                 getString(R.string.error_player_content)
             )
