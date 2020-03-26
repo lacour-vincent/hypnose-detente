@@ -6,6 +6,7 @@ import android.os.Parcelable
 data class Sample(
     val id: Int,
     val title: String,
+    val fullTitle: String,
     val description: String,
     val file: String,
     val url: String,
@@ -20,6 +21,7 @@ data class Sample(
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
+        parcel.readString()!!,
         parcel.readInt(),
         parcel.readInt(),
         parcel.readInt()
@@ -28,6 +30,7 @@ data class Sample(
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(id)
         parcel.writeString(title)
+        parcel.writeString(fullTitle)
         parcel.writeString(description)
         parcel.writeString(file)
         parcel.writeString(url)

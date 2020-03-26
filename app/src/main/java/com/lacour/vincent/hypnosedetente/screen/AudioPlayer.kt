@@ -174,7 +174,7 @@ class AudioPlayer : AppCompatActivity() {
             }
             R.id.action_information -> {
                 showInformationDialog(
-                    getString(R.string.information_title),
+                    sample.fullTitle,
                     sample.description
                 )
                 true
