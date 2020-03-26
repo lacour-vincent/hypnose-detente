@@ -69,7 +69,7 @@ class AudioPlayer : AppCompatActivity() {
                 with(supportActionBar!!) {
                     setDisplayHomeAsUpEnabled(true)
                     setDisplayShowHomeEnabled(true)
-                    title = sample.title
+                    title = sample.fullTitle
                 }
             }
 

@@ -25,11 +25,11 @@ data class Tracks(
             1,
             "S'endormir",
             "S'endormir en auto-hypnose",
-            "Le premier protocole du livre \"Auto-hypnose pour Débutants\" : comment trouver " +
+            "Le premier protocole du livre \"Auto-hypnose pour débutants\" : comment trouver " +
                     "le sommeil. Ecoutez au casque, afin de profiter au mieux de l'accompagnement musical. Pour cette séance, " +
                     "une induction hypnotique a été utilisée parmi celles présentées dans le livre. Bien sûr, lorsque vous pratiquez " +
                     "de manière autonome, vous pouvez utiliser votre méthode préférée. De même, lorsque vous pratiquez en solo, " +
-                    "vous n’avez pas besoin de parler ou de mentaliser des paroles. Il suffit de penser à ce que vous voulez, " +
+                    "vous n’avez pas besoin de parler ou de mentaliser les paroles. Il suffit de penser à ce que vous voulez, " +
                     "comme une intention. Avec la pratique, tout s’automatise et seule votre intention dirige la séance.",
             "8307033b48e2363f05f219cb4bc8b6df.mp3",
             "https://yourlisten.com/filestemp/8307033b48e2363f05f219cb4bc8b6df.mp3",
