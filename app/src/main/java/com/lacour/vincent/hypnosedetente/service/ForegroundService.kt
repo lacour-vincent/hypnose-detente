@@ -1,18 +1,13 @@
 package com.lacour.vincent.hypnosedetente.service
 
-import android.app.Notification
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
-import android.app.Service
+import android.app.*
 import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
-
-import com.lacour.vincent.hypnosedetente.screen.AudioPlayer
 import com.lacour.vincent.hypnosedetente.R
+import com.lacour.vincent.hypnosedetente.screen.AudioPlayer
 
 
 class ForegroundService : Service() {
@@ -33,13 +28,13 @@ class ForegroundService : Service() {
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         stopForeground(true)
+        super.onDestroy()
     }
 
     override fun onTaskRemoved(rootIntent: Intent?) {
-        super.onTaskRemoved(rootIntent)
         stopSelf()
+        super.onTaskRemoved(rootIntent)
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {

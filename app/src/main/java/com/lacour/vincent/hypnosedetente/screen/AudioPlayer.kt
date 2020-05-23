@@ -184,18 +184,15 @@ class AudioPlayer : AppCompatActivity() {
 
 
     public override fun onDestroy() {
-        super.onDestroy()
-        stopSound()
-        stopAudioPlayerService()
-        appUtils.setStayAwakeLock(false)
-        myHandler.removeCallbacksAndMessages(null)
-    }
-
-    private fun stopSound() {
         exoPlayer.playWhenReady = false
         exoPlayer.removeListener(componentListener)
         exoPlayer.release()
+        stopAudioPlayerService()
+        appUtils.setStayAwakeLock(false)
+        myHandler.removeCallbacksAndMessages(null)
+        super.onDestroy()
     }
+
 
     private fun handlePlayPause() {
         val canPlaySample = appUtils.hasInternet() || appUtils.isFileExist(sample.file)

@@ -16,7 +16,7 @@ data class Tracks(
                     "besoin d'écouter vraiment ou de chercher à comprendre, juste vous laisser bercer. L'accompagnement " +
                     "musical est minimal et, comme la voix, s'en ira progressivement afin de ne pas troubler votre sommeil.",
             "3a86fd7b7a2ac22db77d62a6572e6a08.mp3",
-            "https://yourlisten.com/filestemp/3a86fd7b7a2ac22db77d62a6572e6a08.mp3",
+            "https://hypnosedetente.blob.core.windows.net/tracks/3a86fd7b7a2ac22db77d62a6572e6a08.mp3",
             R.drawable.image_0,
             19,
             23
@@ -32,7 +32,7 @@ data class Tracks(
                     "vous n’avez pas besoin de parler ou de mentaliser les paroles. Il suffit de penser à ce que vous voulez, " +
                     "comme une intention. Avec la pratique, tout s’automatise et seule votre intention dirige la séance.",
             "8307033b48e2363f05f219cb4bc8b6df.mp3",
-            "https://yourlisten.com/filestemp/8307033b48e2363f05f219cb4bc8b6df.mp3",
+            "https://hypnosedetente.blob.core.windows.net/tracks/8307033b48e2363f05f219cb4bc8b6df.mp3",
             R.drawable.image_1,
             30,
             36
@@ -46,7 +46,7 @@ data class Tracks(
                     "lequel vous mettre. Le texte est explicatif, avec de nombreuses métaphores. Le tout est dit assez rapidement, " +
                     "de manière à exciter, stimuler, vos processus psychophysiologiques. Texte et musique d'Olivier Lockert.",
             "870e21a5d369a195834680c239dbc486.mp3",
-            "https://yourlisten.com/filestemp/870e21a5d369a195834680c239dbc486.mp3",
+            "https://hypnosedetente.blob.core.windows.net/tracks/870e21a5d369a195834680c239dbc486.mp3",
             R.drawable.image_2,
             27,
             32
@@ -62,7 +62,7 @@ data class Tracks(
                     "à écouter. S'il vous arrive de ne plus entendre, comme si vous pensiez à autre " +
                     "chose ou comme si vous aviez dormi : c'est parfait !",
             "76e7f0ec83c2473efc5d06d590c1a4d8.mp3",
-            "https://yourlisten.com/filestemp/76e7f0ec83c2473efc5d06d590c1a4d8.mp3",
+            "https://hypnosedetente.blob.core.windows.net/tracks/76e7f0ec83c2473efc5d06d590c1a4d8.mp3",
             R.drawable.image_3,
             36,
             44
@@ -77,7 +77,7 @@ data class Tracks(
                     "Dans les situations les plus difficiles, utilisez cette induction au moins une fois par jour. Vous pouvez vous endormir pendant l'accompagnement, " +
                     "car l'action consciente, volontaire, est inutile.",
             "8db902630e4c74a9a25bf2602ca69816.mp3",
-            "https://yourlisten.com/filestemp/8db902630e4c74a9a25bf2602ca69816.mp3",
+            "https://hypnosedetente.blob.core.windows.net/tracks/8db902630e4c74a9a25bf2602ca69816.mp3",
             R.drawable.image_4,
             30,
             36
@@ -93,7 +93,7 @@ data class Tracks(
                     "à prendre soin de vous. Vous pouvez renouveler cette expérience chaque jour, pendant " +
                     "quelques temps, si vous en avez l'envie ou si cela vous fait du bien.",
             "1bbbfbf5a76aa182105b2fe7a1732d07.mp3",
-            "https://yourlisten.com/filestemp/1bbbfbf5a76aa182105b2fe7a1732d07.mp3",
+            "https://hypnosedetente.blob.core.windows.net/tracks/1bbbfbf5a76aa182105b2fe7a1732d07.mp3",
             R.drawable.image_5,
             24,
             29
@@ -109,7 +109,7 @@ data class Tracks(
                     "Exercice à pratiquer régulièrement pour bien le comprendre. Retenez qu'un ancrage ne s'use que si on ne s'en " +
                     "sert pas : plus vous pratiquerez, mieux votre ancrage fonctionnera !",
             "b07d3c313b083f7b8114b14e330bb5fe.mp3",
-            "https://yourlisten.com/filestemp/b07d3c313b083f7b8114b14e330bb5fe.mp3",
+            "https://hypnosedetente.blob.core.windows.net/tracks/b07d3c313b083f7b8114b14e330bb5fe.mp3",
             R.drawable.image_6,
             16,
             19
@@ -124,7 +124,7 @@ data class Tracks(
                     "forcément besoin de l'écouter souvent : la première fois peut être la bonne ! La séance " +
                     "est conçue comme un accompagnement unique.",
             "72842e1f87caf9977f682835ec939f34.mp3",
-            "https://yourlisten.com/filestemp/72842e1f87caf9977f682835ec939f34.mp3",
+            "https://hypnosedetente.blob.core.windows.net/tracks/72842e1f87caf9977f682835ec939f34.mp3",
             R.drawable.image_7,
             39,
             46
@@ -140,7 +140,7 @@ data class Tracks(
                     "fois, pas de souci : laissez passer un jour ou deux, et réécoutez l'enregistrement. " +
                     "La seconde fois, vous y arriverez beaucoup mieux.",
             "38809e1fe8f9a45ca4cc33f3d6cf5637.mp3",
-            "https://yourlisten.com/filestemp/38809e1fe8f9a45ca4cc33f3d6cf5637.mp3",
+            "https://hypnosedetente.blob.core.windows.net/tracks/38809e1fe8f9a45ca4cc33f3d6cf5637.mp3",
             R.drawable.image_8,
             25,
             30
@@ -156,13 +156,28 @@ data class Tracks(
                     "régulièrement, jusqu'à ce que vous ayez l'automatisme de pensée qui vous permettra de ressentir ce dont a besoin votre esprit " +
                     "profond. La musique est d'Olivier Lockert.",
             "adcc184bd1f887e41317aeafd887d0bf.mp3",
-            "https://yourlisten.com/filestemp/adcc184bd1f887e41317aeafd887d0bf.mp3",
+            "https://hypnosedetente.blob.core.windows.net/tracks/adcc184bd1f887e41317aeafd887d0bf.mp3",
             R.drawable.image_9,
             27,
             32
         ),
         Sample(
             10,
+            "Transformer vos peurs",
+            "Transformer vos peurs",
+            "Patricia d'Angeli vous conduit dans cette séance d’hypnose, en forme de quête intérieure, " +
+                    "afin de vous aider à transformer vos peurs ou angoisses en une force créatrice. Cet accompagnement " +
+                    "vous sera également utile en cas de maladie, en complément de votre suivi médical, afin d’activer " +
+                    "en vous vos ressources profondes. Le travail symbolique a l'avantage de permettre un travail important " +
+                    "sans avoir besoin de revivre quoi que ce soit de pénible.",
+            "82abecc5a5b24a363c3d6adc25caf882.mp3",
+            "https://hypnosedetente.blob.core.windows.net/tracks/82abecc5a5b24a363c3d6adc25caf882.mp3",
+            R.drawable.image_10,
+            26,
+            31
+        ),
+        Sample(
+            11,
             "Gérer le stress",
             "Gérer le stress",
             "Vous serez guidé par la voix de Patricia d'Angeli, " +
@@ -173,13 +188,13 @@ data class Tracks(
                     "stressant ponctuel, utilisez l'enregistrement suivant pour réactiver dans l'urgence " +
                     "les bienfaits de cette séance.",
             "b75bbe36a35ffadf964d37d50cec9e00.mp3",
-            "https://yourlisten.com/filestemp/b75bbe36a35ffadf964d37d50cec9e00.mp3",
-            R.drawable.image_10,
+            "https://hypnosedetente.blob.core.windows.net/tracks/b75bbe36a35ffadf964d37d50cec9e00.mp3",
+            R.drawable.image_11,
             22,
             26
         ),
         Sample(
-            11,
+            12,
             "Soigner son passé",
             "Soigner son passé",
             "Souvent, nos soucis viennent d'un passé douloureux, que l'on peut travailler en thérapie " +
@@ -189,13 +204,13 @@ data class Tracks(
                     "de revivre des souvenirs douloureux. De plus, par nature, les symboles incluent davantage d'élements que des souvenirs " +
                     "concrets - sans que l'on sache.",
             "1f7818fe9e44d9ec2d9c3d5d9e9ccae8.mp3",
-            "https://yourlisten.com/filestemp/1f7818fe9e44d9ec2d9c3d5d9e9ccae8.mp3",
-            R.drawable.image_11,
+            "https://hypnosedetente.blob.core.windows.net/tracks/1f7818fe9e44d9ec2d9c3d5d9e9ccae8.mp3",
+            R.drawable.image_12,
             23,
             27
         ),
         Sample(
-            12,
+            13,
             "Intuition",
             "Développer son intuition",
             "Le domaine de l'intuition est bien plus vaste qu'il n'y parait à première vue. " +
@@ -206,26 +221,41 @@ data class Tracks(
                     "plus important pour vivre bien et en bonne santé, pour réussir sa vie et suivre le chemin qui a du coeur. Texte co-écrit par " +
                     "Patricia d'Angeli et Olivier Lockert. Le fond musical est d'Olivier Lockert.",
             "5b51b7d87923d0d20879fba802577e36.mp3",
-            "https://yourlisten.com/filestemp/5b51b7d87923d0d20879fba802577e36.mp3",
-            R.drawable.image_12,
+            "https://hypnosedetente.blob.core.windows.net/tracks/5b51b7d87923d0d20879fba802577e36.mp3",
+            R.drawable.image_13,
             32,
             38
         ),
         Sample(
-            13,
+            14,
+            "Immersion sensorielle",
+            "Immersion sensorielle",
+            "Cette séance vient en conclusion de la préparation progressive à l’auto-hypnose. C’est l’étape " +
+                    "juste avant de passer aux inductions hypnotiques. Cette séance est un exemple d’application. En " +
+                    "apprenant l’auto-hypnose, vous utiliserez vos propres pensées, vos phrases personnelles, différentes " +
+                    "des miennes. Ce sera à la fois plus simple pour vous et plus adapté, car tout viendra de vous. " +
+                    "Texte d'Olivier Lockert.",
+            "f2cac34ef9f4f726ac7b7de9ec4a4943.mp3",
+            "https://hypnosedetente.blob.core.windows.net/tracks/f2cac34ef9f4f726ac7b7de9ec4a4943.mp3",
+            R.drawable.image_14,
+            24,
+            23
+        ),
+        Sample(
+            15,
             "Réussir sa vie",
             "Réussir sa vie",
             "Cet accompagnement en Hypnose Humaniste vous propose de travailler sur ce qui bloque éventuellement en vous, " +
                     "afin que vous soyez pleinement ouvert au monde et connecté à vous-même, intuitif et capable de marcher " +
                     "chaque jour sur votre meilleur chemin de vie. Texte et musique d'Olivier Lockert.",
             "1da5a457160506b95e0be41d41e32495.mp3",
-            "https://yourlisten.com/filestemp/1da5a457160506b95e0be41d41e32495.mp3",
-            R.drawable.image_13,
+            "https://hypnosedetente.blob.core.windows.net/tracks/1da5a457160506b95e0be41d41e32495.mp3",
+            R.drawable.image_15,
             36,
             43
         ),
         Sample(
-            14,
+            16,
             "Magie intérieure",
             "Activer votre magie intérieure",
             "Cet accompagnement d'Olivier Lockert vous aidera à activer vos " +
@@ -233,13 +263,13 @@ data class Tracks(
                     "profond pour résoudre des problèmes pour lesquels vous n'avez pas de solution, ou pour " +
                     "améliorer votre quotidien, même si tout va déjà très bien. Le texte et la musique sont d'Olivier Lockert.",
             "53b89341f6628afd80d8eeae97032360.mp3",
-            "https://yourlisten.com/filestemp/53b89341f6628afd80d8eeae97032360.mp3",
-            R.drawable.image_14,
+            "https://hypnosedetente.blob.core.windows.net/tracks/53b89341f6628afd80d8eeae97032360.mp3",
+            R.drawable.image_16,
             41,
             49
         ),
         Sample(
-            15,
+            17,
             "Bain d'Hypnose",
             "Bain d'Hypnose",
             "Cet enregistrement vous permet de vous ressourcer, en vous laissant " +
@@ -250,13 +280,13 @@ data class Tracks(
                     "mieux de l'accompagnement musical. Le texte est d’Olivier Lockert et la musique a été composée " +
                     "par Pascal Lengagne.",
             "d3d239c18729cb3a6efb2329095b4411.mp3",
-            "https://yourlisten.com/filestemp/d3d239c18729cb3a6efb2329095b4411.mp3",
-            R.drawable.image_15,
+            "https://hypnosedetente.blob.core.windows.net/tracks/d3d239c18729cb3a6efb2329095b4411.mp3",
+            R.drawable.image_17,
             40,
             49
         ),
         Sample(
-            16,
+            18,
             "Auto-Hypnose",
             "Auto-Hypnose",
             "Cet enregistrement peut vous aider avant " +
@@ -267,13 +297,13 @@ data class Tracks(
                     "fassent - et cela fonctionnera tout seul. Se tutoyer soi-même (ou parler à l'Inconscient) " +
                     "permet la dissociation, à la base de l'état d'hypnose.",
             "0956b1287757ec8ba4a769b71fc1372a.mp3",
-            "https://yourlisten.com/filestemp/0956b1287757ec8ba4a769b71fc1372a.mp3",
-            R.drawable.image_16,
+            "https://hypnosedetente.blob.core.windows.net/tracks/0956b1287757ec8ba4a769b71fc1372a.mp3",
+            R.drawable.image_18,
             21,
             25
         ),
         Sample(
-            17,
+            19,
             "L\'Inconscient",
             "Contacter son inconscient",
             "Voici les bases, en hypnose, pour contacter et converser avec votre Inconscient : vous apprendrez à établir " +
@@ -281,13 +311,13 @@ data class Tracks(
                     "ce qui vous permettra d'obtenir des réponses directes de votre Inconscient. Dans la seconde partie de l'accompagnement, " +
                     "vous apprendrez à interagir symboliquement avec votre Inconscient.",
             "77d051ebd91d681120a2d9a266a0c24a.mp3",
-            "https://yourlisten.com/filestemp/77d051ebd91d681120a2d9a266a0c24a.mp3",
-            R.drawable.image_17,
+            "https://hypnosedetente.blob.core.windows.net/tracks/77d051ebd91d681120a2d9a266a0c24a.mp3",
+            R.drawable.image_19,
             45,
             54
         ),
         Sample(
-            18,
+            20,
             "Créateur de réalité",
             "Créateur de réalité",
             "Vous souhaitez en savoir plus sur l'art de créer votre réalité ? Quoi que vous ayez, quoi que " +
@@ -298,13 +328,13 @@ data class Tracks(
                     "vous-même que vous réussirez à faire naître la vie de vos rêves. C'est probablement la chose la plus " +
                     "difficile, travailler sur soi, mais c'est aussi la plus belle de toute l'existence.",
             "973c53bad9d08c6b681613dff52e003e.mp3",
-            "https://yourlisten.com/filestemp/973c53bad9d08c6b681613dff52e003e.mp3",
-            R.drawable.image_18,
+            "https://hypnosedetente.blob.core.windows.net/tracks/973c53bad9d08c6b681613dff52e003e.mp3",
+            R.drawable.image_20,
             47,
             56
         ),
         Sample(
-            19,
+            21,
             "Expansion",
             "Expansion de conscience",
             "Cette enregistrement est un exemple d'induction hypnotique d'Hypnose Humaniste. L'induction est suivie d'un " +
@@ -313,13 +343,13 @@ data class Tracks(
                     "Pour éviter cela, il faut réellement vous accrocher ici et maintenant, quitte à ne pas entrer en transe au début. " +
                     "Il est plus facile de se laisser emporter par l'Inconscient que de gagner en conscience !",
             "cfe5cdbc921a2ed695b290c5427bf411.mp3",
-            "https://yourlisten.com/filestemp/cfe5cdbc921a2ed695b290c5427bf411.mp3",
-            R.drawable.image_19,
+            "https://hypnosedetente.blob.core.windows.net/tracks/cfe5cdbc921a2ed695b290c5427bf411.mp3",
+            R.drawable.image_21,
             24,
             28
         ),
         Sample(
-            20,
+            22,
             "Histoire de la vie",
             "Histoire de la vie (récit)",
             "Olivier Lockert vous présente la structure existentielle, la vaste vision de la " +
@@ -329,13 +359,13 @@ data class Tracks(
                     "seulement l’aspect thérapeutique de l’Hypnose Humaniste, vous ne serez probablement pas " +
                     "intéressé par ce récit. Texte d'Olivier Lockert et voix de Patricia d'Angeli.",
             "021a9b6f2121f17252c145cb5109f02b.mp3",
-            "https://yourlisten.com/filestemp/021a9b6f2121f17252c145cb5109f02b.mp3",
-            R.drawable.image_20,
+            "https://hypnosedetente.blob.core.windows.net/tracks/021a9b6f2121f17252c145cb5109f02b.mp3",
+            R.drawable.image_22,
             46,
             56
         ),
         Sample(
-            21,
+            23,
             "La Conscience",
             "La Conscience (récit)",
             "Olivier Lockert vous présente la version audio de son article sur \"La Conscience: " +
@@ -343,8 +373,8 @@ data class Tracks(
                     "de l’Hypnose Humaniste, vous ne serez probablement pas intéressé par ce récit. Texte et " +
                     "voix d'Olivier Lockert.",
             "6403c831b0c95cc3171b53ae8bcf7721.mp3",
-            "https://yourlisten.com/filestemp/6403c831b0c95cc3171b53ae8bcf7721.mp3",
-            R.drawable.image_21,
+            "https://hypnosedetente.blob.core.windows.net/tracks/6403c831b0c95cc3171b53ae8bcf7721.mp3",
+            R.drawable.image_23,
             40,
             48
         )
