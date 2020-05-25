@@ -20,10 +20,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ContextThemeWrapper
 import com.bumptech.glide.Glide
 import com.google.android.exoplayer2.ExoPlaybackException
-import com.google.android.exoplayer2.ExoPlayerFactory
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
-import com.google.android.exoplayer2.source.ExtractorMediaSource
+import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
@@ -38,17 +37,13 @@ import java.util.*
 class AudioPlayer : AppCompatActivity() {
 
     private lateinit var appUtils: AppUtils
-
     private var isPlaying = false
     private var firstPlaying = true
-
     private lateinit var progressDialog: Dialog
-
     private lateinit var exoPlayer: SimpleExoPlayer
     private lateinit var audio: AudioManager
     private val myHandler = Handler()
     private lateinit var componentListener: ComponentListener
-
     private lateinit var sample: Sample
 
 
@@ -58,7 +53,6 @@ class AudioPlayer : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar_audio_player))
 
         appUtils = AppUtils(this)
-
         button_play.setOnClickListener { handlePlayPause() }
         seekbar_avancement.isClickable = false
 
@@ -122,24 +116,21 @@ class AudioPlayer : AppCompatActivity() {
     }
 
     private fun prepareAudioPlayer(audioName: String, audioURL: String) {
-
-        val trackSelector = DefaultTrackSelector()
-        exoPlayer = ExoPlayerFactory.newSimpleInstance(this, trackSelector)
+        val trackSelector = DefaultTrackSelector(this)
+        exoPlayer = SimpleExoPlayer.Builder(this).setTrackSelector(trackSelector).build()
         val dataSourceFactory = DefaultDataSourceFactory(
-            this,
-            Util.getUserAgent(this, "com.lacour.vincent.hypnose_detente"), null
+            this, Util.getUserAgent(this, "com.lacour.vincent.hypnose_detente")
         )
-
-        val audioSrc: String = if (!appUtils.isFileExist(audioName)) {
-            audioURL
-        } else {
+        val audioPath: String = if (appUtils.isFileExist(audioName)) {
             File(getExternalFilesDir(filesDir.absolutePath), audioName).absolutePath
+        } else {
+            audioURL
         }
-        val audioSource = ExtractorMediaSource.Factory(dataSourceFactory)
-            .createMediaSource(Uri.parse(audioSrc))
+        val mediaSource = ProgressiveMediaSource.Factory(dataSourceFactory)
+            .createMediaSource(Uri.parse(audioPath))
         componentListener = ComponentListener()
         exoPlayer.addListener(componentListener)
-        exoPlayer.prepare(audioSource)
+        exoPlayer.prepare(mediaSource)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -159,17 +150,7 @@ class AudioPlayer : AppCompatActivity() {
                 true
             }
             R.id.action_download -> {
-                if (appUtils.isFileExist(sample.file)) {
-                    showDownloadDeleteDialog(
-                        getString(R.string.download_title),
-                        getString(R.string.download_content_already)
-                    )
-                } else {
-                    showDownloadDialog(
-                        getString(R.string.download_title),
-                        getString(R.string.download_content, sample.size)
-                    )
-                }
+                handleDownloadClick()
                 true
             }
             R.id.action_information -> {
@@ -184,15 +165,18 @@ class AudioPlayer : AppCompatActivity() {
 
 
     public override fun onDestroy() {
-        exoPlayer.playWhenReady = false
-        exoPlayer.removeListener(componentListener)
-        exoPlayer.release()
-        stopAudioPlayerService()
-        appUtils.setStayAwakeLock(false)
+        if (this::exoPlayer.isInitialized) {
+            exoPlayer.playWhenReady = false
+            exoPlayer.removeListener(componentListener)
+            exoPlayer.release()
+        }
+        if (this::appUtils.isInitialized) {
+            appUtils.setStayAwakeLock(false)
+        }
         myHandler.removeCallbacksAndMessages(null)
+        stopAudioPlayerService()
         super.onDestroy()
     }
-
 
     private fun handlePlayPause() {
         val canPlaySample = appUtils.hasInternet() || appUtils.isFileExist(sample.file)
@@ -227,8 +211,6 @@ class AudioPlayer : AppCompatActivity() {
         button_play.setImageResource(android.R.drawable.ic_media_pause)
         seekbar_avancement.progress = exoPlayer.currentPosition.toInt() / 1000
         myHandler.postDelayed(updateSongTime, 100)
-
-
     }
 
     private fun handlePause() {
@@ -301,16 +283,22 @@ class AudioPlayer : AppCompatActivity() {
         this.stopService(intent)
     }
 
+    private fun handleDownloadClick() {
+        val isFileAlreadyDownloaded = appUtils.isFileExist(sample.file)
+        if (isFileAlreadyDownloaded) {
+            showDownloadDeleteDialog(
+                getString(R.string.download_title),
+                getString(R.string.download_content_already)
+            )
+        } else {
+            showDownloadDialog(
+                getString(R.string.download_title),
+                getString(R.string.download_content, sample.size)
+            )
+        }
+    }
 
     private fun makeDownloadRequest(downloadUri: Uri, name: String, fileName: String) {
-        if (appUtils.isFileExist(fileName)) {
-            Toast.makeText(
-                this@AudioPlayer,
-                getString(R.string.file_already_exist),
-                Toast.LENGTH_LONG
-            ).show()
-            return
-        }
         try {
             val request = DownloadManager.Request(downloadUri)
             request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
@@ -329,18 +317,12 @@ class AudioPlayer : AppCompatActivity() {
                 Toast.LENGTH_LONG
             ).show()
         }
-
     }
 
     private fun createLoadingDialog(): Dialog {
-        val builder =
-            AlertDialog.Builder(ContextThemeWrapper(this, R.style.AppTheme_Loading_Dialog))
-        with(builder) {
-            setView(R.layout.loading_layout)
-        }
-        return builder.create()
+        return AlertDialog.Builder(ContextThemeWrapper(this, R.style.AppTheme_Loading_Dialog))
+            .setView(R.layout.loading_layout).create()
     }
-
 
     private fun showInformationDialog(title: String, message: String) {
         val builder = AlertDialog.Builder(ContextThemeWrapper(this, R.style.AppTheme_Dialog))
@@ -374,7 +356,8 @@ class AudioPlayer : AppCompatActivity() {
         with(builder) {
             setTitle(title)
             setMessage(message)
-            setPositiveButton(getString(R.string.download_delete_yes)) { _, _ ->
+            setPositiveButton(getString(R.string.download_delete_no)) { _, _ -> }
+            setNegativeButton(getString(R.string.download_delete_yes)) { _, _ ->
                 val isSuccessfulDeleted: Boolean = appUtils.deleteFile(sample.file)
                 val information: String =
                     if (isSuccessfulDeleted) getString(R.string.file_delete_success) else getString(
@@ -382,11 +365,9 @@ class AudioPlayer : AppCompatActivity() {
                     )
                 Toast.makeText(this@AudioPlayer, information, Toast.LENGTH_SHORT).show()
             }
-            setNegativeButton(getString(R.string.download_delete_no)) { _, _ -> }
             show()
         }
     }
-
 
     private inner class ComponentListener : Player.EventListener {
 
@@ -408,7 +389,7 @@ class AudioPlayer : AppCompatActivity() {
             }
         }
 
-        override fun onPlayerError(error: ExoPlaybackException?) {
+        override fun onPlayerError(error: ExoPlaybackException) {
             progressDialog.dismiss()
             showInformationDialog(
                 getString(R.string.error_player_title),

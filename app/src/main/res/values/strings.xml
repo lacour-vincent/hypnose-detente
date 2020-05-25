@@ -22,13 +22,11 @@
     <string name="day_night_mode_label">Mode Jour-Nuit</string>
 
     <string name="error_internet_title">Connexion Internet nécessaire</string>
-    <string name="error_internet_content">Vous devez disposer d\'une connexion à Internet pour charger les séances ou
-        bien télécharger les enregistrements en mode hors-connexion.
-    </string>
+    <string name="error_internet_content">Vous devez disposer d\'une connexion à Internet pour charger les séances.</string>
 
     <string name="sample_duration">\u23f0 %1$d min</string>
     <string name="loading_title">Chargement</string>
-    <string name="loading_content">Chargement de l\'enregistrement</string>
+    <string name="loading_content">Chargement de la séance</string>
     <string name="notification_description">%1$s — lecture en cours</string>
 
     <string name="download_label">Télécharger</string>
@@ -38,8 +36,7 @@
 
     <string name="rating_title">Noter l\'application</string>
     <string name="rating_content">Si vous souhaitez soutenir notre travail, vous pouvez noter favorablement
-        l\'application
-        sur le PlayStore et partager votre expérience pour les autres utilisateurs. Pour y accéder :
+        l\'application sur le PlayStore et partager votre expérience pour les autres utilisateurs. Pour y accéder :
     </string>
     <string name="rating_yes">Ouvrir PlayStore</string>
     <string name="rating_no">Plus tard</string>
@@ -48,7 +45,7 @@
     <string name="information_yes">OK</string>
 
     <string name="download_title">Téléchargement</string>
-    <string name="download_content">Vous pouvez télécharger l\'enregistrement afin de l\'écouter en mode hors
+    <string name="download_content">Vous pouvez télécharger la séance afin de l\'écouter en mode hors
         connexion par la suite.\n\n%1$d Mo d\'espace libre nécessaire.
     </string>
     <string name="download_yes">Télécharger</string>
@@ -57,23 +54,20 @@
 
     <string name="download_delete_yes">Supprimer</string>
     <string name="download_delete_no">OK</string>
-    <string name="download_content_already">Vous pouvez écouter l\'enregistrement en mode hors-connexion dès la fin du
-        téléchargement.
-    </string>
+    <string name="download_content_already">Vous pouvez écouter la séance en mode hors-connexion dès la fin du téléchargement.</string>
     <string name="download_unavailable">Le téléchargement n\'est pas compatible avec votre appareil.</string>
 
-    <string name="file_already_exist">Cet enregistrement a déjà été téléchargé.</string>
-    <string name="file_delete_success">L\'enregistrement a été supprimé.</string>
+    <string name="file_delete_success">La séance a été supprimée de votre appareil.</string>
     <string name="file_delete_failure">Une erreur est survenue.</string>
 
-    <string name="error_player_title">Erreur</string>
-    <string name="error_player_content">Erreur lors du chargement de l\'enregistrement. Vous avez peut-être perdu votre
-        connexion à Internet. Pour résoudre ce problème, vous pouvez télécharger l\'enregistrement pour l\'écouter en
-        mode hors-connexion.
+    <string name="error_player_title">Erreur de chargement de la séance</string>
+    <string name="error_player_content">Mon hébergeur est hors-service. Merci de patienter jusqu\'à ce que le problème soit résolu.
+        En attendant, vous pouvez retrouver l\'ensemble des séances à l\'adresse suivante :\n\n
+        https://soundcloud.com/mp3-hypnose-gratuit
     </string>
 
     <string name="error_device_title">Erreur interne</string>
-    <string name="error_device_content">Désolé, votre smartphone n\'est pas compatible avec l\'application.</string>
+    <string name="error_device_content">Désolé, votre appareil n\'est pas compatible avec l\'application.</string>
 
     <string name="application_icon">Application</string>
     <string name="history_icon">Historique</string>
