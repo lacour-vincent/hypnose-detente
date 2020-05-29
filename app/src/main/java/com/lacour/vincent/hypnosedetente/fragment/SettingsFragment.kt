@@ -2,22 +2,22 @@ package com.lacour.vincent.hypnosedetente.fragment
 
 import android.content.SharedPreferences
 import android.os.Bundle
-
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.preference.ListPreference
+import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-
 import com.lacour.vincent.hypnosedetente.R
+import com.lacour.vincent.hypnosedetente.storage.Preferences.Companion.THEME_KEY
+import com.lacour.vincent.hypnosedetente.storage.Preferences.Companion.THEME_DEFAULT_VALUE
+
 
 class SettingsFragment : PreferenceFragmentCompat(),
     SharedPreferences.OnSharedPreferenceChangeListener {
 
-    companion object {
-        private const val THEME_KEY = "theme"
-        private const val THEME_DEFAULT_VALUE = "-1"
-    }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         addPreferencesFromResource(R.xml.preferences)
+        setPreferenceThemeOnChange()
     }
 
     override fun onResume() {
@@ -30,22 +30,23 @@ class SettingsFragment : PreferenceFragmentCompat(),
         preferenceScreen.sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
     }
 
-    private fun applyTheme(dayNightMode: Int) {
-        AppCompatDelegate.setDefaultNightMode(dayNightMode)
-        this.activity!!.finish()
+
+    private fun setPreferenceThemeOnChange() {
+        val preference: ListPreference? = findPreference(THEME_KEY)
+        val themes = resources.getStringArray(R.array.theme_entries)
+        preference?.summaryProvider =
+            Preference.SummaryProvider<ListPreference> { pref ->
+                val themeIndex = pref.value
+                val value = if (themeIndex.isNullOrBlank()) THEME_DEFAULT_VALUE else themeIndex
+                themes[Integer.parseInt(value) + 1]
+            }
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
         if (key == THEME_KEY) {
             val dayNightMode: Int =
                 Integer.parseInt(sharedPreferences.getString(key, THEME_DEFAULT_VALUE) as String)
-            when (dayNightMode) {
-                AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM -> applyTheme(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-                AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY -> applyTheme(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY)
-                AppCompatDelegate.MODE_NIGHT_NO -> applyTheme(AppCompatDelegate.MODE_NIGHT_NO)
-                AppCompatDelegate.MODE_NIGHT_YES -> applyTheme(AppCompatDelegate.MODE_NIGHT_YES)
-                else -> applyTheme(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-            }
+            AppCompatDelegate.setDefaultNightMode(dayNightMode)
         }
     }
 

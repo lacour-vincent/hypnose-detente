@@ -48,6 +48,4 @@ class AppUtils(private val ctx: Context) {
         }
         if (wifiLock.isHeld) wifiLock.release()
     }
-
-
 }
