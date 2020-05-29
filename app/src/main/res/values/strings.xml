@@ -20,6 +20,8 @@
     </string>
 
     <string name="day_night_mode_label">Mode Jour-Nuit</string>
+    <string name="analytics_enabled_label">Partager les données d\'utilisation</string>
+    <string name="analytics_enabled_summary">Activer ce paramètre pour partager anonymement les informations concernant votre utilisation de l\'application pour l\'améliorer.</string>
 
     <string name="error_internet_title">Connexion Internet nécessaire</string>
     <string name="error_internet_content">Vous devez disposer d\'une connexion à Internet pour charger les séances.</string>

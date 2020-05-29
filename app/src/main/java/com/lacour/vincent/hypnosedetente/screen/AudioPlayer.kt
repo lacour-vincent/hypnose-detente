@@ -27,7 +27,8 @@ import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import com.lacour.vincent.hypnosedetente.R
-import com.lacour.vincent.hypnosedetente.data.Sample
+import com.lacour.vincent.hypnosedetente.model.Sample
+import com.lacour.vincent.hypnosedetente.service.AnalyticsService
 import com.lacour.vincent.hypnosedetente.service.ForegroundService
 import com.lacour.vincent.hypnosedetente.utils.AppUtils
 import kotlinx.android.synthetic.main.activity_audio_player.*
@@ -46,6 +47,7 @@ class AudioPlayer : AppCompatActivity() {
     private lateinit var componentListener: ComponentListener
     private lateinit var sample: Sample
 
+    private lateinit var analyticsService: AnalyticsService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +55,7 @@ class AudioPlayer : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar_audio_player))
 
         appUtils = AppUtils(this)
+        analyticsService = AnalyticsService(this)
         button_play.setOnClickListener { handlePlayPause() }
         seekbar_avancement.isClickable = false
 
@@ -67,6 +70,7 @@ class AudioPlayer : AppCompatActivity() {
                 }
             }
 
+            analyticsService.logViewSampleEvent(sample.slug)
             Glide.with(this).load(sample.thumbnail).into(image_sample)
             prepareAudioPlayer(sample.file, sample.url)
 
@@ -111,6 +115,7 @@ class AudioPlayer : AppCompatActivity() {
                 getString(R.string.error_device_title),
                 getString(R.string.error_device_content)
             )
+            analyticsService.logIncompatibleDevice()
         }
 
     }
@@ -158,6 +163,7 @@ class AudioPlayer : AppCompatActivity() {
                     sample.fullTitle,
                     sample.description
                 )
+                analyticsService.logSampleInformationEvent(sample.slug)
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -310,12 +316,14 @@ class AudioPlayer : AppCompatActivity() {
 
             val manager = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
             manager.enqueue(request)
+            analyticsService.logDownloadSampleEvent(sample.slug)
         } catch (e: IllegalStateException) {
             Toast.makeText(
                 this@AudioPlayer,
                 getString(R.string.download_unavailable),
                 Toast.LENGTH_LONG
             ).show()
+            analyticsService.logErrorDownloadSample(sample.slug)
         }
     }
 
@@ -364,6 +372,7 @@ class AudioPlayer : AppCompatActivity() {
                         R.string.file_delete_failure
                     )
                 Toast.makeText(this@AudioPlayer, information, Toast.LENGTH_SHORT).show()
+                analyticsService.logDeleteSampleEvent(sample.slug)
             }
             show()
         }
@@ -397,6 +406,7 @@ class AudioPlayer : AppCompatActivity() {
             )
             button_play.isEnabled = false
             stopAudioPlayerService()
+            analyticsService.logErrorSample(sample.slug)
         }
     }
 

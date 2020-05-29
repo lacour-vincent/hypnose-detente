@@ -3,7 +3,6 @@ package com.lacour.vincent.hypnosedetente.screen
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -17,7 +16,6 @@ import com.lacour.vincent.hypnosedetente.component.RecyclerItemClickListener
 import com.lacour.vincent.hypnosedetente.component.SampleAdapter
 import com.lacour.vincent.hypnosedetente.data.Tracks
 import com.lacour.vincent.hypnosedetente.utils.AppUtils
-
 import kotlinx.android.synthetic.main.activity_welcome.*
 
 class Welcome : AppCompatActivity() {
@@ -29,6 +27,7 @@ class Welcome : AppCompatActivity() {
     private lateinit var appUtils: AppUtils
     private lateinit var sampleAdapter: SampleAdapter
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
@@ -39,6 +38,7 @@ class Welcome : AppCompatActivity() {
         }
 
         appUtils = AppUtils(this)
+
 
         val (samples) = Tracks()
         sampleAdapter = SampleAdapter(this, samples)

@@ -1,4 +1,4 @@
-package com.lacour.vincent.hypnosedetente.data
+package com.lacour.vincent.hypnosedetente.model
 
 import android.os.Parcel
 import android.os.Parcelable
@@ -7,6 +7,7 @@ data class Sample(
     val id: Int,
     val title: String,
     val fullTitle: String,
+    val slug: String,
     val description: String,
     val file: String,
     val url: String,
@@ -22,6 +23,7 @@ data class Sample(
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
+        parcel.readString()!!,
         parcel.readInt(),
         parcel.readInt(),
         parcel.readInt()
@@ -31,6 +33,7 @@ data class Sample(
         parcel.writeInt(id)
         parcel.writeString(title)
         parcel.writeString(fullTitle)
+        parcel.writeString(slug)
         parcel.writeString(description)
         parcel.writeString(file)
         parcel.writeString(url)

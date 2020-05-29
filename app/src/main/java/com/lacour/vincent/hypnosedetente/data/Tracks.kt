@@ -1,6 +1,7 @@
 package com.lacour.vincent.hypnosedetente.data
 
 import com.lacour.vincent.hypnosedetente.R
+import com.lacour.vincent.hypnosedetente.model.Sample
 
 data class Tracks(
     val samples: List<Sample> = listOf(
@@ -8,6 +9,7 @@ data class Tracks(
             0,
             "Bien dormir",
             "Bien dormir",
+            "bien_dormir",
             "Voici un texte composé par Patricia d'Angeli, puis enregistré également " +
                     "par elle (l'ambiance musicale est d'Olivier Lockert). Comme son titre l'indique, cet " +
                     "enregistrement est destiné à vous accompagner durant votre endormissement, soit pour " +
@@ -25,6 +27,7 @@ data class Tracks(
             1,
             "S'endormir",
             "S'endormir en auto-hypnose",
+            "s_endormir",
             "Le premier protocole du livre \"Auto-hypnose pour débutants\" : comment trouver " +
                     "le sommeil. Ecoutez au casque, afin de profiter au mieux de l'accompagnement musical. Pour cette séance, " +
                     "une induction hypnotique a été utilisée parmi celles présentées dans le livre. Bien sûr, lorsque vous pratiquez " +
@@ -41,6 +44,7 @@ data class Tracks(
             2,
             "Préventif",
             "Système immunitaire préventif",
+            "preventif",
             "Cette induction a été conçue, à l'origine, pour aider lors de l'épidémie de grippe H1N1 de l'hiver 2009. " +
                     "Cette enregistrement est à écouter avant l'enregistrement \"Curatif\" afin de bien comprendre l'esprit dans " +
                     "lequel vous mettre. Le texte est explicatif, avec de nombreuses métaphores. Le tout est dit assez rapidement, " +
@@ -55,6 +59,7 @@ data class Tracks(
             3,
             "Curatif",
             "Système immunitaire curatif",
+            "curatif",
             "Cet accompagnement est curatif. C'est-à-dire que vous n'en avez " +
                     "besoin que si vous êtes malade. Le texte est dit lentement et la musique est hypnotique. " +
                     "Même si beaucoup de choses sont encore expliquées, le texte n'est pas pour votre esprit conscient, " +
@@ -71,6 +76,7 @@ data class Tracks(
             4,
             "Ressourcement",
             "Bulle de ressourcement thérapeutique",
+            "ressourcement",
             "L'idée est de se reconnecter aux forces vitales, puis de plonger dans un espace de ressourcement, afin de renforcer " +
                     "et d'accélérer la guérison du corps. Le fond sonore est lancinant, onirique, afin de vous bercer. " +
                     "Rien à faire, rien à penser, juste vous laisser faire. Allongez-vous ou installez-vous confortablement, et laissez aller. " +
@@ -86,6 +92,7 @@ data class Tracks(
             5,
             "Adaptation aux virus",
             "Adaptation aux virus",
+            "adaptation_aux_virus",
             "Une expérience d'auto-hypnose pour accélérer en vous l'adaptation à un nouveau virus. " +
                     "Que vous preniez cette idée comme une réalité concrète ou une métaphore, peu importe, si cela " +
                     "peut vous aider, à un niveau ou un autre. Il s'agit de soutien psychologique, qui peut venir en aide " +
@@ -102,6 +109,7 @@ data class Tracks(
             6,
             "Retrouver le moral",
             "Retrouver le moral",
+            "retrouver_le_moral",
             "Après une introduction sautillante, cette séance vous montre ce que vous pouvez " +
                     "faire par vous-même en auto-hypnose. L'accompagnement débute par une sorte de \"ré-énergétisation\" physique " +
                     "et psychologique. Ensuite, vous apprendrez à créer un un point d'ancrage qui vous permettra de " +
@@ -118,6 +126,7 @@ data class Tracks(
             7,
             "Confiance en soi",
             "Confiance en soi",
+            "confiance_en_soi",
             "Le texte de cette séance est d'Olivier Lockert et il est dit " +
                     "par Patricia d'Angeli. Il s'agit d'un protocole détaillé, par explications, " +
                     "suggestions et métaphores pour (re)trouver la confiance en vous. Vous n'aurez pas " +
@@ -133,6 +142,7 @@ data class Tracks(
             8,
             "Estime de soi",
             "Estime de soi",
+            "estime_de_soi",
             "Voici un accompagnement très complémentaire à celui sur la " +
                     "Confiance en Soi. Le texte est de Patricia d'Angeli, qui souhaite vous faire découvrir ici le travail sur votre Critique intérieur, à " +
                     "l'origine de vos soucis d'estime de vous. Rien d'autre à faire que de vous laisser " +
@@ -149,6 +159,7 @@ data class Tracks(
             9,
             "Calmer l'anxiété",
             "Calmer l'anxiété",
+            "calmer_l_anxiete",
             "Patricia d'Angeli vous propose ici un accompagnement à sa " +
                     "manière : un voyage vers votre Enfant Intérieur, source des émotions qui assaillent les personnes souffrant " +
                     "d'anxiété, de crises d'angoisse, ou qui vivent des peurs sans fondement concret. Vous apprendrez à entrer en vous-même " +
@@ -165,6 +176,7 @@ data class Tracks(
             10,
             "Transformer vos peurs",
             "Transformer vos peurs",
+            "transformer_vos_peurs",
             "Patricia d'Angeli vous conduit dans cette séance d’hypnose, en forme de quête intérieure, " +
                     "afin de vous aider à transformer vos peurs ou angoisses en une force créatrice. Cet accompagnement " +
                     "vous sera également utile en cas de maladie, en complément de votre suivi médical, afin d’activer " +
@@ -180,6 +192,7 @@ data class Tracks(
             11,
             "Gérer le stress",
             "Gérer le stress",
+            "gerer_le_stress",
             "Vous serez guidé par la voix de Patricia d'Angeli, " +
                     "durant ce que l'on appelle un cycle ultradien, qui correspond à l'activation d'une " +
                     "phase naturelle de régénération physique et psychologique. Cet enregistrement est " +
@@ -197,6 +210,7 @@ data class Tracks(
             12,
             "Soigner son passé",
             "Soigner son passé",
+            "soigner_son_passe",
             "Souvent, nos soucis viennent d'un passé douloureux, que l'on peut travailler en thérapie " +
                     "personnelle. Ce travail peut être long et difficile. Surtout, il confronte à nouveau avec des expériences que l'on préfèrerait oublier. " +
                     "Cet accompagnement, sur vos Chemins de Lumière, est une régression symbolique vers vos racines transgénérationnelles " +
@@ -213,6 +227,7 @@ data class Tracks(
             13,
             "Intuition",
             "Développer son intuition",
+            "intuition",
             "Le domaine de l'intuition est bien plus vaste qu'il n'y parait à première vue. " +
                     "Les personnes en meilleure santé vivent et se nourrissent intuitivement mieux que les autres. Elles ne le font " +
                     "pas exprès. Prenons l'exemple d'une personne à qui tout réussi, qui a de la chance : elle semble savoir " +
@@ -230,6 +245,7 @@ data class Tracks(
             14,
             "Immersion sensorielle",
             "Immersion sensorielle",
+            "immersion_sensorielle",
             "Cette séance vient en conclusion de la préparation progressive à l’auto-hypnose. C’est l’étape " +
                     "juste avant de passer aux inductions hypnotiques. Cette séance est un exemple d’application. En " +
                     "apprenant l’auto-hypnose, vous utiliserez vos propres pensées, vos phrases personnelles, différentes " +
@@ -245,6 +261,7 @@ data class Tracks(
             15,
             "Réussir sa vie",
             "Réussir sa vie",
+            "reussir_sa_vie",
             "Cet accompagnement en Hypnose Humaniste vous propose de travailler sur ce qui bloque éventuellement en vous, " +
                     "afin que vous soyez pleinement ouvert au monde et connecté à vous-même, intuitif et capable de marcher " +
                     "chaque jour sur votre meilleur chemin de vie. Texte et musique d'Olivier Lockert.",
@@ -258,6 +275,7 @@ data class Tracks(
             16,
             "Magie intérieure",
             "Activer votre magie intérieure",
+            "magie_interieur",
             "Cet accompagnement d'Olivier Lockert vous aidera à activer vos " +
                     "ressources profondes et inconscientes. Vous pourrez demander l'aide de votre esprit " +
                     "profond pour résoudre des problèmes pour lesquels vous n'avez pas de solution, ou pour " +
@@ -272,6 +290,7 @@ data class Tracks(
             17,
             "Bain d'Hypnose",
             "Bain d'Hypnose",
+            "bain_d_hypnose",
             "Cet enregistrement vous permet de vous ressourcer, en vous laissant " +
                     "simplement \"baigner dans l'hypnose\", comme on le faisait il y a des millénaires dans les " +
                     "fameux Temples d'Aesclapios, à l'époque antique. Vous pouvez utiliser cette séance dans les " +
@@ -289,6 +308,7 @@ data class Tracks(
             18,
             "Auto-Hypnose",
             "Auto-Hypnose",
+            "auto_hypnose",
             "Cet enregistrement peut vous aider avant " +
                     "une thérapie ou avant une formation en hypnose ou auto-hypnose. " +
                     "Le texte est en \"tu\", car c'est ainsi que vous aurez à vous parler ensuite, " +
@@ -306,6 +326,7 @@ data class Tracks(
             19,
             "L\'Inconscient",
             "Contacter son inconscient",
+            "l_inconscient",
             "Voici les bases, en hypnose, pour contacter et converser avec votre Inconscient : vous apprendrez à établir " +
                     "un signaling, d'abord sans signification particulière, puis en stipulant les signes oui et non, " +
                     "ce qui vous permettra d'obtenir des réponses directes de votre Inconscient. Dans la seconde partie de l'accompagnement, " +
@@ -320,6 +341,7 @@ data class Tracks(
             20,
             "Créateur de réalité",
             "Créateur de réalité",
+            "createur_de_realite",
             "Vous souhaitez en savoir plus sur l'art de créer votre réalité ? Quoi que vous ayez, quoi que " +
                     "vous recherchiez, il est facile de comprendre qu'en devenant \"créateur\" de votre vie, vous pourrez " +
                     "trouver une solution. Si vous avez su générer les problèmes de votre vie, en apprenant à créer votre réalité, " +
@@ -337,6 +359,7 @@ data class Tracks(
             21,
             "Expansion",
             "Expansion de conscience",
+            "expansion_de_conscience",
             "Cette enregistrement est un exemple d'induction hypnotique d'Hypnose Humaniste. L'induction est suivie d'un " +
                     "exemple d'intervention thérapeutique symbolique simple. Il est conçu pour plaire aux personnes plutôt \"cerveau droit\" (intuitives, fantaisistes, créatives). " +
                     "Il est possible que vous entriez dans une transe normale, dissociée conscient/inconscient. " +
@@ -352,6 +375,7 @@ data class Tracks(
             22,
             "Histoire de la vie",
             "Histoire de la vie (récit)",
+            "histoire_de_la_vie",
             "Olivier Lockert vous présente la structure existentielle, la vaste vision de la " +
                     "Vie de l’Hypnose Humaniste. Cette présentation a pris les formes d’une histoire, comme un " +
                     "conte, afin de conserver la liberté de penser en termes philosophiques et psychologiques, " +
@@ -368,6 +392,7 @@ data class Tracks(
             23,
             "La Conscience",
             "La Conscience (récit)",
+            "la_conscience",
             "Olivier Lockert vous présente la version audio de son article sur \"La Conscience: " +
                     "elle existe et ça se voit !\". Si vous recherchez seulement l’aspect thérapeutique " +
                     "de l’Hypnose Humaniste, vous ne serez probablement pas intéressé par ce récit. Texte et " +

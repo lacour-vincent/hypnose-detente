@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "325031727665",
+    "firebase_url": "https://hypnose-detente.firebaseio.com",
+    "project_id": "hypnose-detente",
+    "storage_bucket": "hypnose-detente.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:325031727665:android:146c5aad8b464cbd6ebb10",
+        "android_client_info": {
+          "package_name": "com.lacour.vincent.hypnosedetente"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "325031727665-7divi6lvcsms3h54rghjh6r4uk8bfr7q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzxzTgRN-JduhRYu3azeujSXbf-LnmGDI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "325031727665-7divi6lvcsms3h54rghjh6r4uk8bfr7q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

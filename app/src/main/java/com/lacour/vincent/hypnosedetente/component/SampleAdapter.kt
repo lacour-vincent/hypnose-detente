@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.lacour.vincent.hypnosedetente.R
 
-import com.lacour.vincent.hypnosedetente.data.Sample
+import com.lacour.vincent.hypnosedetente.model.Sample
 import com.lacour.vincent.hypnosedetente.utils.AppUtils
 
 
