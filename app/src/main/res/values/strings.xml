@@ -63,8 +63,8 @@
     <string name="file_delete_failure">Une erreur est survenue.</string>
 
     <string name="error_player_title">Erreur de chargement de la séance</string>
-    <string name="error_player_content">Mon hébergeur est hors-service. Merci de patienter jusqu\'à ce que le problème soit résolu.
-        En attendant, vous pouvez retrouver l\'ensemble des séances à l\'adresse suivante :\n\n
+    <string name="error_player_content">Merci de patienter jusqu\'à ce que le problème soit résolu.
+        En attendant, vous pouvez retrouver l\'ensemble des séances :\n\n
         https://soundcloud.com/mp3-hypnose-gratuit
     </string>
 

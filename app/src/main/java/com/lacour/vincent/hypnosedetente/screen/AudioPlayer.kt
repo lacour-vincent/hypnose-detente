@@ -392,6 +392,7 @@ class AudioPlayer : AppCompatActivity() {
                     isPlaying = false
                     exoPlayer.seekTo(0)
                     stopAudioPlayerService()
+                    analyticsService.logSampleEndEvent(sample.slug)
                 }
                 else -> {
                 }
@@ -400,13 +401,20 @@ class AudioPlayer : AppCompatActivity() {
 
         override fun onPlayerError(error: ExoPlaybackException) {
             progressDialog.dismiss()
+            button_play.isEnabled = false
+            stopAudioPlayerService()
             showInformationDialog(
                 getString(R.string.error_player_title),
                 getString(R.string.error_player_content)
             )
-            button_play.isEnabled = false
-            stopAudioPlayerService()
-            analyticsService.logErrorSample(sample.slug)
+            val errorMessage = when (error.type) {
+                ExoPlaybackException.TYPE_SOURCE -> "SOURCE - ${error.sourceException.message}"
+                ExoPlaybackException.TYPE_OUT_OF_MEMORY -> "OUT_OF_MEMORY - ${error.outOfMemoryError.message}"
+                ExoPlaybackException.TYPE_RENDERER -> "RENDERER - ${error.rendererException.message}"
+                ExoPlaybackException.TYPE_UNEXPECTED -> "UNEXPECTED - ${error.unexpectedException.message}"
+                else -> "UNKNOWN - unknown"
+            }
+            analyticsService.logErrorSample(sample.slug, errorMessage)
         }
     }
 

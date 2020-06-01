@@ -11,6 +11,7 @@ class AnalyticsService(ctx: Context) {
     companion object {
         private const val VIEW_SAMPLE_EVENT = "sample_view"
         private const val INFORMATION_SAMPLE_EVENT = "sample_information"
+        private const val END_SAMPLE_EVENT = "sample_end"
         private const val DOWNLOAD_SAMPLE_EVENT = "sample_download"
         private const val DELETE_SAMPLE_EVENT = "sample_delete"
         private const val ERROR_DOWNLOAD_SAMPLE_EVENT = "sample_download_error"
@@ -18,6 +19,7 @@ class AnalyticsService(ctx: Context) {
         private const val DEVICE_INCOMPATIBLE_EVENT = "incompatible_device"
 
         private const val SAMPLE_PARAM = "sample"
+        private const val ERROR_MESSAGE_PARAM = "error_message"
     }
 
     private val firebaseAnalytics = FirebaseAnalytics.getInstance(ctx)
@@ -43,6 +45,12 @@ class AnalyticsService(ctx: Context) {
         return logEvent(INFORMATION_SAMPLE_EVENT, params)
     }
 
+    fun logSampleEndEvent(sample: String) {
+        val params = Bundle()
+        params.putString(SAMPLE_PARAM, sample)
+        return logEvent(END_SAMPLE_EVENT, params)
+    }
+
     fun logDownloadSampleEvent(sample: String) {
         val params = Bundle()
         params.putString(SAMPLE_PARAM, sample)
@@ -61,9 +69,10 @@ class AnalyticsService(ctx: Context) {
         return logEvent(ERROR_DOWNLOAD_SAMPLE_EVENT, params)
     }
 
-    fun logErrorSample(sample: String) {
+    fun logErrorSample(sample: String, message: String) {
         val params = Bundle()
         params.putString(SAMPLE_PARAM, sample)
+        params.putString(ERROR_MESSAGE_PARAM, message)
         return logEvent(ERROR_SAMPLE_EVENT, params)
     }
 
