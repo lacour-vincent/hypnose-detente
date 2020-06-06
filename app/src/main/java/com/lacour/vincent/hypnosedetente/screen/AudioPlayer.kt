@@ -387,11 +387,12 @@ class AudioPlayer : AppCompatActivity() {
                     seekbar_avancement.max = exoPlayer.duration.toInt() / 1000
                 }
                 Player.STATE_ENDED -> {
+                    if (!playWhenReady) return
                     button_play.setImageResource(android.R.drawable.ic_media_play)
+                    exoPlayer.seekTo(0)
                     exoPlayer.playWhenReady = false
                     isPlaying = false
-                    exoPlayer.seekTo(0)
-                    stopAudioPlayerService()
+                    stopAudioPlayerService();
                     analyticsService.logSampleEndEvent(sample.slug)
                 }
                 else -> {
