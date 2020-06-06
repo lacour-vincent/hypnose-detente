@@ -11,6 +11,7 @@ class Preferences(ctx: Context) {
         const val THEME_DEFAULT_VALUE: String = "-1"
         const val IS_ANALYTICS_ENABLED_KEY: String = "analytics"
         const val IS_ANALYTICS_ENABLED_DEFAULT_VALUE: Boolean = true
+        const val BATTERY_OPTIMIZATION_KEY = "battery_optimization"
     }
 
     private val preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(ctx)

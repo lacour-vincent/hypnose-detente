@@ -22,6 +22,9 @@
     <string name="day_night_mode_label">Mode Jour-Nuit</string>
     <string name="analytics_enabled_label">Partager les données d\'utilisation</string>
     <string name="analytics_enabled_summary">Activer ce paramètre pour partager anonymement les informations concernant votre utilisation de l\'application pour l\'améliorer.</string>
+    <string name="battery_optimization_label">Désactiver l\'optimisation de la batterie</string>
+    <string name="battery_optimization_summary">Désactiver ce paramètre permet d\'éviter les coupures pendant les séances sur certains appareils.</string>
+    <string name="battery_optimization_already_set">L\'optimisation de la batterie est désactivité sur votre appareil pour l\'application.</string>
 
     <string name="error_internet_title">Connexion Internet nécessaire</string>
     <string name="error_internet_content">Vous devez disposer d\'une connexion à Internet pour charger les séances.</string>

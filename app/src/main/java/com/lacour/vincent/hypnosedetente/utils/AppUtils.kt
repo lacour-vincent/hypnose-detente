@@ -3,7 +3,8 @@ package com.lacour.vincent.hypnosedetente.utils
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.wifi.WifiManager
-
+import android.os.Build
+import android.os.PowerManager
 import java.io.File
 
 class AppUtils(private val ctx: Context) {
@@ -48,4 +49,12 @@ class AppUtils(private val ctx: Context) {
         }
         if (wifiLock.isHeld) wifiLock.release()
     }
+
+    fun isIgnoringBatteryOptimizations(): Boolean {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return true;
+        val powerManager =
+            this.ctx.applicationContext.getSystemService(Context.POWER_SERVICE) as PowerManager
+        return powerManager.isIgnoringBatteryOptimizations(this.ctx.packageName)
+    }
+
 }
