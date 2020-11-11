@@ -9,6 +9,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
@@ -19,32 +20,24 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ContextThemeWrapper
 import com.bumptech.glide.Glide
-import com.google.android.exoplayer2.ExoPlaybackException
-import com.google.android.exoplayer2.Player
-import com.google.android.exoplayer2.SimpleExoPlayer
-import com.google.android.exoplayer2.source.ProgressiveMediaSource
-import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
-import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
-import com.google.android.exoplayer2.util.Util
 import com.lacour.vincent.hypnosedetente.R
+import com.lacour.vincent.hypnosedetente.adapter.MusicPlayer
 import com.lacour.vincent.hypnosedetente.model.Sample
 import com.lacour.vincent.hypnosedetente.service.AnalyticsService
 import com.lacour.vincent.hypnosedetente.service.ForegroundService
 import com.lacour.vincent.hypnosedetente.utils.AppUtils
 import kotlinx.android.synthetic.main.activity_audio_player.*
-import java.io.File
 import java.util.*
 
 class AudioPlayer : AppCompatActivity() {
 
     private lateinit var appUtils: AppUtils
-    private var isPlaying = false
-    private var firstPlaying = true
     private lateinit var progressDialog: Dialog
-    private lateinit var exoPlayer: SimpleExoPlayer
+
+    private lateinit var musicPlayer: MusicPlayer
     private lateinit var audio: AudioManager
-    private val myHandler = Handler()
-    private lateinit var componentListener: ComponentListener
+    private val myHandler = Handler(Looper.getMainLooper())
+
     private lateinit var sample: Sample
 
     private lateinit var analyticsService: AnalyticsService
@@ -70,9 +63,11 @@ class AudioPlayer : AppCompatActivity() {
                 }
             }
 
-            analyticsService.logViewSampleEvent(sample.slug)
-            Glide.with(this).load(sample.thumbnail).into(image_sample)
-            prepareAudioPlayer(sample.file, sample.url)
+            musicPlayer = MusicPlayer(this)
+            prepareMusicPlayer(sample.file, sample.url)
+            musicPlayer.setOnStateReadyListener { onMusicPlayerStateReady() }
+            musicPlayer.setOnStateEndedListener { onMusicPlayerStateEnded() }
+            musicPlayer.setOnErrorListener { message -> onMusicsPlayerError(message) }
 
             audio = getSystemService(Context.AUDIO_SERVICE) as AudioManager
             seekbar_sound.max = audio.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
@@ -81,6 +76,10 @@ class AudioPlayer : AppCompatActivity() {
             if (audio.getStreamVolume(AudioManager.STREAM_MUSIC) == 0) {
                 icon_sound.setImageResource(R.drawable.ic_volume_off)
             }
+
+            Glide.with(this).load(sample.thumbnail).into(image_sample)
+            analyticsService.logViewSampleEvent(sample.slug)
+
 
             seekbar_sound.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
                 override fun onStopTrackingTouch(seekBar: SeekBar) {}
@@ -99,8 +98,9 @@ class AudioPlayer : AppCompatActivity() {
                 override fun onStopTrackingTouch(seekBar: SeekBar) {}
                 override fun onStartTrackingTouch(seekBar: SeekBar) {}
                 override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-                    if (fromUser && exoPlayer.playWhenReady) {
-                        exoPlayer.seekTo((progress * 1000).toLong())
+                    if (fromUser && musicPlayer.isPlaying()) {
+                        val position = (progress * 1000).toLong()
+                        musicPlayer.seekTo(position)
                     }
                 }
             })
@@ -120,22 +120,13 @@ class AudioPlayer : AppCompatActivity() {
 
     }
 
-    private fun prepareAudioPlayer(audioName: String, audioURL: String) {
-        val trackSelector = DefaultTrackSelector(this)
-        exoPlayer = SimpleExoPlayer.Builder(this).setTrackSelector(trackSelector).build()
-        val dataSourceFactory = DefaultDataSourceFactory(
-            this, Util.getUserAgent(this, "com.lacour.vincent.hypnose_detente")
-        )
-        val audioPath: String = if (appUtils.isFileExist(audioName)) {
-            File(getExternalFilesDir(filesDir.absolutePath), audioName).absolutePath
+    private fun prepareMusicPlayer(file: String, url: String) {
+        val isFileExists = appUtils.isFileExist(file)
+        if (isFileExists) {
+            musicPlayer.prepareLocalFile(file)
         } else {
-            audioURL
+            musicPlayer.prepareRemoteFile(url)
         }
-        val mediaSource = ProgressiveMediaSource.Factory(dataSourceFactory)
-            .createMediaSource(Uri.parse(audioPath))
-        componentListener = ComponentListener()
-        exoPlayer.addListener(componentListener)
-        exoPlayer.prepare(mediaSource)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -171,17 +162,15 @@ class AudioPlayer : AppCompatActivity() {
 
 
     public override fun onDestroy() {
-        if (this::exoPlayer.isInitialized) {
-            exoPlayer.playWhenReady = false
-            exoPlayer.removeListener(componentListener)
-            exoPlayer.release()
-        }
-        if (this::appUtils.isInitialized) {
-            appUtils.setStayAwakeLock(false)
-        }
-        myHandler.removeCallbacksAndMessages(null)
+        stopMusicPlayer()
         stopAudioPlayerService()
+        myHandler.removeCallbacksAndMessages(null)
         super.onDestroy()
+    }
+
+    private fun stopMusicPlayer() {
+        musicPlayer.setPause()
+        musicPlayer.onDestroy()
     }
 
     private fun handlePlayPause() {
@@ -194,43 +183,35 @@ class AudioPlayer : AppCompatActivity() {
             ).show()
             return
         }
-        if (firstPlaying) {
-            appUtils.setStayAwakeLock(true)
-            firstPlaying = false
-        }
-        if (isPlaying) {
-            handlePause()
-        } else {
-            handlePlay()
-        }
+        val isPlaying = musicPlayer.isPlaying()
+        return if (isPlaying) handlePause() else handlePlay()
     }
 
     private fun handlePlay() {
-        if (isPlaying) return
-        isPlaying = true
+        musicPlayer.setPlay()
+        val position: Int = musicPlayer.getCurrentPosition().toInt()
+        val duration: Int = musicPlayer.getDuration().toInt()
+        text_current_time.text = stringForTime(position)
+        text_total_time.text = stringForTime(duration)
+        button_play.setImageResource(android.R.drawable.ic_media_pause)
+        seekbar_avancement.progress = position / 1000
         startAudioPlayerService()
-        exoPlayer.playWhenReady = true
-        text_current_time.text = stringForTime(exoPlayer.currentPosition.toInt())
-        text_total_time.text = stringForTime(exoPlayer.duration.toInt())
         text_current_time.visibility = View.VISIBLE
         text_total_time.visibility = View.VISIBLE
-        button_play.setImageResource(android.R.drawable.ic_media_pause)
-        seekbar_avancement.progress = exoPlayer.currentPosition.toInt() / 1000
         myHandler.postDelayed(updateSongTime, 100)
     }
 
     private fun handlePause() {
-        if (!isPlaying) return
-        isPlaying = false
-        button_play!!.setImageResource(android.R.drawable.ic_media_play)
+        musicPlayer.setPause()
+        button_play.setImageResource(android.R.drawable.ic_media_play)
         stopAudioPlayerService()
-        exoPlayer.playWhenReady = false
     }
 
     private val updateSongTime = object : Runnable {
         override fun run() {
-            text_current_time.text = stringForTime(exoPlayer.currentPosition.toInt())
-            seekbar_avancement.progress = exoPlayer.currentPosition.toInt() / 1000
+            val position: Int = musicPlayer.getCurrentPosition().toInt()
+            text_current_time.text = stringForTime(position)
+            seekbar_avancement.progress = position / 1000
             myHandler.postDelayed(this, 100)
         }
     }
@@ -248,6 +229,32 @@ class AudioPlayer : AppCompatActivity() {
         } else {
             mFormatter.format("%02d:%02d", minutes, seconds).toString()
         }
+    }
+
+    private fun onMusicPlayerStateReady() {
+        val max: Int = musicPlayer.getDuration().toInt() / 1000
+        seekbar_avancement.max = max
+        progressDialog.dismiss()
+    }
+
+    private fun onMusicPlayerStateEnded() {
+        if (!musicPlayer.isPlaying()) return
+        musicPlayer.setPause()
+        musicPlayer.seekTo(0)
+        button_play.setImageResource(android.R.drawable.ic_media_play)
+        stopAudioPlayerService()
+        analyticsService.logSampleEndEvent(sample.slug)
+    }
+
+    private fun onMusicsPlayerError(message: String) {
+        stopAudioPlayerService()
+        button_play.isEnabled = false
+        progressDialog.dismiss()
+        showInformationDialog(
+            getString(R.string.error_player_title),
+            getString(R.string.error_player_content)
+        )
+        analyticsService.logErrorSample(sample.slug, message)
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean = when (keyCode) {
@@ -378,45 +385,5 @@ class AudioPlayer : AppCompatActivity() {
         }
     }
 
-    private inner class ComponentListener : Player.EventListener {
-
-        override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
-            when (playbackState) {
-                Player.STATE_READY -> {
-                    progressDialog.dismiss()
-                    seekbar_avancement.max = exoPlayer.duration.toInt() / 1000
-                }
-                Player.STATE_ENDED -> {
-                    if (!playWhenReady) return
-                    button_play.setImageResource(android.R.drawable.ic_media_play)
-                    exoPlayer.seekTo(0)
-                    exoPlayer.playWhenReady = false
-                    isPlaying = false
-                    stopAudioPlayerService();
-                    analyticsService.logSampleEndEvent(sample.slug)
-                }
-                else -> {
-                }
-            }
-        }
-
-        override fun onPlayerError(error: ExoPlaybackException) {
-            progressDialog.dismiss()
-            button_play.isEnabled = false
-            stopAudioPlayerService()
-            showInformationDialog(
-                getString(R.string.error_player_title),
-                getString(R.string.error_player_content)
-            )
-            val errorMessage = when (error.type) {
-                ExoPlaybackException.TYPE_SOURCE -> "SOURCE - ${error.sourceException.message}"
-                ExoPlaybackException.TYPE_OUT_OF_MEMORY -> "OUT_OF_MEMORY - ${error.outOfMemoryError.message}"
-                ExoPlaybackException.TYPE_RENDERER -> "RENDERER - ${error.rendererException.message}"
-                ExoPlaybackException.TYPE_UNEXPECTED -> "UNEXPECTED - ${error.unexpectedException.message}"
-                else -> "UNKNOWN - unknown"
-            }
-            analyticsService.logErrorSample(sample.slug, errorMessage)
-        }
-    }
 
 }

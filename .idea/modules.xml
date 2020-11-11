@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Desktop-hypnose-detente.iml" filepath="$PROJECT_DIR$/Desktop-hypnose-detente.iml" group="hypnose-detente" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="hypnose-detente/app" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/hypnose-detente.iml" filepath="$PROJECT_DIR$/.idea/hypnose-detente.iml" group="hypnose-detente" />
-      <module fileurl="file://$PROJECT_DIR$/app/hypnose-detente-app.iml" filepath="$PROJECT_DIR$/app/hypnose-detente-app.iml" group="hypnose-detente/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/hypnose-detente.iml" filepath="$PROJECT_DIR$/.idea/hypnose-detente.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/hypnose-detente.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/hypnose-detente.app.iml" />
     </modules>
   </component>
 </project>

@@ -2,7 +2,6 @@ package com.lacour.vincent.hypnosedetente.utils
 
 import android.content.Context
 import android.net.ConnectivityManager
-import android.net.wifi.WifiManager
 import android.os.Build
 import android.os.PowerManager
 import java.io.File
@@ -11,7 +10,6 @@ class AppUtils(private val ctx: Context) {
 
     companion object {
         private const val PLAYSTORE_PACKAGE_NAME = "com.android.vending"
-        private const val WIFI_LOCK_TAG = "WIFI_LOCK_APP_HYPNOSE_DETENTE"
     }
 
     fun isPlayStoreInstalled(): Boolean {
@@ -37,21 +35,8 @@ class AppUtils(private val ctx: Context) {
         return if (file.exists()) file.delete() else false
     }
 
-    fun setStayAwakeLock(state: Boolean) {
-        val wifiManager =
-            this.ctx.applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
-        val wifiLock =
-            wifiManager.createWifiLock(WifiManager.WIFI_MODE_FULL_HIGH_PERF, WIFI_LOCK_TAG)
-        wifiLock.setReferenceCounted(false)
-        if (!wifiLock.isHeld && state) {
-            wifiLock.acquire()
-            return
-        }
-        if (wifiLock.isHeld) wifiLock.release()
-    }
-
     fun isIgnoringBatteryOptimizations(): Boolean {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return true;
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return true
         val powerManager =
             this.ctx.applicationContext.getSystemService(Context.POWER_SERVICE) as PowerManager
         return powerManager.isIgnoringBatteryOptimizations(this.ctx.packageName)

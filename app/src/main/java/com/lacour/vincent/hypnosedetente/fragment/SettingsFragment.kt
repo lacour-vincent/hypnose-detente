@@ -60,7 +60,6 @@ class SettingsFragment : PreferenceFragmentCompat(),
         }
     }
 
-    @SuppressLint("BatteryLife", "InlinedApi")
     private fun requestIgnoreBatteryOptimizations() {
         val ctx: Context = requireContext()
         val packageName: String = ctx.packageName
