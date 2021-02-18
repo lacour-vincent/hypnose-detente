@@ -17,8 +17,8 @@ data class Tracks(
                     "avez juste à poser les écouteurs ou le casque de votre smartphone sur vos oreilles, et laisser faire. Pas " +
                     "besoin d'écouter vraiment ou de chercher à comprendre, juste vous laisser bercer. L'accompagnement " +
                     "musical est minimal et, comme la voix, s'en ira progressivement afin de ne pas troubler votre sommeil.",
-            "3a86fd7b7a2ac22db77d62a6572e6a08.mp3",
-            "https://yourlisten.com/filestemp/3a86fd7b7a2ac22db77d62a6572e6a08.mp3",
+            "asset_bien_dormir",
+            "bien-dormir.mp3",
             R.drawable.image_0,
             19,
             23
@@ -34,8 +34,8 @@ data class Tracks(
                     "de manière autonome, vous pouvez utiliser votre méthode préférée. De même, lorsque vous pratiquez en solo, " +
                     "vous n’avez pas besoin de parler ou de mentaliser les paroles. Il suffit de penser à ce que vous voulez, " +
                     "comme une intention. Avec la pratique, tout s’automatise et seule votre intention dirige la séance.",
-            "8307033b48e2363f05f219cb4bc8b6df.mp3",
-            "https://yourlisten.com/filestemp/8307033b48e2363f05f219cb4bc8b6df.mp3",
+            "",
+            ".mp3",
             R.drawable.image_1,
             30,
             36
@@ -49,8 +49,8 @@ data class Tracks(
                     "Cette enregistrement est à écouter avant l'enregistrement \"Curatif\" afin de bien comprendre l'esprit dans " +
                     "lequel vous mettre. Le texte est explicatif, avec de nombreuses métaphores. Le tout est dit assez rapidement, " +
                     "de manière à exciter, stimuler, vos processus psychophysiologiques. Texte et musique d'Olivier Lockert.",
-            "870e21a5d369a195834680c239dbc486.mp3",
-            "https://yourlisten.com/filestemp/870e21a5d369a195834680c239dbc486.mp3",
+            "",
+            ".mp3",
             R.drawable.image_2,
             27,
             32
@@ -66,8 +66,8 @@ data class Tracks(
                     "fermez les yeux et passez un bon moment, sans chercher à comprendre, ni même " +
                     "à écouter. S'il vous arrive de ne plus entendre, comme si vous pensiez à autre " +
                     "chose ou comme si vous aviez dormi : c'est parfait !",
-            "76e7f0ec83c2473efc5d06d590c1a4d8.mp3",
-            "https://yourlisten.com/filestemp/76e7f0ec83c2473efc5d06d590c1a4d8.mp3",
+            "",
+            ".mp3",
             R.drawable.image_3,
             36,
             44
@@ -82,8 +82,8 @@ data class Tracks(
                     "Rien à faire, rien à penser, juste vous laisser faire. Allongez-vous ou installez-vous confortablement, et laissez aller. " +
                     "Dans les situations les plus difficiles, utilisez cette induction au moins une fois par jour. Vous pouvez vous endormir pendant l'accompagnement, " +
                     "car l'action consciente, volontaire, est inutile.",
-            "8db902630e4c74a9a25bf2602ca69816.mp3",
-            "https://yourlisten.com/filestemp/8db902630e4c74a9a25bf2602ca69816.mp3",
+            "",
+            ".mp3",
             R.drawable.image_4,
             30,
             36
@@ -99,8 +99,8 @@ data class Tracks(
                     "ou en complément de tout l'aspect sanitaire donc continuez bien à vous protéger, " +
                     "à prendre soin de vous. Vous pouvez renouveler cette expérience chaque jour, pendant " +
                     "quelques temps, si vous en avez l'envie ou si cela vous fait du bien.",
-            "1bbbfbf5a76aa182105b2fe7a1732d07.mp3",
-            "https://yourlisten.com/filestemp/1bbbfbf5a76aa182105b2fe7a1732d07.mp3",
+            "",
+            ".mp3",
             R.drawable.image_5,
             24,
             29
@@ -116,8 +116,8 @@ data class Tracks(
                     "retrouver la forme, l'énergie, quand vous en aurez besoin (en dehors de cette séance d'hypnose). " +
                     "Exercice à pratiquer régulièrement pour bien le comprendre. Retenez qu'un ancrage ne s'use que si on ne s'en " +
                     "sert pas : plus vous pratiquerez, mieux votre ancrage fonctionnera !",
-            "b07d3c313b083f7b8114b14e330bb5fe.mp3",
-            "https://yourlisten.com/filestemp/b07d3c313b083f7b8114b14e330bb5fe.mp3",
+            "",
+            ".mp3",
             R.drawable.image_6,
             16,
             19
@@ -132,8 +132,8 @@ data class Tracks(
                     "suggestions et métaphores pour (re)trouver la confiance en vous. Vous n'aurez pas " +
                     "forcément besoin de l'écouter souvent : la première fois peut être la bonne ! La séance " +
                     "est conçue comme un accompagnement unique.",
-            "72842e1f87caf9977f682835ec939f34.mp3",
-            "https://yourlisten.com/filestemp/72842e1f87caf9977f682835ec939f34.mp3",
+            "",
+            ".mp3",
             R.drawable.image_7,
             39,
             46
@@ -149,8 +149,8 @@ data class Tracks(
                     "guider et suivre le protocole qui vous sera enseigné. Si cela va trop vite la première " +
                     "fois, pas de souci : laissez passer un jour ou deux, et réécoutez l'enregistrement. " +
                     "La seconde fois, vous y arriverez beaucoup mieux.",
-            "38809e1fe8f9a45ca4cc33f3d6cf5637.mp3",
-            "https://yourlisten.com/filestemp/38809e1fe8f9a45ca4cc33f3d6cf5637.mp3",
+            "",
+            ".mp3",
             R.drawable.image_8,
             25,
             30
@@ -166,8 +166,8 @@ data class Tracks(
                     "et à dialoguer avec certaines facettes de votre esprit inconscient. Ce travail intérieur pourra être repris " +
                     "régulièrement, jusqu'à ce que vous ayez l'automatisme de pensée qui vous permettra de ressentir ce dont a besoin votre esprit " +
                     "profond. La musique est d'Olivier Lockert.",
-            "adcc184bd1f887e41317aeafd887d0bf.mp3",
-            "https://yourlisten.com/filestemp/adcc184bd1f887e41317aeafd887d0bf.mp3",
+            "",
+            ".mp3",
             R.drawable.image_9,
             27,
             32
@@ -182,8 +182,8 @@ data class Tracks(
                     "vous sera également utile en cas de maladie, en complément de votre suivi médical, afin d’activer " +
                     "en vous vos ressources profondes. Le travail symbolique a l'avantage de permettre un travail important " +
                     "sans avoir besoin de revivre quoi que ce soit de pénible.",
-            "ee20b1e1f913f7dd9196e2f08b5b8ce2.mp3",
-            "https://yourlisten.com/filestemp/ee20b1e1f913f7dd9196e2f08b5b8ce2.mp3",
+            "",
+            ".mp3",
             R.drawable.image_10,
             26,
             31
@@ -200,8 +200,8 @@ data class Tracks(
                     "ou un rendez-vous important, une compétition sportive ou tout autre évènement " +
                     "stressant ponctuel, utilisez l'enregistrement suivant pour réactiver dans l'urgence " +
                     "les bienfaits de cette séance.",
-            "b75bbe36a35ffadf964d37d50cec9e00.mp3",
-            "https://yourlisten.com/filestemp/b75bbe36a35ffadf964d37d50cec9e00.mp3",
+            "",
+            ".mp3",
             R.drawable.image_11,
             22,
             26
@@ -217,8 +217,8 @@ data class Tracks(
                     "(parents, grand-parents, etc). Le côté symbolique a l'avantage de permettre un travail sur le passé sans avoir besoin " +
                     "de revivre des souvenirs douloureux. De plus, par nature, les symboles incluent davantage d'élements que des souvenirs " +
                     "concrets - sans que l'on sache.",
-            "1f7818fe9e44d9ec2d9c3d5d9e9ccae8.mp3",
-            "https://yourlisten.com/filestemp/1f7818fe9e44d9ec2d9c3d5d9e9ccae8.mp3",
+            "",
+            ".mp3",
             R.drawable.image_12,
             23,
             27
@@ -235,8 +235,8 @@ data class Tracks(
                     "l'intuition : le ressenti profond qui guide vos pas, souvent même sans que vous ne le sachiez. C'est ce qu'il y a de " +
                     "plus important pour vivre bien et en bonne santé, pour réussir sa vie et suivre le chemin qui a du coeur. Texte co-écrit par " +
                     "Patricia d'Angeli et Olivier Lockert. Le fond musical est d'Olivier Lockert.",
-            "5b51b7d87923d0d20879fba802577e36.mp3",
-            "https://yourlisten.com/filestemp/5b51b7d87923d0d20879fba802577e36.mp3",
+            "",
+            ".mp3",
             R.drawable.image_13,
             32,
             38
@@ -251,8 +251,8 @@ data class Tracks(
                     "apprenant l’auto-hypnose, vous utiliserez vos propres pensées, vos phrases personnelles, différentes " +
                     "des miennes. Ce sera à la fois plus simple pour vous et plus adapté, car tout viendra de vous. " +
                     "Texte d'Olivier Lockert.",
-            "beca6f10c0073e9823d9c3ba25c4c07e.mp3",
-            "https://yourlisten.com/filestemp/beca6f10c0073e9823d9c3ba25c4c07e.mp3",
+            "",
+            ".mp3",
             R.drawable.image_14,
             24,
             37
@@ -265,8 +265,8 @@ data class Tracks(
             "Cet accompagnement en Hypnose Humaniste vous propose de travailler sur ce qui bloque éventuellement en vous, " +
                     "afin que vous soyez pleinement ouvert au monde et connecté à vous-même, intuitif et capable de marcher " +
                     "chaque jour sur votre meilleur chemin de vie. Texte et musique d'Olivier Lockert.",
-            "1da5a457160506b95e0be41d41e32495.mp3",
-            "https://yourlisten.com/filestemp/1da5a457160506b95e0be41d41e32495.mp3",
+            "",
+            ".mp3",
             R.drawable.image_15,
             36,
             43
@@ -280,8 +280,8 @@ data class Tracks(
                     "ressources profondes et inconscientes. Vous pourrez demander l'aide de votre esprit " +
                     "profond pour résoudre des problèmes pour lesquels vous n'avez pas de solution, ou pour " +
                     "améliorer votre quotidien, même si tout va déjà très bien. Le texte et la musique sont d'Olivier Lockert.",
-            "53b89341f6628afd80d8eeae97032360.mp3",
-            "https://yourlisten.com/filestemp/53b89341f6628afd80d8eeae97032360.mp3",
+            "",
+            ".mp3",
             R.drawable.image_16,
             41,
             49
@@ -298,8 +298,8 @@ data class Tracks(
                     "une convalescence. Ecoutez la séance de préférence avec un casque audio, afin de profiter au " +
                     "mieux de l'accompagnement musical. Le texte est d’Olivier Lockert et la musique a été composée " +
                     "par Pascal Lengagne.",
-            "d3d239c18729cb3a6efb2329095b4411.mp3",
-            "https://yourlisten.com/filestemp/d3d239c18729cb3a6efb2329095b4411.mp3",
+            "",
+            ".mp3",
             R.drawable.image_17,
             40,
             49
@@ -316,8 +316,8 @@ data class Tracks(
                     "de penser exactement à ces phrases, il suffit d'avoir l'intention que les choses se " +
                     "fassent - et cela fonctionnera tout seul. Se tutoyer soi-même (ou parler à l'Inconscient) " +
                     "permet la dissociation, à la base de l'état d'hypnose.",
-            "0956b1287757ec8ba4a769b71fc1372a.mp3",
-            "https://yourlisten.com/filestemp/0956b1287757ec8ba4a769b71fc1372a.mp3",
+            "",
+            ".mp3",
             R.drawable.image_18,
             21,
             25
@@ -331,8 +331,8 @@ data class Tracks(
                     "un signaling, d'abord sans signification particulière, puis en stipulant les signes oui et non, " +
                     "ce qui vous permettra d'obtenir des réponses directes de votre Inconscient. Dans la seconde partie de l'accompagnement, " +
                     "vous apprendrez à interagir symboliquement avec votre Inconscient.",
-            "77d051ebd91d681120a2d9a266a0c24a.mp3",
-            "https://yourlisten.com/filestemp/77d051ebd91d681120a2d9a266a0c24a.mp3",
+            "",
+            ".mp3",
             R.drawable.image_19,
             45,
             54
@@ -349,8 +349,8 @@ data class Tracks(
                     "La technique, aussi puissante soit-elle, ne fonctionne que grâce à vous. C'est en vous forgeant " +
                     "vous-même que vous réussirez à faire naître la vie de vos rêves. C'est probablement la chose la plus " +
                     "difficile, travailler sur soi, mais c'est aussi la plus belle de toute l'existence.",
-            "973c53bad9d08c6b681613dff52e003e.mp3",
-            "https://yourlisten.com/filestemp/973c53bad9d08c6b681613dff52e003e.mp3",
+            "",
+            ".mp3",
             R.drawable.image_20,
             47,
             56
@@ -365,8 +365,8 @@ data class Tracks(
                     "Il est possible que vous entriez dans une transe normale, dissociée conscient/inconscient. " +
                     "Pour éviter cela, il faut réellement vous accrocher ici et maintenant, quitte à ne pas entrer en transe au début. " +
                     "Il est plus facile de se laisser emporter par l'Inconscient que de gagner en conscience !",
-            "cfe5cdbc921a2ed695b290c5427bf411.mp3",
-            "https://yourlisten.com/filestemp/cfe5cdbc921a2ed695b290c5427bf411.mp3",
+            "",
+            ".mp3",
             R.drawable.image_21,
             24,
             28
@@ -382,8 +382,8 @@ data class Tracks(
                     "plutôt que seulement appuyé sur des bases concrètes et vérifiables. Si vous recherchez " +
                     "seulement l’aspect thérapeutique de l’Hypnose Humaniste, vous ne serez probablement pas " +
                     "intéressé par ce récit. Texte d'Olivier Lockert et voix de Patricia d'Angeli.",
-            "021a9b6f2121f17252c145cb5109f02b.mp3",
-            "https://yourlisten.com/filestemp/021a9b6f2121f17252c145cb5109f02b.mp3",
+            "",
+            ".mp3",
             R.drawable.image_22,
             46,
             56
@@ -397,8 +397,8 @@ data class Tracks(
                     "elle existe et ça se voit !\". Si vous recherchez seulement l’aspect thérapeutique " +
                     "de l’Hypnose Humaniste, vous ne serez probablement pas intéressé par ce récit. Texte et " +
                     "voix d'Olivier Lockert.",
-            "6403c831b0c95cc3171b53ae8bcf7721.mp3",
-            "https://yourlisten.com/filestemp/6403c831b0c95cc3171b53ae8bcf7721.mp3",
+            "",
+            ".mp3",
             R.drawable.image_23,
             40,
             48

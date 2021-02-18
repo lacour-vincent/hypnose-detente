@@ -19,7 +19,6 @@ class MusicPlayer(context: Context) {
     private val dataSource = DefaultDataSourceFactory(ctx, userAgent)
     private val progressiveMediaSource = ProgressiveMediaSource.Factory(dataSource)
 
-
     private var onStateReady: (() -> Unit)? = null
     private var onStateEnded: (() -> Unit)? = null
     private var onError: ((message: String) -> Unit)? = null
@@ -54,20 +53,11 @@ class MusicPlayer(context: Context) {
         player.setWakeMode(WAKE_MODE_NETWORK)
     }
 
-    fun prepareLocalFile(file: String) {
-        val folder = ctx.getExternalFilesDir(ctx.filesDir.absolutePath)
-        val media = Uri.parse(File(folder, file).absolutePath)
-        val mediaSource = progressiveMediaSource.createMediaSource(media)
-        player.prepare(mediaSource)
-
-    }
-
-    fun prepareRemoteFile(url: String) {
-        val media = Uri.parse(url)
+    fun prepareLocalFile(file: File) {
+        val media = Uri.parse(file.absolutePath)
         val mediaSource = progressiveMediaSource.createMediaSource(media)
         player.prepare(mediaSource)
     }
-
 
     fun isPlaying(): Boolean {
         return player.playWhenReady

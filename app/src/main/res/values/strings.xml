@@ -5,7 +5,6 @@
     <string name="app_author">\@LacourVincent</string>
 
     <string name="version_label">Version</string>
-    <string name="version_number">1.4.2</string>
 
     <string name="author_label">Auteur</string>
     <string name="author_content">Lacour Vincent</string>
@@ -26,15 +25,11 @@
     <string name="battery_optimization_summary">Désactiver ce paramètre permet d\'éviter les coupures pendant les séances sur certains appareils.</string>
     <string name="battery_optimization_already_set">L\'optimisation de la batterie est désactivité sur votre appareil pour l\'application.</string>
 
-    <string name="error_internet_title">Connexion Internet nécessaire</string>
-    <string name="error_internet_content">Vous devez disposer d\'une connexion à Internet pour charger les séances.</string>
-
     <string name="sample_duration">\u23f0 %1$d min</string>
     <string name="loading_title">Chargement</string>
     <string name="loading_content">Chargement de la séance</string>
     <string name="notification_description">%1$s — lecture en cours</string>
 
-    <string name="download_label">Télécharger</string>
     <string name="rating_label">Evaluer</string>
     <string name="settings_label">Paramètres</string>
     <string name="information_label">Informations</string>
@@ -49,27 +44,11 @@
     <string name="information_title">Information</string>
     <string name="information_yes">OK</string>
 
-    <string name="download_title">Téléchargement</string>
-    <string name="download_content">Vous pouvez télécharger la séance afin de l\'écouter en mode hors
-        connexion par la suite.\n\n%1$d Mo d\'espace libre nécessaire.
-    </string>
-    <string name="download_yes">Télécharger</string>
-    <string name="download_no">Plus tard</string>
-    <string name="download_notification_content">Téléchargement en cours</string>
-
-    <string name="download_delete_yes">Supprimer</string>
-    <string name="download_delete_no">OK</string>
-    <string name="download_content_already">Vous pouvez écouter la séance en mode hors-connexion dès la fin du téléchargement.</string>
-    <string name="download_unavailable">Le téléchargement n\'est pas compatible avec votre appareil.</string>
-
-    <string name="file_delete_success">La séance a été supprimée de votre appareil.</string>
-    <string name="file_delete_failure">Une erreur est survenue.</string>
-
     <string name="error_player_title">Erreur de chargement de la séance</string>
     <string name="error_player_content">Pour résoudre ce problème, vous pouvez :\n
-        - télécharger la séance si votre connexion internet est instable.\n
-        - désactiver l\'optimisation de la batterie dans les paramètres de l\'application.\n
-        - patienter que l\'hébergeur soit de nouveau en service si ce dernier est tombé.\n\n
+        - vérifier que votre appareil a suffisamment de mémoire disponible.\n
+        - retenter le téléchargement avec une connexion internet stable.\n
+        - désactiver l\'optimisation de la batterie dans les paramètres de l\'application.\n\n
 
         En attendant, vous pouvez retrouver l\'ensemble des séances :\n
         https://soundcloud.com/mp3-hypnose-gratuit
@@ -85,6 +64,5 @@
     <string name="information_icon">Information</string>
     <string name="sound_icon">Son</string>
     <string name="thumbnail_image">Vignette</string>
-    <string name="airplane_icon">Avion</string>
 
 </resources>

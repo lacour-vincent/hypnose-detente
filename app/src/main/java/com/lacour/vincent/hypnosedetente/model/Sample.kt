@@ -9,8 +9,8 @@ data class Sample(
     val fullTitle: String,
     val slug: String,
     val description: String,
-    val file: String,
-    val url: String,
+    val asset: String,
+    val filename: String,
     val thumbnail: Int,
     val duration: Int,
     val size: Int
@@ -35,8 +35,8 @@ data class Sample(
         parcel.writeString(fullTitle)
         parcel.writeString(slug)
         parcel.writeString(description)
-        parcel.writeString(file)
-        parcel.writeString(url)
+        parcel.writeString(asset)
+        parcel.writeString(filename)
         parcel.writeInt(thumbnail)
         parcel.writeInt(duration)
         parcel.writeInt(size)

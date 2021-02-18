@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/hypnose-detente.iml" filepath="$PROJECT_DIR$/.idea/hypnose-detente.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/hypnose-detente.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/hypnose-detente.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/asset_bien_dormir/hypnose-detente.asset_bien_dormir.iml" filepath="$PROJECT_DIR$/.idea/modules/asset_bien_dormir/hypnose-detente.asset_bien_dormir.iml" />
     </modules>
   </component>
 </project>

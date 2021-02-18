@@ -7,18 +7,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-
 import com.bumptech.glide.Glide
 import com.lacour.vincent.hypnosedetente.R
-
 import com.lacour.vincent.hypnosedetente.model.Sample
-import com.lacour.vincent.hypnosedetente.utils.AppUtils
 
 
 class SampleAdapter(private val context: Context, private val samples: List<Sample>) :
     RecyclerView.Adapter<SampleAdapter.ViewHolder>() {
-
-    private val appUtils = AppUtils(context)
     override fun getItemCount(): Int = samples.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -26,9 +21,6 @@ class SampleAdapter(private val context: Context, private val samples: List<Samp
         holder.title.text = sample.title
         holder.duration.text = context.getString(R.string.sample_duration, sample.duration)
         Glide.with(context).load(sample.thumbnail).into(holder.thumbnail)
-        holder.airplane.visibility =
-            if (appUtils.isFileExist(sample.file)) View.VISIBLE else View.GONE
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -41,7 +33,5 @@ class SampleAdapter(private val context: Context, private val samples: List<Samp
         val title: TextView = itemView.findViewById(R.id.title)
         val duration: TextView = itemView.findViewById(R.id.duration)
         val thumbnail: ImageView = itemView.findViewById(R.id.thumbnail)
-        val airplane: ImageView = itemView.findViewById(R.id.airplane)
-
     }
 }

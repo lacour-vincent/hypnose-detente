@@ -52,23 +52,14 @@ class Welcome : AppCompatActivity() {
                 this,
                 object : RecyclerItemClickListener.OnItemClickListener {
                     override fun onItemClick(view: View, position: Int) {
-                        val hasInternetOrIsSampleIsInLocalStorage =
-                            appUtils.hasInternet() || appUtils.isFileExist(samples[position].file)
+                        val intent = Intent(this@Welcome, AudioPlayer::class.java)
+                        intent.putExtra("sample", samples[position])
+                        startActivity(intent)
+                        this@Welcome.overridePendingTransition(
+                            R.anim.anim_slide_in_left,
+                            R.anim.anim_slide_out_left
+                        )
 
-                        if (hasInternetOrIsSampleIsInLocalStorage) {
-                            val intent = Intent(this@Welcome, AudioPlayer::class.java)
-                            intent.putExtra("sample", samples[position])
-                            startActivity(intent)
-                            this@Welcome.overridePendingTransition(
-                                R.anim.anim_slide_in_left,
-                                R.anim.anim_slide_out_left
-                            )
-                        } else {
-                            showInformationDialog(
-                                getString(R.string.error_internet_title),
-                                getString(R.string.error_internet_content)
-                            )
-                        }
                     }
                 })
         )
@@ -122,16 +113,6 @@ class Welcome : AppCompatActivity() {
         val intent = Intent(Intent.ACTION_VIEW)
         intent.data = Uri.parse(PLAYSTORE_LINK)
         startActivity(intent)
-    }
-
-    private fun showInformationDialog(title: String, message: String) {
-        val builder = AlertDialog.Builder(ContextThemeWrapper(this, R.style.AppTheme_Dialog))
-        with(builder) {
-            setTitle(title)
-            setMessage(message)
-            setPositiveButton(getString(R.string.information_yes)) { _, _ -> }
-            show()
-        }
     }
 
     private fun showRatingDialog(title: String, message: String) {

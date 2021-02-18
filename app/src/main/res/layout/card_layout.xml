@@ -55,20 +55,9 @@
                     android:paddingBottom="10dp"
                     android:textColor="@color/colorCardContent"
                     android:textSize="12sp"
-                    card_view:layout_constraintEnd_toStartOf="@+id/airplane"
+                    card_view:layout_constraintEnd_toStartOf="parent"
                     card_view:layout_constraintStart_toStartOf="parent"
                     card_view:layout_constraintTop_toBottomOf="@+id/title" />
-
-            <ImageView
-                    android:id="@+id/airplane"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_margin="6dp"
-                    android:contentDescription="@string/airplane_icon"
-                    android:src="@drawable/ic_airplanemode"
-                    android:visibility="gone"
-                    card_view:layout_constraintBottom_toBottomOf="parent"
-                    card_view:layout_constraintEnd_toEndOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
