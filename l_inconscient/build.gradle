@@ -1,0 +1,9 @@
+apply plugin: 'com.android.asset-pack'
+
+assetPack {
+    packName = "l_inconscient"
+    dynamicDelivery {
+        deliveryType = "on-demand"
+    }
+}
+

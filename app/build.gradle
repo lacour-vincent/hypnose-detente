@@ -31,7 +31,10 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
-    assetPacks = [":asset_bien_dormir"]
+    assetPacks = [":adaptation_aux_virus", ":auto_hypnose", ":bain_d_hypnose", ":bien_dormir", ":calmer_l_anxiete",
+                  ":confiance_en_soi", ":createur_de_realite", ":curatif", ":estime_de_soi", ":expansion", ":gerer_le_stress",
+                  ":histoire_de_la_vie", ":immersion_sensorielle", ":intuition", ":la_conscience", ":l_inconscient", ":magie_interieur",
+                  ":preventif", ":ressourcement", ":retrouver_le_moral", ":reussir_sa_vie", ":s_endormir", ":soigner_son_passe", ":transformer_vos_peurs"]
 
 }
 

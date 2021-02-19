@@ -1,0 +1,9 @@
+apply plugin: 'com.android.asset-pack'
+
+assetPack {
+    packName = "magie_interieur"
+    dynamicDelivery {
+        deliveryType = "on-demand"
+    }
+}
+

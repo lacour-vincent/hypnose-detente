@@ -1,0 +1,9 @@
+apply plugin: 'com.android.asset-pack'
+
+assetPack {
+    packName = "calmer_l_anxiete"
+    dynamicDelivery {
+        deliveryType = "on-demand"
+    }
+}
+

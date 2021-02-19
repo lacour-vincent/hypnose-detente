@@ -1,0 +1,9 @@
+apply plugin: 'com.android.asset-pack'
+
+assetPack {
+    packName = "auto_hypnose"
+    dynamicDelivery {
+        deliveryType = "on-demand"
+    }
+}
+

@@ -1,0 +1,9 @@
+apply plugin: 'com.android.asset-pack'
+
+assetPack {
+    packName = "bain_d_hypnose"
+    dynamicDelivery {
+        deliveryType = "on-demand"
+    }
+}
+

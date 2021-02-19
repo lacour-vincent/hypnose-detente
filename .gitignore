@@ -17,8 +17,34 @@
 .idea/caches
 .idea/modules.xml
 
-# Asset
-/asset*
+# Assets
+adaptation_aux_virus/**/*.mp3
+auto_hypnose/**/*.mp3
+bain_d_hypnose/**/*.mp3
+bien_dormir/**/*.mp3
+calmer_l_anxiete/**/*.mp3
+confiance_en_soi/**/*.mp3
+createur_de_realite/**/*.mp3
+curatif/**/*.mp3
+estime_de_soi/**/*.mp3
+expansion/**/*.mp3
+gerer_le_stress/**/*.mp3
+histoire_de_la_vie/**/*.mp3
+immersion_sensorielle/**/*.mp3
+intuition/**/*.mp3
+l_inconscient/**/*.mp3
+la_conscience/**/*.mp3
+magie_interieur/**/*.mp3
+preventif/**/*.mp3
+ressourcement/**/*.mp3
+retrouver_le_moral/**/*.mp3
+reussir_sa_vie/**/*.mp3
+s_endormir/**/*.mp3
+soigner_son_passe/**/*.mp3
+transformer_vos_peurs/**/*.mp3
+
+
+
 
 .gradle
 /local.properties

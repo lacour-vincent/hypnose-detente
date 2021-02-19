@@ -1,0 +1,9 @@
+apply plugin: 'com.android.asset-pack'
+
+assetPack {
+    packName = "expansion"
+    dynamicDelivery {
+        deliveryType = "on-demand"
+    }
+}
+

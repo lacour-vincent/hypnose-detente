@@ -1,0 +1,9 @@
+apply plugin: 'com.android.asset-pack'
+
+assetPack {
+    packName = "preventif"
+    dynamicDelivery {
+        deliveryType = "on-demand"
+    }
+}
+

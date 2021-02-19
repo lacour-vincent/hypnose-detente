@@ -1,0 +1,9 @@
+apply plugin: 'com.android.asset-pack'
+
+assetPack {
+    packName = "adaptation_aux_virus"
+    dynamicDelivery {
+        deliveryType = "on-demand"
+    }
+}
+

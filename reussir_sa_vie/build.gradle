@@ -1,0 +1,9 @@
+apply plugin: 'com.android.asset-pack'
+
+assetPack {
+    packName = "reussir_sa_vie"
+    dynamicDelivery {
+        deliveryType = "on-demand"
+    }
+}
+

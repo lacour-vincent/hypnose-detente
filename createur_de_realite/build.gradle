@@ -1,0 +1,9 @@
+apply plugin: 'com.android.asset-pack'
+
+assetPack {
+    packName = "createur_de_realite"
+    dynamicDelivery {
+        deliveryType = "on-demand"
+    }
+}
+

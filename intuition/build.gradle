@@ -1,0 +1,9 @@
+apply plugin: 'com.android.asset-pack'
+
+assetPack {
+    packName = "intuition"
+    dynamicDelivery {
+        deliveryType = "on-demand"
+    }
+}
+

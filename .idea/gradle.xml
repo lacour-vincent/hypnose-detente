@@ -10,8 +10,31 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/adaptation_aux_virus" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/asset_bien_dormir" />
+            <option value="$PROJECT_DIR$/auto_hypnose" />
+            <option value="$PROJECT_DIR$/bain_d_hypnose" />
+            <option value="$PROJECT_DIR$/bien_dormir" />
+            <option value="$PROJECT_DIR$/calmer_l_anxiete" />
+            <option value="$PROJECT_DIR$/confiance_en_soi" />
+            <option value="$PROJECT_DIR$/createur_de_realite" />
+            <option value="$PROJECT_DIR$/curatif" />
+            <option value="$PROJECT_DIR$/estime_de_soi" />
+            <option value="$PROJECT_DIR$/expansion" />
+            <option value="$PROJECT_DIR$/gerer_le_stress" />
+            <option value="$PROJECT_DIR$/histoire_de_la_vie" />
+            <option value="$PROJECT_DIR$/immersion_sensorielle" />
+            <option value="$PROJECT_DIR$/intuition" />
+            <option value="$PROJECT_DIR$/l_inconscient" />
+            <option value="$PROJECT_DIR$/la_conscience" />
+            <option value="$PROJECT_DIR$/magie_interieur" />
+            <option value="$PROJECT_DIR$/preventif" />
+            <option value="$PROJECT_DIR$/ressourcement" />
+            <option value="$PROJECT_DIR$/retrouver_le_moral" />
+            <option value="$PROJECT_DIR$/reussir_sa_vie" />
+            <option value="$PROJECT_DIR$/s_endormir" />
+            <option value="$PROJECT_DIR$/soigner_son_passe" />
+            <option value="$PROJECT_DIR$/transformer_vos_peurs" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -1,0 +1,9 @@
+apply plugin: 'com.android.asset-pack'
+
+assetPack {
+    packName = "bien_dormir"
+    dynamicDelivery {
+        deliveryType = "on-demand"
+    }
+}
+

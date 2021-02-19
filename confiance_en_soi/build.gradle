@@ -1,0 +1,9 @@
+apply plugin: 'com.android.asset-pack'
+
+assetPack {
+    packName = "confiance_en_soi"
+    dynamicDelivery {
+        deliveryType = "on-demand"
+    }
+}
+

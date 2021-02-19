@@ -1,0 +1,9 @@
+apply plugin: 'com.android.asset-pack'
+
+assetPack {
+    packName = "immersion_sensorielle"
+    dynamicDelivery {
+        deliveryType = "on-demand"
+    }
+}
+

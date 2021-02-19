@@ -12,12 +12,8 @@ class AnalyticsService(ctx: Context) {
         private const val VIEW_SAMPLE_EVENT = "sample_view"
         private const val INFORMATION_SAMPLE_EVENT = "sample_information"
         private const val END_SAMPLE_EVENT = "sample_end"
-        private const val DOWNLOAD_SAMPLE_EVENT = "sample_download"
-        private const val DELETE_SAMPLE_EVENT = "sample_delete"
-        private const val ERROR_DOWNLOAD_SAMPLE_EVENT = "sample_download_error"
         private const val ERROR_SAMPLE_EVENT = "sample_error"
         private const val DEVICE_INCOMPATIBLE_EVENT = "incompatible_device"
-
         private const val SAMPLE_PARAM = "sample"
         private const val ERROR_MESSAGE_PARAM = "error_message"
     }
@@ -49,24 +45,6 @@ class AnalyticsService(ctx: Context) {
         val params = Bundle()
         params.putString(SAMPLE_PARAM, sample)
         return logEvent(END_SAMPLE_EVENT, params)
-    }
-
-    fun logDownloadSampleEvent(sample: String) {
-        val params = Bundle()
-        params.putString(SAMPLE_PARAM, sample)
-        return logEvent(DOWNLOAD_SAMPLE_EVENT, params)
-    }
-
-    fun logDeleteSampleEvent(sample: String) {
-        val params = Bundle()
-        params.putString(SAMPLE_PARAM, sample)
-        return logEvent(DELETE_SAMPLE_EVENT, params)
-    }
-
-    fun logErrorDownloadSample(sample: String) {
-        val params = Bundle()
-        params.putString(SAMPLE_PARAM, sample)
-        return logEvent(ERROR_DOWNLOAD_SAMPLE_EVENT, params)
     }
 
     fun logErrorSample(sample: String, message: String) {

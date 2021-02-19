@@ -1,0 +1,9 @@
+apply plugin: 'com.android.asset-pack'
+
+assetPack {
+    packName = "soigner_son_passe"
+    dynamicDelivery {
+        deliveryType = "on-demand"
+    }
+}
+

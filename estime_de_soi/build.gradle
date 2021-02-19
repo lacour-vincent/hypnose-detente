@@ -1,0 +1,9 @@
+apply plugin: 'com.android.asset-pack'
+
+assetPack {
+    packName = "estime_de_soi"
+    dynamicDelivery {
+        deliveryType = "on-demand"
+    }
+}
+

@@ -45,7 +45,7 @@ class AssetPackSampleManager(private val assetPackName: String, ctx: Context) {
                     if (state?.status() == AssetPackStatus.COMPLETED) {
                         onAssetStateCompleted?.invoke()
                     } else {
-                        assetPackManager.fetch(mutableListOf(assetPackName))
+                        assetPackManager.fetch(mutableListOf(this.assetPackName))
                     }
                 } catch (e: RuntimeExecutionException) {
                     onAssetStateError?.invoke("ASSET_GET_STATE_ERROR")

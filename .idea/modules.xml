@@ -3,8 +3,31 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/hypnose-detente.iml" filepath="$PROJECT_DIR$/.idea/hypnose-detente.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/adaptation_aux_virus/hypnose-detente.adaptation_aux_virus.iml" filepath="$PROJECT_DIR$/.idea/modules/adaptation_aux_virus/hypnose-detente.adaptation_aux_virus.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/hypnose-detente.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/hypnose-detente.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/asset_bien_dormir/hypnose-detente.asset_bien_dormir.iml" filepath="$PROJECT_DIR$/.idea/modules/asset_bien_dormir/hypnose-detente.asset_bien_dormir.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/auto_hypnose/hypnose-detente.auto_hypnose.iml" filepath="$PROJECT_DIR$/.idea/modules/auto_hypnose/hypnose-detente.auto_hypnose.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bain_d_hypnose/hypnose-detente.bain_d_hypnose.iml" filepath="$PROJECT_DIR$/.idea/modules/bain_d_hypnose/hypnose-detente.bain_d_hypnose.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bien_dormir/hypnose-detente.bien_dormir.iml" filepath="$PROJECT_DIR$/.idea/modules/bien_dormir/hypnose-detente.bien_dormir.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/calmer_l_anxiete/hypnose-detente.calmer_l_anxiete.iml" filepath="$PROJECT_DIR$/.idea/modules/calmer_l_anxiete/hypnose-detente.calmer_l_anxiete.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/confiance_en_soi/hypnose-detente.confiance_en_soi.iml" filepath="$PROJECT_DIR$/.idea/modules/confiance_en_soi/hypnose-detente.confiance_en_soi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/createur_de_realite/hypnose-detente.createur_de_realite.iml" filepath="$PROJECT_DIR$/.idea/modules/createur_de_realite/hypnose-detente.createur_de_realite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/curatif/hypnose-detente.curatif.iml" filepath="$PROJECT_DIR$/.idea/modules/curatif/hypnose-detente.curatif.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/estime_de_soi/hypnose-detente.estime_de_soi.iml" filepath="$PROJECT_DIR$/.idea/modules/estime_de_soi/hypnose-detente.estime_de_soi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/expansion/hypnose-detente.expansion.iml" filepath="$PROJECT_DIR$/.idea/modules/expansion/hypnose-detente.expansion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gerer_le_stress/hypnose-detente.gerer_le_stress.iml" filepath="$PROJECT_DIR$/.idea/modules/gerer_le_stress/hypnose-detente.gerer_le_stress.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/histoire_de_la_vie/hypnose-detente.histoire_de_la_vie.iml" filepath="$PROJECT_DIR$/.idea/modules/histoire_de_la_vie/hypnose-detente.histoire_de_la_vie.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/immersion_sensorielle/hypnose-detente.immersion_sensorielle.iml" filepath="$PROJECT_DIR$/.idea/modules/immersion_sensorielle/hypnose-detente.immersion_sensorielle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/intuition/hypnose-detente.intuition.iml" filepath="$PROJECT_DIR$/.idea/modules/intuition/hypnose-detente.intuition.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/l_inconscient/hypnose-detente.l_inconscient.iml" filepath="$PROJECT_DIR$/.idea/modules/l_inconscient/hypnose-detente.l_inconscient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/la_conscience/hypnose-detente.la_conscience.iml" filepath="$PROJECT_DIR$/.idea/modules/la_conscience/hypnose-detente.la_conscience.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/magie_interieur/hypnose-detente.magie_interieur.iml" filepath="$PROJECT_DIR$/.idea/modules/magie_interieur/hypnose-detente.magie_interieur.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/preventif/hypnose-detente.preventif.iml" filepath="$PROJECT_DIR$/.idea/modules/preventif/hypnose-detente.preventif.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ressourcement/hypnose-detente.ressourcement.iml" filepath="$PROJECT_DIR$/.idea/modules/ressourcement/hypnose-detente.ressourcement.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/retrouver_le_moral/hypnose-detente.retrouver_le_moral.iml" filepath="$PROJECT_DIR$/.idea/modules/retrouver_le_moral/hypnose-detente.retrouver_le_moral.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/reussir_sa_vie/hypnose-detente.reussir_sa_vie.iml" filepath="$PROJECT_DIR$/.idea/modules/reussir_sa_vie/hypnose-detente.reussir_sa_vie.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/s_endormir/hypnose-detente.s_endormir.iml" filepath="$PROJECT_DIR$/.idea/modules/s_endormir/hypnose-detente.s_endormir.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/soigner_son_passe/hypnose-detente.soigner_son_passe.iml" filepath="$PROJECT_DIR$/.idea/modules/soigner_son_passe/hypnose-detente.soigner_son_passe.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/transformer_vos_peurs/hypnose-detente.transformer_vos_peurs.iml" filepath="$PROJECT_DIR$/.idea/modules/transformer_vos_peurs/hypnose-detente.transformer_vos_peurs.iml" />
     </modules>
   </component>
 </project>

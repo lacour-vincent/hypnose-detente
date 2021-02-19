@@ -1,0 +1,9 @@
+apply plugin: 'com.android.asset-pack'
+
+assetPack {
+    packName = "histoire_de_la_vie"
+    dynamicDelivery {
+        deliveryType = "on-demand"
+    }
+}
+
