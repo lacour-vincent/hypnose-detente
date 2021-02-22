@@ -32,6 +32,7 @@ class ForegroundService : Service() {
         super.onDestroy()
     }
 
+
     override fun onTaskRemoved(rootIntent: Intent?) {
         stopSelf()
         super.onTaskRemoved(rootIntent)
@@ -54,35 +55,26 @@ class ForegroundService : Service() {
         return super.onStartCommand(intent, flags, startId)
     }
 
-    private fun getNotification(seletedSound: String) {
-
+    private fun getNotification(selectedSound: String) {
         createChannel(this)
-
         val notifyIntent = Intent(this, AudioPlayer::class.java)
         notifyIntent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
         val pendingIntent = PendingIntent.getActivity(
             this, 0, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT
         )
-
         val mNotification: Notification = NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_music_note)
             .setWhen(System.currentTimeMillis())
             .setAutoCancel(true)
             .setContentTitle(getString(R.string.app_name))
-            .setContentText(getString(R.string.notification_description, seletedSound))
+            .setContentText(getString(R.string.notification_description, selectedSound))
             .setContentIntent(pendingIntent)
             .build()
-
         startForeground(FOREGROUND_SERVICE_ID, mNotification)
     }
 
-
     private fun createChannel(context: Context) {
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-
-            // Create the NotificationChannel, but only on API 26+ because
-            // the NotificationChannel class is new and not in the support library
             val notificationManager =
                 context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             val importance = NotificationManager.IMPORTANCE_LOW
@@ -95,12 +87,12 @@ class ForegroundService : Service() {
             notificationChannel.lockscreenVisibility = Notification.VISIBILITY_PUBLIC
             notificationManager.createNotificationChannel(notificationChannel)
         }
-
     }
 
     private fun stopForegroundService() {
         stopForeground(true)
         stopSelf()
     }
+
 
 }

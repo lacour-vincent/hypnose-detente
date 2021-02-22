@@ -76,7 +76,7 @@ class AssetPackSampleManager(private val assetPackName: String, ctx: Context) {
     }
 
     fun setOnAssetStateReady(cb: () -> Unit) {
-        onAssetStateDownloadCompleted = cb
+        onAssetStateReady = cb
     }
 
     fun setOnAssetStateDownloadCompleted(cb: () -> Unit) {

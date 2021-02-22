@@ -66,7 +66,10 @@ class AudioPlayer : AppCompatActivity() {
                 AssetPackSampleManager(sample.asset, this.applicationContext)
             assetPackSampleManager.registerListener()
             assetPackSampleManager.setOnAssetStateReady { prepareMusicPlayer() }
-            assetPackSampleManager.setOnAssetStateDownloadCompleted { onAssetDownloadCompleted() }
+            assetPackSampleManager.setOnAssetStateDownloadCompleted {
+                analyticsService.logSampleDownloadEvent(sample.slug)
+                prepareMusicPlayer()
+            }
             assetPackSampleManager.setOnAssetStateError { message -> onAudioPlayerError(message) }
             assetPackSampleManager.requestAssetPackState()
 
@@ -131,11 +134,6 @@ class AudioPlayer : AppCompatActivity() {
             )
             analyticsService.logIncompatibleDevice()
         }
-    }
-
-    private fun onAssetDownloadCompleted() {
-        analyticsService.logSampleDownloadEvent(sample.slug)
-        prepareMusicPlayer()
     }
 
     private fun prepareMusicPlayer() {
@@ -313,6 +311,7 @@ class AudioPlayer : AppCompatActivity() {
             AlertDialog.Builder(ContextThemeWrapper(this, R.style.AppTheme_Loading_Dialog))
         val view = layoutInflater.inflate(R.layout.loading_layout, null)
         builder.setView(view)
+        builder.setCancelable(false)
         return builder.create()
     }
 
