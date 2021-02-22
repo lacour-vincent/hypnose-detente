@@ -26,8 +26,7 @@
     <string name="battery_optimization_already_set">L\'optimisation de la batterie est désactivité sur votre appareil pour l\'application.</string>
 
     <string name="sample_duration">\u23f0 %1$d min</string>
-    <string name="loading_title">Chargement</string>
-    <string name="loading_content">Chargement de la séance</string>
+    <string name="loading_title">Téléchargement en cours</string>
     <string name="notification_description">%1$s — lecture en cours</string>
 
     <string name="rating_label">Evaluer</string>
@@ -63,6 +62,7 @@
     <string name="email_icon">Courrier electronique</string>
     <string name="information_icon">Information</string>
     <string name="sound_icon">Son</string>
+    <string name="airplane_icon">Avion</string>
     <string name="thumbnail_image">Vignette</string>
 
 </resources>

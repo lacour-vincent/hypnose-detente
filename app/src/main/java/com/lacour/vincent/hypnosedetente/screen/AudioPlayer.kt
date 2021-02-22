@@ -8,7 +8,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
@@ -65,8 +64,11 @@ class AudioPlayer : AppCompatActivity() {
 
             assetPackSampleManager =
                 AssetPackSampleManager(sample.asset, this.applicationContext)
-            assetPackSampleManager.setOnAssetStateCompleted { prepareMusicPlayer(sample.filename) }
+            assetPackSampleManager.registerListener()
+            assetPackSampleManager.setOnAssetStateReady { prepareMusicPlayer() }
+            assetPackSampleManager.setOnAssetStateDownloadCompleted { onAssetDownloadCompleted() }
             assetPackSampleManager.setOnAssetStateError { message -> onAudioPlayerError(message) }
+            assetPackSampleManager.requestAssetPackState()
 
             musicPlayer = MusicPlayer(this)
             musicPlayer.setOnStateReadyListener { onAudioPlayerReady() }
@@ -83,7 +85,6 @@ class AudioPlayer : AppCompatActivity() {
 
             Glide.with(this).load(sample.thumbnail).into(image_sample)
             analyticsService.logViewSampleEvent(sample.slug)
-
 
             seekbar_sound.setOnSeekBarChangeListener(object :
                 SeekBar.OnSeekBarChangeListener {
@@ -120,7 +121,6 @@ class AudioPlayer : AppCompatActivity() {
             })
 
             progressDialog = createLoadingDialog()
-            progressDialog.setCancelable(false)
             progressDialog.show()
 
         } catch (e: Exception) {
@@ -133,9 +133,14 @@ class AudioPlayer : AppCompatActivity() {
         }
     }
 
-    private fun prepareMusicPlayer(filename: String) {
-        val file = assetPackSampleManager.getAssetPackFile(filename)
-        if (file == null) onAudioPlayerError("FILE_NOT_FOUND")
+    private fun onAssetDownloadCompleted() {
+        analyticsService.logSampleDownloadEvent(sample.slug)
+        prepareMusicPlayer()
+    }
+
+    private fun prepareMusicPlayer() {
+        val file = assetPackSampleManager.getAssetPackFile(sample.filename)
+        if (file == null) onAudioPlayerError("ASSET_FILE_NOT_FOUND")
         else musicPlayer.prepareLocalFile(file)
     }
 
@@ -170,7 +175,7 @@ class AudioPlayer : AppCompatActivity() {
     public override fun onDestroy() {
         stopMusicPlayer()
         stopAudioPlayerService()
-        assetPackSampleManager.removeListener()
+        assetPackSampleManager.unregisterListener()
         myHandler.removeCallbacksAndMessages(null)
         super.onDestroy()
     }
@@ -248,7 +253,6 @@ class AudioPlayer : AppCompatActivity() {
         stopAudioPlayerService()
         button_play.isEnabled = false
         progressDialog.dismiss()
-        Log.d("debug", message)
         showInformationDialog(
             getString(R.string.error_player_title),
             getString(R.string.error_player_content)
@@ -305,13 +309,11 @@ class AudioPlayer : AppCompatActivity() {
 
 
     private fun createLoadingDialog(): Dialog {
-        return AlertDialog.Builder(
-            ContextThemeWrapper(
-                this,
-                R.style.AppTheme_Loading_Dialog
-            )
-        )
-            .setView(R.layout.loading_layout).create()
+        val builder =
+            AlertDialog.Builder(ContextThemeWrapper(this, R.style.AppTheme_Loading_Dialog))
+        val view = layoutInflater.inflate(R.layout.loading_layout, null)
+        builder.setView(view)
+        return builder.create()
     }
 
     private fun showInformationDialog(title: String, message: String) {
