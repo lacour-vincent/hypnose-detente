@@ -4,21 +4,17 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class Sample(
-    val id: Int,
     val title: String,
     val fullTitle: String,
-    val slug: String,
-    val description: String,
     val asset: String,
     val filename: String,
+    val description: String,
     val thumbnail: Int,
     val duration: Int,
     val size: Int
 ) : Parcelable {
 
     constructor(parcel: Parcel) : this(
-        parcel.readInt(),
-        parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
@@ -30,13 +26,11 @@ data class Sample(
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(id)
         parcel.writeString(title)
         parcel.writeString(fullTitle)
-        parcel.writeString(slug)
-        parcel.writeString(description)
         parcel.writeString(asset)
         parcel.writeString(filename)
+        parcel.writeString(description)
         parcel.writeInt(thumbnail)
         parcel.writeInt(duration)
         parcel.writeInt(size)

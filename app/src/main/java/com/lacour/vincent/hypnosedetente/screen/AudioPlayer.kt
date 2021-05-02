@@ -67,7 +67,7 @@ class AudioPlayer : AppCompatActivity() {
             assetPackSampleManager.registerListener()
             assetPackSampleManager.setOnAssetStateReady { prepareMusicPlayer() }
             assetPackSampleManager.setOnAssetStateDownloadCompleted {
-                analyticsService.logSampleDownloadEvent(sample.slug)
+                analyticsService.logSampleDownloadEvent(sample.asset)
                 prepareMusicPlayer()
             }
             assetPackSampleManager.setOnAssetStateError { message -> onAudioPlayerError(message) }
@@ -87,7 +87,7 @@ class AudioPlayer : AppCompatActivity() {
             }
 
             Glide.with(this).load(sample.thumbnail).into(image_sample)
-            analyticsService.logViewSampleEvent(sample.slug)
+            analyticsService.logViewSampleEvent(sample.asset)
 
             seekbar_sound.setOnSeekBarChangeListener(object :
                 SeekBar.OnSeekBarChangeListener {
@@ -163,7 +163,7 @@ class AudioPlayer : AppCompatActivity() {
                     sample.fullTitle,
                     sample.description
                 )
-                analyticsService.logSampleInformationEvent(sample.slug)
+                analyticsService.logSampleInformationEvent(sample.asset)
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -244,7 +244,7 @@ class AudioPlayer : AppCompatActivity() {
         musicPlayer.seekTo(0)
         button_play.setImageResource(android.R.drawable.ic_media_play)
         stopAudioPlayerService()
-        analyticsService.logSampleEndEvent(sample.slug)
+        analyticsService.logSampleEndEvent(sample.asset)
     }
 
     private fun onAudioPlayerError(message: String) {
@@ -255,7 +255,7 @@ class AudioPlayer : AppCompatActivity() {
             getString(R.string.error_player_title),
             getString(R.string.error_player_content)
         )
-        analyticsService.logErrorSample(sample.slug, message)
+        analyticsService.logErrorSample(sample.asset, message)
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean = when (keyCode) {

@@ -64,5 +64,6 @@
     <string name="sound_icon">Son</string>
     <string name="airplane_icon">Avion</string>
     <string name="thumbnail_image">Vignette</string>
+    <string name="play_icon">Lecture</string>
 
 </resources>
