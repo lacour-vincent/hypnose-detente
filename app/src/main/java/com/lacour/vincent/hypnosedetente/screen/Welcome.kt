@@ -15,8 +15,8 @@ import com.lacour.vincent.hypnosedetente.R
 import com.lacour.vincent.hypnosedetente.component.RecyclerItemClickListener
 import com.lacour.vincent.hypnosedetente.component.SampleAdapter
 import com.lacour.vincent.hypnosedetente.data.Tracks
+import com.lacour.vincent.hypnosedetente.databinding.ActivityWelcomeBinding
 import com.lacour.vincent.hypnosedetente.utils.AppUtils
-import kotlinx.android.synthetic.main.activity_welcome.*
 
 class Welcome : AppCompatActivity() {
 
@@ -24,13 +24,15 @@ class Welcome : AppCompatActivity() {
         private const val PLAYSTORE_LINK = "market://details?id=com.lacour.vincent.hypnosedetente"
     }
 
+    private lateinit var binding: ActivityWelcomeBinding
     private lateinit var appUtils: AppUtils
     private lateinit var sampleAdapter: SampleAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_welcome)
+        binding = ActivityWelcomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         setSupportActionBar(findViewById(R.id.toolbar_welcome))
 
         if (supportActionBar != null) {
@@ -43,11 +45,11 @@ class Welcome : AppCompatActivity() {
         val (samples) = Tracks()
         sampleAdapter = SampleAdapter(this, samples)
         val mLayoutManager = GridLayoutManager(this, 2)
-        recycler_view.adapter = sampleAdapter
-        recycler_view.layoutManager = mLayoutManager
-        recycler_view.itemAnimator = DefaultItemAnimator()
+        binding.recyclerView.adapter = sampleAdapter
+        binding.recyclerView.layoutManager = mLayoutManager
+        binding.recyclerView.itemAnimator = DefaultItemAnimator()
 
-        recycler_view.addOnItemTouchListener(
+        binding.recyclerView.addOnItemTouchListener(
             RecyclerItemClickListener(
                 this,
                 object : RecyclerItemClickListener.OnItemClickListener {

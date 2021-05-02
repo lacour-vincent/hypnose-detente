@@ -6,13 +6,16 @@ import android.view.KeyEvent
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.lacour.vincent.hypnosedetente.R
-import kotlinx.android.synthetic.main.activity_information.*
+import com.lacour.vincent.hypnosedetente.databinding.ActivityInformationBinding
 
 class Information : AppCompatActivity() {
 
+    private lateinit var binding: ActivityInformationBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_information)
+        binding = ActivityInformationBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         setSupportActionBar(findViewById(R.id.toolbar_information))
 
         if (supportActionBar != null) {
@@ -24,7 +27,7 @@ class Information : AppCompatActivity() {
 
         try {
             val pInfo = this.packageManager.getPackageInfo(packageName, 0)
-            number_version.text = pInfo.versionName
+            binding.numberVersion.text = pInfo.versionName
         } catch (e: PackageManager.NameNotFoundException) {
             e.printStackTrace()
         }

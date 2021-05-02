@@ -19,16 +19,17 @@ import androidx.appcompat.view.ContextThemeWrapper
 import com.bumptech.glide.Glide
 import com.lacour.vincent.hypnosedetente.R
 import com.lacour.vincent.hypnosedetente.adapter.MusicPlayer
+import com.lacour.vincent.hypnosedetente.databinding.ActivityAudioPlayerBinding
 import com.lacour.vincent.hypnosedetente.model.Sample
 import com.lacour.vincent.hypnosedetente.service.AnalyticsService
 import com.lacour.vincent.hypnosedetente.service.ForegroundService
 import com.lacour.vincent.hypnosedetente.storage.AssetPackSampleManager
 import com.lacour.vincent.hypnosedetente.utils.AppUtils
-import kotlinx.android.synthetic.main.activity_audio_player.*
 import java.util.*
 
 class AudioPlayer : AppCompatActivity() {
 
+    private lateinit var binding: ActivityAudioPlayerBinding
     private lateinit var appUtils: AppUtils
     private lateinit var progressDialog: Dialog
 
@@ -41,15 +42,17 @@ class AudioPlayer : AppCompatActivity() {
 
     private lateinit var analyticsService: AnalyticsService
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_audio_player)
+        binding = ActivityAudioPlayerBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         setSupportActionBar(findViewById(R.id.toolbar_audio_player))
 
         appUtils = AppUtils(this)
         analyticsService = AnalyticsService(this)
-        button_play.setOnClickListener { handlePlayPause() }
-        seekbar_avancement.isClickable = false
+        binding.buttonPlay.setOnClickListener { handlePlayPause() }
+        binding.seekbarAvancement.isClickable = false
 
         try {
             val bundle: Bundle? = intent.extras
@@ -79,17 +82,17 @@ class AudioPlayer : AppCompatActivity() {
             musicPlayer.setOnErrorListener { message -> onAudioPlayerError(message) }
 
             audio = getSystemService(Context.AUDIO_SERVICE) as AudioManager
-            seekbar_sound.max = audio.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
-            seekbar_sound.progress = audio.getStreamVolume(AudioManager.STREAM_MUSIC)
+            binding.seekbarSound.max = audio.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
+            binding.seekbarSound.progress = audio.getStreamVolume(AudioManager.STREAM_MUSIC)
 
             if (audio.getStreamVolume(AudioManager.STREAM_MUSIC) == 0) {
-                icon_sound.setImageResource(R.drawable.ic_volume_off)
+                binding.iconSound.setImageResource(R.drawable.ic_volume_off)
             }
 
-            Glide.with(this).load(sample.thumbnail).into(image_sample)
+            Glide.with(this).load(sample.thumbnail).into(binding.imageSample)
             analyticsService.logViewSampleEvent(sample.asset)
 
-            seekbar_sound.setOnSeekBarChangeListener(object :
+            binding.seekbarSound.setOnSeekBarChangeListener(object :
                 SeekBar.OnSeekBarChangeListener {
                 override fun onStopTrackingTouch(seekBar: SeekBar) {}
                 override fun onStartTrackingTouch(seekBar: SeekBar) {}
@@ -100,14 +103,14 @@ class AudioPlayer : AppCompatActivity() {
                 ) {
                     audio.setStreamVolume(AudioManager.STREAM_MUSIC, progress, 0)
                     if (progress == 0) {
-                        icon_sound.setImageResource(R.drawable.ic_volume_off)
+                        binding.iconSound.setImageResource(R.drawable.ic_volume_off)
                     } else {
-                        icon_sound.setImageResource(R.drawable.ic_volume_up)
+                        binding.iconSound.setImageResource(R.drawable.ic_volume_up)
                     }
                 }
             })
 
-            seekbar_avancement.setOnSeekBarChangeListener(object :
+            binding.seekbarAvancement.setOnSeekBarChangeListener(object :
                 SeekBar.OnSeekBarChangeListener {
                 override fun onStopTrackingTouch(seekBar: SeekBar) {}
                 override fun onStartTrackingTouch(seekBar: SeekBar) {}
@@ -127,7 +130,7 @@ class AudioPlayer : AppCompatActivity() {
             progressDialog.show()
 
         } catch (e: Exception) {
-            button_play.isEnabled = false
+            binding.buttonPlay.isEnabled = false
             showInformationDialog(
                 getString(R.string.error_device_title),
                 getString(R.string.error_device_content)
@@ -192,27 +195,27 @@ class AudioPlayer : AppCompatActivity() {
         musicPlayer.setPlay()
         val position: Int = musicPlayer.getCurrentPosition().toInt()
         val duration: Int = musicPlayer.getDuration().toInt()
-        text_current_time.text = stringForTime(position)
-        text_total_time.text = stringForTime(duration)
-        button_play.setImageResource(android.R.drawable.ic_media_pause)
-        seekbar_avancement.progress = position / 1000
+        binding.textCurrentTime.text = stringForTime(position)
+        binding.textTotalTime.text = stringForTime(duration)
+        binding.buttonPlay.setImageResource(android.R.drawable.ic_media_pause)
+        binding.seekbarAvancement.progress = position / 1000
         startAudioPlayerService()
-        text_current_time.visibility = View.VISIBLE
-        text_total_time.visibility = View.VISIBLE
+        binding.textCurrentTime.visibility = View.VISIBLE
+        binding.textTotalTime.visibility = View.VISIBLE
         myHandler.postDelayed(updateSongTime, 100)
     }
 
     private fun handlePause() {
         musicPlayer.setPause()
-        button_play.setImageResource(android.R.drawable.ic_media_play)
+        binding.buttonPlay.setImageResource(android.R.drawable.ic_media_play)
         stopAudioPlayerService()
     }
 
     private val updateSongTime = object : Runnable {
         override fun run() {
             val position: Int = musicPlayer.getCurrentPosition().toInt()
-            text_current_time.text = stringForTime(position)
-            seekbar_avancement.progress = position / 1000
+            binding.textCurrentTime.text = stringForTime(position)
+            binding.seekbarAvancement.progress = position / 1000
             myHandler.postDelayed(this, 100)
         }
     }
@@ -234,7 +237,7 @@ class AudioPlayer : AppCompatActivity() {
 
     private fun onAudioPlayerReady() {
         val max: Int = musicPlayer.getDuration().toInt() / 1000
-        seekbar_avancement.max = max
+        binding.seekbarAvancement.max = max
         progressDialog.dismiss()
     }
 
@@ -242,14 +245,14 @@ class AudioPlayer : AppCompatActivity() {
         if (!musicPlayer.isPlaying()) return
         musicPlayer.setPause()
         musicPlayer.seekTo(0)
-        button_play.setImageResource(android.R.drawable.ic_media_play)
+        binding.buttonPlay.setImageResource(android.R.drawable.ic_media_play)
         stopAudioPlayerService()
         analyticsService.logSampleEndEvent(sample.asset)
     }
 
     private fun onAudioPlayerError(message: String) {
         stopAudioPlayerService()
-        button_play.isEnabled = false
+        binding.buttonPlay.isEnabled = false
         progressDialog.dismiss()
         showInformationDialog(
             getString(R.string.error_player_title),
@@ -273,7 +276,7 @@ class AudioPlayer : AppCompatActivity() {
                 AudioManager.ADJUST_RAISE,
                 0
             )
-            seekbar_sound.progress = audio.getStreamVolume(AudioManager.STREAM_MUSIC)
+            binding.seekbarSound.progress = audio.getStreamVolume(AudioManager.STREAM_MUSIC)
             true
         }
         KeyEvent.KEYCODE_VOLUME_DOWN -> {
@@ -282,7 +285,7 @@ class AudioPlayer : AppCompatActivity() {
                 AudioManager.ADJUST_LOWER,
                 0
             )
-            seekbar_sound.progress = audio.getStreamVolume(AudioManager.STREAM_MUSIC)
+            binding.seekbarSound.progress = audio.getStreamVolume(AudioManager.STREAM_MUSIC)
             true
         }
         else -> super.onKeyDown(keyCode, event)
