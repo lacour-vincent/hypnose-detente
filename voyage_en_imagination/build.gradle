@@ -1,0 +1,9 @@
+apply plugin: 'com.android.asset-pack'
+
+assetPack {
+    packName = "voyage_en_imagination"
+    dynamicDelivery {
+        deliveryType = "on-demand"
+    }
+}
+

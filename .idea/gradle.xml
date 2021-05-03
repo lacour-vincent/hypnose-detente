@@ -11,6 +11,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/adaptation_aux_virus" />
+            <option value="$PROJECT_DIR$/addictions" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/auto_hypnose" />
             <option value="$PROJECT_DIR$/bain_d_hypnose" />
@@ -21,20 +22,31 @@
             <option value="$PROJECT_DIR$/curatif" />
             <option value="$PROJECT_DIR$/estime_de_soi" />
             <option value="$PROJECT_DIR$/expansion" />
+            <option value="$PROJECT_DIR$/faire_son_deuil" />
+            <option value="$PROJECT_DIR$/gerer_la_douleur" />
             <option value="$PROJECT_DIR$/gerer_le_stress" />
             <option value="$PROJECT_DIR$/histoire_de_la_vie" />
             <option value="$PROJECT_DIR$/immersion_sensorielle" />
             <option value="$PROJECT_DIR$/intuition" />
+            <option value="$PROJECT_DIR$/joie_de_vivre" />
             <option value="$PROJECT_DIR$/l_inconscient" />
             <option value="$PROJECT_DIR$/la_conscience" />
             <option value="$PROJECT_DIR$/magie_interieur" />
+            <option value="$PROJECT_DIR$/nouveau_depart" />
+            <option value="$PROJECT_DIR$/pensees_negatives" />
             <option value="$PROJECT_DIR$/preventif" />
+            <option value="$PROJECT_DIR$/prise_de_decision" />
+            <option value="$PROJECT_DIR$/reeducation_physique" />
+            <option value="$PROJECT_DIR$/renforcement" />
             <option value="$PROJECT_DIR$/ressourcement" />
             <option value="$PROJECT_DIR$/retrouver_le_moral" />
+            <option value="$PROJECT_DIR$/retrouver_sa_confiance" />
             <option value="$PROJECT_DIR$/reussir_sa_vie" />
             <option value="$PROJECT_DIR$/s_endormir" />
             <option value="$PROJECT_DIR$/soigner_son_passe" />
+            <option value="$PROJECT_DIR$/surmonter_sa_tristesse" />
             <option value="$PROJECT_DIR$/transformer_vos_peurs" />
+            <option value="$PROJECT_DIR$/voyage_en_imagination" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

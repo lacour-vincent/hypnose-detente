@@ -1,0 +1,9 @@
+apply plugin: 'com.android.asset-pack'
+
+assetPack {
+    packName = "joie_de_vivre"
+    dynamicDelivery {
+        deliveryType = "on-demand"
+    }
+}
+

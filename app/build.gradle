@@ -34,11 +34,14 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
-    assetPacks = [":adaptation_aux_virus", ":auto_hypnose", ":bain_d_hypnose", ":bien_dormir", ":calmer_l_anxiete",
-                  ":confiance_en_soi", ":createur_de_realite", ":curatif", ":estime_de_soi", ":expansion", ":gerer_le_stress",
-                  ":histoire_de_la_vie", ":immersion_sensorielle", ":intuition", ":la_conscience", ":l_inconscient", ":magie_interieur",
-                  ":preventif", ":ressourcement", ":retrouver_le_moral", ":reussir_sa_vie", ":s_endormir", ":soigner_son_passe", ":transformer_vos_peurs"]
-
+    assetPacks = [":adaptation_aux_virus", ":addictions", ":auto_hypnose", ":bain_d_hypnose", ":bien_dormir",
+                  ":calmer_l_anxiete", ":confiance_en_soi", ":createur_de_realite", ":curatif", ":estime_de_soi",
+                  ":expansion", ":faire_son_deuil", ":gerer_le_stress", ":gerer_la_douleur", ":histoire_de_la_vie",
+                  ":immersion_sensorielle", ":intuition", ":joie_de_vivre", ":la_conscience", ":l_inconscient",
+                  ":magie_interieur", ":nouveau_depart", ":pensees_negatives", ":preventif", ":prise_de_decision",
+                  ":reeducation_physique", ":renforcement", ":ressourcement", ":retrouver_le_moral", ":retrouver_sa_confiance",
+                  ":reussir_sa_vie", ":s_endormir", ":soigner_son_passe", ":surmonter_sa_tristesse", ":transformer_vos_peurs",
+                  ":voyage_en_imagination"]
 }
 
 dependencies {

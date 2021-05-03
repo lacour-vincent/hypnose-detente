@@ -1,0 +1,9 @@
+apply plugin: 'com.android.asset-pack'
+
+assetPack {
+    packName = "faire_son_deuil"
+    dynamicDelivery {
+        deliveryType = "on-demand"
+    }
+}
+

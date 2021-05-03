@@ -1,0 +1,9 @@
+apply plugin: 'com.android.asset-pack'
+
+assetPack {
+    packName = "surmonter_sa_tristesse"
+    dynamicDelivery {
+        deliveryType = "on-demand"
+    }
+}
+
