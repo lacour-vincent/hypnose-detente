@@ -65,8 +65,13 @@ class AudioPlayer : AppCompatActivity() {
                 }
             }
 
+            musicPlayer = MusicPlayer(this)
+            musicPlayer.setOnStateReadyListener { onAudioPlayerReady() }
+            musicPlayer.setOnStateEndedListener { onAudioPlayerEnded() }
+            musicPlayer.setOnErrorListener { message -> onAudioPlayerError(message) }
+
             assetPackSampleManager =
-                AssetPackSampleManager(sample.asset, this.applicationContext)
+                AssetPackSampleManager(sample.asset, AppController.getAppContext())
             assetPackSampleManager.registerListener()
             assetPackSampleManager.setOnAssetStateReady { prepareMusicPlayer() }
             assetPackSampleManager.setOnAssetStateDownloadCompleted {
@@ -74,12 +79,7 @@ class AudioPlayer : AppCompatActivity() {
                 prepareMusicPlayer()
             }
             assetPackSampleManager.setOnAssetStateError { message -> onAudioPlayerError(message) }
-            assetPackSampleManager.requestAssetPackState()
-
-            musicPlayer = MusicPlayer(this)
-            musicPlayer.setOnStateReadyListener { onAudioPlayerReady() }
-            musicPlayer.setOnStateEndedListener { onAudioPlayerEnded() }
-            musicPlayer.setOnErrorListener { message -> onAudioPlayerError(message) }
+            assetPackSampleManager.retrieveAssetPackState(sample.filename)
 
             audio = getSystemService(Context.AUDIO_SERVICE) as AudioManager
             binding.seekbarSound.max = audio.getStreamMaxVolume(AudioManager.STREAM_MUSIC)

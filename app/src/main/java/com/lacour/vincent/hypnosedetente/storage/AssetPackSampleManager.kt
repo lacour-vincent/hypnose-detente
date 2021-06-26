@@ -7,7 +7,6 @@ import com.google.android.play.core.assetpacks.AssetPackStateUpdateListener
 import com.google.android.play.core.assetpacks.AssetPackStates
 import com.google.android.play.core.assetpacks.model.AssetPackErrorCode
 import com.google.android.play.core.assetpacks.model.AssetPackStatus
-import com.google.android.play.core.tasks.RuntimeExecutionException
 import java.io.File
 import java.util.*
 
@@ -16,6 +15,13 @@ class AssetPackSampleManager(private val assetPackName: String, ctx: Context) {
     private var onAssetStateReady: (() -> Unit)? = null
     private var onAssetStateDownloadCompleted: (() -> Unit)? = null
     private var onAssetStateError: ((message: String) -> Unit)? = null
+
+
+    fun retrieveAssetPackState(filename: String) {
+        val file = this.getAssetPackFile(filename)
+        if (file == null) this.requestAssetPackState()
+        else onAssetStateReady?.invoke()
+    }
 
     fun requestAssetPackState() {
         assetPackManager.getPackStates(Collections.singletonList(this.assetPackName))
@@ -29,10 +35,11 @@ class AssetPackSampleManager(private val assetPackName: String, ctx: Context) {
                     } else {
                         assetPackManager.fetch(mutableListOf(this.assetPackName))
                     }
-                } catch (e: RuntimeExecutionException) {
-                    onAssetStateError?.invoke("ASSET_STATE: ${e.message.toString()}")
+                } catch (e: RuntimeException) {
+                    // should normally throw an AssetPackException instead of Runtime -> getErrorCode
+                    onAssetStateError?.invoke("ASSET_PACK_MANAGER_ERROR: RUNTIME_EXCEPTION")
                 } catch (e: Exception) {
-                    onAssetStateError?.invoke("ASSET_STATE: ${e.message.toString()}")
+                    onAssetStateError?.invoke("ASSET_PACK_MANAGER_ERROR: EXCEPTION")
                 }
             }
     }
@@ -45,7 +52,7 @@ class AssetPackSampleManager(private val assetPackName: String, ctx: Context) {
                 AssetPackStatus.TRANSFERRING -> Unit
                 AssetPackStatus.WAITING_FOR_WIFI -> Unit
                 AssetPackStatus.NOT_INSTALLED -> Unit
-                AssetPackStatus.CANCELED -> onAssetStateError?.invoke("ASSET_STATUS_CANCEL")
+                AssetPackStatus.CANCELED -> onAssetStateError?.invoke("ASSET_PACK_MANAGER_ERROR: CANCELED")
                 AssetPackStatus.COMPLETED -> onAssetStateDownloadCompleted?.invoke()
                 AssetPackStatus.FAILED -> onAssetStateError?.invoke(
                     this.getErrorMessageFromCode(
@@ -89,18 +96,19 @@ class AssetPackSampleManager(private val assetPackName: String, ctx: Context) {
     }
 
     private fun getErrorMessageFromCode(code: Int): String = when (code) {
-        AssetPackErrorCode.ACCESS_DENIED -> "ASSET_STATUS_FAILED: ACCESS_DENIED"
-        AssetPackErrorCode.API_NOT_AVAILABLE -> "ASSET_STATUS_FAILED: API_NOT_AVAILABLE"
-        AssetPackErrorCode.APP_NOT_OWNED -> "ASSET_STATUS_FAILED: APP_NOT_OWNED"
-        AssetPackErrorCode.APP_UNAVAILABLE -> "ASSET_STATUS_FAILED: APP_UNAVAILABLE"
-        AssetPackErrorCode.DOWNLOAD_NOT_FOUND -> "ASSET_STATUS_FAILED: DOWNLOAD_NOT_FOUND"
-        AssetPackErrorCode.INSUFFICIENT_STORAGE -> "ASSET_STATUS_FAILED: INSUFFICIENT_STORAGE"
-        AssetPackErrorCode.INTERNAL_ERROR -> "ASSET_STATUS_FAILED: INTERNAL_ERROR"
-        AssetPackErrorCode.INVALID_REQUEST -> "ASSET_STATUS_FAILED: INVALID_REQUEST"
-        AssetPackErrorCode.NETWORK_ERROR -> "ASSET_STATUS_FAILED: NETWORK_ERROR"
-        AssetPackErrorCode.NO_ERROR -> "ASSET_STATUS_FAILED: NO_ERROR"
-        AssetPackErrorCode.PACK_UNAVAILABLE -> "ASSET_STATUS_FAILED: PACK_UNAVAILABLE"
-        else -> "ASSET_STATUS_FAILED: UNKNOWN"
+        AssetPackErrorCode.ACCESS_DENIED -> "ASSET_PACK_MANAGER_ERROR: ACCESS_DENIED"
+        AssetPackErrorCode.API_NOT_AVAILABLE -> "ASSET_PACK_MANAGER_ERROR: API_NOT_AVAILABLE"
+        AssetPackErrorCode.APP_NOT_OWNED -> "ASSET_PACK_MANAGER_ERROR: APP_NOT_OWNED"
+        AssetPackErrorCode.APP_UNAVAILABLE -> "ASSET_PACK_MANAGER_ERROR: APP_UNAVAILABLE"
+        AssetPackErrorCode.DOWNLOAD_NOT_FOUND -> "ASSET_PACK_MANAGER_ERROR: DOWNLOAD_NOT_FOUND"
+        AssetPackErrorCode.INSUFFICIENT_STORAGE -> "ASSET_PACK_MANAGER_ERROR: INSUFFICIENT_STORAGE"
+        AssetPackErrorCode.INTERNAL_ERROR -> "ASSET_PACK_MANAGER_ERROR: INTERNAL_ERROR"
+        AssetPackErrorCode.INVALID_REQUEST -> "ASSET_PACK_MANAGER_ERROR: INVALID_REQUEST"
+        AssetPackErrorCode.NETWORK_ERROR -> "ASSET_PACK_MANAGER_ERROR: NETWORK_ERROR"
+        AssetPackErrorCode.NO_ERROR -> "ASSET_PACK_MANAGER_ERROR: NO_ERROR"
+        AssetPackErrorCode.PACK_UNAVAILABLE -> "ASSET_PACK_MANAGER_ERROR: PACK_UNAVAILABLE"
+        -11 -> "ASSET_PACK_MANAGER_ERROR: PLAY_STORE_NOT_FOUND"
+        else -> "ASSET_PACK_MANAGER_ERROR: UNKNOWN"
     }
-
+    
 }

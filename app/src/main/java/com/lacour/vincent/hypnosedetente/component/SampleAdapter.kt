@@ -10,12 +10,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.lacour.vincent.hypnosedetente.R
 import com.lacour.vincent.hypnosedetente.model.Sample
+import com.lacour.vincent.hypnosedetente.screen.AppController
 import com.lacour.vincent.hypnosedetente.storage.AssetPackSampleManager
 
 class SampleAdapter(private val context: Context, private val samples: List<Sample>) :
     RecyclerView.Adapter<SampleAdapter.ViewHolder>() {
 
-    private val assetPackSampleManager = AssetPackSampleManager("", context)
+    private val assetPackSampleManager =
+        AssetPackSampleManager("", AppController.getAppContext())
+
     override fun getItemCount(): Int = samples.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
