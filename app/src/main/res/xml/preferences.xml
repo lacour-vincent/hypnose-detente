@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <ListPreference
-            android:defaultValue="-1"
-            android:entries="@array/theme_entries"
-            android:entryValues="@array/theme_entries_values"
-            android:key="theme"
-            android:title="@string/day_night_mode_label"
-            app:iconSpaceReserved="false" />
+        android:defaultValue="-1"
+        android:entries="@array/theme_entries"
+        android:entryValues="@array/theme_entries_values"
+        android:key="theme"
+        android:title="@string/day_night_mode_label"
+        app:iconSpaceReserved="false" />
 
     <Preference
-            android:key="battery_optimization"
-            android:summary="@string/battery_optimization_summary"
-            android:title="@string/battery_optimization_label"
-            app:iconSpaceReserved="false" />
+        android:key="battery_optimization"
+        android:summary="@string/battery_optimization_summary"
+        android:title="@string/battery_optimization_label"
+        app:iconSpaceReserved="false" />
 
 
     <SwitchPreferenceCompat
-            android:defaultValue="true"
-            android:key="analytics"
-            android:summary="@string/analytics_enabled_summary"
-            android:title="@string/analytics_enabled_label"
-            app:iconSpaceReserved="false" />
+        android:defaultValue="true"
+        android:key="analytics"
+        android:summary="@string/analytics_enabled_summary"
+        android:title="@string/analytics_enabled_label"
+        app:iconSpaceReserved="false" />
 
 </PreferenceScreen>

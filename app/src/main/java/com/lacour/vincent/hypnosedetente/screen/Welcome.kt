@@ -50,20 +50,20 @@ class Welcome : AppCompatActivity() {
         binding.recyclerView.itemAnimator = DefaultItemAnimator()
 
         binding.recyclerView.addOnItemTouchListener(
-                RecyclerItemClickListener(
-                        this,
-                        object : RecyclerItemClickListener.OnItemClickListener {
-                            override fun onItemClick(view: View, position: Int) {
-                                val intent = Intent(this@Welcome, AudioPlayer::class.java)
-                                intent.putExtra("sample", samples[position])
-                                startActivity(intent)
-                                this@Welcome.overridePendingTransition(
-                                        R.anim.anim_slide_in_left,
-                                        R.anim.anim_slide_out_left
-                                )
+            RecyclerItemClickListener(
+                this,
+                object : RecyclerItemClickListener.OnItemClickListener {
+                    override fun onItemClick(view: View, position: Int) {
+                        val intent = Intent(this@Welcome, AudioPlayer::class.java)
+                        intent.putExtra("sample", samples[position])
+                        startActivity(intent)
+                        this@Welcome.overridePendingTransition(
+                            R.anim.anim_slide_in_left,
+                            R.anim.anim_slide_out_left
+                        )
 
-                            }
-                        })
+                    }
+                })
         )
     }
 
@@ -80,34 +80,34 @@ class Welcome : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
-            when (item.itemId) {
-                R.id.action_rating -> {
-                    showRatingDialog(
-                            getString(R.string.rating_title),
-                            getString(R.string.rating_content)
-                    )
-                    true
-                }
-                R.id.action_settings -> {
-                    val settingsIntent = Intent(this, Settings::class.java)
-                    startActivity(settingsIntent)
-                    this@Welcome.overridePendingTransition(
-                            R.anim.anim_slide_in_left,
-                            R.anim.anim_slide_out_left
-                    )
-                    true
-                }
-                R.id.action_information -> {
-                    val informationIntent = Intent(this, Information::class.java)
-                    startActivity(informationIntent)
-                    this@Welcome.overridePendingTransition(
-                            R.anim.anim_slide_in_left,
-                            R.anim.anim_slide_out_left
-                    )
-                    true
-                }
-                else -> super.onOptionsItemSelected(item)
+        when (item.itemId) {
+            R.id.action_rating -> {
+                showRatingDialog(
+                    getString(R.string.rating_title),
+                    getString(R.string.rating_content)
+                )
+                true
             }
+            R.id.action_settings -> {
+                val settingsIntent = Intent(this, Settings::class.java)
+                startActivity(settingsIntent)
+                this@Welcome.overridePendingTransition(
+                    R.anim.anim_slide_in_left,
+                    R.anim.anim_slide_out_left
+                )
+                true
+            }
+            R.id.action_information -> {
+                val informationIntent = Intent(this, Information::class.java)
+                startActivity(informationIntent)
+                this@Welcome.overridePendingTransition(
+                    R.anim.anim_slide_in_left,
+                    R.anim.anim_slide_out_left
+                )
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
 
 
     private fun navigateToPlayStore() {

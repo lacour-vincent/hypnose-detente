@@ -110,5 +110,5 @@ class AssetPackSampleManager(private val assetPackName: String, ctx: Context) {
         -11 -> "ASSET_PACK_MANAGER_ERROR: PLAY_STORE_NOT_FOUND"
         else -> "ASSET_PACK_MANAGER_ERROR: UNKNOWN"
     }
-    
+
 }
