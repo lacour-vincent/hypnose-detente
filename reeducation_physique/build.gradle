@@ -1,9 +1,0 @@
-apply plugin: 'com.android.asset-pack'
-
-assetPack {
-    packName = "reeducation_physique"
-    dynamicDelivery {
-        deliveryType = "on-demand"
-    }
-}
-

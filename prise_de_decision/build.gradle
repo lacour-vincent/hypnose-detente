@@ -1,9 +1,0 @@
-apply plugin: 'com.android.asset-pack'
-
-assetPack {
-    packName = "prise_de_decision"
-    dynamicDelivery {
-        deliveryType = "on-demand"
-    }
-}
-

@@ -1,9 +1,0 @@
-apply plugin: 'com.android.asset-pack'
-
-assetPack {
-    packName = "retrouver_sa_confiance"
-    dynamicDelivery {
-        deliveryType = "on-demand"
-    }
-}
-

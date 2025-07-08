@@ -1,0 +1,14 @@
+{
+  "name": "hypnose-detente",
+  "version": "2.0.0-SNAPSHOT",
+  "description": "Application that allows you to relax with self-hypnosis recordings.",
+  "author": "lacour-vincent",
+  "license": "UNLICENSED",
+  "private": true,
+  "engines": {
+    "node": ">=22.15.x",
+    "yarn": "^1.22.x"
+  },
+  "main": "expo-router/entry",
+  "scripts": {}
+}

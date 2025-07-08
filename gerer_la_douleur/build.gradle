@@ -1,9 +1,0 @@
-apply plugin: 'com.android.asset-pack'
-
-assetPack {
-    packName = "gerer_la_douleur"
-    dynamicDelivery {
-        deliveryType = "on-demand"
-    }
-}
-

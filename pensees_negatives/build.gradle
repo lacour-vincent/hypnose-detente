@@ -1,9 +1,0 @@
-apply plugin: 'com.android.asset-pack'
-
-assetPack {
-    packName = "pensees_negatives"
-    dynamicDelivery {
-        deliveryType = "on-demand"
-    }
-}
-

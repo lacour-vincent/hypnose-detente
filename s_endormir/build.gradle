@@ -1,9 +1,0 @@
-apply plugin: 'com.android.asset-pack'
-
-assetPack {
-    packName = "s_endormir"
-    dynamicDelivery {
-        deliveryType = "on-demand"
-    }
-}
-

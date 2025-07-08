@@ -1,9 +1,0 @@
-apply plugin: 'com.android.asset-pack'
-
-assetPack {
-    packName = "transformer_vos_peurs"
-    dynamicDelivery {
-        deliveryType = "on-demand"
-    }
-}
-
