@@ -1,0 +1,31 @@
+import React, { type FC, type ReactElement, type ReactNode } from "react";
+import { Provider } from "react-redux";
+
+// eslint-disable-next-line no-restricted-imports
+import { PaperProvider } from "react-native-paper";
+
+// eslint-disable-next-line no-restricted-imports
+import { type RenderOptions, render, userEvent } from "@testing-library/react-native";
+
+import { createTestStore } from "@sg/testing/store";
+
+interface Options extends RenderOptions {
+  store?: ReturnType<typeof createTestStore>;
+}
+
+const customRender = (ui: ReactElement, options?: Options) => {
+  const event = userEvent.setup();
+  const store = options?.store ?? createTestStore();
+
+  const Wrapper: FC<{ children: ReactNode }> = ({ children }) => {
+    return (
+      <Provider store={store}>
+        <PaperProvider>{children}</PaperProvider>
+      </Provider>
+    );
+  };
+
+  return { event, ...render(ui, { wrapper: Wrapper, ...options }) };
+};
+
+export { customRender as render };
