@@ -5,13 +5,14 @@ import type { Sample } from "@sg/typings/recording";
 import { retrieveSampleById, retrieveSamples } from "@sg/store/actions/recording";
 
 import { SAMPLE_EMPTY } from "@sg/fixtures/recording";
+import { SAMPLES } from "@sg/referential/recording";
 
 export interface RecordingState {
   items: Sample[];
   selected: Sample;
 }
 
-const initialState: RecordingState = { items: [], selected: SAMPLE_EMPTY };
+const initialState: RecordingState = { items: SAMPLES, selected: SAMPLE_EMPTY };
 
 export default createReducer(initialState, (builder) => {
   return builder

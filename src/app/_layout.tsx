@@ -10,7 +10,9 @@ import { PaperProvider } from "react-native-paper";
 
 import { createStore } from "@sg/store";
 
-import { paper } from "@sg/styling";
+import Alerting from "@sg/components/Alerting";
+
+import theme, { paper } from "@sg/styling";
 
 SplashScreen.hide();
 SplashScreen.setOptions({ duration: 400, fade: true });
@@ -21,8 +23,9 @@ const RootLayout: FC = () => {
   return (
     <Provider store={store}>
       <PaperProvider theme={paper}>
-        <StatusBar style="auto" />
+        <StatusBar backgroundColor={theme["primary-color-dark"]} />
         <Stack screenOptions={{ headerShown: false }} />
+        <Alerting />
       </PaperProvider>
     </Provider>
   );

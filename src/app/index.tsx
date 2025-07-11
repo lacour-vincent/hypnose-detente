@@ -1,12 +1,3 @@
-import React, { type FC } from "react";
-import { Text, View } from "react-native";
+import SamplesView from "@sg/components/views/Sample";
 
-const IndexView: FC = () => {
-  return (
-    <View>
-      <Text>Hello Hypnose-Détente from Expo.</Text>
-    </View>
-  );
-};
-
-export default IndexView;
+export default SamplesView;

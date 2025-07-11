@@ -1,4 +1,4 @@
 export const ROUTES = {
   HOME: "/",
-  SAMPLE_VIEW: "/notifications",
+  SAMPLE_VIEW: "/samples/:id",
 } as const;

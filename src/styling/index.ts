@@ -7,41 +7,21 @@ import { MD3LightTheme } from "react-native-paper";
 import type { MD3Colors, ThemeProp } from "react-native-paper/lib/typescript/types";
 
 const theme = {
-  "font-primary-color": "#1B1918" as string,
-  "font-secondary-color": "#959595" as string,
-  "font-tertiary-color": "#2E4057" as string,
+  "font-primary-color": "#DE000000" as string,
+  "font-secondary-color": "#99000000" as string,
+  "font-tertiary-color": "#61000000" as string,
 
-  "primary-color": "#49A0A2" as string,
+  "primary-color": "#008577" as string,
   "primary-color-text": "#FFFFFF" as string,
-  "secondary-color": "#2E4057" as string,
-  "secondary-color-text": "#FFFFFF" as string,
-  "tertiary-color": "#007891" as string,
-  "tertiary-color-text": "#FFFFFF" as string,
-  "quaternary-color": "#A13845" as string,
-  "quaternary-color-text": "#FFFFFF" as string,
+  "primary-color-dark": "#00574B" as string,
 
-  "success-color": "#49A0A2" as string,
+  "success-color": "#4CAF50" as string,
   "success-color-text": "#FFFFFF" as string,
-  "error-color": "#FF0202" as string,
+  "error-color": "#F44336" as string,
   "error-color-text": "#FFFFFF" as string,
-  "disabled-color": "#E0E0E0" as string,
-  "disabled-color-text": "#A6A6A6" as string,
-  "validated-color": "#C5F4DD" as string,
-  "validated-color-text": "#096034" as string,
-  "pending-color": "#FFDE84" as string,
-  "pending-color-text": "#FFDE84" as string,
-  "failed-color": "#FECFCD" as string,
-  "failed-color-text": "#650905" as string,
-  "inactive-color": "#979797" as string,
-  "inactive-color-text": "#FFFFFF" as string,
-  "urgency-color": "#FF0000" as string,
-  "urgency-color-text": "#FFFFFF" as string,
 
-  "separator-color": "#E4E4E4" as string,
-  "hover-color": "#979797" as string,
-  "border-color": "#E4E4E4" as string,
-  "background-color": "#FFFFFF" as string,
-  "accent-color": "#49A0A2" as string,
+  background: "#FFFBFE" as string,
+  outline: "#79747E" as string,
 
   "font-size-4xl": 36,
   "font-size-3xl": 30,
@@ -71,24 +51,15 @@ export const paper: ThemeProp = {
   colors: {
     primary: theme["primary-color"],
     onPrimary: theme["primary-color-text"],
-    secondary: theme["secondary-color"],
-    onSecondary: theme["secondary-color-text"],
-    tertiary: theme["tertiary-color"],
-    tertiaryContainer: theme["tertiary-color-text"],
-    error: theme["error-color"],
-    onError: theme["error-color-text"],
-    outline: theme["accent-color"],
-    surfaceDisabled: theme["disabled-color"],
-    onSurfaceDisabled: theme["disabled-color-text"],
   } as MD3Colors,
 };
 
-type Style = StyleProp<unknown>;
+type Style<T> = StyleProp<T>;
 
-export const cn = (styles: Style[], modifiers?: Array<[Style, boolean | undefined]>): Style[] => {
+export const cn = <T>(styles: Style<T>[], modifiers?: Array<[Style<T>, boolean | undefined]>): Style<T>[] => {
   const base = styles.map((s) => s);
   if (!modifiers) return base;
-  const more = modifiers.reduce<Style[]>((acc, [style, apply]) => {
+  const more = modifiers.reduce<Style<T>[]>((acc, [style, apply]) => {
     if (apply) acc.push(style);
     return acc;
   }, []);
