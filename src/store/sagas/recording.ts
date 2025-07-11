@@ -8,9 +8,9 @@ import type { Context } from "@/store/context";
 import { retrieveSampleById, retrieveSamples } from "../actions/recording";
 
 function* handleRetrieveSamples(): SagaIterator {
-  const services: Context["services"] = yield getContext("services");
+  const repositories: Context["repositories"] = yield getContext("repositories");
   try {
-    const samples: Sample[] = yield call(services.recording.fetchSamples);
+    const samples: Sample[] = yield call(repositories.recording.fetchSamples);
     yield put(retrieveSamples.success({ samples }));
   } catch (err: unknown) {
     yield put(retrieveSamples.failure({ err }));
@@ -18,9 +18,9 @@ function* handleRetrieveSamples(): SagaIterator {
 }
 
 function* handleRetrieveSampleById(action: ReturnType<typeof retrieveSampleById.request>): SagaIterator {
-  const services: Context["services"] = yield getContext("services");
+  const repositories: Context["repositories"] = yield getContext("repositories");
   try {
-    const sample: Sample = yield call(services.recording.fetchSampleById, action.payload.id);
+    const sample: Sample = yield call(repositories.recording.fetchSampleById, action.payload.id);
     yield put(retrieveSampleById.success({ sample }));
   } catch (err: unknown) {
     yield put(retrieveSampleById.failure({ err }));

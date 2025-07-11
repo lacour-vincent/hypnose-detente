@@ -1,17 +1,17 @@
 import { router as expoRouter } from "expo-router";
 
-import recording, { type RecordingService } from "@/services/recording";
+import recording, { type RecordingRepository } from "@/repositories/recording";
 
 export interface Context {
-  services: Services;
+  repositories: Repositories;
   router: Router;
 }
 
-interface Services {
-  recording: RecordingService;
+interface Repositories {
+  recording: RecordingRepository;
 }
 
-const services: Services = { recording: recording.impl };
+const repositories: Repositories = { recording: recording.impl };
 
 interface Router {
   navigate: (href: string) => void;
@@ -23,6 +23,6 @@ const router: Router = {
   replace: expoRouter.replace,
 };
 
-const context: Context = { services, router };
+const context: Context = { repositories, router };
 
 export default context;

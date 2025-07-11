@@ -1,14 +1,14 @@
 import type { Context } from "@/store/context";
 
-import recording from "@/services/recording";
+import recording from "@/repositories/recording";
 
-const services: Context["services"] = { recording: recording.inMemory };
+const repositories: Context["repositories"] = { recording: recording.inMemory };
 
 const router: Context["router"] = {
   navigate: () => true,
   replace: () => true,
 };
 
-const context: Context = { services, router };
+const context: Context = { repositories, router };
 
 export default context;
