@@ -23,8 +23,14 @@ const RootLayout: FC = () => {
   return (
     <Provider store={store}>
       <PaperProvider theme={paper}>
-        <StatusBar backgroundColor={theme["primary-color-dark"]} />
-        <Stack screenOptions={{ headerShown: false }} />
+        <StatusBar />
+        <Stack
+          screenOptions={{
+            headerTitle: "Hypnose Détente",
+            headerTitleStyle: { fontSize: theme["font-size-lg"], color: theme["primary-color-text"] },
+            headerStyle: { backgroundColor: theme["primary-color"] },
+          }}
+        />
         <Alerting />
       </PaperProvider>
     </Provider>
