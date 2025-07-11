@@ -6,7 +6,6 @@ const config: ExpoConfig = {
   owner: "lacour-vincent",
   version: "2.0.0-SNAPSHOT",
   orientation: "portrait",
-  scheme: "lmsg",
   platforms: ["android"],
   android: {
     package: "com.lacour.vincent.hypnosedetente",
