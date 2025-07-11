@@ -5,12 +5,13 @@ const config: ExpoConfig = {
   slug: "hypnose-detente",
   owner: "lacour-vincent",
   version: "2.0.0-SNAPSHOT",
+  scheme: "hypnose-detente",
   orientation: "portrait",
   platforms: ["android"],
   android: {
     package: "com.lacour.vincent.hypnosedetente",
     versionCode: 37,
-    adaptiveIcon: { foregroundImage: "./src/assets/icons/android-icon.png", backgroundColor: "#ffffff" },
+    adaptiveIcon: { foregroundImage: "./src/assets/icons/adaptive-icon.png", backgroundColor: "#ffffff" },
     edgeToEdgeEnabled: true,
   },
   plugins: [

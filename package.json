@@ -22,7 +22,8 @@
     "validate": "npm-run-all --parallel type-check format-check lint-check expo-check",
     "test:unit": "jest --config=jest.unit.config.js",
     "test:integration": "jest --config=jest.integration.config.js",
-    "test": "yarn run test:unit && yarn run test:integration"
+    "test": "yarn run test:unit && yarn run test:integration",
+    "ios": "expo run:ios"
   },
   "dependencies": {
     "@reduxjs/toolkit": "2.8.2",
