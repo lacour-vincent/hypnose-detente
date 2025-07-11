@@ -1,6 +1,6 @@
 import { type UnknownAction, createReducer } from "@reduxjs/toolkit";
 
-import { Suffix } from "@sg/store/actions";
+import { Suffix } from "@/store/actions";
 
 export type ActionsState = Record<string, { request: boolean; success: boolean; failure: boolean }>;
 

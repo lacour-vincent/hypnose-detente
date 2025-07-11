@@ -1,4 +1,4 @@
-import type { Sample } from "@sg/typings/recording";
+import type { Sample } from "@/typings/recording";
 
 export const SAMPLES: Sample[] = [
   {

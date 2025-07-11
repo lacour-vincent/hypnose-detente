@@ -1,8 +1,8 @@
 import { type Store, Tuple, configureStore as configureStoreFn } from "@reduxjs/toolkit";
 
-import context from "@sg/store/context";
-import createRootReducer from "@sg/store/reducers";
-import sagas from "@sg/store/sagas";
+import context from "@/store/context";
+import createRootReducer from "@/store/reducers";
+import sagas from "@/store/sagas";
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const createSagaMiddleware = require("redux-saga").default;

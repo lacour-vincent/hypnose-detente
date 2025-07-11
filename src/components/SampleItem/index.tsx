@@ -1,7 +1,7 @@
 import React, { type FC } from "react";
 import { Text, View } from "react-native";
 
-import type { Sample } from "@sg/typings/recording";
+import type { Sample } from "@/typings/recording";
 
 import s from "./styles";
 

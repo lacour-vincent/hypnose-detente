@@ -1,5 +1,5 @@
-import type { Suffix } from "@sg/store/actions";
-import * as recording from "@sg/store/actions/recording";
+import type { Suffix } from "@/store/actions";
+import * as recording from "@/store/actions/recording";
 
 export const ACTION_SUCCESS_LABELS: Record<`${string}_${Suffix.SUCCESS}`, string | undefined> = {
   // recording

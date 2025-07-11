@@ -1,5 +1,5 @@
-import { SAMPLE_MOCK } from "@sg/fixtures/recording";
-import type { RecordingService } from "@sg/services/recording";
+import { SAMPLE_MOCK } from "@/fixtures/recording";
+import type { RecordingService } from "@/services/recording";
 
 const fetchSamples: RecordingService["fetchSamples"] = async () => {
   return Promise.resolve([SAMPLE_MOCK]);

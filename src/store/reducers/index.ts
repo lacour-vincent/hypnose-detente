@@ -1,8 +1,8 @@
 import { type UnknownAction, combineReducers } from "@reduxjs/toolkit";
 
-import actions, { type ActionsState } from "@sg/store/reducers/actions";
-import alerting, { type AlertingState } from "@sg/store/reducers/alerting";
-import recording, { type RecordingState } from "@sg/store/reducers/recording";
+import actions, { type ActionsState } from "@/store/reducers/actions";
+import alerting, { type AlertingState } from "@/store/reducers/alerting";
+import recording, { type RecordingState } from "@/store/reducers/recording";
 
 export interface State {
   actions: ActionsState;

@@ -7,9 +7,9 @@ import {
 } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 
-import createRootReducer, { type State } from "@sg/store/reducers";
-import sagas from "@sg/store/sagas";
-import context from "@sg/store/test/context";
+import createRootReducer, { type State } from "@/store/reducers";
+import sagas from "@/store/sagas";
+import context from "@/store/test/context";
 
 interface LookUpAction extends UnknownAction {
   promise: Promise<void>;

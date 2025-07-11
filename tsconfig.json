@@ -4,7 +4,7 @@
     /* PROJECT OPTIONS */
     "baseUrl": "src",
     "paths": {
-      "@sg/*": ["*"],
+      "@/*": ["*"],
       "@ui/*": ["components/ui/*"]
     },
 

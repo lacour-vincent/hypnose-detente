@@ -4,7 +4,7 @@ import type { StyleProp, ViewStyle } from "react-native";
 // @ts-expect-error: The library do not export types from now.
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
-import { cn } from "@sg/styling";
+import { cn } from "@/styling";
 
 interface Props {
   style?: StyleProp<ViewStyle>;

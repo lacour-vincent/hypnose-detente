@@ -2,9 +2,9 @@ import React, { type FC } from "react";
 import { View } from "react-native";
 import { useSelector } from "react-redux";
 
-import { getSamples } from "@sg/store/selectors/recording";
+import { getSamples } from "@/store/selectors/recording";
 
-import Samples from "@sg/components/Samples";
+import Samples from "@/components/Samples";
 
 import s from "./styles";
 

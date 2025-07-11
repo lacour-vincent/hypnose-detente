@@ -1,10 +1,10 @@
 import type { SagaIterator } from "redux-saga";
 import { all, put, takeLeading } from "redux-saga/effects";
 
-import { type FailureActionPayload, Suffix } from "@sg/store/actions";
-import { addError, addSuccess } from "@sg/store/actions/alerting";
+import { type FailureActionPayload, Suffix } from "@/store/actions";
+import { addError, addSuccess } from "@/store/actions/alerting";
 
-import { ACTION_FAILURE_LABELS, ACTION_SUCCESS_LABELS } from "@sg/referential/alerting";
+import { ACTION_FAILURE_LABELS, ACTION_SUCCESS_LABELS } from "@/referential/alerting";
 
 interface SuccessAction {
   type: `${Uppercase<string>}_${Suffix.SUCCESS}`;

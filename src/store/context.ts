@@ -1,6 +1,6 @@
 import { router as expoRouter } from "expo-router";
 
-import recording, { type RecordingService } from "@sg/services/recording";
+import recording, { type RecordingService } from "@/services/recording";
 
 export interface Context {
   services: Services;

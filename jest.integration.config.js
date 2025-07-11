@@ -4,7 +4,7 @@ const config = {
   testEnvironment: "node",
   testMatch: ["<rootDir>/src/**/*.test.tsx"],
   moduleNameMapper: {
-    "^@sg/(.*)$": "<rootDir>/src/$1",
+    "^@/(.*)$": "<rootDir>/src/$1",
     "^@ui/(.*)$": "<rootDir>/src/components/ui/$1",
   },
   setupFilesAfterEnv: ["<rootDir>/src/testing/setup.ts"],

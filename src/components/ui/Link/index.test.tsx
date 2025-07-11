@@ -1,6 +1,6 @@
 import React from "react";
 
-import { render } from "@sg/testing/render";
+import { render } from "@/testing/render";
 
 import Link from "./index";
 

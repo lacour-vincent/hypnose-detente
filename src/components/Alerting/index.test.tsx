@@ -1,9 +1,9 @@
 import React from "react";
 
-import { render } from "@sg/testing/react-native";
-import { createTestStore } from "@sg/testing/store";
+import { addError, addSuccess } from "@/store/actions/alerting";
 
-import { addError, addSuccess } from "@sg/store/actions/alerting";
+import { render } from "@/testing/react-native";
+import { createTestStore } from "@/testing/store";
 
 import Alerting from "./index";
 

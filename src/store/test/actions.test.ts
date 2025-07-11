@@ -1,5 +1,5 @@
-import { type RequestAction, createRequestAction } from "@sg/store/actions";
-import { createFailureSelector, createRequestSelector, createSuccessSelector } from "@sg/store/selectors/actions";
+import { type RequestAction, createRequestAction } from "@/store/actions";
+import { createFailureSelector, createRequestSelector, createSuccessSelector } from "@/store/selectors/actions";
 
 import StoreTester from "./index";
 

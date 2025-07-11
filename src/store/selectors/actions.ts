@@ -1,5 +1,5 @@
-import type { RequestAction } from "@sg/store/actions";
-import type { State } from "@sg/store/reducers";
+import type { RequestAction } from "@/store/actions";
+import type { State } from "@/store/reducers";
 
 export const createRequestSelector = (actions: RequestAction[]) => (state: State) => {
   return actions.some((action: RequestAction) => {

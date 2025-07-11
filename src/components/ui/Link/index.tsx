@@ -3,7 +3,7 @@ import type { StyleProp, TextStyle } from "react-native";
 
 import { type LinkProps, Link as LinkUI } from "expo-router";
 
-import { cn } from "@sg/styling";
+import { cn } from "@/styling";
 
 interface Props extends LinkProps {
   style?: StyleProp<TextStyle>;

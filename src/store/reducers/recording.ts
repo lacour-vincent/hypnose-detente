@@ -1,11 +1,11 @@
 import { createReducer } from "@reduxjs/toolkit";
 
-import type { Sample } from "@sg/typings/recording";
+import type { Sample } from "@/typings/recording";
 
-import { retrieveSampleById, retrieveSamples } from "@sg/store/actions/recording";
+import { retrieveSampleById, retrieveSamples } from "@/store/actions/recording";
 
-import { SAMPLE_EMPTY } from "@sg/fixtures/recording";
-import { SAMPLES } from "@sg/referential/recording";
+import { SAMPLE_EMPTY } from "@/fixtures/recording";
+import { SAMPLES } from "@/referential/recording";
 
 export interface RecordingState {
   items: Sample[];

@@ -1,6 +1,6 @@
-import { createRequestAction } from "@sg/store/actions";
-import { addSuccess, removeAlert } from "@sg/store/actions/alerting";
-import { getAlerting } from "@sg/store/selectors/alerting";
+import { createRequestAction } from "@/store/actions";
+import { addSuccess, removeAlert } from "@/store/actions/alerting";
+import { getAlerting } from "@/store/selectors/alerting";
 
 import StoreTester from "./index";
 

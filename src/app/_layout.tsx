@@ -8,11 +8,11 @@ import { StatusBar } from "expo-status-bar";
 // eslint-disable-next-line no-restricted-imports
 import { PaperProvider } from "react-native-paper";
 
-import { createStore } from "@sg/store";
+import { createStore } from "@/store";
 
-import Alerting from "@sg/components/Alerting";
+import Alerting from "@/components/Alerting";
 
-import theme, { paper } from "@sg/styling";
+import theme, { paper } from "@/styling";
 
 SplashScreen.hide();
 SplashScreen.setOptions({ duration: 400, fade: true });

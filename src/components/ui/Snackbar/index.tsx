@@ -6,7 +6,7 @@ import { Snackbar as SnackbarUI } from "react-native-paper";
 // eslint-disable-next-line no-restricted-imports
 import type { ThemeProp } from "react-native-paper/lib/typescript/types";
 
-import theme from "@sg/styling";
+import theme from "@/styling";
 
 const AUTO_CLOSE_DURATION = 5000;
 

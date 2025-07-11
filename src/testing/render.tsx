@@ -7,7 +7,7 @@ import { PaperProvider } from "react-native-paper";
 // eslint-disable-next-line no-restricted-imports
 import { type RenderOptions, render, userEvent } from "@testing-library/react-native";
 
-import { createTestStore } from "@sg/testing/store";
+import { createTestStore } from "@/testing/store";
 
 interface Options extends RenderOptions {
   store?: ReturnType<typeof createTestStore>;

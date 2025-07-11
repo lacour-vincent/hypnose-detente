@@ -1,6 +1,6 @@
-import type { Sample } from "@sg/typings/recording";
+import type { Sample } from "@/typings/recording";
 
-import { createRequestAction, createRequestPayloadAction } from "@sg/store/actions";
+import { createRequestAction, createRequestPayloadAction } from "@/store/actions";
 
 export const retrieveSamples = createRequestAction<{ samples: Sample[] }>("RETRIEVE_SAMPLES");
 

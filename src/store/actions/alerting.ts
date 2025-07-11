@@ -1,8 +1,8 @@
 import { nanoid } from "@reduxjs/toolkit";
 
-import { type Alert, AlertLevel } from "@sg/typings/alerting";
+import { type Alert, AlertLevel } from "@/typings/alerting";
 
-import { createPayloadAction } from "@sg/store/actions";
+import { createPayloadAction } from "@/store/actions";
 
 export const addAlert = createPayloadAction<{ alert: Alert }>("ADD_ALERT");
 

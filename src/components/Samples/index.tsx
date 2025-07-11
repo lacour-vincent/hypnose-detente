@@ -1,9 +1,9 @@
 import React, { type FC } from "react";
 import { FlatList } from "react-native";
 
-import type { Sample } from "@sg/typings/recording";
+import type { Sample } from "@/typings/recording";
 
-import SampleItem from "@sg/components/SampleItem";
+import SampleItem from "@/components/SampleItem";
 
 import s from "./styles";
 

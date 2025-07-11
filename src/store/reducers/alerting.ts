@@ -1,8 +1,8 @@
 import { createReducer } from "@reduxjs/toolkit";
 
-import type { Alert } from "@sg/typings/alerting";
+import type { Alert } from "@/typings/alerting";
 
-import { addAlert, removeAlert } from "@sg/store/actions/alerting";
+import { addAlert, removeAlert } from "@/store/actions/alerting";
 
 export type AlertingState = Alert[];
 

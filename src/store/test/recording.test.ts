@@ -1,5 +1,5 @@
-import { retrieveSampleById, retrieveSamples } from "@sg/store/actions/recording";
-import { getSamples, getSelectedSample } from "@sg/store/selectors/recording";
+import { retrieveSampleById, retrieveSamples } from "@/store/actions/recording";
+import { getSamples, getSelectedSample } from "@/store/selectors/recording";
 
 import StoreTester from "./index";
 

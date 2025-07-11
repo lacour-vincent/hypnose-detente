@@ -1,10 +1,10 @@
 import React, { type FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { type Alert, AlertLevel } from "@sg/typings/alerting";
+import { type Alert, AlertLevel } from "@/typings/alerting";
 
-import { removeAlert } from "@sg/store/actions/alerting";
-import { getAlerting } from "@sg/store/selectors/alerting";
+import { removeAlert } from "@/store/actions/alerting";
+import { getAlerting } from "@/store/selectors/alerting";
 
 import Snackbar from "@ui/Snackbar";
 

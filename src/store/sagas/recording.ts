@@ -1,9 +1,9 @@
 import type { SagaIterator } from "redux-saga";
 import { all, call, getContext, put, takeLeading } from "redux-saga/effects";
 
-import type { Sample } from "@sg/typings/recording";
+import type { Sample } from "@/typings/recording";
 
-import type { Context } from "@sg/store/context";
+import type { Context } from "@/store/context";
 
 import { retrieveSampleById, retrieveSamples } from "../actions/recording";
 

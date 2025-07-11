@@ -1,6 +1,6 @@
-import type { Context } from "@sg/store/context";
+import type { Context } from "@/store/context";
 
-import recording from "@sg/services/recording";
+import recording from "@/services/recording";
 
 const services: Context["services"] = { recording: recording.inMemory };
 
