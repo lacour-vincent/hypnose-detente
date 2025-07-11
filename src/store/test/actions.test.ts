@@ -3,7 +3,7 @@ import { createFailureSelector, createRequestSelector, createSuccessSelector } f
 
 import StoreTester from "./index";
 
-const action: RequestAction = createRequestAction("SOME_REQUEST_ACTION");
+const action: RequestAction = createRequestAction("ANY_ACTION");
 
 const createActionsSelector = (actions: RequestAction[]) => {
   return {
@@ -13,7 +13,7 @@ const createActionsSelector = (actions: RequestAction[]) => {
   };
 };
 
-describe("Store - loaders", () => {
+describe("Store - actions", () => {
   let store: StoreTester;
 
   beforeEach(() => {

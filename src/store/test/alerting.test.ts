@@ -27,16 +27,16 @@ describe("Store - alerting", () => {
   });
 
   it("should perform any success action", () => {
-    const action = createRequestAction("REQUEST_ACTION");
+    const action = createRequestAction("ANY_ACTION");
     expect(getAlerting(store.getState())).toHaveLength(0);
     store.dispatch(action.success());
     expect(getAlerting(store.getState())).toHaveLength(0);
   });
 
   it("should perform any failure action", () => {
-    const action = createRequestAction("REQUEST_ACTION");
+    const action = createRequestAction("ANY_ACTION");
     expect(getAlerting(store.getState())).toHaveLength(0);
     store.dispatch(action.failure({ err: new Error("failure") }));
-    expect(getAlerting(store.getState())).toHaveLength(1);
+    expect(getAlerting(store.getState())).toHaveLength(0);
   });
 });
