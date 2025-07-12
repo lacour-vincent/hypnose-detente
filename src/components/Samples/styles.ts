@@ -5,5 +5,6 @@ import theme from "@/styling";
 export default StyleSheet.create({
   container: { rowGap: theme["space-xs"], padding: theme["space-xs"] },
   wrapper: { columnGap: theme["space-xs"] },
-  item: { flex: 1, maxWidth: "50%", elevation: 3 },
+  link: { flex: 1, maxWidth: "50%" },
+  item: { elevation: 3 },
 });

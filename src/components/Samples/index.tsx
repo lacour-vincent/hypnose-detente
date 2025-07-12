@@ -3,7 +3,12 @@ import { FlatList } from "react-native";
 
 import type { Sample } from "@/typings/recording";
 
+import { ROUTES } from "@/referential/routes";
+import { getRouteWithParams } from "@/utils/url";
+
 import SampleItem from "@/components/SampleItem";
+
+import Link from "@ui/Link";
 
 import s from "./styles";
 
@@ -18,8 +23,15 @@ const Samples: FC<Props> = ({ samples }) => {
       columnWrapperStyle={s.wrapper}
       numColumns={2}
       data={samples}
-      keyExtractor={(notification) => notification.id}
-      renderItem={(notification) => <SampleItem style={s.item} sample={notification.item} />}
+      keyExtractor={(sample) => sample.id}
+      renderItem={({ item }) => {
+        const href = getRouteWithParams(ROUTES.SAMPLE_VIEW, { id: item.id });
+        return (
+          <Link style={s.link} href={href} label={item.title}>
+            <SampleItem style={s.item} sample={item} />
+          </Link>
+        );
+      }}
     />
   );
 };

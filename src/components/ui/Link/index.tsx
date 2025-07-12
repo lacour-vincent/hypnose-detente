@@ -1,5 +1,5 @@
 import React, { type FC, type ReactNode } from "react";
-import type { StyleProp, TextStyle } from "react-native";
+import { Pressable, type StyleProp, type TextStyle } from "react-native";
 
 import { type LinkProps, Link as LinkUI } from "expo-router";
 
@@ -14,8 +14,8 @@ interface Props extends LinkProps {
 
 const Link: FC<Props> = ({ style, href, label, children }) => {
   return (
-    <LinkUI style={cn([style])} href={href} aria-label={label} accessibilityLabel={label}>
-      {children}
+    <LinkUI style={cn([style])} href={href} aria-label={label} accessibilityLabel={label} asChild>
+      <Pressable>{children}</Pressable>
     </LinkUI>
   );
 };

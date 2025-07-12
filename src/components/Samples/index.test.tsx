@@ -8,8 +8,8 @@ import Samples from "./index";
 describe("<Samples />", () => {
   it("should render without crashing", async () => {
     const props = { samples: [...SAMPLES_MOCK] };
-    const { getByText, findAllByTestId } = render(<Samples {...props} />);
+    const { getByRole, findAllByTestId } = render(<Samples {...props} />);
     expect(await findAllByTestId("clock-outline")).toHaveLength(props.samples.length);
-    props.samples.forEach((sample) => expect(getByText(sample.title)).toBeDefined());
+    props.samples.forEach((sample) => expect(getByRole("link", { name: sample.title })).toBeDefined());
   });
 });
