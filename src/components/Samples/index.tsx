@@ -14,10 +14,12 @@ interface Props {
 const Samples: FC<Props> = ({ samples }) => {
   return (
     <FlatList
-      style={s.container}
+      contentContainerStyle={s.container}
+      columnWrapperStyle={s.wrapper}
+      numColumns={2}
       data={samples}
       keyExtractor={(notification) => notification.id}
-      renderItem={(notification) => <SampleItem sample={notification.item} />}
+      renderItem={(notification) => <SampleItem style={s.item} sample={notification.item} />}
     />
   );
 };

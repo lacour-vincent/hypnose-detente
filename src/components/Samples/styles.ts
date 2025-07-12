@@ -1,5 +1,9 @@
 import { StyleSheet } from "react-native";
 
+import theme from "@/styling";
+
 export default StyleSheet.create({
-  container: { display: "flex", flexDirection: "column", gap: 20 },
+  container: { rowGap: theme["space-xs"], padding: theme["space-xs"] },
+  wrapper: { columnGap: theme["space-xs"] },
+  item: { flex: 1, maxWidth: "50%", elevation: 3 },
 });

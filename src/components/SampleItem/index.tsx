@@ -1,19 +1,36 @@
 import React, { type FC } from "react";
-import { Text, View } from "react-native";
+import { type StyleProp, Text, View, type ViewStyle } from "react-native";
 
 import type { Sample } from "@/typings/recording";
+
+import { SAMPLE_THUMBNAILS } from "@/referential/thumbnails";
+
+import Icon from "@ui/Icon";
+import Image from "@ui/Image";
+
+import theme, { cn } from "@/styling";
 
 import s from "./styles";
 
 interface Props {
+  style?: StyleProp<ViewStyle>;
   sample: Sample;
 }
 
-const SampleItem: FC<Props> = ({ sample }) => {
+const SampleItem: FC<Props> = ({ style, sample }) => {
+  const url = SAMPLE_THUMBNAILS[sample.slug];
+  const alt = `Vignette - ${sample.label}`;
   return (
-    <View style={s.container}>
-      <Text style={s.title}>{sample.title}</Text>
-      <Text style={s.sentAt}>{sample.duration}</Text>
+    <View style={cn([s.container, style])}>
+      <Image style={s.thumbnail} src={url} alt={alt} />
+      <View style={s.wrapper}>
+        <Text style={s.title}>{sample.title}</Text>
+        <View style={s.row}>
+          <Icon name="clock-outline" size={theme["font-size-xl"]} color={theme["font-secondary-color"]} />
+          <Text style={s.duration}>{sample.duration} min</Text>
+          <Icon style={s.offline} name="airplane" size={theme["font-size-xl"]} color={theme["font-secondary-color"]} />
+        </View>
+      </View>
     </View>
   );
 };

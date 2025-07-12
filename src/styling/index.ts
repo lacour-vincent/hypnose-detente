@@ -7,9 +7,9 @@ import { MD3LightTheme } from "react-native-paper";
 import type { MD3Colors, ThemeProp } from "react-native-paper/lib/typescript/types";
 
 const theme = {
-  "font-primary-color": "#DE000000" as string,
-  "font-secondary-color": "#99000000" as string,
-  "font-tertiary-color": "#61000000" as string,
+  "font-primary-color": "rgba(0, 0, 0, 0.87)" as string,
+  "font-secondary-color": "rgba(0, 0, 0, 0.60)" as string,
+  "font-tertiary-color": "rgba(0, 0, 0, 0.38)" as string,
 
   "primary-color": "#008577" as string,
   "primary-color-text": "#FFFFFF" as string,

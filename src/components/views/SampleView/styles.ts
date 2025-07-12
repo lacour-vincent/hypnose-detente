@@ -4,10 +4,11 @@ import theme from "@/styling";
 
 export default StyleSheet.create({
   container: {
+    display: "flex",
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: theme["space-md"],
+    backgroundColor: theme.background,
+    margin: theme["space-md"],
+    borderColor: "red",
+    borderWidth: 1,
   },
 });

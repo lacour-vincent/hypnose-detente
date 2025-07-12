@@ -14,7 +14,7 @@ interface Props {
 }
 
 const Icon: FC<Props> = ({ style, name, size, color }) => {
-  return <MaterialCommunityIcons style={cn([style])} name={name} size={size} color={color} />;
+  return <MaterialCommunityIcons style={cn([style])} name={name} size={size} color={color} testID={name} />;
 };
 
 export default Icon;

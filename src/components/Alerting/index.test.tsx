@@ -8,7 +8,7 @@ import { createTestStore } from "@/testing/store";
 import Alerting from "./index";
 
 describe("<Alerting />", () => {
-  it("should render no alerts", async () => {
+  it("should render no alerts", () => {
     const store = createTestStore();
     const { queryByRole } = render(<Alerting />, { store });
     expect(queryByRole("button", { name: "fermer" })).not.toBeOnTheScreen();
