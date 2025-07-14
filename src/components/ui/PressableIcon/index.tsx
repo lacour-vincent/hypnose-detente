@@ -1,7 +1,7 @@
 import React, { type FC } from "react";
 import { Pressable, type StyleProp, type ViewStyle } from "react-native";
 
-import Icon from "@ui/Icon";
+import Icon, { type Props as IconProps } from "@ui/Icon";
 
 import theme, { cn } from "@/styling";
 
@@ -10,7 +10,7 @@ import s from "./styles";
 interface Props {
   style?: StyleProp<ViewStyle>;
   label: string;
-  icon: string;
+  icon: IconProps["name"];
   onPress: () => void;
 }
 

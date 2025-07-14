@@ -1,16 +1,12 @@
-import React, { type FC } from "react";
+import React, { type ComponentProps, type FC } from "react";
 import type { StyleProp, ViewStyle } from "react-native";
 
-// @ts-expect-error: The library do not export types from now.
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 import { cn } from "@/styling";
 
-interface Props {
+export interface Props extends ComponentProps<typeof MaterialCommunityIcons> {
   style?: StyleProp<ViewStyle>;
-  name: string;
-  size?: number;
-  color?: string;
 }
 
 const Icon: FC<Props> = ({ style, name, size, color }) => {
