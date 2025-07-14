@@ -33,7 +33,9 @@ const RootLayout: FC = () => {
             headerStyle: { backgroundColor: theme["primary-color"] },
             headerRight: SamplesHeader.HeaderRight,
           }}
-        />
+        >
+          <Stack.Screen name="samples" options={{ headerShown: false }} />
+        </Stack>
         <Alerting />
       </PaperProvider>
     </Provider>
