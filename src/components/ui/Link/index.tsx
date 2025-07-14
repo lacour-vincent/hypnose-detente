@@ -14,7 +14,15 @@ interface Props extends LinkProps {
 
 const Link: FC<Props> = ({ style, href, label, children }) => {
   return (
-    <LinkUI style={cn([style])} href={href} aria-label={label} accessibilityLabel={label} asChild>
+    <LinkUI
+      style={cn([style])}
+      href={href}
+      role="link"
+      aria-label={label}
+      accessibilityRole="link"
+      accessibilityLabel={label}
+      asChild
+    >
       <Pressable>{children}</Pressable>
     </LinkUI>
   );
