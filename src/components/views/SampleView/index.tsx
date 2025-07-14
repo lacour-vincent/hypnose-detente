@@ -11,6 +11,7 @@ interface Params {
 
 const SampleView: FC = () => {
   const { params } = useRouter<Params>();
+
   return (
     <View style={s.container}>
       <Text>SAMPLE VIEW : {params.id}</Text>

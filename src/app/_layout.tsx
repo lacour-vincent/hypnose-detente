@@ -11,6 +11,7 @@ import { PaperProvider } from "react-native-paper";
 import { createStore } from "@/store";
 
 import Alerting from "@/components/Alerting";
+import SamplesHeader from "@/components/headers/SamplesHeader";
 
 import theme, { paper } from "@/styling";
 
@@ -28,7 +29,9 @@ const RootLayout: FC = () => {
           screenOptions={{
             headerTitle: "Hypnose Détente",
             headerTitleStyle: { fontSize: theme["font-size-lg"], color: theme["primary-color-text"] },
+            headerTintColor: theme["primary-color-text"],
             headerStyle: { backgroundColor: theme["primary-color"] },
+            headerRight: SamplesHeader.HeaderRight,
           }}
         />
         <Alerting />
