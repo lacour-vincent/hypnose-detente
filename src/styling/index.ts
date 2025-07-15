@@ -12,13 +12,17 @@ const theme = {
   "font-tertiary-color": "rgba(0, 0, 0, 0.38)" as string,
 
   "primary-color": "#008577" as string,
-  "primary-color-text": "#FFFFFF" as string,
+  "primary-color-text": "#ffffff" as string,
   "primary-color-dark": "#00574B" as string,
+  "secondary-color": "#ff7a88" as string,
+  "secondary-color-text": "#ffffff" as string,
+  "tertiary-color": "#56b4d3" as string,
+  "tertiary-color-text": "#ffffff" as string,
 
   "success-color": "#4CAF50" as string,
-  "success-color-text": "#FFFFFF" as string,
+  "success-color-text": "#ffffff" as string,
   "error-color": "#F44336" as string,
-  "error-color-text": "#FFFFFF" as string,
+  "error-color-text": "#ffffff" as string,
 
   background: "#FFFBFE" as string,
   outline: "#79747E" as string,

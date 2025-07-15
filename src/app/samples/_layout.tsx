@@ -21,8 +21,8 @@ const SampleLayout: FC = () => {
         headerTitle: params.id,
         headerTitleStyle: { fontSize: theme["font-size-lg"], color: theme["primary-color-text"] },
         headerTintColor: theme["primary-color-text"],
-        headerStyle: { backgroundColor: theme["primary-color"] },
         headerRight: SampleHeader.HeaderRight,
+        headerTransparent: true,
       }}
     />
   );
