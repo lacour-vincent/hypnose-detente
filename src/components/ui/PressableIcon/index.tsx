@@ -19,6 +19,7 @@ const PressableIcon: FC<Props> = ({ style, label, icon, onPress }) => {
     <Pressable
       style={cn([style, s.pressable])}
       role="button"
+      aria-label={label}
       accessibilityRole="button"
       accessibilityLabel={label}
       android_ripple={{ radius: theme["space-md"], borderless: true, foreground: true }}

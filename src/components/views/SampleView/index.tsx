@@ -10,6 +10,8 @@ import { SAMPLE_THUMBNAILS } from "@/referential/thumbnails";
 
 import useRouter from "@/hooks/useRouter";
 
+import AudioPlayer from "@/components/AudioPlayer";
+
 import Image from "@ui/Image";
 
 import theme from "@/styling";
@@ -44,6 +46,7 @@ const SampleView: FC = () => {
       end={{ x: 0.5, y: 1 }}
     >
       <Image style={s.image} src={url} alt={alt} />
+      <AudioPlayer style={s.player} />
     </LinearGradient>
   );
 };

@@ -14,7 +14,7 @@ const theme = {
   "primary-color": "#008577" as string,
   "primary-color-text": "#ffffff" as string,
   "primary-color-dark": "#00574B" as string,
-  "secondary-color": "#ff7a88" as string,
+  "secondary-color": "#d37556" as string,
   "secondary-color-text": "#ffffff" as string,
   "tertiary-color": "#56b4d3" as string,
   "tertiary-color-text": "#ffffff" as string,
