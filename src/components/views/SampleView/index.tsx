@@ -1,7 +1,11 @@
-import React, { type FC } from "react";
+import React, { type FC, useEffect } from "react";
 import { Text } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 
 import { LinearGradient } from "expo-linear-gradient";
+
+import { clearSelectedSample, retrieveSampleById } from "@/store/actions/recording";
+import { getSelectedSample } from "@/store/selectors/recording";
 
 import useRouter from "@/hooks/useRouter";
 
@@ -14,7 +18,17 @@ interface Params {
 }
 
 const SampleView: FC = () => {
+  const dispatch = useDispatch();
   const { params } = useRouter<Params>();
+  const sample = useSelector(getSelectedSample);
+
+  useEffect(() => {
+    dispatch(retrieveSampleById.request({ id: params.id }));
+    return () => {
+      dispatch(clearSelectedSample());
+    };
+  }, []);
+
   return (
     <LinearGradient
       style={s.container}
@@ -22,7 +36,7 @@ const SampleView: FC = () => {
       start={{ x: 0.5, y: 0 }}
       end={{ x: 0.5, y: 1 }}
     >
-      <Text>SAMPLE VIEW : {params.id}</Text>
+      <Text>SAMPLE VIEW : {sample.title}</Text>
     </LinearGradient>
   );
 };

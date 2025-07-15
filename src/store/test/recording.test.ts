@@ -1,5 +1,9 @@
-import { retrieveSampleById, retrieveSamples } from "@/store/actions/recording";
+import type { Sample } from "@/typings/recording";
+
+import { clearSelectedSample, retrieveSampleById, retrieveSamples } from "@/store/actions/recording";
 import { getSamples, getSelectedSample } from "@/store/selectors/recording";
+
+import { SAMPLE_MOCK } from "@/fixtures/recording";
 
 import StoreTester from "./index";
 
@@ -24,5 +28,15 @@ describe("Store - recording", () => {
     await store.waitFor(retrieveSampleById.success);
     const sample = getSelectedSample(store.getState());
     expect(sample.id).not.toBe("");
+  });
+
+  it("should perform clear selected sample action", async () => {
+    let sample: Sample;
+    store.dispatch(retrieveSampleById.success({ sample: SAMPLE_MOCK }));
+    sample = getSelectedSample(store.getState());
+    expect(sample.id).not.toBe("");
+    store.dispatch(clearSelectedSample());
+    sample = getSelectedSample(store.getState());
+    expect(sample.id).toBe("");
   });
 });

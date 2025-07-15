@@ -2,7 +2,7 @@ import { createReducer } from "@reduxjs/toolkit";
 
 import type { Sample } from "@/typings/recording";
 
-import { retrieveSampleById, retrieveSamples } from "@/store/actions/recording";
+import { clearSelectedSample, retrieveSampleById, retrieveSamples } from "@/store/actions/recording";
 
 import { SAMPLE_EMPTY } from "@/fixtures/recording";
 import { SAMPLES } from "@/referential/recording";
@@ -22,6 +22,10 @@ export default createReducer(initialState, (builder) => {
     })
     .addCase(retrieveSampleById.success, (state, action) => {
       state.selected = action.payload.sample;
+      return state;
+    })
+    .addCase(clearSelectedSample, (state) => {
+      state.selected = initialState.selected;
       return state;
     });
 });

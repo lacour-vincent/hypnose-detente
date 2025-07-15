@@ -27,7 +27,7 @@ const RootLayout: FC = () => {
         <StatusBar />
         <Stack
           screenOptions={{
-            headerTitle: "Hypnose Détente",
+            title: "Hypnose Détente",
             headerTitleStyle: { fontSize: theme["font-size-lg"], color: theme["primary-color-text"] },
             headerTintColor: theme["primary-color-text"],
             headerStyle: { backgroundColor: theme["primary-color"] },

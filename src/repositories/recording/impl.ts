@@ -1,12 +1,14 @@
-import { SAMPLE_MOCK } from "@/fixtures/recording";
+import { SAMPLES } from "@/referential/recording";
 import type { RecordingRepository } from "@/repositories/recording";
 
 const fetchSamples: RecordingRepository["fetchSamples"] = async () => {
-  return Promise.resolve([SAMPLE_MOCK]);
+  return Promise.resolve(SAMPLES);
 };
 
-const fetchSampleById: RecordingRepository["fetchSampleById"] = async () => {
-  return Promise.resolve(SAMPLE_MOCK);
+const fetchSampleById: RecordingRepository["fetchSampleById"] = async (id) => {
+  const sample = SAMPLES.find((sample) => sample.id === id);
+  if (!sample) throw Error("Unknown sample.");
+  return Promise.resolve(sample);
 };
 
 const repository: RecordingRepository = { fetchSamples, fetchSampleById };

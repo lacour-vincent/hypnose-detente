@@ -1,24 +1,20 @@
 import React, { type FC } from "react";
+import { useSelector } from "react-redux";
 
 import { Stack } from "expo-router";
 
-import useRouter from "@/hooks/useRouter";
+import { getSelectedSample } from "@/store/selectors/recording";
 
 import SampleHeader from "@/components/headers/SampleHeader";
 
 import theme from "@/styling";
 
-interface Params {
-  id: string;
-}
-
 const SampleLayout: FC = () => {
-  const { params } = useRouter<Params>();
+  const sample = useSelector(getSelectedSample);
   return (
     <Stack
       screenOptions={{
-        title: params.id,
-        headerTitle: params.id,
+        title: sample.label,
         headerTitleStyle: { fontSize: theme["font-size-lg"], color: theme["primary-color-text"] },
         headerTintColor: theme["primary-color-text"],
         headerRight: SampleHeader.HeaderRight,
