@@ -1,1 +1,3 @@
-export enum DialogId {}
+export enum DialogId {
+  SAMPLE_INFORMATION = "SAMPLE_INFORMATION",
+}

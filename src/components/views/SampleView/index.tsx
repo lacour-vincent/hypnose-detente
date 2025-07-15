@@ -11,6 +11,7 @@ import { SAMPLE_THUMBNAILS } from "@/referential/thumbnails";
 import useRouter from "@/hooks/useRouter";
 
 import AudioPlayer from "@/components/AudioPlayer";
+import SampleInformationDialog from "@/components/dialogs/SampleInformationDialog";
 
 import Image from "@ui/Image";
 
@@ -47,6 +48,7 @@ const SampleView: FC = () => {
     >
       <Image style={s.image} src={url} alt={alt} />
       <AudioPlayer style={s.player} />
+      <SampleInformationDialog sample={sample} />
     </LinearGradient>
   );
 };

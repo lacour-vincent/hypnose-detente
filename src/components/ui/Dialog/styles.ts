@@ -1,17 +1,38 @@
 import { StyleSheet } from "react-native";
 
+import theme from "@/styling";
+
 export default StyleSheet.create({
   background: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
+    justifyContent: "center",
+    padding: theme["space-lg"],
     backgroundColor: "rgba(0, 0, 0, 0.5)",
-    padding: 24,
   },
-  dialog: { backgroundColor: "white", borderRadius: 8, width: "100%", overflow: "hidden" },
-  title: { fontSize: 18, fontWeight: "bold", padding: 16, color: "#000" },
-  description: { fontSize: 14, paddingHorizontal: 16, paddingBottom: 16, color: "#666" },
-  actions: { flexDirection: "row", borderTopWidth: 1, borderTopColor: "#eee" },
-  action: { flex: 1, padding: 16, alignItems: "center", justifyContent: "center" },
-  label: {},
+  dialog: {
+    gap: theme["space-sm"],
+    width: "100%",
+    paddingBlock: theme["space-sm"],
+    paddingInline: theme["space-md"],
+    borderRadius: theme["space-2xs"],
+    backgroundColor: "#ffffff",
+  },
+  title: { color: theme["primary-color"], fontSize: theme["font-size-lg"], fontWeight: "bold" },
+  description: { fontSize: theme["font-size-md"], color: theme["font-primary-color"] },
+  actions: {
+    display: "flex",
+    flexDirection: "row",
+    gap: theme["space-2xs"],
+    alignItems: "center",
+    justifyContent: "flex-end",
+  },
+  action: {
+    display: "flex",
+    minWidth: "25%",
+    alignItems: "center",
+    paddingInline: theme["space-xs"],
+    paddingBlock: theme["space-2xs"],
+  },
+  label: { color: theme["primary-color"], fontSize: theme["font-size-md"], fontWeight: "medium" },
 });
