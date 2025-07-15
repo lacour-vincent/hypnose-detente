@@ -1,5 +1,4 @@
 import React, { type FC, useEffect } from "react";
-import { Text } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 
 import { LinearGradient } from "expo-linear-gradient";
@@ -7,7 +6,11 @@ import { LinearGradient } from "expo-linear-gradient";
 import { clearSelectedSample, retrieveSampleById } from "@/store/actions/recording";
 import { getSelectedSample } from "@/store/selectors/recording";
 
+import { SAMPLE_THUMBNAILS } from "@/referential/thumbnails";
+
 import useRouter from "@/hooks/useRouter";
+
+import Image from "@ui/Image";
 
 import theme from "@/styling";
 
@@ -29,6 +32,10 @@ const SampleView: FC = () => {
     };
   }, []);
 
+  if (!sample.id) return null; //Loader or error
+  const url = SAMPLE_THUMBNAILS[sample.slug];
+  const alt = `Vignette - ${sample.label}`;
+
   return (
     <LinearGradient
       style={s.container}
@@ -36,7 +43,7 @@ const SampleView: FC = () => {
       start={{ x: 0.5, y: 0 }}
       end={{ x: 0.5, y: 1 }}
     >
-      <Text>SAMPLE VIEW : {sample.title}</Text>
+      <Image style={s.image} src={url} alt={alt} />
     </LinearGradient>
   );
 };
