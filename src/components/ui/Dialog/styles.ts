@@ -34,5 +34,5 @@ export default StyleSheet.create({
     paddingInline: theme["space-xs"],
     paddingBlock: theme["space-2xs"],
   },
-  label: { color: theme["primary-color"], fontSize: theme["font-size-md"], fontWeight: "medium" },
+  label: { color: theme["primary-color"], fontSize: theme["font-size-md"], fontWeight: "bold" },
 });
