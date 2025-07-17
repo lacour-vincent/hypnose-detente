@@ -43,3 +43,6 @@ plugins/*.js
 
 # assets
 samples/**/*.mp3
+
+# modules
+!/modules/**/android/
