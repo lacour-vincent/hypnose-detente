@@ -13,6 +13,8 @@ const config: ExpoConfig = {
     versionCode: 37,
     adaptiveIcon: { foregroundImage: "./src/assets/icons/adaptive-icon.png", backgroundColor: "#ffffff" },
     edgeToEdgeEnabled: true,
+    permissions: ["INTERNET"],
+    blockedPermissions: ["READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE", "SYSTEM_ALERT_WINDOW", "VIBRATE"],
   },
   plugins: [
     "expo-router",
