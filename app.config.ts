@@ -1,7 +1,7 @@
 import { type ExpoConfig } from "expo/config";
 
 const config: ExpoConfig = {
-  name: "Hypnose Détente",
+  name: "Hypnose",
   slug: "hypnose-detente",
   owner: "lacour-vincent",
   version: "2.0.0-SNAPSHOT",
