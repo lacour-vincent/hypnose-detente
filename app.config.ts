@@ -47,6 +47,17 @@ const config: ExpoConfig = {
         backgroundColor: "#ffffff",
       },
     ],
+    [
+      "./plugins/withGooglePlayAssetDelivery.js",
+      [
+        { name: "bien-dormir", path: "samples/bien-dormir" },
+        { name: "s-endormir", path: "samples/s-endormir" },
+        { name: "preventif", path: "samples/preventif" },
+        { name: "curatif", path: "samples/curatif" },
+        { name: "renforcement", path: "samples/renforcement" },
+        { name: "ressourcement", path: "samples/ressourcement" },
+      ],
+    ],
   ],
 };
 
