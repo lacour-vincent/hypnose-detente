@@ -36,7 +36,7 @@ const SampleView: FC = () => {
   }, []);
 
   if (!sample.id) return null; //Loader or error
-  const url = SAMPLE_THUMBNAILS[sample.slug];
+  const url = SAMPLE_THUMBNAILS[sample.rid];
   const alt = `Vignette - ${sample.label}`;
 
   return (

@@ -1,8 +1,14 @@
+export interface AssetPack {
+  name: string;
+}
+
 export interface AssetPackState {
   name: string;
   status: AssetPackStatus;
   errorCode?: AssetPackErrorCode;
 }
+
+export type AssetPackStates = Record<AssetPackState["name"], AssetPackState>;
 
 export enum AssetPackStatus {
   UNKNOWN = 0,
@@ -32,7 +38,3 @@ export enum AssetPackErrorCode {
   UNRECOGNIZED_INSTALLATION = -15,
   INTERNAL_ERROR = -100,
 }
-
-export type ExpoPlayAssetDeliveryModuleEvents = {
-  onAssetPackStateUpdate: (state: AssetPackState) => void;
-};

@@ -6,6 +6,7 @@ const config = {
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/src/$1",
     "^@ui/(.*)$": "<rootDir>/src/components/ui/$1",
+    "^@modules/(.*)$": "<rootDir>/modules/$1",
   },
   setupFilesAfterEnv: ["<rootDir>/src/testing/setup.ts"],
   globalSetup: "<rootDir>/src/testing/globals.ts",

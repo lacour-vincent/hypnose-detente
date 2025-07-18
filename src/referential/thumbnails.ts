@@ -3,7 +3,7 @@ import type { ImageSourcePropType } from "react-native";
 
 import type { Sample } from "@/typings/recording";
 
-export const SAMPLE_THUMBNAILS: Record<Sample["slug"], ImageSourcePropType> = {
+export const SAMPLE_THUMBNAILS: Record<Sample["rid"], ImageSourcePropType> = {
   "bien-dormir": require("@/assets/thumbnails/bien-dormir.jpeg"),
   "s-endormir": require("@/assets/thumbnails/s-endormir.jpeg"),
   preventif: require("@/assets/thumbnails/preventif.jpeg"),

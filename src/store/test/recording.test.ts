@@ -1,7 +1,9 @@
 import type { Sample } from "@/typings/recording";
 
 import { clearSelectedSample, retrieveSampleById, retrieveSamples } from "@/store/actions/recording";
+import { retrieveAssetPackStates } from "@/store/actions/storage";
 import { getSamples, getSelectedSample } from "@/store/selectors/recording";
+import { getAssetPackStates } from "@/store/selectors/storage";
 
 import { SAMPLE_MOCK } from "@/fixtures/recording";
 
@@ -20,6 +22,9 @@ describe("Store - recording", () => {
     await store.waitFor(retrieveSamples.success);
     const samples = getSamples(store.getState());
     expect(samples).not.toHaveLength(0);
+    await store.waitFor(retrieveAssetPackStates.success);
+    const states = getAssetPackStates(store.getState());
+    expect(Object.keys(states).length).toBe(samples.length);
   });
 
   it("should perform retrieve sample by id action", async () => {

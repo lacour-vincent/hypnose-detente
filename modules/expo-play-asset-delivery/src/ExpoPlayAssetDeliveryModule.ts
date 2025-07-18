@@ -1,11 +1,15 @@
 import { NativeModule, requireNativeModule } from "expo";
 
-import { type AssetPackState, type ExpoPlayAssetDeliveryModuleEvents } from "./ExpoPlayAssetDelivery.types";
+import type { AssetPack, AssetPackState, AssetPackStates } from "@/typings/storage";
+
+type ExpoPlayAssetDeliveryModuleEvents = {
+  onAssetPackStateUpdate: (state: AssetPackState) => void;
+};
 
 declare class ExpoPlayAssetDeliveryModule extends NativeModule<ExpoPlayAssetDeliveryModuleEvents> {
-  getAssetPackFileLocation: (pack: string, filename: string) => string | null;
-  getAssetPackState: (pack: string) => Promise<AssetPackState>;
-  requestAssetPackFetch: (pack: string) => void;
+  getAssetPackStates: (packs: AssetPack["name"][]) => Promise<AssetPackStates>;
+  getAssetPackFileLocation: (pack: AssetPack["name"], filename: string) => string | null;
+  requestAssetPackFetch: (pack: AssetPack["name"]) => void;
 }
 
 export default requireNativeModule<ExpoPlayAssetDeliveryModule>("ExpoPlayAssetDelivery");

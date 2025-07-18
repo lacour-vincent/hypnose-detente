@@ -15,14 +15,15 @@ class ExpoPlayAssetDeliveryModule : Module() {
     override fun definition() = ModuleDefinition {
         Name("ExpoPlayAssetDelivery")
 
+        AsyncFunction("getAssetPackStates") Coroutine { packs: List<String> ->
+            assetPackManager.requestPackStates(packs).packStates()
+                .mapValues { assetPackStateAsBundle(it.value) }
+        }
+
         Function("getAssetPackFileLocation") { pack: String, filename: String ->
             val location = assetPackManager.getPackLocation(pack) ?: return@Function null
             val folder = location.assetsPath() ?: return@Function null
             return@Function "$folder/$filename"
-        }
-
-        AsyncFunction("getAssetPackState") Coroutine { pack: String ->
-            assetPackManager.requestPackStates(listOf(pack)).packStates()[pack]
         }
 
         Function("requestAssetPackFetch") { pack: String ->
@@ -42,8 +43,9 @@ class ExpoPlayAssetDeliveryModule : Module() {
     }
 
     private val ctx get(): Context = requireNotNull(appContext.reactContext)
-    private val assetPackManager get(): AssetPackManager =
-        requireNotNull(AssetPackManagerFactory.getInstance(ctx))
+    private val assetPackManager
+        get(): AssetPackManager =
+            requireNotNull(AssetPackManagerFactory.getInstance(ctx))
     private val listener = ExpoAssetPackStateUpdateListener(this)
 
     fun assetPackStateAsBundle(state: AssetPackState): Bundle {

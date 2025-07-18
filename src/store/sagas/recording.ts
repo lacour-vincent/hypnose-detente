@@ -3,14 +3,16 @@ import { all, call, getContext, put, takeLeading } from "redux-saga/effects";
 
 import type { Sample } from "@/typings/recording";
 
+import { retrieveSampleById, retrieveSamples } from "@/store/actions/recording";
+import { retrieveAssetPackStates } from "@/store/actions/storage";
 import type { Context } from "@/store/context";
-
-import { retrieveSampleById, retrieveSamples } from "../actions/recording";
 
 function* handleRetrieveSamples(): SagaIterator {
   const repositories: Context["repositories"] = yield getContext("repositories");
   try {
     const samples: Sample[] = yield call(repositories.recording.fetchSamples);
+    const packs = samples.map((sample) => sample.rid);
+    yield put(retrieveAssetPackStates.request({ packs }));
     yield put(retrieveSamples.success({ samples }));
   } catch (err: unknown) {
     yield put(retrieveSamples.failure({ err }));

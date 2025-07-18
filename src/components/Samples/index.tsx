@@ -2,6 +2,7 @@ import React, { type FC } from "react";
 import { FlatList } from "react-native";
 
 import type { Sample } from "@/typings/recording";
+import { type AssetPackStates, AssetPackStatus } from "@/typings/storage";
 
 import { ROUTES } from "@/referential/routes";
 import { getRouteWithParams } from "@/utils/url";
@@ -14,9 +15,10 @@ import s from "./styles";
 
 interface Props {
   samples: Sample[];
+  states: AssetPackStates;
 }
 
-const Samples: FC<Props> = ({ samples }) => {
+const Samples: FC<Props> = ({ samples, states }) => {
   return (
     <FlatList
       contentContainerStyle={s.container}
@@ -26,9 +28,10 @@ const Samples: FC<Props> = ({ samples }) => {
       keyExtractor={(sample) => sample.id}
       renderItem={({ item }) => {
         const href = getRouteWithParams(ROUTES.SAMPLE_VIEW, { id: item.id });
+        const offline = states[item.rid]?.status === AssetPackStatus.COMPLETED;
         return (
           <Link style={s.link} href={href} label={item.title}>
-            <SampleItem style={s.item} sample={item} />
+            <SampleItem style={s.item} sample={item} offline={offline} />
           </Link>
         );
       }}
