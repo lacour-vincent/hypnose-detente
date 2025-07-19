@@ -3,7 +3,7 @@ import type { Sample } from "@/typings/recording";
 export const SAMPLES: Sample[] = [
   {
     id: "efb3b76e-94d8-4a41-b3bf-7a39f81eea98",
-    rid: "bien-dormir",
+    rid: "bien_dormir",
     title: "Bien dormir",
     label: "Bien dormir",
     description:
@@ -12,7 +12,7 @@ export const SAMPLES: Sample[] = [
   },
   {
     id: "69f1efb0-9dcd-41cb-8120-682d59b6b122",
-    rid: "s-endormir",
+    rid: "s_endormir",
     title: "S'endormir",
     label: "S'endormir en auto-hypnose",
     description: "",

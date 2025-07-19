@@ -11,6 +11,10 @@ expo-env.d.ts
 android/
 ios/
 *.apk
+*.apks
+*.aab
+credentials.json
+
 
 # Native
 *.orig.*
@@ -46,3 +50,6 @@ samples/**/*.mp3
 
 # modules
 !/modules/**/android/
+
+# build
+bundletool-all.jar

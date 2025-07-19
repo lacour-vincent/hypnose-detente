@@ -16,6 +16,7 @@ const config: ExpoConfig = {
     permissions: ["INTERNET"],
     blockedPermissions: ["READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE", "SYSTEM_ALERT_WINDOW", "VIBRATE"],
   },
+  extra: { eas: { projectId: "9f66db35-01e6-4b14-9bcd-d41a567ae953" } },
   plugins: [
     "expo-router",
     [
@@ -52,8 +53,8 @@ const config: ExpoConfig = {
     [
       "./plugins/withGooglePlayAssetDelivery.js",
       [
-        { name: "bien-dormir", path: "samples/bien-dormir" },
-        { name: "s-endormir", path: "samples/s-endormir" },
+        { name: "bien_dormir", path: "samples/bien_dormir" },
+        { name: "s_endormir", path: "samples/s_endormir" },
         { name: "preventif", path: "samples/preventif" },
         { name: "curatif", path: "samples/curatif" },
         { name: "renforcement", path: "samples/renforcement" },
