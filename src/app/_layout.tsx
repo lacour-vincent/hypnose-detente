@@ -32,6 +32,7 @@ const RootLayout: FC = () => {
             headerTintColor: theme["primary-color-text"],
             headerStyle: { backgroundColor: theme["primary-color"] },
             headerRight: SamplesHeader.HeaderRight,
+            animation: "slide_from_right",
           }}
         >
           <Stack.Screen name="samples" options={{ headerShown: false }} />
