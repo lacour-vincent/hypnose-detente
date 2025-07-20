@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 import theme from "@/styling";
 
 export default StyleSheet.create({
-  container: { borderBottomStartRadius: 4, borderBottomEndRadius: 4, backgroundColor: theme.background },
+  container: { borderRadius: 4, backgroundColor: theme.background },
   thumbnail: { aspectRatio: 1, borderTopStartRadius: 4, borderTopEndRadius: 4 },
   wrapper: { position: "relative", gap: 4, padding: theme["space-xs"] },
   title: { color: theme["font-primary-color"], fontSize: theme["font-size-md"] },
