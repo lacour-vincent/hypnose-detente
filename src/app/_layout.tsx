@@ -28,7 +28,7 @@ const RootLayout: FC = () => {
         <Stack
           screenOptions={{
             title: "Hypnose Détente",
-            headerTitleStyle: { fontSize: theme["font-size-lg"], color: theme["primary-color-text"] },
+            headerTitleStyle: { fontSize: theme["font-size-md"], color: theme["primary-color-text"] },
             headerTintColor: theme["primary-color-text"],
             headerStyle: { backgroundColor: theme["primary-color"] },
             headerRight: SamplesHeader.HeaderRight,

@@ -29,13 +29,13 @@ const SampleItem: FC<Props> = ({ style, sample, offline }) => {
           {sample.title}
         </Text>
         <View style={s.row}>
-          <Icon name="clock-outline" size={theme["font-size-xl"]} color={theme["font-secondary-color"]} />
+          <Icon name="clock-outline" size={theme["font-size-sm"]} color={theme["font-secondary-color"]} />
           <Text style={s.duration}>{sample.duration} min</Text>
-          {offline && (
+          {!offline && (
             <Icon
               style={s.offline}
               name="airplane"
-              size={theme["font-size-xl"]}
+              size={theme["font-size-sm"]}
               color={theme["font-secondary-color"]}
             />
           )}

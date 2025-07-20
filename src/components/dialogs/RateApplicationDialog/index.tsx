@@ -23,7 +23,7 @@ const RateApplicationDialog: FC = () => {
 
   const actions: DialogAction[] = [
     { label: "PLUS TARD", callback: handleClose },
-    { label: "OUVRIR PLAYSTORE", callback: handleOpenPlayStore },
+    { label: "NOTATION", callback: handleOpenPlayStore },
   ];
 
   return (

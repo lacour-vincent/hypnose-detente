@@ -16,7 +16,7 @@ describe("<RateApplicationDialog />", () => {
     expect(getByText("Donnez-nous votre avis !")).toBeDefined();
     expect(getByText(/Si vous souhaitez soutenir notre application/)).toBeDefined();
     expect(getByRole("button", { name: "PLUS TARD" })).toBeDefined();
-    expect(getByRole("button", { name: "OUVRIR PLAYSTORE" })).toBeDefined();
+    expect(getByRole("button", { name: "NOTATION" })).toBeDefined();
   });
 
   it("should close the dialog by pressing 'PLUS TARD'", async () => {
@@ -28,12 +28,12 @@ describe("<RateApplicationDialog />", () => {
     expect(queryByText("Donnez-nous votre avis !")).toBeNull();
   });
 
-  it("should close the dialog by pressing 'OUVRIR PLAYSTORE'", async () => {
+  it("should close the dialog by pressing 'NOTATION'", async () => {
     const store = createTestStore();
     store.dispatch(openDialog({ id: DialogId.RATE_APPLICATION }));
     const { queryByText, getByRole, event } = render(<RateApplicationDialog />, { store });
     expect(queryByText("Donnez-nous votre avis !")).toBeDefined();
-    await event.press(getByRole("button", { name: "OUVRIR PLAYSTORE" }));
+    await event.press(getByRole("button", { name: "NOTATION" }));
     expect(queryByText("Donnez-nous votre avis !")).toBeNull();
   });
 });

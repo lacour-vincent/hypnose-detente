@@ -15,7 +15,7 @@ const SampleLayout: FC = () => {
     <Stack
       screenOptions={{
         title: sample.label,
-        headerTitleStyle: { fontSize: theme["font-size-lg"], color: theme["primary-color-text"] },
+        headerTitleStyle: { fontSize: theme["font-size-md"], color: theme["primary-color-text"] },
         headerTintColor: theme["primary-color-text"],
         headerRight: SampleHeader.HeaderRight,
         headerTransparent: true,

@@ -18,8 +18,17 @@ export default StyleSheet.create({
     borderRadius: theme["space-2xs"],
     backgroundColor: "#ffffff",
   },
-  title: { color: theme["primary-color"], fontSize: theme["font-size-lg"], fontWeight: "bold" },
-  description: { fontSize: theme["font-size-md"], color: theme["font-primary-color"] },
+  title: {
+    color: theme["primary-color"],
+    fontSize: theme["font-size-md"],
+    lineHeight: theme["font-size-md"],
+    fontWeight: "bold",
+  },
+  description: {
+    fontSize: theme["font-size-sm"],
+    lineHeight: theme["font-size-md"],
+    color: theme["font-primary-color"],
+  },
   actions: {
     display: "flex",
     flexDirection: "row",
@@ -32,7 +41,12 @@ export default StyleSheet.create({
     minWidth: "25%",
     alignItems: "center",
     paddingInline: theme["space-xs"],
-    paddingBlock: theme["space-2xs"],
+    paddingBlock: theme["space-xs"],
   },
-  label: { color: theme["primary-color"], fontSize: theme["font-size-md"], fontWeight: "bold" },
+  label: {
+    color: theme["primary-color"],
+    fontSize: theme["font-size-sm"],
+    lineHeight: theme["font-size-sm"],
+    fontWeight: "medium",
+  },
 });
