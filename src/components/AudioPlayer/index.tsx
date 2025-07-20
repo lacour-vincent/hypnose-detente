@@ -34,7 +34,7 @@ const AudioPlayer: FC<Props> = ({ style }) => {
         aria-label={label}
         accessibilityRole="button"
         accessibilityLabel={label}
-        android_ripple={{ radius: theme["space-lg"] }}
+        android_ripple={{ radius: 0.5 * (theme["space-lg"] + 2 * theme["space-md"]) }}
         onPress={onPress}
       >
         <Icon name={icon} size={theme["space-lg"]} color={theme["tertiary-color-text"]} />
