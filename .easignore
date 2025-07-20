@@ -6,6 +6,10 @@
 # with a ! prefix, along with the rest of your .gitignore contents.
 # The ! prefixed file should be last, so it takes precedence over any prior rules that would ignore it.
 
+# Add '/android' and '/ios' to your .easignore file if you intend to use CNG / Prebuild.
+/android
+/ios
+
 # Includes files which are not in source control
 !samples/**/*.mp3
 !plugins/*.js
