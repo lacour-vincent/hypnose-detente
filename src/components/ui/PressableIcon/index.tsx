@@ -23,7 +23,7 @@ const PressableIcon: FC<Props> = ({ style, label, icon, onPress }) => {
       accessibilityRole="button"
       accessibilityLabel={label}
       android_ripple={{ radius: theme["space-md"], borderless: true, foreground: true }}
-      onPress={onPress}
+      onPressIn={onPress}
     >
       <Icon name={icon} size={24} color={theme["primary-color-text"]} />
     </Pressable>
