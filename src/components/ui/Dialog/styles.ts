@@ -13,8 +13,8 @@ export default StyleSheet.create({
   dialog: {
     gap: theme["space-sm"],
     width: "100%",
-    paddingBlock: theme["space-sm"],
-    paddingInline: theme["space-md"],
+    padding: theme["space-sm"],
+    paddingBlockEnd: theme["space-xs"],
     borderRadius: theme["space-2xs"],
     backgroundColor: "#ffffff",
   },
