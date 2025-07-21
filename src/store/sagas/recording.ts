@@ -1,11 +1,14 @@
 import type { SagaIterator } from "redux-saga";
-import { all, call, getContext, put, takeLeading } from "redux-saga/effects";
+import { all, call, getContext, put, select, takeLeading } from "redux-saga/effects";
 
 import type { Sample } from "@/typings/recording";
+import { AssetPackStatus } from "@/typings/storage";
 
 import { retrieveSampleById, retrieveSamples } from "@/store/actions/recording";
-import { retrieveAssetPackStates } from "@/store/actions/storage";
+import { retrieveAssetPack, retrieveAssetPackStates } from "@/store/actions/storage";
 import type { Context } from "@/store/context";
+
+import { getAssetPackStates } from "../selectors/storage";
 
 function* handleRetrieveSamples(): SagaIterator {
   const repositories: Context["repositories"] = yield getContext("repositories");
@@ -21,8 +24,11 @@ function* handleRetrieveSamples(): SagaIterator {
 
 function* handleRetrieveSampleById(action: ReturnType<typeof retrieveSampleById.request>): SagaIterator {
   const repositories: Context["repositories"] = yield getContext("repositories");
+  const states = getAssetPackStates(yield select());
+  const completed = states[action.payload.id]?.status === AssetPackStatus.COMPLETED;
   try {
     const sample: Sample = yield call(repositories.recording.fetchSampleById, action.payload.id);
+    if (!completed) yield put(retrieveAssetPack.request({ pack: { name: sample.rid, file: sample.file } }));
     yield put(retrieveSampleById.success({ sample }));
   } catch (err: unknown) {
     yield put(retrieveSampleById.failure({ err }));

@@ -1,9 +1,9 @@
-import type { SagaIterator } from "redux-saga";
-import { all, call, getContext, put, takeLeading } from "redux-saga/effects";
+import { type SagaIterator, eventChannel } from "redux-saga";
+import { all, call, getContext, put, take, takeEvery, takeLeading } from "redux-saga/effects";
 
-import type { AssetPackStates } from "@/typings/storage";
+import { type AssetPack, type AssetPackState, type AssetPackStates, AssetPackStatus } from "@/typings/storage";
 
-import { retrieveAssetPackStates } from "@/store/actions/storage";
+import { retrieveAssetPack, retrieveAssetPackStates } from "@/store/actions/storage";
 import type { Context } from "@/store/context";
 
 function* handleRetrieveAssetPackStates(action: ReturnType<typeof retrieveAssetPackStates.request>): SagaIterator {
@@ -16,6 +16,38 @@ function* handleRetrieveAssetPackStates(action: ReturnType<typeof retrieveAssetP
   }
 }
 
+function* handleRetrieveAssetPack(action: ReturnType<typeof retrieveAssetPack.request>): SagaIterator {
+  const repositories: Context["repositories"] = yield getContext("repositories");
+  const { pack } = action.payload;
+  try {
+    const channel = yield call(createOnAssetPackStateUpdateChannel, pack.name, repositories.storage);
+    yield call(repositories.storage.fetchAssetPack, pack);
+    while (true) {
+      const state: AssetPackState = yield take(channel);
+      if (state.status === AssetPackStatus.COMPLETED) break;
+      // CASE ERROR MANAGEMENT
+    }
+    const file: string | null = yield call(repositories.storage.fetchAssetPackFileLocation, pack);
+    if (!file) throw new Error("TODO ERROR MANAGEMENT");
+    yield put(retrieveAssetPack.success({ pack: { ...pack, file } }));
+  } catch (err: unknown) {
+    yield put(retrieveAssetPack.failure({ err }));
+  }
+}
+
+function createOnAssetPackStateUpdateChannel(pack: AssetPack["name"], storage: Context["repositories"]["storage"]) {
+  return eventChannel((emitter) => {
+    const listener = (state: AssetPackState) => {
+      if (state.name === pack) emitter(state);
+    };
+    storage.onAssetPackStateUpdate(listener);
+    return () => {};
+  });
+}
+
 export default function* () {
-  yield all([takeLeading(retrieveAssetPackStates.request, handleRetrieveAssetPackStates)]);
+  yield all([
+    takeLeading(retrieveAssetPackStates.request, handleRetrieveAssetPackStates),
+    takeEvery(retrieveAssetPack.request, handleRetrieveAssetPack),
+  ]);
 }

@@ -7,6 +7,26 @@ const fetchAssetPackStates: StorageRepository["fetchAssetPackStates"] = async (p
   return states;
 };
 
-const repository: StorageRepository = { fetchAssetPackStates };
+const fetchAssetPack: StorageRepository["fetchAssetPack"] = (pack) => {
+  PlayAssetDeliveryModule.requestAssetPackFetch(pack.name);
+  return undefined;
+};
+
+const onAssetPackStateUpdate: StorageRepository["onAssetPackStateUpdate"] = (listener) => {
+  PlayAssetDeliveryModule.addListener("onAssetPackStateUpdate", listener);
+  return undefined;
+};
+
+const fetchAssetPackFileLocation: StorageRepository["fetchAssetPackFileLocation"] = (pack) => {
+  const file = PlayAssetDeliveryModule.getAssetPackFileLocation(pack.name, pack.file);
+  return file;
+};
+
+const repository: StorageRepository = {
+  fetchAssetPackStates,
+  fetchAssetPack,
+  fetchAssetPackFileLocation,
+  onAssetPackStateUpdate,
+};
 
 export default repository;

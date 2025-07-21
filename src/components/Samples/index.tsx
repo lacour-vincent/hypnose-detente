@@ -28,7 +28,7 @@ const Samples: FC<Props> = ({ samples, states }) => {
       keyExtractor={(sample) => sample.id}
       renderItem={({ item }) => {
         const href = getRouteWithParams(ROUTES.SAMPLE_VIEW, { id: item.id });
-        const offline = states[item.rid]?.status === AssetPackStatus.COMPLETED;
+        const offline = states[item.id]?.status === AssetPackStatus.COMPLETED;
         return (
           <Link style={s.link} href={href} label={item.title}>
             <SampleItem style={s.item} sample={item} offline={offline} />

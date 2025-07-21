@@ -1,9 +1,9 @@
 import type { Sample } from "@/typings/recording";
 
 import { clearSelectedSample, retrieveSampleById, retrieveSamples } from "@/store/actions/recording";
-import { retrieveAssetPackStates } from "@/store/actions/storage";
+import { retrieveAssetPack, retrieveAssetPackStates } from "@/store/actions/storage";
 import { getSamples, getSelectedSample } from "@/store/selectors/recording";
-import { getAssetPackStates } from "@/store/selectors/storage";
+import { getAssetPackStates, getSelectedAssetPack } from "@/store/selectors/storage";
 
 import { SAMPLE_MOCK } from "@/fixtures/recording";
 
@@ -28,11 +28,16 @@ describe("Store - recording", () => {
   });
 
   it("should perform retrieve sample by id action", async () => {
+    jest.useFakeTimers();
     const action = retrieveSampleById.request({ id: "sample-id" });
     store.dispatch(action);
     await store.waitFor(retrieveSampleById.success);
+    jest.runAllTimers();
     const sample = getSelectedSample(store.getState());
     expect(sample.id).not.toBe("");
+    await store.waitFor(retrieveAssetPack.success);
+    const pack = getSelectedAssetPack(store.getState());
+    expect(pack).toEqual({ name: sample.rid, file: sample.file });
   });
 
   it("should perform clear selected sample action", async () => {

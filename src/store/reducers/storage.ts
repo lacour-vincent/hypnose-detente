@@ -1,18 +1,26 @@
 import { createReducer } from "@reduxjs/toolkit";
 
-import { type AssetPack, type AssetPackState } from "@/typings/storage";
+import { type AssetPack, type AssetPackStates } from "@/typings/storage";
 
-import { retrieveAssetPackStates } from "@/store/actions/storage";
+import { retrieveAssetPack, retrieveAssetPackStates } from "@/store/actions/storage";
+
+import { ASSET_PACK_EMPTY } from "@/fixtures/storage";
 
 export interface StorageState {
-  states: Record<AssetPack["name"], AssetPackState>;
+  states: AssetPackStates;
+  selected: AssetPack;
 }
 
-const initialState: StorageState = { states: {} };
+const initialState: StorageState = { states: {}, selected: ASSET_PACK_EMPTY };
 
 export default createReducer(initialState, (builder) => {
-  return builder.addCase(retrieveAssetPackStates.success, (state, action) => {
-    state.states = action.payload.states;
-    return state;
-  });
+  return builder
+    .addCase(retrieveAssetPackStates.success, (state, action) => {
+      state.states = action.payload.states;
+      return state;
+    })
+    .addCase(retrieveAssetPack.success, (state, action) => {
+      state.selected = action.payload.pack;
+      return state;
+    });
 });

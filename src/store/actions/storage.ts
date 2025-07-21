@@ -6,3 +6,7 @@ export const retrieveAssetPackStates = createRequestPayloadAction<
   { packs: AssetPack["name"][] },
   { states: AssetPackStates }
 >("RETRIEVE_ASSET_PACK_STATES");
+
+export const retrieveAssetPack = createRequestPayloadAction<{ pack: AssetPack }, { pack: AssetPack }>(
+  "RETRIEVE_ASSET_PACK",
+);

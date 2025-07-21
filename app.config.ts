@@ -1,5 +1,6 @@
 import { type ExpoConfig } from "expo/config";
 
+
 const config: ExpoConfig = {
   name: "Hypnose",
   slug: "hypnose-detente",
