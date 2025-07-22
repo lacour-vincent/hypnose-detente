@@ -14,6 +14,8 @@ interface Props {
   onPress: () => void;
 }
 
+const ICON_SIZE = 22;
+
 const PressableIcon: FC<Props> = ({ style, label, icon, onPress }) => {
   return (
     <Pressable
@@ -22,10 +24,10 @@ const PressableIcon: FC<Props> = ({ style, label, icon, onPress }) => {
       aria-label={label}
       accessibilityRole="button"
       accessibilityLabel={label}
-      android_ripple={{ radius: theme["space-md"], borderless: true, foreground: true }}
+      android_ripple={{ radius: 0.8 * ICON_SIZE }}
       onPressIn={onPress}
     >
-      <Icon name={icon} size={24} color={theme["primary-color-text"]} />
+      <Icon name={icon} size={ICON_SIZE} color={theme["primary-color-text"]} />
     </Pressable>
   );
 };
