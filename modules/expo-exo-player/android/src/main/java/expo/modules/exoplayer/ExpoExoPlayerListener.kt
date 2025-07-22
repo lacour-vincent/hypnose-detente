@@ -7,8 +7,8 @@ class ExpoExoPlayerListener(val module: ExpoExoPlayerModule) :
     Player.Listener {
     override fun onPlaybackStateChanged(state: Int) {
         super.onPlaybackStateChanged(state)
-        val bundle = module.onPlaybackStateChangedAsBundle(state)
-        module.sendEvent("onPlaybackStateChanged", bundle)
+        val bundle = module.onPlayerStatusUpdateAsBundle(state)
+        module.sendEvent("onPlayerStatusUpdate", bundle)
     }
 
     override fun onPlayerError(error: PlaybackException) {

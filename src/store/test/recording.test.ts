@@ -1,6 +1,3 @@
-import type { Sample } from "@/typings/recording";
-import type { AssetPack } from "@/typings/storage";
-
 import { clearSelectedSample, retrieveSampleById, retrieveSamples } from "@/store/actions/recording";
 import { retrieveAssetPack, retrieveAssetPackStates } from "@/store/actions/storage";
 import { getSamples, getSelectedSample } from "@/store/selectors/recording";
@@ -42,14 +39,13 @@ describe("Store - recording", () => {
   });
 
   it("should perform clear selected sample action", async () => {
-    let sample: Sample;
-    let pack: AssetPack;
     store.dispatch(retrieveSampleById.success({ sample: SAMPLE_MOCK }));
     store.dispatch(retrieveAssetPack.success({ pack: SAMPLE_MOCK.pack }));
-    sample = getSelectedSample(store.getState());
-    pack = getSelectedAssetPack(store.getState());
+    let sample = getSelectedSample(store.getState());
+    let pack = getSelectedAssetPack(store.getState());
     expect(sample.id).not.toBe("");
     expect(pack.name).not.toBe("");
+
     store.dispatch(clearSelectedSample());
     sample = getSelectedSample(store.getState());
     pack = getSelectedAssetPack(store.getState());

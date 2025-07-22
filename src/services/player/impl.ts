@@ -22,28 +22,18 @@ const setPause: PlayerService["setPause"] = () => {
   return undefined;
 };
 
-const isPlaying: PlayerService["isPlaying"] = () => {
-  const playing = ExoPlayerModule.isPlaying();
-  return playing;
-};
-
 const seekTo: PlayerService["seekTo"] = (position) => {
   ExoPlayerModule.seekTo(position);
   return undefined;
 };
 
-const getCurrentPosition: PlayerService["getCurrentPosition"] = () => {
-  const position = ExoPlayerModule.getCurrentPosition();
-  return position;
+const getPlayerState: PlayerService["getPlayerState"] = () => {
+  const state = ExoPlayerModule.getPlayerState();
+  return state;
 };
 
-const getDuration: PlayerService["getDuration"] = () => {
-  const duration = ExoPlayerModule.getDuration();
-  return duration;
-};
-
-const onPlaybackStateChanged: PlayerService["onPlaybackStateChanged"] = (listener) => {
-  ExoPlayerModule.addListener("onPlaybackStateChanged", listener);
+const onPlayerStatusUpdate: PlayerService["onPlayerStatusUpdate"] = (listener) => {
+  ExoPlayerModule.addListener("onPlayerStatusUpdate", listener);
   return undefined;
 };
 
@@ -57,11 +47,9 @@ const service: PlayerService = {
   release,
   setPlay,
   setPause,
-  isPlaying,
   seekTo,
-  getCurrentPosition,
-  getDuration,
-  onPlaybackStateChanged,
+  getPlayerState,
+  onPlayerStatusUpdate,
   onPlayerError,
 };
 

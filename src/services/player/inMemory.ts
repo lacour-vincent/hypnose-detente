@@ -1,5 +1,6 @@
-import { type OnPlaybackStateChangedEvent, PlayerState } from "@/typings/player";
+import { PlayerStatus, type onPlayerStatusUpdateEvent } from "@/typings/player";
 
+import { PLAYER_STATE_MOCK } from "@/fixtures/player";
 import type { PlayerService } from "@/services/player";
 
 const prepare: PlayerService["prepare"] = () => {
@@ -18,24 +19,16 @@ const setPause: PlayerService["setPause"] = () => {
   return undefined;
 };
 
-const isPlaying: PlayerService["isPlaying"] = () => {
-  return false;
+const getPlayerState: PlayerService["getPlayerState"] = () => {
+  return PLAYER_STATE_MOCK;
 };
 
 const seekTo: PlayerService["seekTo"] = () => {
   return undefined;
 };
 
-const getCurrentPosition: PlayerService["getCurrentPosition"] = () => {
-  return 0;
-};
-
-const getDuration: PlayerService["getDuration"] = () => {
-  return 0;
-};
-
-const onPlaybackStateChanged: PlayerService["onPlaybackStateChanged"] = (listener) => {
-  const event: OnPlaybackStateChangedEvent = { state: PlayerState.STATE_READY };
+const onPlayerStatusUpdate: PlayerService["onPlayerStatusUpdate"] = (listener) => {
+  const event: onPlayerStatusUpdateEvent = { status: PlayerStatus.STATE_READY };
   return setTimeout(() => listener(event), 100);
 };
 
@@ -48,11 +41,9 @@ const service: PlayerService = {
   release,
   setPlay,
   setPause,
-  isPlaying,
   seekTo,
-  getCurrentPosition,
-  getDuration,
-  onPlaybackStateChanged,
+  getPlayerState,
+  onPlayerStatusUpdate,
   onPlayerError,
 };
 

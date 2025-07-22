@@ -1,12 +1,18 @@
-export interface OnPlaybackStateChangedEvent {
-  state: PlayerState;
+export interface PlayerState {
+  isPlaying: boolean;
+  position: number;
+  duration: number;
+}
+
+export interface onPlayerStatusUpdateEvent {
+  status: PlayerStatus;
 }
 
 export interface OnPlayerErrorEvent {
   error: PlayerError;
 }
 
-export enum PlayerState {
+export enum PlayerStatus {
   STATE_IDLE = 1,
   STATE_BUFFERING = 2,
   STATE_READY = 3,

@@ -1,9 +1,9 @@
 import { NativeModule, requireNativeModule } from "expo";
 
-import type { OnPlaybackStateChangedEvent, OnPlayerErrorEvent } from "@/typings/player";
+import type { OnPlayerErrorEvent, PlayerState, onPlayerStatusUpdateEvent } from "@/typings/player";
 
 type ExpoExoPlayerModuleEvents = {
-  onPlaybackStateChanged: (event: OnPlaybackStateChangedEvent) => void;
+  onPlayerStatusUpdate: (event: onPlayerStatusUpdateEvent) => void;
   onPlayerError: (event: OnPlayerErrorEvent) => void;
 };
 
@@ -12,10 +12,8 @@ declare class ExpoExoPlayerModule extends NativeModule<ExpoExoPlayerModuleEvents
   release(): void;
   setPlay(): void;
   setPause(): void;
-  isPlaying(): boolean;
   seekTo(position: number): void;
-  getCurrentPosition(): number;
-  getDuration(): number;
+  getPlayerState(): PlayerState;
 }
 
 export default requireNativeModule<ExpoExoPlayerModule>("ExpoExoPlayer");

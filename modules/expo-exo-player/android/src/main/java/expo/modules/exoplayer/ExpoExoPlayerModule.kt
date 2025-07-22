@@ -32,23 +32,19 @@ class ExpoExoPlayerModule : Module() {
             player.pause()
         }
 
-        Function("isPlaying") {
-            return@Function player.isPlaying
-        }
-
         Function("seekTo") { position: Long ->
             player.seekTo(position)
         }
 
-        Function("getCurrentPosition") {
-            return@Function player.currentPosition
+        Function("getPlayerStatus") {
+            return@Function bundleOf(
+                "isPlaying" to player.isPlaying,
+                "position" to player.currentPosition,
+                "duration" to player.duration
+            )
         }
 
-        Function("getDuration") {
-            return@Function player.duration
-        }
-
-        Events("onPlaybackStateChanged")
+        Events("onPlayerStatusUpdate")
 
         Events("onPlayerError")
 
@@ -65,8 +61,9 @@ class ExpoExoPlayerModule : Module() {
     private val player get() = requireNotNull(ExoPlayer.Builder(ctx).build())
     private val listener = ExpoExoPlayerListener(this)
 
-    fun onPlaybackStateChangedAsBundle(state: Int): Bundle {
-        return bundleOf("state" to state)
+
+    fun onPlayerStatusUpdateAsBundle(state: Int): Bundle {
+        return bundleOf("status" to state)
     }
 
     fun onPlayerErrorAsBundle(error: PlaybackException): Bundle {
