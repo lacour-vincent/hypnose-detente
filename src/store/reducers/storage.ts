@@ -6,6 +6,8 @@ import { retrieveAssetPack, retrieveAssetPackStates } from "@/store/actions/stor
 
 import { ASSET_PACK_EMPTY } from "@/fixtures/storage";
 
+import { clearSelectedSample } from "../actions/recording";
+
 export interface StorageState {
   states: AssetPackStates;
   selected: AssetPack;
@@ -21,6 +23,10 @@ export default createReducer(initialState, (builder) => {
     })
     .addCase(retrieveAssetPack.success, (state, action) => {
       state.selected = action.payload.pack;
+      return state;
+    })
+    .addCase(clearSelectedSample, (state) => {
+      state.selected = initialState.selected;
       return state;
     });
 });
