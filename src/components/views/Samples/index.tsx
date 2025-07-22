@@ -1,6 +1,8 @@
-import React, { type FC, useEffect } from "react";
-import { View } from "react-native";
+import React, { type FC, useCallback } from "react";
+import { InteractionManager, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
+
+import { useFocusEffect } from "expo-router";
 
 import { retrieveSamples } from "@/store/actions/recording";
 import { getSamples } from "@/store/selectors/recording";
@@ -15,9 +17,14 @@ const SamplesView: FC = () => {
   const samples = useSelector(getSamples);
   const states = useSelector(getAssetPackStates);
 
-  useEffect(() => {
-    dispatch(retrieveSamples.request());
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      const task = InteractionManager.runAfterInteractions(() => {
+        dispatch(retrieveSamples.request());
+      });
+      return () => task.cancel();
+    }, []),
+  );
 
   return (
     <View style={s.container}>
