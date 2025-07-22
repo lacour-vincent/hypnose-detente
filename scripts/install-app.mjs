@@ -13,7 +13,7 @@ const main = async () => {
     console.info("-----------------------------------");
 
     console.info("- Builds apks for local testing using bundletool...");
-    await run("rm --force build-preview.apks");
+    await run(`rm --force ${ARTIFACT_NAME}.apks`);
     await run(`java -jar bundletool-all.jar build-apks --local-testing \
       --bundle=${ARTIFACT_NAME}.aab \
       --output=${ARTIFACT_NAME}.apks`);

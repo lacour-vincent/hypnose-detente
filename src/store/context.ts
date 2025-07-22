@@ -1,7 +1,10 @@
 import { router as expoRouter } from "expo-router";
 
+import ENV from "@/env";
 import recording, { type RecordingRepository } from "@/repositories/recording";
 import storage, { type StorageRepository } from "@/repositories/storage";
+
+const isDev = ENV.NODE_ENV === "development";
 
 export interface Context {
   repositories: Repositories;
@@ -13,7 +16,10 @@ interface Repositories {
   storage: StorageRepository;
 }
 
-const repositories: Repositories = { recording: recording.impl, storage: storage.impl };
+const repositories: Repositories = {
+  recording: isDev ? recording.inMemory : recording.impl,
+  storage: isDev ? storage.inMemory : storage.impl,
+};
 
 interface Router {
   navigate: (href: string) => void;
