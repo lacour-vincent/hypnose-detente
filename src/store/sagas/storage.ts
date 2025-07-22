@@ -1,4 +1,4 @@
-import { type SagaIterator, eventChannel } from "redux-saga";
+import { type EventChannel, type SagaIterator, eventChannel } from "redux-saga";
 import { all, call, getContext, put, take, takeEvery, takeLeading } from "redux-saga/effects";
 
 import { type AssetPack, type AssetPackState, type AssetPackStates, AssetPackStatus } from "@/typings/storage";
@@ -19,23 +19,31 @@ function* handleRetrieveAssetPackStates(action: ReturnType<typeof retrieveAssetP
 function* handleRetrieveAssetPack(action: ReturnType<typeof retrieveAssetPack.request>): SagaIterator {
   const repositories: Context["repositories"] = yield getContext("repositories");
   const { pack } = action.payload;
+  const channel: EventChannel<AssetPackState> = yield call(
+    createOnAssetPackStateUpdateChannel,
+    pack.name,
+    repositories.storage,
+  );
   try {
-    const channel = yield call(createOnAssetPackStateUpdateChannel, pack.name, repositories.storage);
     yield call(repositories.storage.fetchAssetPack, pack);
     while (true) {
       const state: AssetPackState = yield take(channel);
       if (state.status === AssetPackStatus.COMPLETED) break;
       // CASE ERROR MANAGEMENT
     }
-    const file: string | null = yield call(repositories.storage.fetchAssetPackFileLocation, pack);
-    if (!file) throw new Error("TODO ERROR MANAGEMENT");
+    const file: string = yield call(repositories.storage.fetchAssetPackFileLocation, pack);
     yield put(retrieveAssetPack.success({ pack: { ...pack, file } }));
   } catch (err: unknown) {
     yield put(retrieveAssetPack.failure({ err }));
+  } finally {
+    channel.close();
   }
 }
 
-function createOnAssetPackStateUpdateChannel(pack: AssetPack["name"], storage: Context["repositories"]["storage"]) {
+function createOnAssetPackStateUpdateChannel(
+  pack: AssetPack["name"],
+  storage: Context["repositories"]["storage"],
+): EventChannel<AssetPackState> {
   return eventChannel((emitter) => {
     const listener = (state: AssetPackState) => {
       if (state.name === pack) emitter(state);
