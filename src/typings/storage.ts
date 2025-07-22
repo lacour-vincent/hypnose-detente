@@ -1,5 +1,3 @@
-import type { Sample } from "@/typings/recording";
-
 export interface AssetPack {
   name: string;
   file: string;
@@ -11,7 +9,7 @@ export interface AssetPackState {
   errorCode?: AssetPackErrorCode;
 }
 
-export type AssetPackStates = Record<Sample["id"], AssetPackState>;
+export type AssetPackStates = Record<AssetPack["name"], AssetPackState>;
 
 export enum AssetPackStatus {
   UNKNOWN = 0,

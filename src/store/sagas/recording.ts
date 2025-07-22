@@ -7,14 +7,13 @@ import { AssetPackStatus } from "@/typings/storage";
 import { retrieveSampleById, retrieveSamples } from "@/store/actions/recording";
 import { retrieveAssetPack, retrieveAssetPackStates } from "@/store/actions/storage";
 import type { Context } from "@/store/context";
-
-import { getAssetPackStates } from "../selectors/storage";
+import { getAssetPackStates } from "@/store/selectors/storage";
 
 function* handleRetrieveSamples(): SagaIterator {
   const repositories: Context["repositories"] = yield getContext("repositories");
   try {
     const samples: Sample[] = yield call(repositories.recording.fetchSamples);
-    const packs = samples.map((sample) => sample.rid);
+    const packs = samples.map((sample) => sample.pack.name);
     yield put(retrieveAssetPackStates.request({ packs }));
     yield put(retrieveSamples.success({ samples }));
   } catch (err: unknown) {
@@ -25,10 +24,10 @@ function* handleRetrieveSamples(): SagaIterator {
 function* handleRetrieveSampleById(action: ReturnType<typeof retrieveSampleById.request>): SagaIterator {
   const repositories: Context["repositories"] = yield getContext("repositories");
   const states = getAssetPackStates(yield select());
-  const completed = states[action.payload.id]?.status === AssetPackStatus.COMPLETED;
   try {
     const sample: Sample = yield call(repositories.recording.fetchSampleById, action.payload.id);
-    if (!completed) yield put(retrieveAssetPack.request({ pack: { name: sample.rid, file: sample.file } }));
+    const completed = states[sample.pack.name]?.status === AssetPackStatus.COMPLETED;
+    if (!completed) yield put(retrieveAssetPack.request({ pack: sample.pack }));
     yield put(retrieveSampleById.success({ sample }));
   } catch (err: unknown) {
     yield put(retrieveSampleById.failure({ err }));

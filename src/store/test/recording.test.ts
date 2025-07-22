@@ -37,7 +37,7 @@ describe("Store - recording", () => {
     expect(sample.id).not.toBe("");
     await store.waitFor(retrieveAssetPack.success);
     const pack = getSelectedAssetPack(store.getState());
-    expect(pack).toEqual({ name: sample.rid, file: sample.file });
+    expect(pack).toEqual(sample.pack);
   });
 
   it("should perform clear selected sample action", async () => {

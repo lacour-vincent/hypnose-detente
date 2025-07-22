@@ -17,7 +17,7 @@ describe("Store - storage", () => {
   });
 
   it("should perform retrieve asset pack states action", async () => {
-    const packs = samples.map((sample) => sample.rid);
+    const packs = samples.map((sample) => sample.pack.name);
     const action = retrieveAssetPackStates.request({ packs });
     store.dispatch(action);
     await store.waitFor(retrieveAssetPackStates.success);
