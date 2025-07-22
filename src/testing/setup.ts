@@ -17,3 +17,4 @@ jest.mock("expo-image", () => {
 });
 
 jest.mock("@modules/expo-play-asset-delivery", () => ({}));
+jest.mock("@modules/expo-exo-player", () => ({}));

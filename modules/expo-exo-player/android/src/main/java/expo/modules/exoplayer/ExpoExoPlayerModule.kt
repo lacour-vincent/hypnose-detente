@@ -62,7 +62,7 @@ class ExpoExoPlayerModule : Module() {
     }
 
     private val ctx get(): Context = requireNotNull(appContext.reactContext)
-    private val player = ExoPlayer.Builder(ctx).build()
+    private val player get() = requireNotNull(ExoPlayer.Builder(ctx).build())
     private val listener = ExpoExoPlayerListener(this)
 
     fun onPlaybackStateChangedAsBundle(state: Int): Bundle {

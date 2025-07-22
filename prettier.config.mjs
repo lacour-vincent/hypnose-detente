@@ -10,7 +10,7 @@ const config = {
     "<THIRD_PARTY_MODULES>",
     "^@/(typings)(.*)$",
     "^@/(store)(.*)$",
-    "^@/(fixtures|referential|rules|repositories|utils|testing|env)(.*)$",
+    "^@/(fixtures|referential|rules|repositories|services|utils|testing|env)(.*)$",
     "^@/(hooks)(.*)$",
     "^@/(components)(.*)$",
     "^@ui/(.*)$",

@@ -3,11 +3,13 @@ import { router as expoRouter } from "expo-router";
 import ENV from "@/env";
 import recording, { type RecordingRepository } from "@/repositories/recording";
 import storage, { type StorageRepository } from "@/repositories/storage";
+import player, { type PlayerService } from "@/services/player";
 
 const isDev = ENV.NODE_ENV === "development";
 
 export interface Context {
   repositories: Repositories;
+  services: Services;
   router: Router;
 }
 
@@ -16,10 +18,16 @@ interface Repositories {
   storage: StorageRepository;
 }
 
+interface Services {
+  player: PlayerService;
+}
+
 const repositories: Repositories = {
   recording: isDev ? recording.inMemory : recording.impl,
   storage: isDev ? storage.inMemory : storage.impl,
 };
+
+const services: Services = { player: player.impl };
 
 interface Router {
   navigate: (href: string) => void;
@@ -31,6 +39,6 @@ const router: Router = {
   replace: expoRouter.replace,
 };
 
-const context: Context = { repositories, router };
+const context: Context = { repositories, services, router };
 
 export default context;
