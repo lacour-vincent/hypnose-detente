@@ -1,7 +1,7 @@
 import type { OnPlayerErrorEvent, PlayerState, onPlayerStatusUpdateEvent } from "@/typings/player";
 
+import fake from "./fake";
 import impl from "./impl";
-import inMemory from "./inMemory";
 
 export interface PlayerService {
   prepare: (file: string) => void;
@@ -14,4 +14,4 @@ export interface PlayerService {
   onPlayerError: (listener: (event: OnPlayerErrorEvent) => void) => void;
 }
 
-export default { impl, inMemory };
+export default { impl, fake };

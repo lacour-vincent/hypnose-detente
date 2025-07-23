@@ -23,8 +23,8 @@ interface Services {
 }
 
 const repositories: Repositories = {
-  recording: isDev ? recording.inMemory : recording.impl,
-  storage: isDev ? storage.inMemory : storage.impl,
+  recording: isDev ? recording.fake : recording.impl,
+  storage: isDev ? storage.fake : storage.impl,
 };
 
 const services: Services = { player: player.impl };
