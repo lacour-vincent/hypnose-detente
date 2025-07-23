@@ -7,7 +7,7 @@ import Icon from "./index";
 describe("<Icon />", () => {
   it("should render without crashing", async () => {
     const props = { name: "emoticon" as const };
-    const { findByTestId } = render(<Icon {...props} />);
-    expect(await findByTestId(props.name)).toBeDefined();
+    const { getByTestId } = render(<Icon {...props} />);
+    expect(getByTestId(props.name)).toBeDefined();
   });
 });

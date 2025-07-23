@@ -6,17 +6,17 @@ import { render } from "@/testing/react-native";
 import SampleItem from "./index";
 
 describe("<SampleItem />", () => {
-  it("should render without crashing", async () => {
+  it("should render without crashing", () => {
     const props = { sample: { ...SAMPLE_MOCK }, offline: false };
-    const { getByText, findByTestId } = render(<SampleItem {...props} />);
-    expect(await findByTestId("clock-outline")).toBeDefined();
+    const { getByText, getByTestId } = render(<SampleItem {...props} />);
     expect(getByText(props.sample.title)).toBeDefined();
+    expect(getByTestId("clock-outline")).toBeDefined();
     expect(getByText(`${props.sample.duration} min`)).toBeDefined();
   });
 
-  it("should render with offline icon", async () => {
+  it("should render with offline icon", () => {
     const props = { sample: { ...SAMPLE_MOCK }, offline: true };
-    const { findByTestId } = render(<SampleItem {...props} />);
-    expect(await findByTestId("airplane")).toBeDefined();
+    const { getByTestId } = render(<SampleItem {...props} />);
+    expect(getByTestId("airplane")).toBeDefined();
   });
 });

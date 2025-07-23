@@ -2,15 +2,14 @@ import React from "react";
 
 import { render } from "@/testing/render";
 
-import SampleHeader from "./index";
+import SamplesHeader from "./index";
 
-describe("<SampleHeader />", () => {
-  it("should render header right without crashing", async () => {
-    const props = {};
-    const { findByTestId, getByRole } = render(<SampleHeader.HeaderRight {...props} />);
-    expect(await findByTestId("star")).toBeDefined();
-    expect(await findByTestId("dots-vertical")).toBeDefined();
+describe("<SamplesHeader />", () => {
+  it("should render header right without crashing", () => {
+    const { getByRole, getByTestId } = render(<SamplesHeader.HeaderRight />);
     expect(getByRole("button", { name: "Notation" })).toBeDefined();
+    expect(getByTestId("star")).toBeDefined();
     expect(getByRole("button", { name: "Menu" })).toBeDefined();
+    expect(getByTestId("dots-vertical")).toBeDefined();
   });
 });
