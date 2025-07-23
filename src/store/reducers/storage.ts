@@ -1,6 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
 
-import { type AssetPack, type AssetPackStates } from "@/typings/storage";
+import { type AssetPack, type AssetPackStates, AssetPackStatus } from "@/typings/storage";
 
 import { retrieveAssetPack, retrieveAssetPackStates } from "@/store/actions/storage";
 
@@ -22,7 +22,9 @@ export default createReducer(initialState, (builder) => {
       return state;
     })
     .addCase(retrieveAssetPack.success, (state, action) => {
-      state.selected = action.payload.pack;
+      const { pack } = action.payload;
+      state.states[pack.name] = { name: pack.name, status: AssetPackStatus.COMPLETED };
+      state.selected = pack;
       return state;
     })
     .addCase(clearSelectedSample, (state) => {

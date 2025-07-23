@@ -1,3 +1,5 @@
+import { AssetPackStatus } from "@/typings/storage";
+
 import { retrieveAssetPack, retrieveAssetPackStates } from "@/store/actions/storage";
 import { getAssetPackStates, getSelectedAssetPack } from "@/store/selectors/storage";
 
@@ -31,7 +33,9 @@ describe("Store - storage", () => {
     store.dispatch(action);
     jest.runAllTimers();
     await store.waitFor(retrieveAssetPack.success);
+    const states = getAssetPackStates(store.getState());
     const selected = getSelectedAssetPack(store.getState());
+    expect(states[pack.name]).toEqual({ name: pack.name, status: AssetPackStatus.COMPLETED });
     expect(selected).toEqual(pack);
   });
 });
