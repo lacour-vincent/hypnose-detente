@@ -1,10 +1,21 @@
 import { type EventChannel, type SagaIterator, eventChannel } from "redux-saga";
-import { all, call, getContext, put, take, takeLeading } from "redux-saga/effects";
+import { all, call, cancel, delay, fork, getContext, put, take, takeLeading } from "redux-saga/effects";
 
 import { type PlayerState, PlayerStatus, type onPlayerStatusUpdateEvent } from "@/typings/player";
 
-import { playOrPause, prepare, release, seekTo } from "@/store/actions/player";
+import {
+  onPlayerStateUpdate,
+  pause,
+  play,
+  prepare,
+  release,
+  seekTo,
+  startPullPlayerState,
+  stopPullPlayerState,
+} from "@/store/actions/player";
 import type { Context } from "@/store/context";
+
+import { PULL_PLAYER_STATE_DELAY_IN_MS } from "@/referential/player";
 
 function createOnPlayerStatusUpdateChannel(
   player: Context["services"]["player"],
@@ -42,18 +53,51 @@ function* handlePreparePlayer(action: ReturnType<typeof prepare.request>): SagaI
 
 function* handleReleasePlayer(): SagaIterator {
   const services: Context["services"] = yield getContext("services");
+  yield put(stopPullPlayerState());
   yield call(services.player.release);
 }
 
-function* handlePlayOrPause(): SagaIterator {}
+function* handlePlay(): SagaIterator {
+  const services: Context["services"] = yield getContext("services");
+  yield call(services.player.setPlay);
+  yield put(startPullPlayerState());
+}
 
-function* handleSeekTo(): SagaIterator {}
+function* handlePause(): SagaIterator {
+  const services: Context["services"] = yield getContext("services");
+  yield call(services.player.setPause);
+  yield put(stopPullPlayerState());
+}
+
+function* handleSeekTo(action: ReturnType<typeof seekTo>): SagaIterator {
+  const services: Context["services"] = yield getContext("services");
+  yield call(services.player.seekTo, action.payload.position);
+  const state: PlayerState = yield call(services.player.getPlayerState);
+  yield put(onPlayerStateUpdate({ state }));
+}
+
+function* handlePullPlayerState(): SagaIterator {
+  const services: Context["services"] = yield getContext("services");
+  while (true) {
+    yield delay(PULL_PLAYER_STATE_DELAY_IN_MS);
+    const state: PlayerState = yield call(services.player.getPlayerState);
+    yield put(onPlayerStateUpdate({ state }));
+  }
+}
+
+function* handleStartPullPlayerState(): SagaIterator {
+  const task = yield fork(handlePullPlayerState);
+  yield take(stopPullPlayerState);
+  yield cancel(task);
+}
 
 export default function* () {
   yield all([
     takeLeading(prepare.request, handlePreparePlayer),
     takeLeading(release, handleReleasePlayer),
-    takeLeading(playOrPause, handlePlayOrPause),
+    takeLeading(play, handlePlay),
+    takeLeading(pause, handlePause),
     takeLeading(seekTo, handleSeekTo),
+    takeLeading(startPullPlayerState, handleStartPullPlayerState),
   ]);
 }

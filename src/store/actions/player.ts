@@ -6,6 +6,12 @@ export const prepare = createRequestPayloadAction<{ file: string }, { state: Pla
 
 export const release = createAction("RELEASE_PLAYER");
 
-export const playOrPause = createAction("PLAY_OR_PAUSE");
+export const play = createAction("PLAYER_PLAY");
 
-export const seekTo = createPayloadAction<{ position: number }>("SEEK_TO");
+export const pause = createAction("PLAYER_PAUSE");
+
+export const seekTo = createPayloadAction<{ position: number }>("PLAYER_SEEK_TO");
+
+export const startPullPlayerState = createAction("START_PULL_PLAYER_STATE");
+export const stopPullPlayerState = createAction("START_PULL_PLAYER_STATE");
+export const onPlayerStateUpdate = createPayloadAction<{ state: PlayerState }>("ON_PLAYER_STATE_UPDATE");

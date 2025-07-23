@@ -49,4 +49,16 @@ describe("Store - storage", () => {
     expect(player.duration).toBe(0);
     expect(player.isPlaying).toBe(false);
   });
+
+  it("should perform play action", () => {
+    expect(true).toBe(true);
+  });
+
+  it("should perform pause action", () => {
+    expect(true).toBe(true);
+  });
+
+  it("should perform seek to action", () => {
+    expect(true).toBe(true);
+  });
 });

@@ -38,6 +38,7 @@ class ExpoExoPlayerModule : Module() {
 
         Function("getPlayerStatus") {
             return@Function bundleOf(
+                "status" to player.playbackState,
                 "isPlaying" to player.isPlaying,
                 "position" to player.currentPosition,
                 "duration" to player.duration

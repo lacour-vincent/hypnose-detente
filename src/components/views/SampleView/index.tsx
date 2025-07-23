@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { LinearGradient } from "expo-linear-gradient";
 
+import { prepare, release } from "@/store/actions/player";
 import { clearSelectedSample, retrieveSampleById } from "@/store/actions/recording";
 import { getSelectedSample } from "@/store/selectors/recording";
+import { getSelectedAssetPack } from "@/store/selectors/storage";
 
 import { SAMPLE_THUMBNAILS } from "@/referential/thumbnails";
 
@@ -27,6 +29,7 @@ const SampleView: FC = () => {
   const dispatch = useDispatch();
   const { params } = useRouter<Params>();
   const sample = useSelector(getSelectedSample);
+  const pack = useSelector(getSelectedAssetPack);
 
   useEffect(() => {
     dispatch(retrieveSampleById.request({ id: params.id }));
@@ -34,6 +37,13 @@ const SampleView: FC = () => {
       dispatch(clearSelectedSample());
     };
   }, []);
+
+  useEffect(() => {
+    if (pack.file !== "") dispatch(prepare.request({ file: pack.file }));
+    return () => {
+      dispatch(release());
+    };
+  }, [pack]);
 
   if (!sample.id) return null; //Loader or error
   const url = SAMPLE_THUMBNAILS[sample.rid];

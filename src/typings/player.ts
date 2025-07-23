@@ -1,4 +1,5 @@
 export interface PlayerState {
+  status: PlayerStatus;
   isPlaying: boolean;
   position: number;
   duration: number;
