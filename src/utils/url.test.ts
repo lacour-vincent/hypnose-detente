@@ -11,7 +11,7 @@ describe("parse", () => {
     ["?id=1&id=2", { id: [1, 2] }],
     ["id=abc", { id: "abc" }],
   ])("should parse params %p -> %p", (params, expected) => {
-    expect(parse(params)).toEqual(expected);
+    expect(parse(params)).toStrictEqual(expected);
   });
 });
 
@@ -27,7 +27,7 @@ describe("stringify", () => {
     [{ id: "" }, ""],
     [{ id: null }, ""],
   ])("should stringify params %p -> %p", (params, expected) => {
-    expect(stringify(params)).toEqual(expected);
+    expect(stringify(params)).toStrictEqual(expected);
   });
 });
 

@@ -82,9 +82,9 @@ describe("Store - storage", () => {
     let player = getPlayer(store.getState());
     expect(player.position).toBe(0);
 
-    store.dispatch(seekTo({ position: 1 }));
+    store.dispatch(seekTo({ position: 50 }));
     player = getPlayer(store.getState());
-    expect(player.position).toBe(1);
+    expect(player.position).toBe(50);
   });
 
   it("should start pulling player state by performing play action", async () => {

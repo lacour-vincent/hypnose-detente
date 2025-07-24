@@ -35,7 +35,7 @@ describe("Store - storage", () => {
     await store.waitFor(retrieveAssetPack.success);
     const states = getAssetPackStates(store.getState());
     const selected = getSelectedAssetPack(store.getState());
-    expect(states[pack.name]).toEqual({ name: pack.name, status: AssetPackStatus.COMPLETED });
-    expect(selected).toEqual(pack);
+    expect(states[pack.name]).toStrictEqual({ name: pack.name, status: AssetPackStatus.COMPLETED });
+    expect(selected).toStrictEqual(pack);
   });
 });
