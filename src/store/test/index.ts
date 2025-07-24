@@ -12,8 +12,9 @@ import sagas from "@/store/sagas";
 import context from "@/store/test/context";
 
 interface LookUpAction extends UnknownAction {
-  promise: Promise<void>;
-  callback: () => void;
+  type: string;
+  counter: number;
+  resolvers: Map<number, () => void>;
 }
 
 class StoreTester {
@@ -32,21 +33,15 @@ class StoreTester {
 
   private createTestingMiddleware(): Middleware<unknown, State> {
     return () => (next) => (action: unknown) => {
-      const lookup = this.getLookUpAction((action as UnknownAction).type);
-      lookup.callback();
+      const type = (action as UnknownAction).type;
+      if (!this.lookups[type]) this.lookups[type] = { type, counter: 0, resolvers: new Map() };
+      const lookup = this.lookups[type];
+      if (lookup) {
+        lookup.counter++;
+        lookup.resolvers.get(lookup.counter)?.();
+      }
       return next(action);
     };
-  }
-
-  private getLookUpAction(type: UnknownAction["type"]): LookUpAction {
-    const action = this.lookups[type];
-    if (action !== undefined) return action;
-    const newAction: Partial<LookUpAction> = { type };
-    newAction.promise = new Promise((resolve) => {
-      newAction.callback = resolve;
-    });
-    this.lookups[type] = newAction as LookUpAction;
-    return newAction as LookUpAction;
   }
 
   dispatch(action: UnknownAction) {
@@ -57,8 +52,14 @@ class StoreTester {
     return this.store.getState();
   }
 
-  waitFor(action: ReturnType<typeof createAction>) {
-    return this.getLookUpAction(action.type).promise;
+  waitFor(action: ReturnType<typeof createAction>, count: number = 1): Promise<void> {
+    const type = action.type;
+    if (!this.lookups[type]) this.lookups[type] = { type, counter: 0, resolvers: new Map() };
+    const lookup = this.lookups[type];
+    if (lookup.counter >= count) return Promise.resolve();
+    return new Promise((resolve) => {
+      lookup.resolvers.set(count, resolve);
+    });
   }
 }
 
