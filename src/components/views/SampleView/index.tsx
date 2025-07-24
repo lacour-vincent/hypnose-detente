@@ -35,14 +35,12 @@ const SampleView: FC = () => {
     dispatch(retrieveSampleById.request({ id: params.id }));
     return () => {
       dispatch(clearSelectedSample());
+      dispatch(release());
     };
   }, []);
 
   useEffect(() => {
     if (pack.file !== "") dispatch(prepare.request({ file: pack.file }));
-    return () => {
-      dispatch(release());
-    };
   }, [pack]);
 
   if (!sample.id) return null; //Loader or error

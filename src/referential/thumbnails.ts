@@ -11,6 +11,6 @@ export const SAMPLE_THUMBNAILS: Record<Sample["rid"], ImageSourcePropType> = {
   renforcement: require("@/assets/thumbnails/renforcement.jpeg"),
   ressourcement: require("@/assets/thumbnails/ressourcement.jpeg"),
 
-  // in-memory testing
-  "sample-rid": require("@/assets/thumbnails/thumbnail.jpeg"),
+  // testing
+  "sample-rid": require("@/assets/testing/thumbnail.jpeg"),
 };

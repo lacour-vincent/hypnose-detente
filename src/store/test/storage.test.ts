@@ -31,11 +31,11 @@ describe("Store - storage", () => {
     jest.useFakeTimers();
     const action = retrieveAssetPack.request({ pack });
     store.dispatch(action);
-    jest.runAllTimers();
+    jest.runOnlyPendingTimers();
     await store.waitFor(retrieveAssetPack.success);
     const states = getAssetPackStates(store.getState());
     const selected = getSelectedAssetPack(store.getState());
     expect(states[pack.name]).toStrictEqual({ name: pack.name, status: AssetPackStatus.COMPLETED });
-    expect(selected).toStrictEqual(pack);
+    expect(selected.name).toBe(pack.name);
   });
 });

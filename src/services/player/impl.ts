@@ -1,44 +1,64 @@
-import ExoPlayerModule from "@modules/expo-exo-player";
+import { type AudioPlayer, createAudioPlayer } from "expo-audio";
 
+import type { OnPlayerStateUpdateEvent, PlayerState, PlayerStatus } from "@/typings/player";
+
+import { PULL_PLAYER_STATE_INTERVAL_IN_MS } from "@/referential/player";
 import type { PlayerService } from "@/services/player";
 
-const prepare: PlayerService["prepare"] = (file) => {
-  ExoPlayerModule.prepare(file);
+let player: AudioPlayer;
+
+const prepare: PlayerService["prepare"] = async (location) => {
+  player = createAudioPlayer(location, PULL_PLAYER_STATE_INTERVAL_IN_MS);
   return undefined;
 };
 
 const release: PlayerService["release"] = () => {
-  ExoPlayerModule.release();
+  player.remove();
   return undefined;
 };
 
 const setPlay: PlayerService["setPlay"] = () => {
-  ExoPlayerModule.setPlay();
+  player.play();
   return undefined;
 };
 
 const setPause: PlayerService["setPause"] = () => {
-  ExoPlayerModule.setPause();
+  player.pause();
   return undefined;
 };
 
 const seekTo: PlayerService["seekTo"] = (position) => {
-  ExoPlayerModule.seekTo(position);
+  player.seekTo(position);
   return undefined;
 };
 
 const getPlayerState: PlayerService["getPlayerState"] = () => {
-  const state = ExoPlayerModule.getPlayerState();
+  const { playbackState, playing, currentTime, duration } = player.currentStatus;
+  const state: PlayerState = {
+    status: playbackState as PlayerStatus,
+    isPlaying: playing,
+    position: currentTime,
+    duration: duration,
+  };
   return state;
 };
 
-const onPlayerStatusUpdate: PlayerService["onPlayerStatusUpdate"] = (listener) => {
-  ExoPlayerModule.addListener("onPlayerStatusUpdate", listener);
+const addPlayerStateListener: PlayerService["addPlayerStateListener"] = (listener) => {
+  player.addListener("playbackStatusUpdate", (event: OnPlayerStateUpdateEvent) => {
+    const { playbackState, playing, currentTime, duration } = event;
+    const state: PlayerState = {
+      status: playbackState as PlayerStatus,
+      isPlaying: playing,
+      position: currentTime,
+      duration: duration,
+    };
+    return listener(state);
+  });
   return undefined;
 };
 
-const onPlayerError: PlayerService["onPlayerError"] = (listener) => {
-  ExoPlayerModule.addListener("onPlayerError", listener);
+const removePlayerStateListener: PlayerService["removePlayerStateListener"] = () => {
+  player.removeListener("playbackStatusUpdate", () => {});
   return undefined;
 };
 
@@ -49,8 +69,8 @@ const service: PlayerService = {
   setPause,
   seekTo,
   getPlayerState,
-  onPlayerStatusUpdate,
-  onPlayerError,
+  addPlayerStateListener,
+  removePlayerStateListener,
 };
 
 export default service;

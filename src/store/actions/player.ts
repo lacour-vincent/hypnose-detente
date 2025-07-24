@@ -12,6 +12,10 @@ export const pause = createAction("PLAYER_PAUSE");
 
 export const seekTo = createPayloadAction<{ position: number }>("PLAYER_SEEK_TO");
 
-export const startPullPlayerState = createAction("START_PULL_PLAYER_STATE");
-export const stopPullPlayerState = createAction("START_PULL_PLAYER_STATE");
 export const onPlayerStateUpdate = createPayloadAction<{ state: PlayerState }>("ON_PLAYER_STATE_UPDATE");
+
+export const startListenPlayerState = createAction("START_LISTEN_PLAYER_STATE");
+
+export const stopListenPlayerState = createAction("STOP_LISTEN_PLAYER_STATE");
+
+export const onPlayerStateEnded = createAction("ON_PLAYER_STATE_ENDED");

@@ -19,7 +19,7 @@ const onAssetPackStateUpdate: StorageRepository["onAssetPackStateUpdate"] = (lis
 
 const fetchAssetPackFileLocation: StorageRepository["fetchAssetPackFileLocation"] = (pack) => {
   const file = PlayAssetDeliveryModule.getAssetPackFileLocation(pack.name, pack.file);
-  return file;
+  return Promise.resolve(file);
 };
 
 const repository: StorageRepository = {

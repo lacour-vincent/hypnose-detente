@@ -3,3 +3,8 @@ declare module "*.jpeg" {
   const jpeg: ImageSourcePropType;
   export default jpeg;
 }
+
+declare module "*.mp3" {
+  const svg: string;
+  export default svg;
+}

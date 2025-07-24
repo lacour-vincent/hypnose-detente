@@ -1,93 +1,103 @@
 import { type EventChannel, type SagaIterator, eventChannel } from "redux-saga";
-import { all, call, cancel, delay, fork, getContext, put, take, takeLeading } from "redux-saga/effects";
+import { all, call, cancel, fork, getContext, put, take, takeLeading } from "redux-saga/effects";
 
-import { type PlayerState, PlayerStatus, type onPlayerStatusUpdateEvent } from "@/typings/player";
+import { type PlayerState, PlayerStatus } from "@/typings/player";
 
 import {
+  onPlayerStateEnded,
   onPlayerStateUpdate,
   pause,
   play,
   prepare,
   release,
   seekTo,
-  startPullPlayerState,
-  stopPullPlayerState,
+  startListenPlayerState,
+  stopListenPlayerState,
 } from "@/store/actions/player";
 import type { Context } from "@/store/context";
 
-import { PULL_PLAYER_STATE_DELAY_IN_MS } from "@/referential/player";
-
-function createOnPlayerStatusUpdateChannel(
-  player: Context["services"]["player"],
-): EventChannel<onPlayerStatusUpdateEvent> {
+function createOnPlayerStateUpdateChannel(player: Context["services"]["player"]): EventChannel<PlayerState> {
   return eventChannel((emitter) => {
-    const listener = (event: onPlayerStatusUpdateEvent) => {
+    const listener = (event: PlayerState) => {
       emitter(event);
     };
-    player.onPlayerStatusUpdate(listener);
-    return () => {};
+    player.addPlayerStateListener(listener);
+    return () => {
+      player.removePlayerStateListener();
+    };
   });
 }
 
 function* handlePreparePlayer(action: ReturnType<typeof prepare.request>): SagaIterator {
   const services: Context["services"] = yield getContext("services");
-  const channel = yield call(createOnPlayerStatusUpdateChannel, services.player);
   try {
     yield call(services.player.prepare, action.payload.file);
+    const channel: EventChannel<PlayerState> = yield call(createOnPlayerStateUpdateChannel, services.player);
     while (true) {
-      const event: onPlayerStatusUpdateEvent = yield take(channel);
-      if (event.status === PlayerStatus.STATE_READY) break;
-      if (event.status === PlayerStatus.STATE_BUFFERING) continue;
-      if (event.status === PlayerStatus.STATE_IDLE) throw new Error();
-      if (event.status === PlayerStatus.STATE_ENDED) throw new Error();
-      throw new Error();
+      const state: PlayerState = yield take(channel);
+      if (state.status === PlayerStatus.BUFFERING) continue;
+      if (state.status === PlayerStatus.READY) break;
+      if (state.status === PlayerStatus.IDLE) break;
+      if (state.status === PlayerStatus.ENDED) break;
     }
+    channel.close();
     const state: PlayerState = yield call(services.player.getPlayerState);
+    if (state.status !== PlayerStatus.READY) throw new Error("Failed to");
     yield put(prepare.success({ state }));
   } catch (err: unknown) {
     yield put(prepare.failure({ err }));
-  } finally {
-    channel.close();
   }
 }
 
 function* handleReleasePlayer(): SagaIterator {
   const services: Context["services"] = yield getContext("services");
-  yield put(stopPullPlayerState());
+  yield put(stopListenPlayerState());
+  yield call(services.player.setPause);
   yield call(services.player.release);
 }
 
 function* handlePlay(): SagaIterator {
   const services: Context["services"] = yield getContext("services");
   yield call(services.player.setPlay);
-  yield put(startPullPlayerState());
+  yield put(startListenPlayerState());
 }
 
 function* handlePause(): SagaIterator {
   const services: Context["services"] = yield getContext("services");
+  yield put(stopListenPlayerState());
   yield call(services.player.setPause);
-  yield put(stopPullPlayerState());
 }
 
 function* handleSeekTo(action: ReturnType<typeof seekTo>): SagaIterator {
   const services: Context["services"] = yield getContext("services");
   yield call(services.player.seekTo, action.payload.position);
-  const state: PlayerState = yield call(services.player.getPlayerState);
-  yield put(onPlayerStateUpdate({ state }));
 }
 
-function* handlePullPlayerState(): SagaIterator {
+function* handleOnPlayerStateEnded(): SagaIterator {
   const services: Context["services"] = yield getContext("services");
-  while (true) {
-    yield delay(PULL_PLAYER_STATE_DELAY_IN_MS);
-    const state: PlayerState = yield call(services.player.getPlayerState);
-    yield put(onPlayerStateUpdate({ state }));
+  yield call(services.player.setPause);
+  yield call(services.player.seekTo, 0);
+  yield put(stopListenPlayerState());
+}
+
+function* handleListenPlayerState(): SagaIterator {
+  const services: Context["services"] = yield getContext("services");
+  const channel: EventChannel<PlayerState> = yield call(createOnPlayerStateUpdateChannel, services.player);
+  try {
+    while (true) {
+      const state: PlayerState = yield take(channel);
+      yield put(onPlayerStateUpdate({ state }));
+      const isEnded = state.status === PlayerStatus.ENDED;
+      if (isEnded) yield put(onPlayerStateEnded());
+    }
+  } finally {
+    channel.close();
   }
 }
 
-function* handleStartPullPlayerState(): SagaIterator {
-  const task = yield fork(handlePullPlayerState);
-  yield take(stopPullPlayerState);
+function* handleStartListenPlayerState(): SagaIterator {
+  const task = yield fork(handleListenPlayerState);
+  yield take(stopListenPlayerState);
   yield cancel(task);
 }
 
@@ -98,6 +108,7 @@ export default function* () {
     takeLeading(play, handlePlay),
     takeLeading(pause, handlePause),
     takeLeading(seekTo, handleSeekTo),
-    takeLeading(startPullPlayerState, handleStartPullPlayerState),
+    takeLeading(onPlayerStateEnded, handleOnPlayerStateEnded),
+    takeLeading(startListenPlayerState, handleStartListenPlayerState),
   ]);
 }

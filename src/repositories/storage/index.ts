@@ -6,7 +6,7 @@ import impl from "./impl";
 export interface StorageRepository {
   fetchAssetPackStates: (packs: AssetPack["name"][]) => Promise<AssetPackStates>;
   fetchAssetPack: (pack: AssetPack) => void;
-  fetchAssetPackFileLocation: (pack: AssetPack) => string | null;
+  fetchAssetPackFileLocation: (pack: AssetPack) => Promise<string | null>;
   onAssetPackStateUpdate: (listener: (state: AssetPackState) => void) => void;
 }
 

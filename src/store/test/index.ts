@@ -56,7 +56,7 @@ class StoreTester {
     const type = action.type;
     if (!this.lookups[type]) this.lookups[type] = { type, counter: 0, resolvers: new Map() };
     const lookup = this.lookups[type];
-    if (lookup.counter >= count) return Promise.resolve();
+    if (lookup.counter === count) return Promise.resolve();
     return new Promise((resolve) => {
       lookup.resolvers.set(count, resolve);
     });

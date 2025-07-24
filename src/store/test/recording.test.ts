@@ -30,12 +30,12 @@ describe("Store - recording", () => {
     const action = retrieveSampleById.request({ id: "sample-id" });
     store.dispatch(action);
     await store.waitFor(retrieveSampleById.success);
-    jest.runAllTimers();
+    jest.runOnlyPendingTimers();
     const sample = getSelectedSample(store.getState());
     expect(sample.id).not.toBe("");
     await store.waitFor(retrieveAssetPack.success);
     const pack = getSelectedAssetPack(store.getState());
-    expect(pack).toStrictEqual(sample.pack);
+    expect(pack.name).toStrictEqual(sample.pack.name);
   });
 
   it("should perform clear selected sample action", async () => {

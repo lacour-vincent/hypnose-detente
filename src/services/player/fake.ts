@@ -1,18 +1,19 @@
-import { PlayerStatus, type onPlayerStatusUpdateEvent } from "@/typings/player";
+import { PlayerStatus } from "@/typings/player";
 
 import type { PlayerState } from "@/store/reducers/player";
 
+import { PULL_PLAYER_STATE_INTERVAL_IN_MS } from "@/referential/player";
 import type { PlayerService } from "@/services/player";
 
-class FakePlayer {
+class FakeAudioPlayer {
   private state: PlayerState;
 
   constructor() {
-    this.state = { status: PlayerStatus.STATE_READY, isPlaying: false, position: 0, duration: 100 };
+    this.state = { status: PlayerStatus.READY, isPlaying: false, position: 0, duration: 100 };
   }
 
   release(): void {
-    this.state = { status: PlayerStatus.STATE_READY, isPlaying: false, position: 0, duration: 100 };
+    this.state = { status: PlayerStatus.READY, isPlaying: false, position: 0, duration: 100 };
   }
 
   setPlay(): void {
@@ -33,14 +34,16 @@ class FakePlayer {
   }
 }
 
-const player = new FakePlayer();
+let player: FakeAudioPlayer;
+let interval: number;
 
 const prepare: PlayerService["prepare"] = () => {
+  player = new FakeAudioPlayer();
   return undefined;
 };
 
 const release: PlayerService["release"] = () => {
-  player.release();
+  if (player) player.release();
   return undefined;
 };
 
@@ -64,12 +67,16 @@ const seekTo: PlayerService["seekTo"] = (position) => {
   return undefined;
 };
 
-const onPlayerStatusUpdate: PlayerService["onPlayerStatusUpdate"] = (listener) => {
-  const event: onPlayerStatusUpdateEvent = { status: PlayerStatus.STATE_READY };
-  return setTimeout(() => listener(event), 100);
+const addPlayerStateListener: PlayerService["addPlayerStateListener"] = (listener) => {
+  interval = setInterval(() => {
+    const state = player.getPlayerState();
+    return listener(state);
+  }, PULL_PLAYER_STATE_INTERVAL_IN_MS);
+  return undefined;
 };
 
-const onPlayerError: PlayerService["onPlayerError"] = () => {
+const removePlayerStateListener: PlayerService["removePlayerStateListener"] = () => {
+  if (interval) clearInterval(interval);
   return undefined;
 };
 
@@ -80,8 +87,8 @@ const service: PlayerService = {
   setPause,
   seekTo,
   getPlayerState,
-  onPlayerStatusUpdate,
-  onPlayerError,
+  addPlayerStateListener,
+  removePlayerStateListener,
 };
 
 export default service;
