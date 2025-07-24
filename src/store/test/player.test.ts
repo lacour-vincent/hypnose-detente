@@ -1,6 +1,6 @@
 import { PlayerStatus } from "@/typings/player";
 
-import { prepare, release } from "@/store/actions/player";
+import { onPlayerStateUpdate, pause, play, prepare, release, seekTo } from "@/store/actions/player";
 import { getPlayer } from "@/store/selectors/player";
 
 import { PLAYER_STATE_MOCK } from "@/fixtures/player";
@@ -14,7 +14,12 @@ describe("Store - storage", () => {
     store = new StoreTester();
   });
 
+  afterEach(() => {
+    store.dispatch(release());
+  });
+
   it("should perform prepare player action", async () => {
+    store.dispatch(release());
     let player = getPlayer(store.getState());
     expect(player.status).toBe(PlayerStatus.STATE_IDLE);
     expect(player.position).toBe(0);
@@ -41,8 +46,7 @@ describe("Store - storage", () => {
     expect(player.duration).not.toBe(0);
     expect(player.isPlaying).toBe(false);
 
-    const action = release();
-    store.dispatch(action);
+    store.dispatch(release());
     player = getPlayer(store.getState());
     expect(player.status).toBe(PlayerStatus.STATE_IDLE);
     expect(player.position).toBe(0);
@@ -51,14 +55,65 @@ describe("Store - storage", () => {
   });
 
   it("should perform play action", () => {
-    expect(true).toBe(true);
+    store.dispatch(pause());
+    let player = getPlayer(store.getState());
+    expect(player.isPlaying).toBe(false);
+    expect(player.position).toBe(0);
+
+    store.dispatch(play());
+    player = getPlayer(store.getState());
+    expect(player.isPlaying).toBe(true);
+    expect(player.position).toBe(0);
   });
 
   it("should perform pause action", () => {
-    expect(true).toBe(true);
+    store.dispatch(play());
+    let player = getPlayer(store.getState());
+    expect(player.isPlaying).toBe(true);
+    expect(player.position).toBe(0);
+
+    store.dispatch(pause());
+    player = getPlayer(store.getState());
+    expect(player.isPlaying).toBe(false);
+    expect(player.position).toBe(0);
   });
 
   it("should perform seek to action", () => {
-    expect(true).toBe(true);
+    let player = getPlayer(store.getState());
+    expect(player.position).toBe(0);
+
+    store.dispatch(seekTo({ position: 1 }));
+    player = getPlayer(store.getState());
+    expect(player.position).toBe(1);
+  });
+
+  it("should start pulling player state by performing play action", async () => {
+    jest.useFakeTimers();
+    store.dispatch(play());
+    const positions = [1, 2, 3, 4, 5];
+    for (const position of positions) {
+      jest.runAllTimers();
+      await store.waitFor(onPlayerStateUpdate, position);
+      const player = getPlayer(store.getState());
+      expect(player.position).toBe(position);
+    }
+  });
+
+  it("should stop pulling player state by performing pause action", async () => {
+    jest.useFakeTimers();
+    store.dispatch(play());
+    const positions = [1, 2, 3];
+    for (const position of positions) {
+      jest.runAllTimers();
+      await store.waitFor(onPlayerStateUpdate, position);
+      const player = getPlayer(store.getState());
+      expect(player.position).toBe(position);
+    }
+
+    store.dispatch(pause());
+    jest.runAllTimers();
+    await store.waitFor(onPlayerStateUpdate, positions[positions.length - 1]);
+    const player = getPlayer(store.getState());
+    expect(player.position).toBe(positions[positions.length - 1]);
   });
 });
