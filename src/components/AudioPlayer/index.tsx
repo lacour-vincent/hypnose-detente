@@ -33,7 +33,7 @@ const AudioPlayer: FC<Props> = ({ style }) => {
     return dispatch(action());
   };
 
-  const onSliderChange = (position: number) => {
+  const onSlidingComplete = (position: number) => {
     return dispatch(seekTo({ position }));
   };
 
@@ -46,7 +46,7 @@ const AudioPlayer: FC<Props> = ({ style }) => {
           value={position}
           options={{ min: 0, max: duration, step: 1 }}
           disabled={!isSliderEnabled}
-          onChange={onSliderChange}
+          onSlidingComplete={onSlidingComplete}
         />
         <Text style={s.timer}>{formatAudioTime(duration)}</Text>
       </View>

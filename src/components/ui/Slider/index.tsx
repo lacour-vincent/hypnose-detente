@@ -10,10 +10,10 @@ export interface Props {
   value: number;
   options: { min: number; max: number; step: number };
   disabled?: boolean;
-  onChange: (value: number) => void;
+  onSlidingComplete: (value: number) => void;
 }
 
-const Slider: FC<Props> = ({ style, value, options, disabled, onChange }) => {
+const Slider: FC<Props> = ({ style, value, options, disabled, onSlidingComplete }) => {
   return (
     <SliderCommunity
       style={cn([style])}
@@ -26,7 +26,7 @@ const Slider: FC<Props> = ({ style, value, options, disabled, onChange }) => {
       maximumTrackTintColor="#3a3a4a"
       disabled={disabled}
       testID="slider"
-      onSlidingComplete={onChange}
+      onSlidingComplete={onSlidingComplete}
     />
   );
 };
