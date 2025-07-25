@@ -27,11 +27,21 @@ describe("Store - storage", () => {
     expect(Object.keys(states).length).toBe(packs.length);
   });
 
-  it("should perform retrieve asset pack action", async () => {
+  it("should perform retrieve asset pack from network action", async () => {
     jest.useFakeTimers();
-    const action = retrieveAssetPack.request({ pack });
+    const action = retrieveAssetPack.request({ pack, network: true });
     store.dispatch(action);
     jest.runOnlyPendingTimers();
+    await store.waitFor(retrieveAssetPack.success);
+    const states = getAssetPackStates(store.getState());
+    const selected = getSelectedAssetPack(store.getState());
+    expect(states[pack.name]).toStrictEqual({ name: pack.name, status: AssetPackStatus.COMPLETED });
+    expect(selected.name).toBe(pack.name);
+  });
+
+  it("should perform retrieve asset pack from storage action", async () => {
+    const action = retrieveAssetPack.request({ pack, network: false });
+    store.dispatch(action);
     await store.waitFor(retrieveAssetPack.success);
     const states = getAssetPackStates(store.getState());
     const selected = getSelectedAssetPack(store.getState());

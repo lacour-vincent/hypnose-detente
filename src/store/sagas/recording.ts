@@ -26,8 +26,8 @@ function* handleRetrieveSampleById(action: ReturnType<typeof retrieveSampleById.
   const states = getAssetPackStates(yield select());
   try {
     const sample: Sample = yield call(repositories.recording.fetchSampleById, action.payload.id);
-    const completed = states[sample.pack.name]?.status === AssetPackStatus.COMPLETED;
-    if (!completed) yield put(retrieveAssetPack.request({ pack: sample.pack }));
+    const network = states[sample.pack.name]?.status !== AssetPackStatus.COMPLETED;
+    yield put(retrieveAssetPack.request({ pack: sample.pack, network }));
     yield put(retrieveSampleById.success({ sample }));
   } catch (err: unknown) {
     yield put(retrieveSampleById.failure({ err }));

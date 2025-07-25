@@ -17,8 +17,28 @@ function* handleRetrieveAssetPackStates(action: ReturnType<typeof retrieveAssetP
 }
 
 function* handleRetrieveAssetPack(action: ReturnType<typeof retrieveAssetPack.request>): SagaIterator {
+  const { pack, network } = action.payload;
+  const retrieval = network ? retrieveAssetPackFromNetwork : retrieveAssetPackFromStorage;
+  yield call(retrieval, pack);
+}
+
+function createOnAssetPackStateUpdateChannel(
+  pack: AssetPack["name"],
+  storage: Context["repositories"]["storage"],
+): EventChannel<AssetPackState> {
+  return eventChannel((emitter) => {
+    const listener = (state: AssetPackState) => {
+      if (state.name === pack) emitter(state);
+    };
+    storage.addAssetPackStateUpdateListener(listener);
+    return () => {
+      storage.removeAssetPackStateUpdateListener();
+    };
+  });
+}
+
+function* retrieveAssetPackFromNetwork(pack: AssetPack): SagaIterator {
   const repositories: Context["repositories"] = yield getContext("repositories");
-  const { pack } = action.payload;
   const channel: EventChannel<AssetPackState> = yield call(
     createOnAssetPackStateUpdateChannel,
     pack.name,
@@ -40,19 +60,14 @@ function* handleRetrieveAssetPack(action: ReturnType<typeof retrieveAssetPack.re
   }
 }
 
-function createOnAssetPackStateUpdateChannel(
-  pack: AssetPack["name"],
-  storage: Context["repositories"]["storage"],
-): EventChannel<AssetPackState> {
-  return eventChannel((emitter) => {
-    const listener = (state: AssetPackState) => {
-      if (state.name === pack) emitter(state);
-    };
-    storage.addAssetPackStateUpdateListener(listener);
-    return () => {
-      storage.removeAssetPackStateUpdateListener();
-    };
-  });
+function* retrieveAssetPackFromStorage(pack: AssetPack): SagaIterator {
+  const repositories: Context["repositories"] = yield getContext("repositories");
+  try {
+    const file: string = yield call(repositories.storage.fetchAssetPackFileLocation, pack);
+    yield put(retrieveAssetPack.success({ pack: { ...pack, file } }));
+  } catch (err: unknown) {
+    yield put(retrieveAssetPack.failure({ err }));
+  }
 }
 
 export default function* () {
