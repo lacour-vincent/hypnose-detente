@@ -7,7 +7,8 @@ export interface StorageRepository {
   fetchAssetPackStates: (packs: AssetPack["name"][]) => Promise<AssetPackStates>;
   fetchAssetPack: (pack: AssetPack) => void;
   fetchAssetPackFileLocation: (pack: AssetPack) => Promise<string | null>;
-  onAssetPackStateUpdate: (listener: (state: AssetPackState) => void) => void;
+  addAssetPackStateUpdateListener: (listener: (state: AssetPackState) => void) => void;
+  removeAssetPackStateUpdateListener: () => void;
 }
 
 export default { impl, fake };

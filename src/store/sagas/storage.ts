@@ -29,7 +29,7 @@ function* handleRetrieveAssetPack(action: ReturnType<typeof retrieveAssetPack.re
     while (true) {
       const state: AssetPackState = yield take(channel);
       if (state.status === AssetPackStatus.COMPLETED) break;
-      // CASE ERROR MANAGEMENT
+      // TODO ERROR MANAGEMENT FETCH ASSET PACK
     }
     const file: string = yield call(repositories.storage.fetchAssetPackFileLocation, pack);
     yield put(retrieveAssetPack.success({ pack: { ...pack, file } }));
@@ -48,8 +48,10 @@ function createOnAssetPackStateUpdateChannel(
     const listener = (state: AssetPackState) => {
       if (state.name === pack) emitter(state);
     };
-    storage.onAssetPackStateUpdate(listener);
-    return () => {};
+    storage.addAssetPackStateUpdateListener(listener);
+    return () => {
+      storage.removeAssetPackStateUpdateListener();
+    };
   });
 }
 
