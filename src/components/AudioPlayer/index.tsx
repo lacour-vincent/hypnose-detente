@@ -4,10 +4,16 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { PlayerStatus } from "@/typings/player";
 
-import { pause, play, seekTo } from "@/store/actions/player";
+import { pause, play, prepare, seekTo } from "@/store/actions/player";
+import { retrieveSampleById } from "@/store/actions/recording";
+import { retrieveAssetPack } from "@/store/actions/storage";
 import { getPlayer } from "@/store/selectors/player";
 
 import { formatAudioTime } from "@/utils/formatter";
+
+import useLoader from "@/hooks/useLoader";
+
+import AudioPlayerSkeleton from "@/components/AudioPlayer/AudioPlayerSqueleton";
 
 import Icon from "@ui/Icon";
 import Slider from "@ui/Slider";
@@ -23,6 +29,7 @@ interface Props {
 const AudioPlayer: FC<Props> = ({ style }) => {
   const dispatch = useDispatch();
   const { status, isPlaying, position, duration } = useSelector(getPlayer);
+  const isLoading = useLoader([retrieveSampleById, retrieveAssetPack, prepare]);
   const isPlayerReady = status === PlayerStatus.READY;
   const label = isPlaying ? "Pause" : "Lecture";
   const icon = isPlaying ? "pause" : "play";
@@ -36,10 +43,12 @@ const AudioPlayer: FC<Props> = ({ style }) => {
     return dispatch(seekTo({ position }));
   };
 
+  if (isLoading) return <AudioPlayerSkeleton style={style} />;
+
   return (
     <View style={cn([s.container, style])}>
       <View style={s.wrapper}>
-        <Text style={cn([s.timer], [[s["time--hidden"], !isPlayerReady]])}>{formatAudioTime(position)}</Text>
+        <Text style={s.timer}>{formatAudioTime(position)}</Text>
         <Slider
           style={s.slider}
           value={position}
@@ -47,7 +56,7 @@ const AudioPlayer: FC<Props> = ({ style }) => {
           disabled={!isPlayerReady}
           onSlidingComplete={onSlidingComplete}
         />
-        <Text style={cn([s.timer], [[s["time--hidden"], !isPlayerReady]])}>{formatAudioTime(duration)}</Text>
+        <Text style={s.timer}>{formatAudioTime(duration)}</Text>
       </View>
       <Pressable
         style={s.player}
