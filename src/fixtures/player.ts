@@ -4,5 +4,5 @@ export const PLAYER_STATE_MOCK: PlayerState = {
   status: PlayerStatus.READY,
   isPlaying: false,
   position: 0,
-  duration: 1000,
+  duration: 1200,
 };

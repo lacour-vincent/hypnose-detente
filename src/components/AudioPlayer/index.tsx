@@ -23,8 +23,7 @@ interface Props {
 const AudioPlayer: FC<Props> = ({ style }) => {
   const dispatch = useDispatch();
   const { status, isPlaying, position, duration } = useSelector(getPlayer);
-  const isPlaybackButtonEnabled = status === PlayerStatus.READY;
-  const isSliderEnabled = status === PlayerStatus.READY;
+  const isPlayerReady = status === PlayerStatus.READY;
   const label = isPlaying ? "Pause" : "Lecture";
   const icon = isPlaying ? "pause" : "play";
 
@@ -40,15 +39,15 @@ const AudioPlayer: FC<Props> = ({ style }) => {
   return (
     <View style={cn([s.container, style])}>
       <View style={s.wrapper}>
-        <Text style={s.timer}>{formatAudioTime(position)}</Text>
+        <Text style={cn([s.timer], [[s["time--hidden"], !isPlayerReady]])}>{formatAudioTime(position)}</Text>
         <Slider
           style={s.slider}
           value={position}
           options={{ min: 0, max: duration, step: 1 }}
-          disabled={!isSliderEnabled}
+          disabled={!isPlayerReady}
           onSlidingComplete={onSlidingComplete}
         />
-        <Text style={s.timer}>{formatAudioTime(duration)}</Text>
+        <Text style={cn([s.timer], [[s["time--hidden"], !isPlayerReady]])}>{formatAudioTime(duration)}</Text>
       </View>
       <Pressable
         style={s.player}
@@ -57,7 +56,7 @@ const AudioPlayer: FC<Props> = ({ style }) => {
         accessibilityRole="button"
         accessibilityLabel={label}
         android_ripple={{ radius: 0.5 * (theme["space-lg"] + 2 * theme["space-md"]) }}
-        disabled={!isPlaybackButtonEnabled}
+        disabled={!isPlayerReady}
         onPress={onPress}
       >
         <Icon name={icon} size={theme["space-lg"]} color={theme["tertiary-color-text"]} />
