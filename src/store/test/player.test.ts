@@ -89,17 +89,14 @@ describe("Store - storage", () => {
     store.dispatch(prepare.request({ file: "sample.mp3" }));
     jest.runOnlyPendingTimers();
     await store.waitFor(prepare.success);
-    store.dispatch(play());
 
     let player = getPlayer(store.getState());
     expect(player.position).toBe(0);
 
     const position = 5;
     store.dispatch(seekTo({ position }));
-    jest.runOnlyPendingTimers();
-    await store.waitFor(onPlayerStateUpdate);
     player = getPlayer(store.getState());
-    expect(player.position).toBe(position + 1);
+    expect(player.position).toBe(position);
   });
 
   it("should start listening player state by performing play action", async () => {

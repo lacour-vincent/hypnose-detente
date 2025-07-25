@@ -24,7 +24,7 @@ const AudioPlayer: FC<Props> = ({ style }) => {
   const dispatch = useDispatch();
   const { status, isPlaying, position, duration } = useSelector(getPlayer);
   const isPlaybackButtonEnabled = status === PlayerStatus.READY;
-  const isSliderEnabled = status === PlayerStatus.READY && isPlaying;
+  const isSliderEnabled = status === PlayerStatus.READY;
   const label = isPlaying ? "Pause" : "Lecture";
   const icon = isPlaying ? "pause" : "play";
 

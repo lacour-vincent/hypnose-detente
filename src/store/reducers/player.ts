@@ -2,7 +2,7 @@ import { createReducer } from "@reduxjs/toolkit";
 
 import { type PlayerState as PlayerStateType, PlayerStatus } from "@/typings/player";
 
-import { onPlayerStateEnded, onPlayerStateUpdate, pause, play, prepare, release } from "@/store/actions/player";
+import { onPlayerStateEnded, onPlayerStateUpdate, pause, play, prepare, release, seekTo } from "@/store/actions/player";
 
 export type PlayerState = PlayerStateType;
 
@@ -28,6 +28,10 @@ export default createReducer(initialState, (builder) => {
     })
     .addCase(pause, (state) => {
       state.isPlaying = false;
+      return state;
+    })
+    .addCase(seekTo, (state, action) => {
+      state.position = action.payload.position;
       return state;
     })
     .addCase(onPlayerStateUpdate, (state, action) => {
