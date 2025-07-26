@@ -1,6 +1,5 @@
 import { type ExpoConfig } from "expo/config";
 
-
 const config: ExpoConfig = {
   name: "Hypnose",
   slug: "hypnose-detente",
@@ -51,6 +50,7 @@ const config: ExpoConfig = {
         backgroundColor: "#ffffff",
       },
     ],
+    ["./plugins/withMediaPlaybackForegroundService.js"],
     [
       "./plugins/withGooglePlayAssetDelivery.js",
       [
