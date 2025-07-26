@@ -1,4 +1,4 @@
-import { type AudioPlayer, createAudioPlayer } from "expo-audio";
+import { AudioModule, type AudioPlayer, createAudioPlayer } from "expo-audio";
 
 import type { OnPlayerStateUpdateEvent, PlayerState, PlayerStatus } from "@/typings/player";
 
@@ -6,6 +6,7 @@ import { PULL_PLAYER_STATE_INTERVAL_IN_MS } from "@/referential/player";
 import type { PlayerService } from "@/services/player";
 
 let player: AudioPlayer;
+AudioModule.setAudioModeAsync({ shouldPlayInBackground: true, interruptionModeAndroid: "doNotMix" });
 
 const prepare: PlayerService["prepare"] = async (location) => {
   player = createAudioPlayer(location, PULL_PLAYER_STATE_INTERVAL_IN_MS);
