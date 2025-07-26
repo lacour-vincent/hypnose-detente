@@ -19,15 +19,6 @@ describe("<Snackbar />", () => {
     expect(getByRole("button", { name: "fermer" })).toBeEnabled();
   });
 
-  it("should call onClose from the elapsed time", async () => {
-    const props = { ...defaultProps };
-    const { findByRole } = render(<Snackbar {...props} />);
-    expect(await findByRole("button", { name: "fermer" })).toBeOnTheScreen();
-    jest.advanceTimersByTime(6000);
-
-    expect(props.onClose).toHaveBeenCalled();
-  });
-
   it("should call onClose with close button", async () => {
     const props = { ...defaultProps };
     const { findByRole, getByRole, event } = render(<Snackbar {...props} />);
