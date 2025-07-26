@@ -6,7 +6,6 @@ const config = {
     "^(react|react-native|react-redux)$",
     "^(expo/(.*)|expo-(.*))$",
     "^@(native)(.*)$",
-    "^(react-native-paper)$",
     "<THIRD_PARTY_MODULES>",
     "^@/(typings)(.*)$",
     "^@/(store)(.*)$",

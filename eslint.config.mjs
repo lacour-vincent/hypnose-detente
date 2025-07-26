@@ -20,7 +20,6 @@ export default tseslint.config([
         {
           patterns: [
             { group: ["*.png", "!@/assets/**/*.png"], message: "Please import assets from @/assets instead." },
-            { group: ["react-native-paper"], message: "Please import paper-components from @ui/* instead." },
             { group: ["@testing-library/*"], message: "Please import from @/testing/react-native instead." },
             { group: ["@/components/ui/*"], message: "Please import from @ui/* instead." },
           ],

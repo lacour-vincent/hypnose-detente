@@ -1,11 +1,5 @@
 import type { StyleProp } from "react-native";
 
-// eslint-disable-next-line no-restricted-imports
-import { MD3LightTheme } from "react-native-paper";
-
-// eslint-disable-next-line no-restricted-imports
-import type { MD3Colors, ThemeProp } from "react-native-paper/lib/typescript/types";
-
 const theme = {
   "font-primary-color": "rgba(0, 0, 0, 0.87)" as string,
   "font-secondary-color": "rgba(0, 0, 0, 0.60)" as string,
@@ -48,15 +42,6 @@ const theme = {
   "space-xs": 8,
   "space-2xs": 4,
 } as const;
-
-export const paper: ThemeProp = {
-  ...MD3LightTheme,
-  roundness: 2,
-  colors: {
-    primary: theme["primary-color"],
-    onPrimary: theme["primary-color-text"],
-  } as MD3Colors,
-};
 
 type Style<T> = StyleProp<T>;
 

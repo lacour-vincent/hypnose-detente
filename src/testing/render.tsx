@@ -2,9 +2,6 @@ import React, { type FC, type ReactElement, type ReactNode } from "react";
 import { Provider } from "react-redux";
 
 // eslint-disable-next-line no-restricted-imports
-import { PaperProvider } from "react-native-paper";
-
-// eslint-disable-next-line no-restricted-imports
 import { type RenderOptions, render, userEvent } from "@testing-library/react-native";
 
 import { createTestStore } from "@/testing/store";
@@ -18,11 +15,7 @@ const customRender = (ui: ReactElement, options?: Options) => {
   const store = options?.store ?? createTestStore();
 
   const Wrapper: FC<{ children: ReactNode }> = ({ children }) => {
-    return (
-      <Provider store={store}>
-        <PaperProvider>{children}</PaperProvider>
-      </Provider>
-    );
+    return <Provider store={store}>{children}</Provider>;
   };
 
   return { event, ...render(ui, { wrapper: Wrapper, ...options }) };
