@@ -3,6 +3,7 @@ import { router as expoRouter } from "expo-router";
 import ENV from "@/env";
 import recording, { type RecordingRepository } from "@/repositories/recording";
 import storage, { type StorageRepository } from "@/repositories/storage";
+import foreground, { type ForegroundService } from "@/services/foreground";
 import player, { type PlayerService } from "@/services/player";
 
 const isDev = ENV.NODE_ENV === "development";
@@ -20,6 +21,7 @@ interface Repositories {
 
 interface Services {
   player: PlayerService;
+  foreground: ForegroundService;
 }
 
 const repositories: Repositories = {
@@ -27,7 +29,7 @@ const repositories: Repositories = {
   storage: isDev ? storage.fake : storage.impl,
 };
 
-const services: Services = { player: player.impl };
+const services: Services = { player: player.impl, foreground: foreground.impl };
 
 interface Router {
   navigate: (href: string) => void;

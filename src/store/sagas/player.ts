@@ -1,5 +1,5 @@
 import { type EventChannel, type SagaIterator, eventChannel } from "redux-saga";
-import { all, call, cancel, fork, getContext, put, take, takeLeading } from "redux-saga/effects";
+import { all, call, cancel, fork, getContext, put, select, take, takeLeading } from "redux-saga/effects";
 
 import { type PlayerState, PlayerStatus } from "@/typings/player";
 
@@ -15,6 +15,8 @@ import {
   stopListenPlayerState,
 } from "@/store/actions/player";
 import type { Context } from "@/store/context";
+
+import { getSelectedSample } from "../selectors/recording";
 
 function createOnPlayerStateUpdateChannel(player: Context["services"]["player"]): EventChannel<PlayerState> {
   return eventChannel((emitter) => {
@@ -58,14 +60,17 @@ function* handleReleasePlayer(): SagaIterator {
 
 function* handlePlay(): SagaIterator {
   const services: Context["services"] = yield getContext("services");
+  const sample = getSelectedSample(yield select());
   yield call(services.player.setPlay);
+  yield call(services.foreground.start, sample.label);
   yield put(startListenPlayerState());
 }
 
 function* handlePause(): SagaIterator {
   const services: Context["services"] = yield getContext("services");
-  yield put(stopListenPlayerState());
   yield call(services.player.setPause);
+  yield call(services.foreground.stop);
+  yield put(stopListenPlayerState());
 }
 
 function* handleSeekTo(action: ReturnType<typeof seekTo>): SagaIterator {
@@ -77,6 +82,7 @@ function* handleOnPlayerStateEnded(): SagaIterator {
   const services: Context["services"] = yield getContext("services");
   yield call(services.player.setPause);
   yield call(services.player.seekTo, 0);
+  yield call(services.foreground.stop);
   yield put(stopListenPlayerState());
 }
 

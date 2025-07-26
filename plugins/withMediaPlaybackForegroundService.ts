@@ -8,6 +8,7 @@ const withMediaPlaybackForegroundService: ConfigPlugin = (config) => {
 const withForegroundServiceAndroidManifest: ConfigPlugin = (config) => {
   return withAndroidManifest(config, (config) => {
     const permissions = [
+      "android.permission.POST_NOTIFICATIONS",
       "android.permission.FOREGROUND_SERVICE",
       "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK",
     ];
@@ -24,7 +25,7 @@ const withForegroundServiceAndroidManifest: ConfigPlugin = (config) => {
 
     const service = {
       $: {
-        "android:name": "expo.modules.foreground.ForegroundService",
+        "android:name": "expo.modules.foregroundservice.ForegroundService",
         "android:enabled": "true" as const,
         "android:exported": "false" as const,
         "android:foregroundServiceType": "mediaPlayback",
@@ -38,7 +39,8 @@ const withForegroundServiceAndroidManifest: ConfigPlugin = (config) => {
     const application = applications[0];
     if (!Array.isArray(application.service)) application.service = [];
     const existing = application.service.some((item) => item.$["android:name"] === service.$["android:name"]);
-    if (!existing) application.service.push(service);
+    if (existing) throw new Error("Already existing service found in AndroidManifest.");
+    application.service.push(service);
 
     return config;
   });
