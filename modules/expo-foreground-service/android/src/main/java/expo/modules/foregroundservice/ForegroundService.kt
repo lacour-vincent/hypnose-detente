@@ -20,7 +20,7 @@ class ForegroundService : Service() {
         const val FOREGROUND_SERVICE_CHANNEL_ID = "media_playback_channel"
         const val FOREGROUND_SERVICE_CHANNEL_NAME = "Media Playback"
         const val FOREGROUND_SERVICE_NOTIFICATION_TITLE = "Hypnose — Détente"
-        const val FOREGROUND_SERVICE_NOTIFICATION_TEXT = "{sample} — Lecture en cours"
+        const val FOREGROUND_SERVICE_NOTIFICATION_TEXT = "Lecture en cours — {sample}"
 
         fun startService(context: Context, sample: String) {
             val intent = Intent(context, ForegroundService::class.java)
@@ -40,6 +40,7 @@ class ForegroundService : Service() {
         createNotificationChannel()
 
         val notification = NotificationCompat.Builder(this, FOREGROUND_SERVICE_CHANNEL_ID)
+            .setSmallIcon(android.R.drawable.ic_media_play)
             .setContentTitle(FOREGROUND_SERVICE_NOTIFICATION_TITLE)
             .setContentText(FOREGROUND_SERVICE_NOTIFICATION_TEXT.replace("{sample}", sample))
             .setOngoing(true)
@@ -56,7 +57,7 @@ class ForegroundService : Service() {
             startForeground(FOREGROUND_SERVICE_ID, notification)
         }
 
-        return START_STICKY
+        return START_NOT_STICKY
     }
 
     private fun createNotificationChannel() {
