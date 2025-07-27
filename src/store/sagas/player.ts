@@ -1,3 +1,5 @@
+import { PermissionsAndroid } from "react-native";
+
 import { type EventChannel, type SagaIterator, eventChannel } from "redux-saga";
 import { all, call, cancel, fork, getContext, put, select, take, takeLeading } from "redux-saga/effects";
 
@@ -15,8 +17,7 @@ import {
   stopListenPlayerState,
 } from "@/store/actions/player";
 import type { Context } from "@/store/context";
-
-import { getSelectedSample } from "../selectors/recording";
+import { getSelectedSample } from "@/store/selectors/recording";
 
 function createOnPlayerStateUpdateChannel(player: Context["services"]["player"]): EventChannel<PlayerState> {
   return eventChannel((emitter) => {
@@ -61,9 +62,11 @@ function* handleReleasePlayer(): SagaIterator {
 function* handlePlay(): SagaIterator {
   const services: Context["services"] = yield getContext("services");
   const sample = getSelectedSample(yield select());
+  yield call(services.permissions.request, PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS);
   yield call(services.player.setPlay);
   yield call(services.foreground.start, sample.label);
   yield put(startListenPlayerState());
+  yield put(play.success());
 }
 
 function* handlePause(): SagaIterator {
@@ -111,7 +114,7 @@ export default function* () {
   yield all([
     takeLeading(prepare.request, handlePreparePlayer),
     takeLeading(release, handleReleasePlayer),
-    takeLeading(play, handlePlay),
+    takeLeading(play.request, handlePlay),
     takeLeading(pause, handlePause),
     takeLeading(seekTo, handleSeekTo),
     takeLeading(onPlayerStateEnded, handleOnPlayerStateEnded),

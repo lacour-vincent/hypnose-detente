@@ -63,7 +63,8 @@ describe("Store - storage", () => {
     expect(player.isPlaying).toBe(false);
     expect(player.position).toBe(0);
 
-    store.dispatch(play());
+    store.dispatch(play.request());
+    await store.waitFor(play.success);
     player = getPlayer(store.getState());
     expect(player.isPlaying).toBe(true);
     expect(player.position).toBe(0);
@@ -73,7 +74,8 @@ describe("Store - storage", () => {
     store.dispatch(prepare.request({ file: "sample.mp3" }));
     jest.runOnlyPendingTimers();
     await store.waitFor(prepare.success);
-    store.dispatch(play());
+    store.dispatch(play.request());
+    await store.waitFor(play.success);
 
     let player = getPlayer(store.getState());
     expect(player.isPlaying).toBe(true);
@@ -101,10 +103,11 @@ describe("Store - storage", () => {
 
   it("should start listening player state by performing play action", async () => {
     store.dispatch(prepare.request({ file: "sample.mp3" }));
-    jest.runOnlyPendingTimers();
+    jest.runAllTimers();
     await store.waitFor(prepare.success);
 
-    store.dispatch(play());
+    store.dispatch(play.request());
+    await store.waitFor(play.success);
     const positions = [1, 2, 3, 4, 5];
     for (const position of positions) {
       jest.runOnlyPendingTimers();
@@ -119,7 +122,8 @@ describe("Store - storage", () => {
     jest.runOnlyPendingTimers();
     await store.waitFor(prepare.success);
 
-    store.dispatch(play());
+    store.dispatch(play.request());
+    await store.waitFor(play.success);
     const positions = [1, 2, 3];
     for (const position of positions) {
       jest.runOnlyPendingTimers();
@@ -140,7 +144,8 @@ describe("Store - storage", () => {
     jest.runOnlyPendingTimers();
     await store.waitFor(prepare.success);
 
-    store.dispatch(play());
+    store.dispatch(play.request());
+    await store.waitFor(play.success);
     const positions = [1, 2, 3];
     for (const position of positions) {
       jest.runOnlyPendingTimers();

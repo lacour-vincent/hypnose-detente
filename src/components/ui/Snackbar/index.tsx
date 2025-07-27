@@ -1,9 +1,10 @@
 import React, { type FC, useEffect, useRef } from "react";
 import { Animated, Easing, Pressable, Text } from "react-native";
 
+import Icon from "@ui/Icon";
+
 import theme from "@/styling";
 
-import Icon from "../Icon";
 import s from "./styles";
 
 interface Props {

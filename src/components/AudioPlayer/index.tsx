@@ -35,7 +35,7 @@ const AudioPlayer: FC<Props> = ({ style }) => {
   const icon = isPlaying ? "pause" : "play";
 
   const onPress = () => {
-    const action = isPlaying ? pause : play;
+    const action = isPlaying ? pause : play.request;
     return dispatch(action());
   };
 

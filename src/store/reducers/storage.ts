@@ -2,11 +2,10 @@ import { createReducer } from "@reduxjs/toolkit";
 
 import { type AssetPack, type AssetPackStates, AssetPackStatus } from "@/typings/storage";
 
+import { clearSelectedSample } from "@/store/actions/recording";
 import { retrieveAssetPack, retrieveAssetPackStates } from "@/store/actions/storage";
 
 import { ASSET_PACK_EMPTY } from "@/fixtures/storage";
-
-import { clearSelectedSample } from "../actions/recording";
 
 export interface StorageState {
   states: AssetPackStates;

@@ -3,11 +3,16 @@ import type { Context } from "@/store/context";
 import recording from "@/repositories/recording";
 import storage from "@/repositories/storage";
 import foreground from "@/services/foreground";
+import permissions from "@/services/permissions";
 import player from "@/services/player";
 
 const repositories: Context["repositories"] = { recording: recording.fake, storage: storage.fake };
 
-const services: Context["services"] = { player: player.fake, foreground: foreground.fake };
+const services: Context["services"] = {
+  player: player.fake,
+  foreground: foreground.fake,
+  permissions: permissions.fake,
+};
 
 const router: Context["router"] = {
   navigate: () => true,

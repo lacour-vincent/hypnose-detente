@@ -1,12 +1,12 @@
 import type { PlayerState } from "@/typings/player";
 
-import { createAction, createPayloadAction, createRequestPayloadAction } from "@/store/actions";
+import { createAction, createPayloadAction, createRequestAction, createRequestPayloadAction } from "@/store/actions";
 
 export const prepare = createRequestPayloadAction<{ file: string }, { state: PlayerState }>("PREPARE_PLAYER");
 
 export const release = createAction("RELEASE_PLAYER");
 
-export const play = createAction("PLAYER_PLAY");
+export const play = createRequestAction("PLAYER_PLAY");
 
 export const pause = createAction("PLAYER_PAUSE");
 

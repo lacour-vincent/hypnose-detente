@@ -22,7 +22,7 @@ export default createReducer(initialState, (builder) => {
     .addCase(release, () => {
       return initialState;
     })
-    .addCase(play, (state) => {
+    .addCase(play.success, (state) => {
       state.isPlaying = true;
       return state;
     })
