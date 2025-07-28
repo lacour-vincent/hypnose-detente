@@ -45,7 +45,7 @@ function* handlePreparePlayer(action: ReturnType<typeof prepare.request>): SagaI
     }
     channel.close();
     const state: PlayerState = yield call(services.player.getPlayerState);
-    if (state.status !== PlayerStatus.READY) throw new Error("Failed to");
+    if (state.status !== PlayerStatus.READY) throw new Error();
     yield put(prepare.success({ state }));
   } catch (err: unknown) {
     yield put(prepare.failure({ err }));
