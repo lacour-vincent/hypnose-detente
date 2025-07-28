@@ -40,7 +40,7 @@ class ForegroundService : Service() {
         createNotificationChannel()
 
         val notification = NotificationCompat.Builder(this, FOREGROUND_SERVICE_CHANNEL_ID)
-            .setSmallIcon(android.R.drawable.ic_media_play)
+            .setSmallIcon(R.drawable.ic_music_note)
             .setContentTitle(FOREGROUND_SERVICE_NOTIFICATION_TITLE)
             .setContentText(FOREGROUND_SERVICE_NOTIFICATION_TEXT.replace("{sample}", sample))
             .setOngoing(true)
