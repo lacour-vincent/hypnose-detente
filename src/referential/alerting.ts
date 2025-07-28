@@ -9,6 +9,7 @@ export const ACTION_SUCCESS_LABELS: Record<`${string}_${Suffix.SUCCESS}`, string
 
   // storage
   [storage.retrieveAssetPackStates.success.toString()]: undefined,
+  [storage.retrieveAssetPack.success.toString()]: undefined,
 };
 
 export const ACTION_FAILURE_LABELS: Record<`${string}_${Suffix.FAILURE}`, string | undefined> = {
@@ -18,4 +19,5 @@ export const ACTION_FAILURE_LABELS: Record<`${string}_${Suffix.FAILURE}`, string
 
   // storage
   [storage.retrieveAssetPackStates.failure.toString()]: "Erreur lors de la récupération des états des séances.",
+  [storage.retrieveAssetPack.failure.toString()]: "Erreur lors de la récupération du fichier de la séance.",
 };

@@ -6,6 +6,8 @@ import { type AssetPack, type AssetPackState, type AssetPackStates, AssetPackSta
 import { retrieveAssetPack, retrieveAssetPackStates } from "@/store/actions/storage";
 import type { Context } from "@/store/context";
 
+import { AssetPackError } from "@/referential/errors";
+
 function* handleRetrieveAssetPackStates(action: ReturnType<typeof retrieveAssetPackStates.request>): SagaIterator {
   const repositories: Context["repositories"] = yield getContext("repositories");
   try {
@@ -48,8 +50,17 @@ function* retrieveAssetPackFromNetwork(pack: AssetPack): SagaIterator {
     yield call(repositories.storage.fetchAssetPack, pack);
     while (true) {
       const state: AssetPackState = yield take(channel);
+      if (state.status === AssetPackStatus.UNKNOWN) continue;
+      if (state.status === AssetPackStatus.PENDING) continue;
+      if (state.status === AssetPackStatus.DOWNLOADING) continue;
+      if (state.status === AssetPackStatus.TRANSFERRING) continue;
       if (state.status === AssetPackStatus.COMPLETED) break;
-      // TODO ERROR MANAGEMENT FETCH ASSET PACK
+      if (state.status === AssetPackStatus.FAILED) throw new AssetPackError(state.errorCode);
+      if (state.status === AssetPackStatus.CANCELED) throw new Error();
+      if (state.status === AssetPackStatus.WAITING_FOR_WIFI) continue;
+      if (state.status === AssetPackStatus.NOT_INSTALLED) continue;
+      if (state.status === AssetPackStatus.REQUIRES_USER_CONFIRMATION) continue;
+      throw new Error();
     }
     const file: string = yield call(repositories.storage.fetchAssetPackFileLocation, pack);
     yield put(retrieveAssetPack.success({ pack: { ...pack, file } }));
