@@ -48,23 +48,23 @@ const release: PlayerService["release"] = () => {
 };
 
 const setPlay: PlayerService["setPlay"] = () => {
-  player.setPlay();
+  if (player) player.setPlay();
   return undefined;
 };
 
 const setPause: PlayerService["setPause"] = () => {
-  player.setPause();
+  if (player) player.setPause();
+  return undefined;
+};
+
+const seekTo: PlayerService["seekTo"] = (position) => {
+  if (player) player.seekTo(position);
   return undefined;
 };
 
 const getPlayerState: PlayerService["getPlayerState"] = () => {
   const state = player.getPlayerState();
   return state;
-};
-
-const seekTo: PlayerService["seekTo"] = (position) => {
-  player.seekTo(position);
-  return undefined;
 };
 
 const addPlayerStateListener: PlayerService["addPlayerStateListener"] = (listener) => {

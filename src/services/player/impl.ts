@@ -14,22 +14,22 @@ const prepare: PlayerService["prepare"] = async (location) => {
 };
 
 const release: PlayerService["release"] = () => {
-  player.remove();
+  if (player) player.remove();
   return undefined;
 };
 
 const setPlay: PlayerService["setPlay"] = () => {
-  player.play();
+  if (player) player.play();
   return undefined;
 };
 
 const setPause: PlayerService["setPause"] = () => {
-  player.pause();
+  if (player) player.pause();
   return undefined;
 };
 
 const seekTo: PlayerService["seekTo"] = (position) => {
-  player.seekTo(position);
+  if (player) player.seekTo(position);
   return undefined;
 };
 
