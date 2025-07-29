@@ -5,6 +5,9 @@ import { useDispatch } from "react-redux";
 import { openDialog } from "@/store/actions/dialog";
 
 import { DialogId } from "@/referential/dialog";
+import { ROUTES } from "@/referential/routes";
+
+import useRouter from "@/hooks/useRouter";
 
 import RateApplicationDialog from "@/components/dialogs/RateApplicationDialog";
 
@@ -15,18 +18,17 @@ import s from "./styles";
 
 const HeaderRight = (): ReactNode => {
   const dispatch = useDispatch();
+  const { navigate } = useRouter();
+
   const onRatingPress = () => dispatch(openDialog({ id: DialogId.RATE_APPLICATION }));
+
   return (
     <View style={s.container}>
       <PressableIcon label="Notation" icon="star" onPress={onRatingPress} />
       <RateApplicationDialog />
       <Menu
         position={{ vertical: "top", horizontal: "right" }}
-        items={[
-          { label: "Paramètres", callback: () => true },
-          { label: "Informations", callback: () => true },
-          { label: "A propos de nous", callback: () => true },
-        ]}
+        items={[{ label: "À propos", callback: () => navigate(ROUTES.ABOUT) }]}
       />
     </View>
   );
