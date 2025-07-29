@@ -1,5 +1,5 @@
 import React, { type FC } from "react";
-import { Pressable, type StyleProp, type ViewStyle } from "react-native";
+import { type GestureResponderEvent, Pressable, type StyleProp, type ViewStyle } from "react-native";
 
 import Icon, { type Props as IconProps } from "@ui/Icon";
 
@@ -11,7 +11,7 @@ interface Props {
   style?: StyleProp<ViewStyle>;
   label: string;
   icon: IconProps["name"];
-  onPress: () => void;
+  onPress: (event: GestureResponderEvent) => void;
 }
 
 const ICON_SIZE = 22;
