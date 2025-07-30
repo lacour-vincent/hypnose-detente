@@ -28,7 +28,10 @@ const HeaderRight = (): ReactNode => {
       <RateApplicationDialog />
       <Menu
         position={{ vertical: "top", horizontal: "right" }}
-        items={[{ label: "À propos", callback: () => navigate(ROUTES.ABOUT) }]}
+        items={[
+          { label: "À propos", callback: () => navigate(ROUTES.ABOUT) },
+          { label: "Paramètres", callback: () => navigate(ROUTES.SETTINGS) },
+        ]}
       />
     </View>
   );

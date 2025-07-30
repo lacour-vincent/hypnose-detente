@@ -20,3 +20,4 @@ jest.mock("expo-audio", () => ({}));
 jest.mock("@expo/vector-icons/MaterialCommunityIcons", () => "FakeIcon");
 jest.mock("@modules/expo-play-asset-delivery", () => ({}));
 jest.mock("@modules/expo-foreground-service", () => ({}));
+jest.mock("@modules/expo-ignore-battery-optimizations", () => ({}));

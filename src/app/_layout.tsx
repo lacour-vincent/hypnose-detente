@@ -33,6 +33,7 @@ const RootLayout: FC = () => {
       >
         <Stack.Screen name="samples" options={{ headerShown: false }} />
         <Stack.Screen name="about" options={{ title: "À propos", headerRight: undefined }} />
+        <Stack.Screen name="settings" options={{ title: "Paramètres", headerRight: undefined }} />
       </Stack>
       <Alerting />
     </Provider>

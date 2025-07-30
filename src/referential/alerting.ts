@@ -1,9 +1,13 @@
 import type { Suffix } from "@/store/actions";
+import * as battery from "@/store/actions/battery";
 import * as player from "@/store/actions/player";
 import * as recording from "@/store/actions/recording";
 import * as storage from "@/store/actions/storage";
 
 export const ACTION_SUCCESS_LABELS: Record<`${string}_${Suffix.SUCCESS}`, string | undefined> = {
+  // battery
+  [battery.ignoreBatteryOptimizations.success.toString()]: undefined,
+
   // player
   [player.prepare.success.toString()]: undefined,
   [player.play.success.toString()]: undefined,
@@ -18,6 +22,9 @@ export const ACTION_SUCCESS_LABELS: Record<`${string}_${Suffix.SUCCESS}`, string
 };
 
 export const ACTION_FAILURE_LABELS: Record<`${string}_${Suffix.FAILURE}`, string | undefined> = {
+  // battery
+  [battery.ignoreBatteryOptimizations.failure.toString()]: undefined,
+
   // player
   [player.prepare.failure.toString()]: "Erreur lors de la préparation à la lecture de la séance.",
   [player.play.failure.toString()]: "Erreur lors de la lecture de la séance.",

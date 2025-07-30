@@ -25,6 +25,7 @@ class ExpoIgnoreBatteryOptimizationsModule : Module() {
             val intent = Intent()
             intent.setData("package:${ctx.packageName}".toUri())
             intent.setAction(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             ctx.startActivity(intent)
         }
     }

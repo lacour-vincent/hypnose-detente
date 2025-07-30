@@ -13,7 +13,7 @@ const theme = {
   "tertiary-color": "#56b4d3" as string,
   "tertiary-color-text": "#ffffff" as string,
 
-  "success-color": "#4CAF50" as string,
+  "success-color": "#008577" as string,
   "success-color-text": "#ffffff" as string,
   "error-color": "#F44336" as string,
   "error-color-text": "#ffffff" as string,
