@@ -51,6 +51,7 @@ const config: ExpoConfig = {
       },
     ],
     ["./plugins/withMediaPlaybackForegroundService.js"],
+    ["./plugins/withIgnoreBatteryOptimizations.js"],
     [
       "./plugins/withGooglePlayAssetDelivery.js",
       [
