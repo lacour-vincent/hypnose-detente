@@ -2,6 +2,9 @@ import React, { type FC } from "react";
 import { Linking, Pressable, Text, View } from "react-native";
 
 import ENV from "@/env";
+import { ROUTES } from "@/referential/routes";
+
+import useRouter from "@/hooks/useRouter";
 
 import Icon, { type Props as IconProps } from "@ui/Icon";
 import Image from "@ui/Image";
@@ -20,36 +23,43 @@ interface AboutItem {
   onItemPress: () => void;
 }
 
-const items: AboutItem[] = [
-  {
-    key: "version",
-    icon: "code-tags",
-    label: "2.0.0",
-    onItemPress: () => Linking.openURL(ENV.EXPO_PUBLIC_PLAY_STORE_URL),
-  },
-  {
-    key: "website",
-    icon: "web",
-    label: "Site officiel",
-    onItemPress: () => Linking.openURL(ENV.EXPO_PUBLIC_WEBSITE_URL),
-  },
-  {
-    key: "reporting",
-    icon: "comment-alert-outline",
-    label: "Rapporter un problème",
-    onItemPress: () => Linking.openURL(ENV.EXPO_PUBLIC_REPORT_URL),
-  },
-  {
-    key: "terms-and-conditions",
-    icon: "file-document-outline",
-    label: "Conditions générales d'utilisation",
-    onItemPress: () => true,
-  },
-  { key: "privacy-policy", icon: "shield-account", label: "Politique de confidentialité", onItemPress: () => true },
-  { key: "developer", icon: "account-wrench", label: "Développeur", onItemPress: () => true },
-];
-
 const About: FC = () => {
+  const { navigate } = useRouter();
+
+  const items: AboutItem[] = [
+    {
+      key: "version",
+      icon: "code-tags",
+      label: "2.0.0",
+      onItemPress: () => Linking.openURL(ENV.EXPO_PUBLIC_PLAY_STORE_URL),
+    },
+    {
+      key: "website",
+      icon: "web",
+      label: "Site officiel",
+      onItemPress: () => Linking.openURL(ENV.EXPO_PUBLIC_WEBSITE_URL),
+    },
+    {
+      key: "reporting",
+      icon: "comment-alert-outline",
+      label: "Rapporter un problème",
+      onItemPress: () => Linking.openURL(ENV.EXPO_PUBLIC_REPORT_URL),
+    },
+    {
+      key: "terms-and-conditions",
+      icon: "file-document-outline",
+      label: "Conditions générales d'utilisation",
+      onItemPress: () => navigate(ROUTES.TERMS_AND_CONDITIONS),
+    },
+    {
+      key: "privacy-policy",
+      icon: "shield-account",
+      label: "Politique de confidentialité",
+      onItemPress: () => navigate(ROUTES.PRIVACY_POLICY),
+    },
+    { key: "developer", icon: "account-wrench", label: "Développeur", onItemPress: () => true },
+  ];
+
   return (
     <View style={s.container}>
       <Image style={s.logo} src={logo} alt="logo" />
