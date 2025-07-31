@@ -30,7 +30,7 @@ const About: FC = () => {
     {
       key: "version",
       icon: "code-tags",
-      label: "2.0.0",
+      label: "Version - 2.0.0",
       onItemPress: () => Linking.openURL(ENV.EXPO_PUBLIC_PLAY_STORE_URL),
     },
     {
@@ -57,7 +57,6 @@ const About: FC = () => {
       label: "Politique de confidentialité",
       onItemPress: () => navigate(ROUTES.PRIVACY_POLICY),
     },
-    { key: "developer", icon: "account-wrench", label: "Développeur", onItemPress: () => true },
   ];
 
   return (
