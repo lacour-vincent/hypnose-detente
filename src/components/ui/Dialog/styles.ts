@@ -13,22 +13,13 @@ export default StyleSheet.create({
   dialog: {
     gap: theme["space-sm"],
     width: "100%",
-    padding: theme["space-md"],
-    paddingBlockEnd: theme["space-sm"],
+    paddingInline: theme["space-md"],
+    paddingBlock: theme["space-sm"],
     borderRadius: theme["space-2xs"],
     backgroundColor: "#ffffff",
   },
-  title: {
-    color: theme["primary-color"],
-    fontSize: theme["font-size-lg"],
-    lineHeight: theme["font-size-lg"],
-    fontWeight: "bold",
-  },
-  description: {
-    fontSize: theme["font-size-md"],
-    lineHeight: theme["font-size-lg"],
-    color: theme["font-primary-color"],
-  },
+  title: { color: theme["primary-color"], fontSize: theme["font-size-lg"], fontWeight: theme["font-weight-bold"] },
+  description: { fontSize: theme["font-size-md"], color: theme["font-primary-color"] },
   actions: {
     display: "flex",
     flexDirection: "row",
@@ -46,7 +37,6 @@ export default StyleSheet.create({
   label: {
     color: theme["primary-color"],
     fontSize: theme["font-size-md"],
-    lineHeight: theme["font-size-md"],
     fontWeight: "medium",
   },
 });

@@ -10,14 +10,6 @@ export default StyleSheet.create({
     paddingBlock: theme["space-md"],
     paddingInline: theme["space-sm"],
   },
-  label: {
-    color: theme["font-primary-color"],
-    fontSize: theme["font-size-md"],
-    lineHeight: theme["font-size-md"],
-  },
-  description: {
-    color: theme["font-secondary-color"],
-    fontSize: theme["font-size-sm"],
-    lineHeight: 1.1 * theme["font-size-sm"],
-  },
+  label: { color: theme["font-primary-color"], fontSize: theme["font-size-md"] },
+  description: { color: theme["font-secondary-color"], fontSize: theme["font-size-sm"] },
 });
