@@ -1,38 +1,80 @@
 import React, { type FC } from "react";
-import { Pressable, Text, View } from "react-native";
+import { Linking, Pressable, Text, View } from "react-native";
 
+import ENV from "@/env";
+
+import Icon, { type Props as IconProps } from "@ui/Icon";
+import Image from "@ui/Image";
+
+import logo from "@/assets/icons/icon.png";
 import theme from "@/styling";
 
-import Icon from "../ui/Icon";
 import s from "./styles";
+
+type Keys = "version" | "website" | "reporting" | "terms-and-conditions" | "privacy-policy" | "developer";
+
+interface AboutItem {
+  key: Keys;
+  icon: IconProps["name"];
+  label: string;
+  onItemPress: () => void;
+}
+
+const items: AboutItem[] = [
+  {
+    key: "version",
+    icon: "code-tags",
+    label: "2.0.0",
+    onItemPress: () => Linking.openURL(ENV.EXPO_PUBLIC_PLAY_STORE_URL),
+  },
+  {
+    key: "website",
+    icon: "web",
+    label: "Site officiel",
+    onItemPress: () => Linking.openURL(ENV.EXPO_PUBLIC_WEBSITE_URL),
+  },
+  {
+    key: "reporting",
+    icon: "comment-alert-outline",
+    label: "Rapporter un problème",
+    onItemPress: () => Linking.openURL(ENV.EXPO_PUBLIC_REPORT_URL),
+  },
+  {
+    key: "terms-and-conditions",
+    icon: "file-document-outline",
+    label: "Conditions générales d'utilisation",
+    onItemPress: () => true,
+  },
+  { key: "privacy-policy", icon: "shield-account", label: "Politique de confidentialité", onItemPress: () => true },
+  { key: "developer", icon: "account-wrench", label: "Développeur", onItemPress: () => true },
+];
 
 const About: FC = () => {
   return (
     <View style={s.container}>
-      <Pressable style={s.pressable} android_ripple={{ color: "rgba(0, 0, 0, 0.1)" }}>
-        <Icon name="code-tags" size={theme["space-lg"]} color={theme["primary-color"]} />
-        <View style={s.wrapper}>
-          <Text style={s.title}>Version de l&apos;application</Text>
-          <Text style={s.label}>2.0.0</Text>
-        </View>
-      </Pressable>
-      <Pressable style={s.pressable} android_ripple={{ color: "rgba(0, 0, 0, 0.1)" }}>
-        <Icon name="update" size={theme["space-lg"]} color={theme["primary-color"]} />
-        <View style={s.wrapper}>
-          <Text style={s.title}>Mise à jour de l&apos;application</Text>
-          <Text style={s.label}>Vous serez redirigé vers le Play Store</Text>
-        </View>
-      </Pressable>
-      <Pressable style={s.pressable} android_ripple={{ color: "rgba(0, 0, 0, 0.1)" }}>
-        <Icon name="tools" size={theme["space-lg"]} color={theme["primary-color"]} />
-        <View style={s.wrapper}>
-          <Text style={s.title}>Rapporter un problème technique</Text>
-          <Text style={s.label}>
-            Expliquez le problème rencontré avec autant de détails que possible pour que je puisse le corriger
-            rapidement.
-          </Text>
-        </View>
-      </Pressable>
+      <Image style={s.logo} src={logo} alt="logo" />
+      <Text style={s.title}>Hypnose — Détente</Text>
+      <Text style={s.description}>
+        Pour profiter pleinement de vos séances, nous vous recommandons de vous installer confortablement dans un
+        endroit calme, assis ou allongé, avec un casque audio. N&apos;hésitez pas à lâcher prise. Bonne séance !
+      </Text>
+      {items.map(({ key, icon, label, onItemPress }) => {
+        return (
+          <Pressable
+            key={key}
+            style={s.pressable}
+            role="button"
+            aria-label={label}
+            accessibilityRole="button"
+            accessibilityLabel={label}
+            android_ripple={{ color: "rgba(0, 0, 0, 0.1)" }}
+            onPress={onItemPress}
+          >
+            <Icon name={icon} size={25} color={theme["primary-color"]} />
+            <Text style={s.label}>{label}</Text>
+          </Pressable>
+        );
+      })}
     </View>
   );
 };

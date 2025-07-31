@@ -1,27 +1,33 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 
 import theme from "@/styling";
 
+const image = 0.35 * Dimensions.get("window").width;
+
 export default StyleSheet.create({
-  container: {},
+  container: { padding: theme["space-sm"] },
+  logo: { width: image, height: image, marginInline: "auto" },
+  title: {
+    textAlign: "center",
+    color: theme["font-primary-color"],
+    fontSize: theme["font-size-lg"],
+    fontWeight: theme["font-weight-bold"],
+    marginBlockEnd: theme["space-xs"],
+  },
+  description: {
+    textAlign: "center",
+    color: theme["font-secondary-color"],
+    fontSize: theme["font-size-sm"],
+    fontWeight: theme["font-weight-regular"],
+    paddingInline: theme["space-sm"],
+    marginBlockEnd: theme["space-md"],
+  },
   pressable: {
     display: "flex",
     flexDirection: "row",
-    width: "100%",
-    alignItems: "center",
     gap: theme["space-lg"],
-    paddingBlock: theme["space-sm"],
-    paddingInline: theme["space-md"],
+    alignItems: "center",
+    padding: theme["space-sm"],
   },
-  wrapper: { gap: theme["space-sm"] },
-  title: {
-    color: theme["font-primary-color"],
-    fontSize: theme["font-size-md"],
-    lineHeight: theme["font-size-md"],
-  },
-  label: {
-    color: theme["font-secondary-color"],
-    fontSize: theme["font-size-sm"],
-    lineHeight: theme["font-size-sm"],
-  },
+  label: { fontSize: theme["font-size-md"], fontWeight: theme["font-weight-medium"] },
 });

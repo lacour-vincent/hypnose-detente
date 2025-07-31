@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { closeDialog } from "@/store/actions/dialog";
 import { isDialogOpen } from "@/store/selectors/dialog";
 
+import ENV from "@/env";
 import { DialogId } from "@/referential/dialog";
 
 import Dialog, { type DialogAction } from "@ui/Dialog";
@@ -17,7 +18,7 @@ const RateApplicationDialog: FC = () => {
   const handleClose = () => dispatch(closeDialog({ id: DialogId.RATE_APPLICATION }));
 
   const handleOpenPlayStore = () => {
-    Linking.openURL(`market://details?id=com.lacour.vincent.hypnosedetente`);
+    Linking.openURL(ENV.EXPO_PUBLIC_PLAY_STORE_URL);
     return handleClose();
   };
 

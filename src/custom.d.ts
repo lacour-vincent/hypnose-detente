@@ -4,6 +4,11 @@ declare module "*.jpeg" {
   export default jpeg;
 }
 
+declare module "*.png" {
+  const png: ImageSourcePropType;
+  export default png;
+}
+
 declare module "*.mp3" {
   const svg: string;
   export default svg;
