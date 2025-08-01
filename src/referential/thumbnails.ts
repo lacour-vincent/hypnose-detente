@@ -31,7 +31,7 @@ export const SAMPLE_THUMBNAILS: Record<Sample["rid"], ImageSourcePropType> = {
   "immersion-sensorielle": require("@/assets/thumbnails/immersion-sensorielle.jpeg"),
   "nouveau-depart": require("@/assets/thumbnails/nouveau-depart.jpeg"),
   "reussir-sa-vie": require("@/assets/thumbnails/reussir-sa-vie.jpeg"),
-  "magie-interieur": require("@/assets/thumbnails/magie-interieur.jpeg"),
+  "magie-interieure": require("@/assets/thumbnails/magie-interieure.jpeg"),
   "bain-d-hypnose": require("@/assets/thumbnails/bain-d-hypnose.jpeg"),
   "voyage-en-imagination": require("@/assets/thumbnails/voyage-en-imagination.jpeg"),
   "auto-hypnose": require("@/assets/thumbnails/auto-hypnose.jpeg"),
