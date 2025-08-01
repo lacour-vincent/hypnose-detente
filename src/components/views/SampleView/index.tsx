@@ -43,7 +43,6 @@ const SampleView: FC = () => {
     if (pack.file !== "") dispatch(prepare.request({ file: pack.file }));
   }, [pack]);
 
-  if (!sample.id) return null; //Loader or error
   const url = SAMPLE_THUMBNAILS[sample.rid];
   const alt = `Vignette - ${sample.label}`;
 
