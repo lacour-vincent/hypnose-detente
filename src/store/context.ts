@@ -29,7 +29,7 @@ interface Services {
 }
 
 const repositories: Repositories = {
-  recording: isDev ? recording.impl : recording.impl,
+  recording: isDev ? recording.fake : recording.impl,
   storage: isDev ? storage.fake : storage.impl,
 };
 
