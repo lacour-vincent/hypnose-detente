@@ -1,5 +1,5 @@
 import React, { type FC } from "react";
-import { Linking, Pressable, Text, View } from "react-native";
+import { Linking, Pressable, ScrollView, Text, View } from "react-native";
 
 import ENV from "@/env";
 import { ROUTES } from "@/referential/routes";
@@ -60,31 +60,33 @@ const About: FC = () => {
   ];
 
   return (
-    <View style={s.container}>
-      <Image style={s.logo} src={logo} alt="logo" />
-      <Text style={s.title}>Hypnose — Détente</Text>
-      <Text style={s.description}>
-        Pour profiter pleinement de vos séances, nous vous recommandons de vous installer confortablement dans un
-        endroit calme, assis ou allongé, avec un casque audio. N&apos;hésitez pas à lâcher prise. Bonne séance !
-      </Text>
-      {items.map(({ key, icon, label, onItemPress }) => {
-        return (
-          <Pressable
-            key={key}
-            style={s.pressable}
-            role="button"
-            aria-label={label}
-            accessibilityRole="button"
-            accessibilityLabel={label}
-            android_ripple={{ color: "rgba(0, 0, 0, 0.1)" }}
-            onPress={onItemPress}
-          >
-            <Icon name={icon} size={25} color={theme["primary-color"]} />
-            <Text style={s.label}>{label}</Text>
-          </Pressable>
-        );
-      })}
-    </View>
+    <ScrollView>
+      <View style={s.container}>
+        <Image style={s.logo} src={logo} alt="logo" />
+        <Text style={s.title}>Hypnose — Détente</Text>
+        <Text style={s.description}>
+          Pour profiter pleinement de vos séances, nous vous recommandons de vous installer confortablement dans un
+          endroit calme, assis ou allongé, avec un casque audio. N&apos;hésitez pas à lâcher prise. Bonne séance !
+        </Text>
+        {items.map(({ key, icon, label, onItemPress }) => {
+          return (
+            <Pressable
+              key={key}
+              style={s.pressable}
+              role="button"
+              aria-label={label}
+              accessibilityRole="button"
+              accessibilityLabel={label}
+              android_ripple={{ color: "rgba(0, 0, 0, 0.1)" }}
+              onPress={onItemPress}
+            >
+              <Icon name={icon} size={25} color={theme["primary-color"]} />
+              <Text style={s.label}>{label}</Text>
+            </Pressable>
+          );
+        })}
+      </View>
+    </ScrollView>
   );
 };
 export default About;
