@@ -55,6 +55,7 @@ function* handlePreparePlayer(action: ReturnType<typeof prepare.request>): SagaI
 function* handleReleasePlayer(): SagaIterator {
   const services: Context["services"] = yield getContext("services");
   yield put(stopListenPlayerState());
+  yield call(services.foreground.stop);
   yield call(services.player.setPause);
   yield call(services.player.release);
 }
