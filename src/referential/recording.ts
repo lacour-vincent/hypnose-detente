@@ -215,7 +215,7 @@ export const SAMPLES: Sample[] = [
     label: "Prise de décision",
     description: ``,
     duration: 42,
-    pack: { name: "prise-de-decision", file: "prise-de-decision.mp3" },
+    pack: { name: "prise_de_decision", file: "prise-de-decision.mp3" },
   },
   {
     id: "3a5c6d5b-bfa3-4cb2-9a40-20f63df2f6ae",
@@ -224,7 +224,7 @@ export const SAMPLES: Sample[] = [
     label: "Immersion sensorielle",
     description: ``,
     duration: 24,
-    pack: { name: "immersion-sensorielle", file: "immersion-sensorielle.mp3" },
+    pack: { name: "immersion_sensorielle", file: "immersion-sensorielle.mp3" },
   },
   {
     id: "da4645ac-24ff-45bc-b66a-8420deae267d",
