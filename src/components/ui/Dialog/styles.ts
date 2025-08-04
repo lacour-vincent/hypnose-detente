@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 
 import theme from "@/styling";
 
@@ -10,6 +10,7 @@ export default StyleSheet.create({
     padding: theme["space-lg"],
     backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
+  fill: { position: "absolute", inset: 0 },
   dialog: {
     gap: theme["space-sm"],
     width: "100%",
@@ -19,7 +20,8 @@ export default StyleSheet.create({
     backgroundColor: "#ffffff",
   },
   title: { color: theme["primary-color"], fontSize: theme["font-size-lg"], fontWeight: theme["font-weight-bold"] },
-  description: { fontSize: theme["font-size-md"], color: theme["font-primary-color"] },
+  description: { maxHeight: 0.5 * Dimensions.get("window").height },
+  "description-content": { fontSize: theme["font-size-md"], color: theme["font-primary-color"] },
   actions: {
     display: "flex",
     flexDirection: "row",
