@@ -12,7 +12,7 @@ describe("<About />", () => {
     expect(getByText("Hypnose — Détente")).toBeDefined();
     expect(getByText(/Pour profiter pleinement de vos séances/)).toBeDefined();
 
-    expect(getByRole("button", { name: "Version - 2.0.0" })).toBeEnabled();
+    expect(getByRole("button", { name: "mock" })).toBeEnabled();
     expect(getByRole("button", { name: "Site officiel" })).toBeEnabled();
     expect(getByRole("button", { name: "Rapporter un problème" })).toBeEnabled();
     expect(getByRole("button", { name: "Conditions générales d'utilisation" })).toBeEnabled();

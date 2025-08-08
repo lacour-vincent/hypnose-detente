@@ -1,6 +1,8 @@
 import React, { type FC } from "react";
 import { Linking, Pressable, ScrollView, Text, View } from "react-native";
 
+import * as Application from "expo-application";
+
 import ENV from "@/env";
 import { ROUTES } from "@/referential/routes";
 
@@ -30,7 +32,7 @@ const About: FC = () => {
     {
       key: "version",
       icon: "code-tags",
-      label: "Version - 2.0.0",
+      label: Application.nativeApplicationVersion as string,
       onItemPress: () => Linking.openURL(ENV.EXPO_PUBLIC_PLAY_STORE_URL),
     },
     {
