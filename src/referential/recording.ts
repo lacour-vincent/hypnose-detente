@@ -13,7 +13,7 @@ export const SAMPLES: Sample[] = [
   {
     id: "69f1efb0-9dcd-41cb-8120-682d59b6b122",
     rid: "s-endormir",
-    title: "S'endormir",
+    title: "S'endormir en auto-hypnose",
     label: "S'endormir en auto-hypnose",
     description: `Le premier protocole du livre "Auto-hypnose pour débutants" : comment trouver le sommeil. Ecoutez au casque, afin de profiter au mieux de l'accompagnement musical. Pour cette séance, une induction hypnotique a été utilisée parmi celles présentées dans le livre. Bien sûr, lorsque vous pratiquez de manière autonome, vous pouvez utiliser votre méthode préférée. De même, lorsque vous pratiquez en solo, vous n’avez pas besoin de parler ou de mentaliser les paroles. Il suffit de penser à ce que vous voulez, comme une intention. Avec la pratique, tout s’automatise et seule votre intention dirige la séance.`,
     duration: 30,
@@ -24,7 +24,7 @@ export const SAMPLES: Sample[] = [
     rid: "dormir-bouclier-de-reve",
     title: "Bouclier de rêve",
     label: "Dormir : le bouclier de rêve",
-    description: `Vous souffrez d'insomnie ? Autrement dit, vous n'avez pas seulement "du mal à vous endormir" : vous ne dormez pas du tout !\nLa première chose à faire est de consulter votre médecin afin de vérifier avec lui que votre insomnie n'a pas de cause physique (dérèglement hormonal, anémie, etc.). Si c'est le cas, votre médecin vous prescrira le traitement adapté.\nSi votre bilan est normal et que vous vous sentez stressé(e) ou anxieux(se), nous vous conseillons plutôt d'écouter les séances de notre chaîne dédiée à la gestion du stress et de l'anxiété.\nMais si tout semble à peu près équilibré dans votre vie, sans stress particulier ni tempérament anxieux, et que vous vous découvrez hypersensible — une sensibilité exacerbée par le manque de sommeil - à certaines idées, ruminations ou aux agressions du quotidien, au point que cela vous empêche véritablement de dormir (cela serait à l'origine de près de 40 % des insomnies, paraît-il) alors cette séance d'hypnose est faite pour vous !`,
+    description: `Vous souffrez d'insomnie ? Autrement dit, vous n'avez pas seulement "du mal à vous endormir" : vous ne dormez pas du tout !\n\nLa première chose à faire est de consulter votre médecin afin de vérifier avec lui que votre insomnie n'a pas de cause physique (dérèglement hormonal, anémie, etc.). Si c'est le cas, votre médecin vous prescrira le traitement adapté.\n\nSi votre bilan est normal et que vous vous sentez stressé(e) ou anxieux(se), nous vous conseillons plutôt d'écouter les séances de notre chaîne dédiée à la gestion du stress et de l'anxiété.\n\nMais si tout semble à peu près équilibré dans votre vie, sans stress particulier ni tempérament anxieux, et que vous vous découvrez hypersensible - une sensibilité exacerbée par le manque de sommeil - à certaines idées, ruminations ou aux agressions du quotidien, au point que cela vous empêche véritablement de dormir (cela serait à l'origine de près de 40 % des insomnies, paraît-il) alors cette séance d'hypnose est faite pour vous !`,
     duration: 24,
     pack: { name: "dormir_bouclier_de_reve", file: "dormir-bouclier-de-reve.mp3" },
   },
@@ -33,7 +33,7 @@ export const SAMPLES: Sample[] = [
     rid: "dormir-pays-imaginaire",
     title: "S'endormir au pays imaginaire",
     label: "S'endormir au pays imaginaire",
-    description: `Le langage employé reste volontairement vague pour vous permettre de voyager dans votre "pays imaginaire", de explorer vos mondes intérieurs et le pays des rêves. Selon votre imagination, vous pourrez, à chaque écoute, découvrir de nouveaux paysages et vivre de nouvelles aventures en réécoutant cette même séance un autre soir. Une douce suggestion finale anticipe le geste que vous ferez, sans vous réveiller, pour éteindre la musique. Bonne nuit !`,
+    description: `Le langage employé reste volontairement vague pour vous permettre de voyager dans votre "pays imaginaire", de explorer vos mondes intérieurs et le pays des rêves.\n\nSelon votre imagination, vous pourrez, à chaque écoute, découvrir de nouveaux paysages et vivre de nouvelles aventures en réécoutant cette même séance un autre soir.\n\nUne douce suggestion finale anticipe le geste que vous ferez, sans vous réveiller, pour éteindre la musique.\n\nBonne nuit !`,
     duration: 30,
     pack: { name: "dormir_pays_imaginaire", file: "dormir-pays-imaginaire.mp3" },
   },
@@ -51,7 +51,9 @@ export const SAMPLES: Sample[] = [
     rid: "faire-le-plein-energie",
     title: "Faire le plein d'énergie",
     label: "Faire le plein d'énergie",
-    description: `Cette séance vous apprendra à refaire "le plein d'énergie" de manière simple, en utilisant uniquement des moyens psychologiques.\n\nEn Hypnose Humaniste, cet exercice – dont Olivier Lockert vous présente ici la première variante – se pratique avant même l'induction hypnotique, et donc avant la partie proprement thérapeutique de l'intervention. Son but est de vous donner la force et l'élan nécessaires pour réussir votre séance de thérapie.\n\nCet enregistrement vous permettra d'abord de comprendre comment régénérer votre énergie naturellement et de façon autonome. Puis, Olivier Lockert vous guidera dans la pratique de cet exercice, que vous pourrez ensuite reproduire à volonté, dès que vous en sentirez le besoin, ou instaurer comme un rituel matinal.`,
+    description: `Cette séance vous apprendra à refaire "le plein d'énergie" de manière simple, en utilisant uniquement des moyens psychologiques.\n\nEn Hypnose Humaniste, cet exercice -
+     dont Olivier Lockert vous présente ici la première variante -
+     se pratique avant même l'induction hypnotique, et donc avant la partie proprement thérapeutique de l'intervention. Son but est de vous donner la force et l'élan nécessaires pour réussir votre séance de thérapie.\n\nCet enregistrement vous permettra d'abord de comprendre comment régénérer votre énergie naturellement et de façon autonome.\n\nPuis, Olivier Lockert vous guidera dans la pratique de cet exercice, que vous pourrez ensuite reproduire à volonté, dès que vous en sentirez le besoin, ou instaurer comme un rituel matinal.`,
     duration: 20,
     pack: { name: "faire_le_plein_energie", file: "faire-le-plein-energie.mp3" },
   },
@@ -105,7 +107,8 @@ export const SAMPLES: Sample[] = [
     rid: "retrouver-le-moral",
     title: "Retrouver le moral",
     label: "Retrouver le moral",
-    description: `Après une introduction dynamique, cette séance vous montre comment agir par vous-même en auto-hypnose. L'accompagnement débute par une "ré-énergétisation" physique et psychologique. Ensuite, vous créerez un point d'ancrage pour retrouver forme et énergie à la demande (en dehors des séances). Pratiquez régulièrement pour maîtriser la technique. Souvenez-vous : un ancrage ne s'affaiblit que par le manque d'usage – plus vous l'utiliserez, plus il sera efficace !`,
+    description: `Après une introduction dynamique, cette séance vous montre comment agir par vous-même en auto-hypnose. L'accompagnement débute par une "ré-énergétisation" physique et psychologique. Ensuite, vous créerez un point d'ancrage pour retrouver forme et énergie à la demande (en dehors des séances). Pratiquez régulièrement pour maîtriser la technique. Souvenez-vous : un ancrage ne s'affaiblit que par le manque d'usage -
+     plus vous l'utiliserez, plus il sera efficace !`,
     duration: 16,
     pack: { name: "retrouver_le_moral", file: "retrouver-le-moral.mp3" },
   },
