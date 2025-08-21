@@ -51,9 +51,7 @@ export const SAMPLES: Sample[] = [
     rid: "faire-le-plein-energie",
     title: "Faire le plein d'énergie",
     label: "Faire le plein d'énergie",
-    description: `Cette séance vous apprendra à refaire "le plein d'énergie" de manière simple, en utilisant uniquement des moyens psychologiques.\n\nEn Hypnose Humaniste, cet exercice -
-     dont Olivier Lockert vous présente ici la première variante -
-     se pratique avant même l'induction hypnotique, et donc avant la partie proprement thérapeutique de l'intervention. Son but est de vous donner la force et l'élan nécessaires pour réussir votre séance de thérapie.\n\nCet enregistrement vous permettra d'abord de comprendre comment régénérer votre énergie naturellement et de façon autonome.\n\nPuis, Olivier Lockert vous guidera dans la pratique de cet exercice, que vous pourrez ensuite reproduire à volonté, dès que vous en sentirez le besoin, ou instaurer comme un rituel matinal.`,
+    description: `Cette séance vous apprendra à refaire "le plein d'énergie" de manière simple, en utilisant uniquement des moyens psychologiques.\n\nEn Hypnose Humaniste, cet exercice - dont Olivier Lockert vous présente ici la première variante - se pratique avant même l'induction hypnotique, et donc avant la partie proprement thérapeutique de l'intervention. Son but est de vous donner la force et l'élan nécessaires pour réussir votre séance de thérapie.\n\nCet enregistrement vous permettra d'abord de comprendre comment régénérer votre énergie naturellement et de façon autonome.\n\nPuis, Olivier Lockert vous guidera dans la pratique de cet exercice, que vous pourrez ensuite reproduire à volonté, dès que vous en sentirez le besoin, ou instaurer comme un rituel matinal.`,
     duration: 20,
     pack: { name: "faire_le_plein_energie", file: "faire-le-plein-energie.mp3" },
   },
