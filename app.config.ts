@@ -58,6 +58,10 @@ const config: ExpoConfig = {
       [
         { name: "bien_dormir", path: "samples/bien_dormir" },
         { name: "s_endormir", path: "samples/s_endormir" },
+        { name: "dormir_bouclier_de_reve", path: "samples/dormir_bouclier_de_reve" },
+        { name: "dormir_pays_imaginaire", path: "samples/dormir_pays_imaginaire" },
+        { name: "dormir_enfant_interieur", path: "samples/dormir_enfant_interieur" },
+        { name: "faire_le_plein_energie", path: "samples/faire_le_plein_energie" },
         { name: "preventif", path: "samples/preventif" },
         { name: "curatif", path: "samples/curatif" },
         { name: "renforcement", path: "samples/renforcement" },
