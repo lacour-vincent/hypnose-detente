@@ -13,8 +13,15 @@ const config: ExpoConfig = {
     versionCode: 37,
     adaptiveIcon: { foregroundImage: "./src/assets/icons/adaptive-icon.png", backgroundColor: "#ffffff" },
     edgeToEdgeEnabled: true,
-    permissions: ["INTERNET"],
-    blockedPermissions: ["READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE", "SYSTEM_ALERT_WINDOW", "VIBRATE"],
+    permissions: ["android.permission.INTERNET"],
+    blockedPermissions: [
+      "android.permission.READ_EXTERNAL_STORAGE",
+      "android.permission.WRITE_EXTERNAL_STORAGE",
+      "android.permission.SYSTEM_ALERT_WINDOW",
+      "android.permission.VIBRATE",
+      "android.permission.RECORD_AUDIO",
+      "android.permission.MODIFY_AUDIO_SETTINGS",
+    ],
   },
   extra: { eas: { projectId: "9f66db35-01e6-4b14-9bcd-d41a567ae953" } },
   plugins: [
