@@ -1,4 +1,4 @@
-# Mobile
+# Hypnose — Détente
 
 Application that allows you to relax with self-hypnosis recordings.
 
