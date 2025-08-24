@@ -4,7 +4,7 @@ const config: ExpoConfig = {
   name: "Hypnose",
   slug: "hypnose-detente",
   owner: "lacour-vincent",
-  version: "2.0.2",
+  version: "2.1.0-SNAPSHOT",
   scheme: "hypnose-detente",
   orientation: "portrait",
   platforms: ["android"],
