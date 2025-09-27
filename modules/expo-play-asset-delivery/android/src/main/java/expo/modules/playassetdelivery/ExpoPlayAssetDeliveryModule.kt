@@ -3,10 +3,10 @@ package expo.modules.playassetdelivery
 import android.content.Context
 import android.os.Bundle
 import androidx.core.os.bundleOf
+import com.google.android.gms.tasks.Tasks
 import com.google.android.play.core.assetpacks.AssetPackManager
 import com.google.android.play.core.assetpacks.AssetPackManagerFactory
 import com.google.android.play.core.assetpacks.AssetPackState
-import com.google.android.play.core.ktx.requestPackStates
 import expo.modules.kotlin.functions.Coroutine
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
@@ -16,8 +16,9 @@ class ExpoPlayAssetDeliveryModule : Module() {
         Name("ExpoPlayAssetDelivery")
 
         AsyncFunction("getAssetPackStates") Coroutine { packs: List<String> ->
-            assetPackManager.requestPackStates(packs).packStates()
-                .mapValues { assetPackStateAsBundle(it.value) }
+            val task = assetPackManager.getPackStates(packs)
+            val states = Tasks.await(task)
+            states.packStates().mapValues { assetPackStateAsBundle(it.value) }
         }
 
         Function("getAssetPackFileLocation") { pack: String, filename: String ->
