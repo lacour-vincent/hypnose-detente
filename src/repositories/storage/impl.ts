@@ -2,9 +2,9 @@ import PlayAssetDeliveryModule from "@modules/expo-play-asset-delivery";
 
 import type { StorageRepository } from "@/repositories/storage";
 
-const fetchAssetPackStates: StorageRepository["fetchAssetPackStates"] = async (packs) => {
-  const states = await PlayAssetDeliveryModule.getAssetPackStates(packs);
-  return states;
+const fetchAssetPackStates: StorageRepository["fetchAssetPackStates"] = (packs) => {
+  const states = PlayAssetDeliveryModule.getAssetPackStates(packs);
+  return Promise.resolve(states);
 };
 
 const fetchAssetPack: StorageRepository["fetchAssetPack"] = (pack) => {

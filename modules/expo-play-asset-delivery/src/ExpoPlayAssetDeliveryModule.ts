@@ -7,7 +7,7 @@ type ExpoPlayAssetDeliveryModuleEvents = {
 };
 
 declare class ExpoPlayAssetDeliveryModule extends NativeModule<ExpoPlayAssetDeliveryModuleEvents> {
-  getAssetPackStates: (packs: AssetPack["name"][]) => Promise<AssetPackStates>;
+  getAssetPackStates: (packs: AssetPack["name"][]) => AssetPackStates;
   requestAssetPackFetch: (pack: AssetPack["name"]) => void;
   getAssetPackFileLocation: (pack: AssetPack["name"], filename: string) => string | null;
 }

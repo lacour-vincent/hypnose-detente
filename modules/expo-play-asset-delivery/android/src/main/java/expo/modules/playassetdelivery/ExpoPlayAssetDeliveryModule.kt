@@ -3,11 +3,10 @@ package expo.modules.playassetdelivery
 import android.content.Context
 import android.os.Bundle
 import androidx.core.os.bundleOf
-import com.google.android.gms.tasks.Tasks
 import com.google.android.play.core.assetpacks.AssetPackManager
 import com.google.android.play.core.assetpacks.AssetPackManagerFactory
 import com.google.android.play.core.assetpacks.AssetPackState
-import expo.modules.kotlin.functions.Coroutine
+import com.google.android.play.core.assetpacks.model.AssetPackStatus
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
 
@@ -15,10 +14,15 @@ class ExpoPlayAssetDeliveryModule : Module() {
     override fun definition() = ModuleDefinition {
         Name("ExpoPlayAssetDelivery")
 
-        AsyncFunction("getAssetPackStates") Coroutine { packs: List<String> ->
-            val task = assetPackManager.getPackStates(packs)
-            val states = Tasks.await(task)
-            states.packStates().mapValues { assetPackStateAsBundle(it.value) }
+        Function("getAssetPackStates") { packs: List<String> ->
+            val states = mutableMapOf<String, Bundle>()
+            val locations = assetPackManager.packLocations
+            for (pack in packs) {
+                val status =
+                    if (locations[pack] != null) AssetPackStatus.COMPLETED else AssetPackStatus.NOT_INSTALLED
+                states[pack] = bundleOf("name" to pack, "status" to status)
+            }
+            return@Function states
         }
 
         Function("getAssetPackFileLocation") { pack: String, filename: String ->
@@ -45,8 +49,7 @@ class ExpoPlayAssetDeliveryModule : Module() {
 
     private val ctx get(): Context = requireNotNull(appContext.reactContext)
     private val assetPackManager
-        get(): AssetPackManager =
-            requireNotNull(AssetPackManagerFactory.getInstance(ctx))
+        get(): AssetPackManager = requireNotNull(AssetPackManagerFactory.getInstance(ctx))
     private val listener = ExpoAssetPackStateUpdateListener(this)
 
     fun assetPackStateAsBundle(state: AssetPackState): Bundle {
