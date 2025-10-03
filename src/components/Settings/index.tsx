@@ -18,7 +18,7 @@ const Settings: FC = () => {
         aria-label="Désactiver l'optimisation de la batterie"
         accessibilityRole="button"
         accessibilityLabel="Désactiver l'optimisation de la batterie"
-        android_ripple={{ color: "rgba(0, 0, 0, 0.1)" }}
+        android_ripple={{ color: "rgba(0, 0, 0, 0.1)", foreground: true }}
         onPress={onIgnoreBatteryOptimizationPress}
       >
         <Text style={s.label}>Désactiver l&apos;optimisation de la batterie</Text>

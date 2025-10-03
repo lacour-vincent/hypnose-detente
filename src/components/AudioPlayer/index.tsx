@@ -64,7 +64,7 @@ const AudioPlayer: FC<Props> = ({ style }) => {
         aria-label={label}
         accessibilityRole="button"
         accessibilityLabel={label}
-        android_ripple={{ radius: 0.5 * (theme["space-lg"] + 2 * theme["space-md"]) }}
+        android_ripple={{ radius: 0.5 * (theme["space-lg"] + 2 * theme["space-md"]), foreground: true }}
         disabled={!isPlayerReady}
         onPress={onPress}
       >

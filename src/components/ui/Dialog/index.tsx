@@ -37,7 +37,7 @@ const Dialog: FC<Props> = ({ title, description, actions, visible, onClose }) =>
                   aria-label={action.label}
                   accessibilityRole="button"
                   accessibilityLabel={action.label}
-                  android_ripple={{ color: "rgba(0, 0, 0, 0.1)" }}
+                  android_ripple={{ color: "rgba(0, 0, 0, 0.1)", foreground: true }}
                   onPress={action.callback}
                 >
                   <Text style={s.label}>{action.label}</Text>

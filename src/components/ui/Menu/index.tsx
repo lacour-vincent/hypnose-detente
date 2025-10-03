@@ -63,7 +63,7 @@ const Menu: FC<Props> = ({ position, items }) => {
                       aria-label={item.label}
                       accessibilityRole="button"
                       accessibilityLabel={item.label}
-                      android_ripple={{ color: "rgba(0, 0, 0, 0.1)" }}
+                      android_ripple={{ color: "rgba(0, 0, 0, 0.1)", foreground: true }}
                       onPress={() => onItemPress(item)}
                     >
                       <Text style={s.label}>{item.label}</Text>
