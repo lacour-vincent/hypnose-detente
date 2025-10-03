@@ -8,7 +8,7 @@ import type { PlayerService } from "@/services/player";
 let player: AudioPlayer;
 
 const prepare: PlayerService["prepare"] = async (location) => {
-  player = createAudioPlayer(location, PULL_PLAYER_STATE_INTERVAL_IN_MS);
+  player = createAudioPlayer(location, { updateInterval: PULL_PLAYER_STATE_INTERVAL_IN_MS });
   AudioModule.setAudioModeAsync({ shouldPlayInBackground: true, interruptionModeAndroid: "doNotMix" });
   return undefined;
 };

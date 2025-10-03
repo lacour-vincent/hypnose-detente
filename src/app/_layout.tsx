@@ -3,7 +3,6 @@ import { Provider } from "react-redux";
 
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-import { StatusBar } from "expo-status-bar";
 
 import { createStore } from "@/store";
 
@@ -20,7 +19,6 @@ const { store } = createStore();
 const RootLayout: FC = () => {
   return (
     <Provider store={store}>
-      <StatusBar />
       <Stack
         screenOptions={{
           title: "Hypnose Détente",

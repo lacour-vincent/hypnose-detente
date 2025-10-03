@@ -1,5 +1,5 @@
 {
-  "cli": { "version": "16.17.x", "appVersionSource": "local" },
+  "cli": { "version": "16.20.x", "appVersionSource": "local" },
   "build": {
     "common": { "node": "22.15.1", "yarn": "1.22.22", "credentialsSource": "local" },
     "production": { "extends": "common", "android": { "gradleCommand": ":app:bundleRelease" } }

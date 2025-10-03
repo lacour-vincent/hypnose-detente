@@ -12,7 +12,6 @@ const config: ExpoConfig = {
     package: "com.lacour.vincent.hypnosedetente",
     versionCode: 39,
     adaptiveIcon: { foregroundImage: "./src/assets/icons/adaptive-icon.png", backgroundColor: "#ffffff" },
-    edgeToEdgeEnabled: true,
     permissions: ["android.permission.INTERNET"],
     blockedPermissions: [
       "android.permission.READ_EXTERNAL_STORAGE",
@@ -28,7 +27,7 @@ const config: ExpoConfig = {
     "expo-router",
     [
       "expo-build-properties",
-      { android: { compileSdkVersion: 35, targetSdkVersion: 35, buildToolsVersion: "35.0.0" } },
+      { android: { compileSdkVersion: 36, targetSdkVersion: 36, buildToolsVersion: "36.1.0" } },
     ],
     [
       "expo-font",
