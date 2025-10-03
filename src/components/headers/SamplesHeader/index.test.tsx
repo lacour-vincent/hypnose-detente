@@ -7,8 +7,8 @@ import SamplesHeader from "./index";
 
 describe("<SamplesHeader />", () => {
   beforeAll(() => {
-    const measureInWindow = jest.fn().mockImplementation((cb) => cb(0, 0, 0, 0, 0));
-    View.prototype.measureInWindow = measureInWindow;
+    const measure = jest.fn().mockImplementation((cb) => cb(0, 0, 0, 0, 0, 0, 0));
+    View.prototype.measure = measure;
   });
 
   it("should render header right without crashing", () => {

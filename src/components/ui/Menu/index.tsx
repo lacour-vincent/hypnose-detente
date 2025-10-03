@@ -25,13 +25,13 @@ const Menu: FC<Props> = ({ position, items }) => {
 
   const onOpen = () => {
     if (!anchor.current) return;
-    anchor.current.measureInWindow((x, y, width, height) => {
+    anchor.current.measure((_x, _y, width, height, pageX, pageY) => {
       const { vertical, horizontal } = position;
       const target: Coordinate = { x: 0, y: 0 };
-      if (vertical === "top") target.y = y;
-      if (vertical === "bottom") target.y = y + height;
-      if (horizontal === "left") target.x = x;
-      if (horizontal === "right") target.x = x + width;
+      if (vertical === "top") target.y = pageY;
+      if (vertical === "bottom") target.y = pageY + height;
+      if (horizontal === "left") target.x = pageX;
+      if (horizontal === "right") target.x = pageX + width;
       setCoordinate(target);
       setVisible(true);
     });

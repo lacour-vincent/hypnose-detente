@@ -13,8 +13,8 @@ const items: MenuItem[] = [
 
 describe("<Menu />", () => {
   beforeAll(() => {
-    const measureInWindow = jest.fn().mockImplementation((cb) => cb(0, 0, 0, 0, 0));
-    View.prototype.measureInWindow = measureInWindow;
+    const measure = jest.fn().mockImplementation((cb) => cb(0, 0, 0, 0, 0, 0, 0));
+    View.prototype.measure = measure;
   });
 
   it("should render without crashing", async () => {
