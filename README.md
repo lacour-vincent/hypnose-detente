@@ -6,7 +6,7 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
 ## Requirements
 
-`nodejs 22.15.x` ([install](https://nodejs.org/dist/v22.11.0/))
+`nodejs 22.15.x` ([install](https://nodejs.org/dist/v22.15.0/))
 
 `java 18.0.x` ([install](https://www.oracle.com/java/technologies/javase/jdk18-archive-downloads.html))
 
