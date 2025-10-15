@@ -22,6 +22,7 @@ const config: ExpoConfig = {
       "android.permission.MODIFY_AUDIO_SETTINGS",
     ],
   },
+  experiments: { reactCompiler: true },
   extra: { eas: { projectId: "9f66db35-01e6-4b14-9bcd-d41a567ae953" } },
   plugins: [
     "expo-router",
