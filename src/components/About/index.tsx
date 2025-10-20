@@ -83,7 +83,7 @@ const About: FC = () => {
               android_ripple={{ color: "rgba(0, 0, 0, 0.1)", foreground: true }}
               onPress={onItemPress}
             >
-              <Icon name={icon} size={25} color={theme["primary-color"]} />
+              <Icon name={icon} size={25} color={theme.accent} />
               <Text style={s.label}>{label}</Text>
             </Pressable>
           );

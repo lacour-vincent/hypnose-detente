@@ -16,9 +16,13 @@ export default StyleSheet.create((theme, { screen }) => {
       paddingInline: theme["space-md"],
       paddingBlock: theme["space-sm"],
       borderRadius: theme["space-2xs"],
-      backgroundColor: "#ffffff",
+      backgroundColor: theme.background,
     },
-    title: { color: theme["primary-color"], fontSize: theme["font-size-lg"], fontWeight: theme["font-weight-bold"] },
+    title: {
+      color: theme["font-primary-color"],
+      fontSize: theme["font-size-lg"],
+      fontWeight: theme["font-weight-bold"],
+    },
     description: { maxHeight: 0.5 * screen.height },
     "description-content": { fontSize: theme["font-size-md"], color: theme["font-primary-color"] },
     actions: {
@@ -36,7 +40,7 @@ export default StyleSheet.create((theme, { screen }) => {
       paddingBlock: theme["space-xs"],
     },
     label: {
-      color: theme["primary-color"],
+      color: theme["font-primary-color"],
       fontSize: theme["font-size-md"],
       fontWeight: "medium",
     },

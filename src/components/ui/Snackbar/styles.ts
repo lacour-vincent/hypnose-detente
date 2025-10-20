@@ -12,11 +12,22 @@ export default StyleSheet.create((theme) => ({
     gap: theme["space-xs"],
     padding: theme["space-sm"],
     borderRadius: theme["space-xs"],
+    variants: {
+      theme: {
+        primary: { backgroundColor: theme["success-color"] },
+        secondary: { backgroundColor: theme["error-color"] },
+      },
+    },
   },
-  "container--primary": { backgroundColor: theme["success-color"] },
-  "container--secondary": { backgroundColor: theme["error-color"] },
-  message: { flex: 1, fontSize: theme["font-size-sm"] },
-  "message--primary": { color: theme["success-color-text"] },
-  "message--secondary": { color: theme["error-color-text"] },
+  message: {
+    flex: 1,
+    fontSize: theme["font-size-sm"],
+    variants: {
+      theme: {
+        primary: { color: theme["success-color-text"] },
+        secondary: { color: theme["error-color-text"] },
+      },
+    },
+  },
   pressable: { padding: theme["space-2xs"] },
 }));

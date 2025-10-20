@@ -7,7 +7,6 @@ const theme = {
 
   "primary-color": "#008577" as string,
   "primary-color-text": "#ffffff" as string,
-  "primary-color-dark": "#00574B" as string,
   "secondary-color": "#d37556" as string,
   "secondary-color-text": "#ffffff" as string,
   "tertiary-color": "#56b4d3" as string,
@@ -19,7 +18,9 @@ const theme = {
   "error-color-text": "#ffffff" as string,
 
   background: "#FFFBFE" as string,
+  surface: "#FFFBFE" as string,
   outline: "#79747E" as string,
+  accent: "#008577" as string,
 
   "font-size-4xl": 36,
   "font-size-3xl": 30,
@@ -47,7 +48,21 @@ type Theme = typeof theme;
 type Themes = { light: Theme; dark: Theme };
 
 const light: Theme = { ...theme };
-const dark: Theme = { ...theme, "primary-color": "#F44336" };
+const dark: Theme = {
+  ...theme,
+  "font-primary-color": "rgba(255,255,255, 0.87)" as string,
+  "font-secondary-color": "rgba(255,255,255, 0.60)" as string,
+  "font-tertiary-color": "rgba(255,255,255, 0.38)" as string,
+
+  "primary-color": "#00574B" as string,
+  "secondary-color": "#B86A52" as string,
+  "tertiary-color": "#4592AD" as string,
+
+  background: "#323232" as string,
+  surface: "#424242" as string,
+  outline: "#938F99" as string,
+  accent: "rgba(255,255,255, 0.87)" as string,
+};
 
 StyleSheet.configure({
   themes: { light, dark },

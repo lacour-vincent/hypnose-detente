@@ -27,6 +27,10 @@ export default StyleSheet.create((theme, { screen }) => {
       alignItems: "center",
       padding: theme["space-sm"],
     },
-    label: { fontSize: theme["font-size-md"], fontWeight: theme["font-weight-medium"] },
+    label: {
+      color: theme["font-primary-color"],
+      fontSize: theme["font-size-md"],
+      fontWeight: theme["font-weight-medium"],
+    },
   };
 });

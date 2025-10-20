@@ -4,7 +4,7 @@ import { useUnistyles } from "react-native-unistyles";
 
 import Icon from "@ui/Icon";
 
-import s from "./styles";
+import styles from "./styles";
 
 interface Props {
   variant?: "primary" | "secondary";
@@ -14,6 +14,7 @@ interface Props {
 
 const Snackbar: FC<Props> = ({ variant = "primary", message, onClose }) => {
   const { theme } = useUnistyles();
+  styles.useVariants({ theme: variant });
   const slide = useRef(new Animated.Value(0)).current;
   const opacity = useRef(new Animated.Value(0)).current;
   const translateY = slide.interpolate({ inputRange: [0, 1], outputRange: [100, 0] });
@@ -38,10 +39,10 @@ const Snackbar: FC<Props> = ({ variant = "primary", message, onClose }) => {
   };
 
   return (
-    <Animated.View style={[s.container, s[`container--${variant}`], { transform: [{ translateY }], opacity: opacity }]}>
-      <Text style={[s.message, s[`message--${variant}`]]}>{message}</Text>
+    <Animated.View style={[styles.container, { transform: [{ translateY }], opacity: opacity }]}>
+      <Text style={styles.message}>{message}</Text>
       <Pressable
-        style={s.pressable}
+        style={styles.pressable}
         role="button"
         aria-label="fermer"
         accessibilityRole="button"
