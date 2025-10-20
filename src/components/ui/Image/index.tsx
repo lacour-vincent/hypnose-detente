@@ -3,8 +3,6 @@ import { type ImageSourcePropType, type ImageStyle, type StyleProp } from "react
 
 import { Image as ImageUI } from "expo-image";
 
-import { cn } from "@/styling";
-
 import s from "./styles";
 
 interface Props {
@@ -16,7 +14,7 @@ interface Props {
 const Image: FC<Props> = ({ style, src, alt }) => {
   return (
     <ImageUI
-      style={cn([s.image, style])}
+      style={[s.image, style]}
       source={src}
       alt={alt}
       accessibilityLabel={alt}

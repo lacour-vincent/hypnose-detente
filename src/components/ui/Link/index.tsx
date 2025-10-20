@@ -3,8 +3,6 @@ import { Pressable, type StyleProp, type TextStyle } from "react-native";
 
 import { type LinkProps, Link as LinkUI } from "expo-router";
 
-import { cn } from "@/styling";
-
 interface Props extends LinkProps {
   style?: StyleProp<TextStyle>;
   href: string;
@@ -15,7 +13,7 @@ interface Props extends LinkProps {
 const Link: FC<Props> = ({ style, href, label, children }) => {
   return (
     <LinkUI
-      style={cn([style])}
+      style={style}
       href={href}
       role="link"
       aria-label={label}
