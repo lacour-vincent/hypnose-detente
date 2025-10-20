@@ -1,5 +1,6 @@
 import React, { type FC } from "react";
 import { Pressable, type StyleProp, Text, View, type ViewStyle } from "react-native";
+import { useUnistyles } from "react-native-unistyles";
 import { useDispatch, useSelector } from "react-redux";
 
 import { PlayerStatus } from "@/typings/player";
@@ -18,8 +19,6 @@ import AudioPlayerSkeleton from "@/components/AudioPlayer/AudioPlayerSqueleton";
 import Icon from "@ui/Icon";
 import Slider from "@ui/Slider";
 
-import theme, { cn } from "@/styling";
-
 import s from "./styles";
 
 interface Props {
@@ -28,6 +27,7 @@ interface Props {
 
 const AudioPlayer: FC<Props> = ({ style }) => {
   const dispatch = useDispatch();
+  const { theme } = useUnistyles();
   const { status, isPlaying, position, duration } = useSelector(getPlayer);
   const isLoading = useLoader([retrieveSampleById, retrieveAssetPack, prepare]);
   const isPlayerReady = status === PlayerStatus.READY;
@@ -46,7 +46,7 @@ const AudioPlayer: FC<Props> = ({ style }) => {
   if (isLoading) return <AudioPlayerSkeleton style={style} />;
 
   return (
-    <View style={cn([s.container, style])}>
+    <View style={[s.container, style]}>
       <View style={s.wrapper}>
         <Text style={s.timer}>{formatAudioTime(position)}</Text>
         <Slider

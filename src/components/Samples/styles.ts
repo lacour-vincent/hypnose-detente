@@ -1,10 +1,8 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from "react-native-unistyles";
 
-import theme from "@/styling";
-
-export default StyleSheet.create({
+export default StyleSheet.create((theme) => ({
   container: { rowGap: theme["space-xs"], padding: theme["space-xs"] },
   wrapper: { columnGap: theme["space-xs"] },
   link: { flex: 1, maxWidth: "50%" },
   item: { elevation: 3 },
-});
+}));

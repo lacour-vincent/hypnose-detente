@@ -35,7 +35,7 @@ class FakeAudioPlayer {
 }
 
 let player: FakeAudioPlayer;
-let interval: number;
+let interval: ReturnType<typeof setInterval>;
 
 const prepare: PlayerService["prepare"] = () => {
   player = new FakeAudioPlayer();

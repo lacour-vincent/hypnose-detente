@@ -1,8 +1,6 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from "react-native-unistyles";
 
-import theme from "@/styling";
-
-export default StyleSheet.create({
+export default StyleSheet.create((theme) => ({
   container: { paddingBlockEnd: theme["space-xl"], paddingInline: theme["space-md"], gap: theme["space-lg"] },
   wrapper: { display: "flex", flexDirection: "row", width: "100%", gap: theme["space-2xs"], alignItems: "center" },
   slider: { flex: 1 },
@@ -21,4 +19,4 @@ export default StyleSheet.create({
     color: theme["secondary-color-text"],
     backgroundColor: theme["secondary-color"],
   },
-});
+}));

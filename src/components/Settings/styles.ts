@@ -1,8 +1,6 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from "react-native-unistyles";
 
-import theme from "@/styling";
-
-export default StyleSheet.create({
+export default StyleSheet.create((theme) => ({
   container: {},
   pressable: {
     width: "100%",
@@ -12,4 +10,4 @@ export default StyleSheet.create({
   },
   label: { color: theme["font-primary-color"], fontSize: theme["font-size-md"] },
   description: { color: theme["font-secondary-color"], fontSize: theme["font-size-sm"] },
-});
+}));

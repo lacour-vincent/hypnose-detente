@@ -1,5 +1,6 @@
 import React, { type FC } from "react";
 import { Linking, Pressable, ScrollView, Text, View } from "react-native";
+import { useUnistyles } from "react-native-unistyles";
 
 import * as Application from "expo-application";
 
@@ -12,7 +13,6 @@ import Icon, { type Props as IconProps } from "@ui/Icon";
 import Image from "@ui/Image";
 
 import logo from "@/assets/icons/icon.png";
-import theme from "@/styling";
 
 import s from "./styles";
 
@@ -26,6 +26,7 @@ interface AboutItem {
 }
 
 const About: FC = () => {
+  const { theme } = useUnistyles();
   const { navigate } = useRouter();
 
   const items: AboutItem[] = [

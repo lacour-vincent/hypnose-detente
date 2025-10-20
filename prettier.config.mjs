@@ -3,7 +3,7 @@ const config = {
   printWidth: 120,
   endOfLine: "auto",
   importOrder: [
-    "^(react|react-native|react-redux)$",
+    "^(react|react-native|react-redux|react-native-unistyles)$",
     "^(expo/(.*)|expo-(.*))$",
     "^@(native)(.*)$",
     "<THIRD_PARTY_MODULES>",

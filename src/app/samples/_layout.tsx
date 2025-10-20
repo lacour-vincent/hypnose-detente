@@ -1,4 +1,5 @@
 import React, { type FC } from "react";
+import { useUnistyles } from "react-native-unistyles";
 import { useSelector } from "react-redux";
 
 import { Stack } from "expo-router";
@@ -7,9 +8,8 @@ import { getSelectedSample } from "@/store/selectors/recording";
 
 import SampleHeader from "@/components/headers/SampleHeader";
 
-import theme from "@/styling";
-
 const SampleLayout: FC = () => {
+  const { theme } = useUnistyles();
   const sample = useSelector(getSelectedSample);
   return (
     <Stack

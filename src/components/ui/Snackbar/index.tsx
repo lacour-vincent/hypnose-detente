@@ -1,9 +1,8 @@
 import React, { type FC, useEffect, useRef } from "react";
 import { Animated, Easing, Pressable, Text } from "react-native";
+import { useUnistyles } from "react-native-unistyles";
 
 import Icon from "@ui/Icon";
-
-import theme from "@/styling";
 
 import s from "./styles";
 
@@ -14,6 +13,7 @@ interface Props {
 }
 
 const Snackbar: FC<Props> = ({ variant = "primary", message, onClose }) => {
+  const { theme } = useUnistyles();
   const slide = useRef(new Animated.Value(0)).current;
   const opacity = useRef(new Animated.Value(0)).current;
   const translateY = slide.interpolate({ inputRange: [0, 1], outputRange: [100, 0] });

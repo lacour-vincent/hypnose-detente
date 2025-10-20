@@ -1,9 +1,8 @@
 import React, { type FC, useEffect, useRef } from "react";
 import { Animated, Easing, type StyleProp, View, type ViewStyle } from "react-native";
+import { useUnistyles } from "react-native-unistyles";
 
 import { LinearGradient } from "expo-linear-gradient";
-
-import theme, { cn } from "@/styling";
 
 import s from "./styles";
 
@@ -12,6 +11,7 @@ interface Props {
 }
 
 const ProgressBar: FC<Props> = ({ style }) => {
+  const { theme } = useUnistyles();
   const translateX = useRef(new Animated.Value(-150)).current;
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const ProgressBar: FC<Props> = ({ style }) => {
   }, []);
 
   return (
-    <View style={cn([s.container, style])} role="progressbar" accessibilityRole="progressbar" accessible>
+    <View style={[s.container, style]} role="progressbar" accessibilityRole="progressbar" accessible>
       <View style={s.progress}>
         <Animated.View style={[s.wrapper, { transform: [{ translateX }] }]}>
           <LinearGradient

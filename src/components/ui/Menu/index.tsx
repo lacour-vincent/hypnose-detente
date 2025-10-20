@@ -1,5 +1,6 @@
 import React, { type FC, useRef, useState } from "react";
-import { Dimensions, Modal, Pressable, Text, TouchableWithoutFeedback, View } from "react-native";
+import { Modal, Pressable, Text, TouchableWithoutFeedback, View } from "react-native";
+import { UnistylesRuntime } from "react-native-unistyles";
 
 import PressableIcon from "@ui/PressableIcon";
 
@@ -16,7 +17,7 @@ interface Props {
 
 type Coordinate = { x: number; y: number };
 
-const MENU_WIDTH = 0.5 * Dimensions.get("window").width;
+const MENU_WIDTH = 0.5 * UnistylesRuntime.screen.width;
 
 const Menu: FC<Props> = ({ position, items }) => {
   const anchor = useRef<View>(null);

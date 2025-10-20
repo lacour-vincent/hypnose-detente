@@ -1,5 +1,6 @@
 import React, { type FC } from "react";
 import { type StyleProp, Text, View, type ViewStyle } from "react-native";
+import { useUnistyles } from "react-native-unistyles";
 
 import type { Sample } from "@/typings/recording";
 
@@ -7,8 +8,6 @@ import { SAMPLE_THUMBNAILS } from "@/referential/thumbnails";
 
 import Icon from "@ui/Icon";
 import Image from "@ui/Image";
-
-import theme, { cn } from "@/styling";
 
 import s from "./styles";
 
@@ -19,10 +18,11 @@ interface Props {
 }
 
 const SampleItem: FC<Props> = ({ style, sample, offline }) => {
+  const { theme } = useUnistyles();
   const url = SAMPLE_THUMBNAILS[sample.rid];
   const alt = `Vignette - ${sample.label}`;
   return (
-    <View style={cn([s.container, style])}>
+    <View style={[s.container, style]}>
       <Image style={s.thumbnail} src={url} alt={alt} />
       <View style={s.wrapper}>
         <Text style={s.title} numberOfLines={1}>

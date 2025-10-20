@@ -1,4 +1,5 @@
 import React, { type FC, useEffect } from "react";
+import { useUnistyles } from "react-native-unistyles";
 import { useDispatch, useSelector } from "react-redux";
 
 import { LinearGradient } from "expo-linear-gradient";
@@ -17,8 +18,6 @@ import SampleInformationDialog from "@/components/dialogs/SampleInformationDialo
 
 import Image from "@ui/Image";
 
-import theme from "@/styling";
-
 import s from "./styles";
 
 interface Params {
@@ -27,6 +26,7 @@ interface Params {
 
 const SampleView: FC = () => {
   const dispatch = useDispatch();
+  const { theme } = useUnistyles();
   const { params } = useRouter<Params>();
   const sample = useSelector(getSelectedSample);
   const pack = useSelector(getSelectedAssetPack);

@@ -1,9 +1,8 @@
 import React, { type FC } from "react";
 import type { StyleProp, ViewStyle } from "react-native";
+import { useUnistyles } from "react-native-unistyles";
 
 import SliderCommunity from "@react-native-community/slider";
-
-import theme, { cn } from "@/styling";
 
 export interface Props {
   style?: StyleProp<ViewStyle>;
@@ -14,9 +13,10 @@ export interface Props {
 }
 
 const Slider: FC<Props> = ({ style, value, options, disabled, onSlidingComplete }) => {
+  const { theme } = useUnistyles();
   return (
     <SliderCommunity
-      style={cn([style])}
+      style={style}
       value={Math.floor(value)}
       minimumValue={Math.floor(options.min)}
       maximumValue={Math.floor(options.max)}

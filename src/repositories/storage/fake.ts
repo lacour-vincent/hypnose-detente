@@ -3,7 +3,7 @@ import type { StorageRepository } from "@/repositories/storage";
 
 import placeholder from "@/assets/testing/sample.mp3";
 
-let interval: number;
+let interval: ReturnType<typeof setTimeout>;
 
 const fetchAssetPackStates: StorageRepository["fetchAssetPackStates"] = async () => {
   return Promise.resolve(ASSET_PACK_STATES_MOCK);
@@ -22,7 +22,7 @@ const addAssetPackStateUpdateListener: StorageRepository["addAssetPackStateUpdat
 };
 
 const removeAssetPackStateUpdateListener: StorageRepository["removeAssetPackStateUpdateListener"] = () => {
-  if (interval) clearInterval(interval);
+  if (interval) clearTimeout(interval);
   return undefined;
 };
 

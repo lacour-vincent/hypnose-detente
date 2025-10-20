@@ -1,3 +1,5 @@
+import "react-native-unistyles/mocks";
+
 const now = jest.spyOn(global.Date, "now");
 
 beforeAll(() => {

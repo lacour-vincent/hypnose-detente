@@ -1,9 +1,7 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from "react-native-unistyles";
 
-import theme from "@/styling";
-
-export default StyleSheet.create({
+export default StyleSheet.create((theme) => ({
   container: { display: "flex", gap: theme["space-md"], padding: theme["space-md"] },
   heading: { fontSize: theme["font-size-lg"], fontWeight: theme["font-weight-medium"] },
   content: { fontSize: theme["font-size-md"], fontWeight: theme["font-weight-regular"] },
-});
+}));

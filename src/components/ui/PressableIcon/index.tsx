@@ -1,9 +1,8 @@
 import React, { type FC } from "react";
 import { type GestureResponderEvent, Pressable, type StyleProp, type ViewStyle } from "react-native";
+import { useUnistyles } from "react-native-unistyles";
 
 import Icon, { type Props as IconProps } from "@ui/Icon";
-
-import theme, { cn } from "@/styling";
 
 import s from "./styles";
 
@@ -17,9 +16,10 @@ interface Props {
 const ICON_SIZE = 22;
 
 const PressableIcon: FC<Props> = ({ style, label, icon, onPress }) => {
+  const { theme } = useUnistyles();
   return (
     <Pressable
-      style={cn([style, s.pressable])}
+      style={[style, s.pressable]}
       role="button"
       aria-label={label}
       accessibilityRole="button"

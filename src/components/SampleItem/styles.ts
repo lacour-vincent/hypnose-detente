@@ -1,8 +1,6 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from "react-native-unistyles";
 
-import theme from "@/styling";
-
-export default StyleSheet.create({
+export default StyleSheet.create((theme) => ({
   container: { borderRadius: 4, backgroundColor: theme.background },
   thumbnail: { aspectRatio: 1, borderTopStartRadius: 4, borderTopEndRadius: 4 },
   wrapper: { position: "relative", gap: theme["space-2xs"], padding: theme["space-xs"] },
@@ -14,4 +12,4 @@ export default StyleSheet.create({
     lineHeight: theme["font-size-sm"],
   },
   offline: { marginStart: "auto" },
-});
+}));

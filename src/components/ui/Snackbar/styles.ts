@@ -1,8 +1,6 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from "react-native-unistyles";
 
-import theme from "@/styling";
-
-export default StyleSheet.create({
+export default StyleSheet.create((theme) => ({
   container: {
     position: "absolute",
     bottom: theme["space-md"],
@@ -21,4 +19,4 @@ export default StyleSheet.create({
   "message--primary": { color: theme["success-color-text"] },
   "message--secondary": { color: theme["error-color-text"] },
   pressable: { padding: theme["space-2xs"] },
-});
+}));

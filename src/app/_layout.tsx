@@ -1,4 +1,5 @@
 import React, { type FC, StrictMode } from "react";
+import { useUnistyles } from "react-native-unistyles";
 import { Provider } from "react-redux";
 
 import { Stack } from "expo-router";
@@ -9,14 +10,13 @@ import { createStore } from "@/store";
 import Alerting from "@/components/Alerting";
 import SamplesHeader from "@/components/headers/SamplesHeader";
 
-import theme from "@/styling";
-
 SplashScreen.hide();
 SplashScreen.setOptions({ duration: 400, fade: true });
 
 const { store } = createStore();
 
 const RootLayout: FC = () => {
+  const { theme } = useUnistyles();
   return (
     <StrictMode>
       <Provider store={store}>

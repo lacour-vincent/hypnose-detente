@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from "react-native-unistyles";
 
-export default StyleSheet.create({
+export default StyleSheet.create(() => ({
   image: { width: "auto", height: "auto", aspectRatio: 1 },
-});
+}));
