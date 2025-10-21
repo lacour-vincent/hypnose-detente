@@ -5,6 +5,7 @@ export default StyleSheet.create((theme, { screen }) => {
   return {
     container: { position: "relative", flex: 1, padding: theme["space-sm"] },
     image: {
+      display: { portrait: "flex", landscape: "none" },
       width: image,
       height: image,
       margin: "auto",

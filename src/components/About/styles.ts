@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native-unistyles";
 
-export default StyleSheet.create((theme, { screen }) => {
-  const image = 0.35 * screen.width;
+export default StyleSheet.create((theme, { screen, isPortrait }) => {
+  const ratio = isPortrait ? 0.35 : 0.175;
+  const image = ratio * screen.width;
   return {
-    container: { padding: theme["space-sm"] },
+    container: { padding: theme["space-sm"], width: { portrait: "100%", landscape: "50%" }, marginInline: "auto" },
     logo: { width: image, height: image, marginInline: "auto" },
     title: {
       textAlign: "center",
