@@ -12,13 +12,13 @@ const main = async () => {
   try {
     console.info("-----------------------------------");
 
-    console.info("- Builds apks for local testing using bundletool...");
+    console.info("- Build apks for local testing using bundletool...");
     await run(`[ -f "${ARTIFACT_NAME}.apks" ] && rm ${ARTIFACT_NAME}.apks`);
     await run(`java -jar bundletool-all.jar build-apks --local-testing \
       --bundle=${ARTIFACT_NAME}.aab \
       --output=${ARTIFACT_NAME}.apks`);
 
-    console.info("- Install apks on emulator or connected device...");
+    console.info("- Install application on connected device...");
     await run(`java -jar bundletool-all.jar install-apks --apks=${ARTIFACT_NAME}.apks`);
 
     console.info("-----------------------------------");
