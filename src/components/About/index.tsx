@@ -16,7 +16,7 @@ import logo from "@/assets/icons/icon.png";
 
 import s from "./styles";
 
-type Keys = "version" | "website" | "reporting" | "terms-and-conditions" | "privacy-policy" | "developer";
+type Keys = "website" | "reporting" | "version" | "source-code" | "terms-and-conditions" | "privacy-policy";
 
 interface AboutItem {
   key: Keys;
@@ -31,12 +31,6 @@ const About: FC = () => {
 
   const items: AboutItem[] = [
     {
-      key: "version",
-      icon: "code-tags",
-      label: Application.nativeApplicationVersion as string,
-      onItemPress: () => Linking.openURL(ENV.EXPO_PUBLIC_PLAY_STORE_URL),
-    },
-    {
       key: "website",
       icon: "web",
       label: "Site officiel",
@@ -47,6 +41,18 @@ const About: FC = () => {
       icon: "comment-alert-outline",
       label: "Rapporter un problème",
       onItemPress: () => Linking.openURL(ENV.EXPO_PUBLIC_REPORT_URL),
+    },
+    {
+      key: "version",
+      icon: "code-tags-check",
+      label: Application.nativeApplicationVersion as string,
+      onItemPress: () => Linking.openURL(ENV.EXPO_PUBLIC_PLAY_STORE_URL),
+    },
+    {
+      key: "source-code",
+      icon: "code-tags",
+      label: "Code source",
+      onItemPress: () => Linking.openURL(ENV.EXPO_PUBLIC_REPOSITORY_URL),
     },
     {
       key: "terms-and-conditions",

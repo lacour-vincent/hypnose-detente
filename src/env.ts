@@ -3,6 +3,7 @@ export interface EnvironmentVariables {
   readonly EXPO_PUBLIC_PLAY_STORE_URL: string;
   readonly EXPO_PUBLIC_WEBSITE_URL: string;
   readonly EXPO_PUBLIC_REPORT_URL: string;
+  readonly EXPO_PUBLIC_REPOSITORY_URL: string;
 }
 
 const DEFAULT_ENV_VARIABLES: EnvironmentVariables = {
@@ -11,6 +12,7 @@ const DEFAULT_ENV_VARIABLES: EnvironmentVariables = {
   EXPO_PUBLIC_WEBSITE_URL: "https://free-hypnosis-mp3.com",
   EXPO_PUBLIC_REPORT_URL:
     "mailto:lacour.vincent.app@gmail.com?subject=Application%20Hypnose-D%C3%A9tente%20-%20signalement",
+  EXPO_PUBLIC_REPOSITORY_URL: "https://github.com/lacour-vincent/hypnose-detente",
 };
 
 const variables: Partial<EnvironmentVariables> = {
@@ -18,6 +20,7 @@ const variables: Partial<EnvironmentVariables> = {
   EXPO_PUBLIC_PLAY_STORE_URL: process.env.EXPO_PUBLIC_PLAY_STORE_URL,
   EXPO_PUBLIC_WEBSITE_URL: process.env.EXPO_PUBLIC_WEBSITE_URL,
   EXPO_PUBLIC_REPORT_URL: process.env.EXPO_PUBLIC_REPORT_URL,
+  EXPO_PUBLIC_REPOSITORY_URL: process.env.EXPO_PUBLIC_REPOSITORY_URL,
 };
 
 const ENV: EnvironmentVariables = {
@@ -25,6 +28,7 @@ const ENV: EnvironmentVariables = {
   EXPO_PUBLIC_PLAY_STORE_URL: variables.EXPO_PUBLIC_PLAY_STORE_URL ?? DEFAULT_ENV_VARIABLES.EXPO_PUBLIC_PLAY_STORE_URL,
   EXPO_PUBLIC_WEBSITE_URL: variables.EXPO_PUBLIC_WEBSITE_URL ?? DEFAULT_ENV_VARIABLES.EXPO_PUBLIC_WEBSITE_URL,
   EXPO_PUBLIC_REPORT_URL: variables.EXPO_PUBLIC_REPORT_URL ?? DEFAULT_ENV_VARIABLES.EXPO_PUBLIC_REPORT_URL,
+  EXPO_PUBLIC_REPOSITORY_URL: variables.EXPO_PUBLIC_REPOSITORY_URL ?? DEFAULT_ENV_VARIABLES.EXPO_PUBLIC_REPOSITORY_URL,
 };
 
 export default ENV;
