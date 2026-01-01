@@ -1,9 +1,11 @@
 import eslint from "@eslint/js";
 import jestlint from "eslint-plugin-jest";
 import reactlint from "eslint-plugin-react";
+import { defineConfig } from "eslint/config";
 import tseslint from "typescript-eslint";
 
-export default tseslint.config([
+/** @type {import("eslint/config").Config} */
+const config = defineConfig([
   {
     files: ["src/**/*.{ts,tsx}"],
     plugins: { react: reactlint },
@@ -33,3 +35,5 @@ export default tseslint.config([
     rules: { ...jestlint.configs.recommended.rules },
   },
 ]);
+
+export default config;
