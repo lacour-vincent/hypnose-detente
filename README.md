@@ -6,11 +6,11 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
 ## Requirements
 
-`nodejs 22.15.x` ([install](https://nodejs.org/dist/v22.15.0/))
+`nodejs 24.12.x` ([install](https://nodejs.org/dist/v24.12.0/))
 
 `java 18.0.x` ([install](https://www.oracle.com/java/technologies/javase/jdk18-archive-downloads.html))
 
-`yarn 1.22.x` ([install](https://classic.yarnpkg.com/en/docs/install))
+`yarn 1.22.22` ([install](https://classic.yarnpkg.com/en/docs/install))
 
 `Android Studio` ([install](https://developer.android.com/studio/install))
 

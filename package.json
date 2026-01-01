@@ -6,8 +6,8 @@
   "license": "UNLICENSED",
   "private": true,
   "engines": {
-    "node": ">=22.15.x",
-    "yarn": "^1.22.x"
+    "node": ">=24.12.x",
+    "yarn": "1.22.22"
   },
   "main": "index.ts",
   "scripts": {
