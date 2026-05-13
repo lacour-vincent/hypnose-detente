@@ -2,16 +2,16 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     /* PROJECT OPTIONS */
-    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@ui/*": ["src/components/ui/*"],
-      "@modules/*": ["modules/*"]
+      "@/*": ["./src/*"],
+      "@ui/*": ["./src/components/ui/*"],
+      "@modules/*": ["./modules/*"]
     },
 
     /* LANGUAGE COMPILATION OPTIONS */
     "target": "ESNext",
     "lib": ["DOM", "ESNext"],
+    "types": ["jest"],
     "module": "preserve",
     "moduleDetection": "force",
     "moduleResolution": "bundler",

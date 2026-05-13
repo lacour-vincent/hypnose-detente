@@ -1,9 +1,10 @@
 import "react-native-unistyles/mocks";
 
-const now = jest.spyOn(global.Date, "now");
+let now: jest.SpyInstance;
 
 beforeAll(() => {
   jest.useFakeTimers();
+  now = jest.spyOn(global.Date, "now");
   now.mockReturnValue(new Date("1970-01-01T00:00:00Z").getTime());
 });
 
