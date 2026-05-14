@@ -13,3 +13,7 @@ declare module "*.mp3" {
   const svg: string;
   export default svg;
 }
+
+// TODO: @react-native/normalize-colors does not ship type declarations.
+// Remove once unistyles or the package itself provides them.
+declare module "@react-native/normalize-colors";

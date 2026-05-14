@@ -29,7 +29,7 @@ const config: ExpoConfig = {
     "expo-router",
     [
       "expo-build-properties",
-      { android: { compileSdkVersion: 36, targetSdkVersion: 36, buildToolsVersion: "36.1.0" } },
+      { android: { compileSdkVersion: 36, targetSdkVersion: 36, buildToolsVersion: "37.0.0" } },
     ],
     [
       "expo-font",
