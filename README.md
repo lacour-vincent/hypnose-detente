@@ -71,8 +71,6 @@ your-project/
 ## Usage
 
 ```shell
-# Transpile plugin TypeScript files
-$ yarn build:plugins
 # Generate native project files for Android
 $ yarn prebuild:android
 # Run the app on Android device/emulator

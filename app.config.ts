@@ -1,4 +1,6 @@
-import { type ExpoConfig } from "expo/config";
+import type { ExpoConfig } from "expo/config";
+
+import "tsx/cjs";
 
 const config: ExpoConfig = {
   name: "Hypnose",
@@ -56,11 +58,11 @@ const config: ExpoConfig = {
         backgroundColor: "#ffffff",
       },
     ],
-    ["./plugins/withMediaPlaybackForegroundService.js"],
-    ["./plugins/withIgnoreBatteryOptimizations.js"],
-    ["./plugins/withGradleProperties.js"],
+    ["./plugins/withMediaPlaybackForegroundService"],
+    ["./plugins/withIgnoreBatteryOptimizations"],
+    ["./plugins/withGradleProperties"],
     [
-      "./plugins/withGooglePlayAssetDelivery.js",
+      "./plugins/withGooglePlayAssetDelivery",
       [
         { name: "bien_dormir", path: "samples/bien_dormir" },
         { name: "s_endormir", path: "samples/s_endormir" },

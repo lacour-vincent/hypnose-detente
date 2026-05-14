@@ -42,9 +42,6 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
-# plugins
-plugins/*.js
-
 # assets
 samples/**/*.mp3
 

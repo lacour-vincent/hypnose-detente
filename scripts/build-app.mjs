@@ -12,9 +12,6 @@ const main = async () => {
   try {
     console.info("-----------------------------------");
 
-    console.info("- Transpile Expo plugins...");
-    await run("yarn build:plugins");
-
     console.info("- Build application using EAS --local ...");
     await run(`eas build --local --platform android --profile production --output=${ARTIFACT_NAME}.aab`);
 
