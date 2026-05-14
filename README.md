@@ -18,7 +18,7 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
 ```shell
 $ yarn install
-$ yarn global add eas-cli@16.28.x
+$ npm install --global eas-cli@18.12.x
 ```
 
 ### Android
