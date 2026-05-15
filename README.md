@@ -4,15 +4,17 @@ Application that allows you to relax with self-hypnosis recordings.
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
-## Requirements
+## Specifications
 
-`nodejs 24.12.x` ([install](https://nodejs.org/dist/v24.12.0/))
-
-`java 18.0.x` ([install](https://www.oracle.com/java/technologies/javase/jdk18-archive-downloads.html))
-
-`yarn 1.22.22` ([install](https://classic.yarnpkg.com/en/docs/install))
-
-`Android Studio` ([install](https://developer.android.com/studio/install))
+| Common  | Version |     | Android             | Version |
+| ------- | ------- | --- | ------------------- | ------- |
+| Node.js | 24.12.x |     | Android Studio      | latest  |
+| Yarn    | 1.22.2  |     | Java                | 18      |
+| EAS CLI | 18.12.x |     | Kotlin              | 2.1.x   |
+|         |         |     | Android SDK         | 36      |
+|         |         |     | Android Min SDK     | 24      |
+|         |         |     | Android Build Tools | 37.0.0  |
+|         |         |     | Android NDK         | 27.x    |
 
 ## Installation
 
