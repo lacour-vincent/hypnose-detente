@@ -70,6 +70,16 @@ your-project/
         └── example.mp3
 ```
 
+### How to contribute Android native module
+
+Open the android/ directory with Android Studio:
+
+```shell
+yarn prebuild:android
+cd android/
+open -a "Android Studio" .
+```
+
 ## Usage
 
 ```shell
