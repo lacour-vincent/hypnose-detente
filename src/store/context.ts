@@ -4,8 +4,6 @@ import ENV from "@/env";
 import recording, { type RecordingRepository } from "@/repositories/recording";
 import storage, { type StorageRepository } from "@/repositories/storage";
 import battery, { type BatteryService } from "@/services/battery";
-import foreground, { type ForegroundService } from "@/services/foreground";
-import permissions, { type PermissionsService } from "@/services/permissions";
 import player, { type PlayerService } from "@/services/player";
 
 const isDev = ENV.NODE_ENV === "development";
@@ -24,8 +22,6 @@ interface Repositories {
 interface Services {
   battery: BatteryService;
   player: PlayerService;
-  foreground: ForegroundService;
-  permissions: PermissionsService;
 }
 
 const repositories: Repositories = {
@@ -36,8 +32,6 @@ const repositories: Repositories = {
 const services: Services = {
   battery: battery.impl,
   player: player.impl,
-  foreground: foreground.impl,
-  permissions: permissions.impl,
 };
 
 interface Router {

@@ -58,7 +58,7 @@ const config: ExpoConfig = {
         backgroundColor: "#ffffff",
       },
     ],
-    ["./plugins/withMediaPlaybackForegroundService"],
+    ["expo-audio", { enableBackgroundPlayback: true }],
     ["./plugins/withIgnoreBatteryOptimizations"],
     ["./plugins/withGradleProperties"],
     [

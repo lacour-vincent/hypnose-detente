@@ -117,28 +117,6 @@ describe("Store - storage", () => {
     }
   });
 
-  it("should stop listening player state by performing pause action", async () => {
-    store.dispatch(prepare.request({ file: "sample.mp3" }));
-    jest.runOnlyPendingTimers();
-    await store.waitFor(prepare.success);
-
-    store.dispatch(play.request());
-    await store.waitFor(play.success);
-    const positions = [1, 2, 3];
-    for (const position of positions) {
-      jest.runOnlyPendingTimers();
-      await store.waitFor(onPlayerStateUpdate, position);
-      const player = getPlayer(store.getState());
-      expect(player.position).toBe(position);
-    }
-
-    store.dispatch(pause());
-    jest.runOnlyPendingTimers();
-    await store.waitFor(onPlayerStateUpdate, positions[positions.length - 1]);
-    const player = getPlayer(store.getState());
-    expect(player.position).toBe(positions[positions.length - 1]);
-  });
-
   it("should stop listening player state by performing release action", async () => {
     store.dispatch(prepare.request({ file: "sample.mp3" }));
     jest.runOnlyPendingTimers();

@@ -1,5 +1,3 @@
-import { PermissionsAndroid } from "react-native";
-
 import { type EventChannel, type SagaIterator, eventChannel } from "redux-saga";
 import { all, call, cancel, fork, getContext, put, select, take, takeLeading } from "redux-saga/effects";
 
@@ -55,7 +53,6 @@ function* handlePreparePlayer(action: ReturnType<typeof prepare.request>): SagaI
 function* handleReleasePlayer(): SagaIterator {
   const services: Context["services"] = yield getContext("services");
   yield put(stopListenPlayerState());
-  yield call(services.foreground.stop);
   yield call(services.player.setPause);
   yield call(services.player.release);
 }
@@ -63,9 +60,7 @@ function* handleReleasePlayer(): SagaIterator {
 function* handlePlay(): SagaIterator {
   const services: Context["services"] = yield getContext("services");
   const sample = getSelectedSample(yield select());
-  yield call(services.permissions.request, PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS);
-  yield call(services.player.setPlay);
-  yield call(services.foreground.start, sample.label);
+  yield call(services.player.setPlay, sample);
   yield put(startListenPlayerState());
   yield put(play.success());
 }
@@ -73,8 +68,6 @@ function* handlePlay(): SagaIterator {
 function* handlePause(): SagaIterator {
   const services: Context["services"] = yield getContext("services");
   yield call(services.player.setPause);
-  yield call(services.foreground.stop);
-  yield put(stopListenPlayerState());
 }
 
 function* handleSeekTo(action: ReturnType<typeof seekTo>): SagaIterator {
@@ -86,8 +79,6 @@ function* handleOnPlayerStateEnded(): SagaIterator {
   const services: Context["services"] = yield getContext("services");
   yield call(services.player.setPause);
   yield call(services.player.seekTo, 0);
-  yield call(services.foreground.stop);
-  yield put(stopListenPlayerState());
 }
 
 function* handleListenPlayerState(): SagaIterator {

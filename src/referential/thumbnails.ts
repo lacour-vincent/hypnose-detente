@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-import type { ImageSourcePropType } from "react-native";
+import { Image, type ImageSourcePropType } from "react-native";
 
 import type { Sample } from "@/typings/recording";
 
@@ -48,3 +48,7 @@ export const SAMPLE_THUMBNAILS: Record<Sample["rid"], ImageSourcePropType> = {
   // testing
   "sample-rid": require("@/assets/testing/thumbnail.jpeg"),
 };
+
+export const SAMPLE_ARTWORKS: Record<Sample["rid"], string> = Object.fromEntries(
+  Object.entries(SAMPLE_THUMBNAILS).map(([rid, source]) => [rid, Image.resolveAssetSource(source).uri]),
+);

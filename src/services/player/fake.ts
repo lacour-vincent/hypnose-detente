@@ -43,23 +43,23 @@ const prepare: PlayerService["prepare"] = () => {
 };
 
 const release: PlayerService["release"] = () => {
-  if (player) player.release();
-  return undefined;
+  if (!player) return undefined;
+  return player.release();
 };
 
 const setPlay: PlayerService["setPlay"] = () => {
-  if (player) player.setPlay();
-  return undefined;
+  if (!player) return undefined;
+  return player.setPlay();
 };
 
 const setPause: PlayerService["setPause"] = () => {
-  if (player) player.setPause();
-  return undefined;
+  if (!player) return undefined;
+  return player.setPause();
 };
 
 const seekTo: PlayerService["seekTo"] = (position) => {
-  if (player) player.seekTo(position);
-  return undefined;
+  if (!player) return undefined;
+  return player.seekTo(position);
 };
 
 const getPlayerState: PlayerService["getPlayerState"] = () => {

@@ -3,34 +3,41 @@ import { AudioModule, type AudioPlayer, createAudioPlayer } from "expo-audio";
 import type { OnPlayerStateUpdateEvent, PlayerState, PlayerStatus } from "@/typings/player";
 
 import { PULL_PLAYER_STATE_INTERVAL_IN_MS } from "@/referential/player";
+import { SAMPLE_ARTWORKS } from "@/referential/thumbnails";
 import type { PlayerService } from "@/services/player";
 
 let player: AudioPlayer;
 
 const prepare: PlayerService["prepare"] = async (location) => {
   player = createAudioPlayer(location, { updateInterval: PULL_PLAYER_STATE_INTERVAL_IN_MS });
-  AudioModule.setAudioModeAsync({ shouldPlayInBackground: true, interruptionModeAndroid: "doNotMix" });
+  AudioModule.setAudioModeAsync({
+    playsInSilentMode: true,
+    shouldPlayInBackground: true,
+    interruptionMode: "doNotMix",
+  });
   return undefined;
 };
 
 const release: PlayerService["release"] = () => {
-  if (player) player.remove();
-  return undefined;
+  if (!player) return undefined;
+  player.setActiveForLockScreen(false);
+  return player.remove();
 };
 
-const setPlay: PlayerService["setPlay"] = () => {
-  if (player) player.play();
-  return undefined;
+const setPlay: PlayerService["setPlay"] = (sample) => {
+  if (!player) return undefined;
+  player.setActiveForLockScreen(true, { title: sample.label, artworkUrl: SAMPLE_ARTWORKS[sample.rid] });
+  return player.play();
 };
 
 const setPause: PlayerService["setPause"] = () => {
-  if (player) player.pause();
-  return undefined;
+  if (!player) return undefined;
+  return player.pause();
 };
 
 const seekTo: PlayerService["seekTo"] = (position) => {
-  if (player) player.seekTo(position);
-  return undefined;
+  if (!player) return undefined;
+  return player.seekTo(position);
 };
 
 const getPlayerState: PlayerService["getPlayerState"] = () => {
