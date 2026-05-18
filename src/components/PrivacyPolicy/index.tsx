@@ -33,11 +33,17 @@ const PrivacyPolicy: FC = () => {
           Étant donné que l&apos;Application ne collecte aucune information, aucune donnée n&apos;est partagée avec des
           tiers.
         </Text>
-        <Text style={s.heading}>Quels sont mes droits de désengagement ?</Text>
+        <Text style={s.heading}>Conservation des données</Text>
         <Text style={s.content}>
-          Vous pouvez arrêter toute collecte d&apos;informations par l&apos;Application simplement en la désinstallant.
-          Vous pouvez utiliser les processus de désinstallation standards disponibles sur votre appareil mobile ou via
-          la boutique d&apos;applications ou le réseau mobile.
+          L&apos;Application ne collectant aucune donnée personnelle, aucune donnée utilisateur n&apos;est stockée par
+          le Fournisseur de Service, que ce soit localement sur l&apos;appareil ou sur des serveurs distants. Il
+          n&apos;existe donc aucune durée de conservation applicable.
+        </Text>
+        <Text style={s.heading}>Suppression des données</Text>
+        <Text style={s.content}>
+          Étant donné que l&apos;Application ne collecte ni ne stocke aucune donnée personnelle, il n&apos;y a aucune
+          donnée à supprimer. La désinstallation de l&apos;Application suffit à supprimer toute trace locale de celle-ci
+          sur votre appareil.
         </Text>
         <Text style={s.heading}>Enfants</Text>
         <Text style={s.content}>
@@ -72,7 +78,7 @@ const PrivacyPolicy: FC = () => {
           approbation de toutes les modifications.
         </Text>
         <Text style={s.content}>
-          Cette politique de confidentialité est effective à partir du {"\u2060"}01/08/2025{"\u2060"}.
+          Cette politique de confidentialité est effective à partir du {"\u2060"}01/05/2026{"\u2060"}.
         </Text>
         <Text style={s.heading}>Votre consentement</Text>
         <Text style={s.content}>
