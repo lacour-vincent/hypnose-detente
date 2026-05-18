@@ -1,0 +1,25 @@
+import java.nio.file.Paths
+
+android {
+  signingConfigs {
+    release {
+      def credentialsJson = rootProject.file("../credentials.json")
+      def credentials = new groovy.json.JsonSlurper().parse(credentialsJson)
+      def keystorePath = Paths.get(credentials.android.keystore.keystorePath as String)
+      def storeFilePath = keystorePath.isAbsolute()
+        ? keystorePath
+        : rootProject.file("..").toPath().resolve(keystorePath)
+      storeFile storeFilePath.toFile()
+      storePassword credentials.android.keystore.keystorePassword
+      keyAlias credentials.android.keystore.keyAlias
+      keyPassword credentials.android.keystore.containsKey("keyPassword")
+        ? credentials.android.keystore.keyPassword
+        : credentials.android.keystore.keystorePassword
+    }
+  }
+  buildTypes {
+    release {
+      signingConfig signingConfigs.release
+    }
+  }
+}

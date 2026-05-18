@@ -24,7 +24,6 @@ const config: ExpoConfig = {
     ],
   },
   experiments: { reactCompiler: true },
-  extra: { eas: { projectId: "9f66db35-01e6-4b14-9bcd-d41a567ae953" } },
   plugins: [
     "expo-router",
     [
@@ -61,6 +60,7 @@ const config: ExpoConfig = {
     ["expo-audio", { enableBackgroundPlayback: true }],
     ["./plugins/withIgnoreBatteryOptimizations"],
     ["./plugins/withGradleProperties"],
+    ["./plugins/withAndroidSigning"],
     [
       "./plugins/withGooglePlayAssetDelivery",
       [

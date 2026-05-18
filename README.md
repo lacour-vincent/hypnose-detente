@@ -10,7 +10,7 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 | ------- | ------- | --- | ------------------- | ------- |
 | Node.js | 24.12.x |     | Android Studio      | latest  |
 | Yarn    | 1.22.2  |     | Java                | 18      |
-| EAS CLI | 18.12.x |     | Kotlin              | 2.1.x   |
+|         |         |     | Kotlin              | 2.1.x   |
 |         |         |     | Android SDK         | 36      |
 |         |         |     | Android Min SDK     | 24      |
 |         |         |     | Android Build Tools | 37.0.0  |
@@ -20,7 +20,6 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
 ```shell
 $ yarn install
-$ npm install --global eas-cli@18.12.x
 ```
 
 ### Android
