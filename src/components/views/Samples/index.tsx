@@ -1,5 +1,5 @@
 import React, { type FC, useCallback } from "react";
-import { InteractionManager, View } from "react-native";
+import { View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 
 import { useFocusEffect } from "expo-router";
@@ -19,10 +19,10 @@ const SamplesView: FC = () => {
 
   useFocusEffect(
     useCallback(() => {
-      const task = InteractionManager.runAfterInteractions(() => {
+      const id = requestIdleCallback(() => {
         dispatch(retrieveSamples.request());
       });
-      return () => task.cancel();
+      return () => cancelIdleCallback(id);
     }, []),
   );
 
