@@ -3,7 +3,6 @@ import { AudioModule, type AudioPlayer, createAudioPlayer } from "expo-audio";
 import type { OnPlayerStateUpdateEvent, PlayerState, PlayerStatus } from "@/typings/player";
 
 import { PULL_PLAYER_STATE_INTERVAL_IN_MS } from "@/referential/player";
-import { SAMPLE_ARTWORKS } from "@/referential/thumbnails";
 import type { PlayerService } from "@/services/player";
 
 let player: AudioPlayer;
@@ -24,9 +23,9 @@ const release: PlayerService["release"] = () => {
   return player.remove();
 };
 
-const setPlay: PlayerService["setPlay"] = (sample) => {
+const setPlay: PlayerService["setPlay"] = (sample, artwork) => {
   if (!player) return undefined;
-  player.setActiveForLockScreen(true, { title: sample.label, artworkUrl: SAMPLE_ARTWORKS[sample.rid] });
+  player.setActiveForLockScreen(true, { title: sample.label, artworkUrl: artwork });
   return player.play();
 };
 

@@ -58,9 +58,11 @@ function* handleReleasePlayer(): SagaIterator {
 }
 
 function* handlePlay(): SagaIterator {
+  const repositories: Context["repositories"] = yield getContext("repositories");
   const services: Context["services"] = yield getContext("services");
   const sample = getSelectedSample(yield select());
-  yield call(services.player.setPlay, sample);
+  const artwork: string = yield call(repositories.recording.fetchSampleArtworkByRid, sample.rid);
+  yield call(services.player.setPlay, sample, artwork);
   yield put(startListenPlayerState());
   yield put(play.success());
 }

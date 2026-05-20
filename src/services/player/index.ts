@@ -7,7 +7,7 @@ import impl from "./impl";
 export interface PlayerService {
   prepare: (location: string) => void;
   release: () => void;
-  setPlay: (sample: Sample) => void;
+  setPlay: (sample: Sample, artwork: string) => void;
   setPause: () => void;
   seekTo: (position: number) => void;
   getPlayerState: () => PlayerState;

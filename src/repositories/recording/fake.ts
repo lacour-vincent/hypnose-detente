@@ -9,6 +9,11 @@ const fetchSampleById: RecordingRepository["fetchSampleById"] = async () => {
   return Promise.resolve(SAMPLE_MOCK);
 };
 
-const repository: RecordingRepository = { fetchSamples, fetchSampleById };
+const fetchSampleArtworkByRid: RecordingRepository["fetchSampleArtworkByRid"] = async () => {
+  const artwork = "https://placehold.co/640x640";
+  return Promise.resolve(artwork);
+};
+
+const repository: RecordingRepository = { fetchSamples, fetchSampleById, fetchSampleArtworkByRid };
 
 export default repository;

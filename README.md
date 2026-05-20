@@ -86,7 +86,7 @@ open -a "Android Studio" .
 $ yarn prebuild:android
 # Run the app on Android device/emulator
 $ yarn android
-# Build native application for Android using EAS
+# Build native application for Android
 $ yarn build-app
 # Install Android native application on device or emulator
 $ yarn install-app

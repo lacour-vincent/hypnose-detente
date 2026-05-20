@@ -3819,6 +3819,11 @@ expo-doctor@1.18.22:
   resolved "https://registry.yarnpkg.com/expo-doctor/-/expo-doctor-1.18.22.tgz#fadf62910526a161504032b21e9c16777ccef7cb"
   integrity sha512-AEGwceidWxyYpWEfIf3XnUvc+FbI3OjjyBaXctuoZg10x9An+utrdRf6go/3UFRAG5EkpMOWgUT0j1TKcYDsSQ==
 
+expo-file-system@^55.0.21:
+  version "55.0.21"
+  resolved "https://registry.yarnpkg.com/expo-file-system/-/expo-file-system-55.0.21.tgz#5482198bc13db94839279dc555125238269266dc"
+  integrity sha512-+qGqMGufxDRzWs3RiH1qzHwxWfl8sd6B82pydTf4GwU8ciyQ84u0XVuliAxAAk4iCGf537nzPeCSgl7eLeBxFg==
+
 expo-file-system@~55.0.20:
   version "55.0.20"
   resolved "https://registry.yarnpkg.com/expo-file-system/-/expo-file-system-55.0.20.tgz#bd6ab262b305f995f0395b6c8a37aaa053a577e9"
