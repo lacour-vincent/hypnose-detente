@@ -1,14 +1,14 @@
 import React, { type ComponentProps, type FC } from "react";
 import type { StyleProp, ViewStyle } from "react-native";
 
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import MaterialIcons from "@react-native-vector-icons/material-design-icons";
 
-export interface Props extends ComponentProps<typeof MaterialCommunityIcons> {
+export interface Props extends ComponentProps<typeof MaterialIcons> {
   style?: StyleProp<ViewStyle>;
 }
 
 const Icon: FC<Props> = ({ style, name, size, color }) => {
-  return <MaterialCommunityIcons style={style} name={name} size={size} color={color} testID={name} />;
+  return <MaterialIcons style={style} name={name} size={size} color={color} testID={name} />;
 };
 
 export default Icon;

@@ -38,7 +38,7 @@ const About: FC = () => {
     },
     {
       key: "reporting",
-      icon: "comment-alert-outline",
+      icon: "account-arrow-up",
       label: "Rapporter un problème",
       onItemPress: () => Linking.openURL(ENV.EXPO_PUBLIC_REPORT_URL),
     },
