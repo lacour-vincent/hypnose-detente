@@ -1,10 +1,9 @@
 import type { SagaIterator } from "redux-saga";
 import { all, call, getContext, put, takeLeading } from "redux-saga/effects";
 
+import { addSuccess } from "@/store/actions/alerting";
 import { ignoreBatteryOptimizations } from "@/store/actions/battery";
 import type { Context } from "@/store/context";
-
-import { addSuccess } from "../actions/alerting";
 
 function* handleIgnoreBatteryOptimizations(): SagaIterator {
   const services: Context["services"] = yield getContext("services");
