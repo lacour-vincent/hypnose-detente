@@ -13,7 +13,7 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 |         |         |     | Kotlin              | 2.1.x   |
 |         |         |     | Android SDK         | 36      |
 |         |         |     | Android Min SDK     | 24      |
-|         |         |     | Android Build Tools | 37.0.0  |
+|         |         |     | Android Build Tools | 36.0.0  |
 |         |         |     | Android NDK         | 27.x    |
 
 ## Installation

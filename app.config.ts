@@ -26,10 +26,7 @@ const config: ExpoConfig = {
   experiments: { reactCompiler: true },
   plugins: [
     "expo-router",
-    [
-      "expo-build-properties",
-      { android: { compileSdkVersion: 36, targetSdkVersion: 36, buildToolsVersion: "37.0.0" } },
-    ],
+    ["expo-build-properties", { android: { compileSdkVersion: 36, targetSdkVersion: 36 } }],
     [
       "expo-font",
       {
