@@ -1,7 +1,6 @@
 import React from "react";
 
-import { fireEvent } from "@/testing/react-native";
-import { render } from "@/testing/render";
+import { fireEvent, render, screen } from "@/testing/react-native";
 
 import Slider from "./index";
 
@@ -13,30 +12,30 @@ const defaultProps = {
 };
 
 describe("<Slider />", () => {
-  it("should render without crashing", () => {
+  it("should render without crashing", async () => {
     const props = { ...defaultProps };
-    const { getByTestId } = render(<Slider {...props} />);
-    expect(getByTestId("slider")).toBeDefined();
+    await render(<Slider {...props} />);
+    expect(screen.getByTestId("slider")).toBeDefined();
   });
 
-  it("should call onSlidingComplete with value", () => {
+  it("should call onSlidingComplete with value", async () => {
     const props = { ...defaultProps, onSlidingComplete: jest.fn() };
-    const { getByTestId } = render(<Slider {...props} />);
-    fireEvent(getByTestId("slider"), "onSlidingComplete", props.value);
+    await render(<Slider {...props} />);
+    fireEvent(screen.getByTestId("slider"), "onSlidingComplete", props.value);
     expect(props.onSlidingComplete).toHaveBeenCalledWith(props.value);
   });
 
-  it("should call onSlidingComplete with minimum value", () => {
+  it("should call onSlidingComplete with minimum value", async () => {
     const props = { ...defaultProps, onSlidingComplete: jest.fn() };
-    const { getByTestId } = render(<Slider {...props} />);
-    fireEvent(getByTestId("slider"), "onSlidingComplete", props.options.min);
+    await render(<Slider {...props} />);
+    fireEvent(screen.getByTestId("slider"), "onSlidingComplete", props.options.min);
     expect(props.onSlidingComplete).toHaveBeenCalledWith(props.options.min);
   });
 
-  it("should call onSlidingComplete with maximum value", () => {
+  it("should call onSlidingComplete with maximum value", async () => {
     const props = { ...defaultProps, onSlidingComplete: jest.fn() };
-    const { getByTestId } = render(<Slider {...props} />);
-    fireEvent(getByTestId("slider"), "onSlidingComplete", props.options.max);
+    await render(<Slider {...props} />);
+    fireEvent(screen.getByTestId("slider"), "onSlidingComplete", props.options.max);
     expect(props.onSlidingComplete).toHaveBeenCalledWith(props.options.max);
   });
 });

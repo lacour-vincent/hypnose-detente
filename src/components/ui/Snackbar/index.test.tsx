@@ -1,6 +1,6 @@
 import React from "react";
 
-import { render } from "@/testing/render";
+import { render, screen } from "@/testing/react-native";
 
 import Snackbar from "./index";
 
@@ -12,19 +12,19 @@ const defaultProps = {
 describe("<Snackbar />", () => {
   it("should render without crashing", async () => {
     const props = { ...defaultProps };
-    const { findByRole, getByRole, getByText } = render(<Snackbar {...props} />);
-    await findByRole("button", { name: "fermer" });
+    await render(<Snackbar {...props} />);
+    await screen.findByRole("button", { name: "fermer" });
 
-    expect(getByText(props.message)).toBeOnTheScreen();
-    expect(getByRole("button", { name: "fermer" })).toBeEnabled();
+    expect(screen.getByText(props.message)).toBeOnTheScreen();
+    expect(screen.getByRole("button", { name: "fermer" })).toBeEnabled();
   });
 
   it("should call onClose with close button", async () => {
     const props = { ...defaultProps };
-    const { findByRole, getByRole, event } = render(<Snackbar {...props} />);
-    expect(await findByRole("button", { name: "fermer" })).toBeOnTheScreen();
+    const { event } = await render(<Snackbar {...props} />);
+    expect(await screen.findByRole("button", { name: "fermer" })).toBeOnTheScreen();
 
-    await event.press(getByRole("button", { name: "fermer" }));
+    await event.press(screen.getByRole("button", { name: "fermer" }));
     expect(props.onClose).toHaveBeenCalled();
   });
 });

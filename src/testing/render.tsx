@@ -10,15 +10,17 @@ interface Options extends RenderOptions {
   store?: ReturnType<typeof createTestStore>;
 }
 
-const customRender = (ui: ReactElement, options?: Options) => {
+const customRender = async (ui: ReactElement, options?: Options) => {
   const event = userEvent.setup();
-  const store = options?.store ?? createTestStore();
+  const { store: injected, ...args } = options ?? {};
+  const store = injected ?? createTestStore();
 
   const Wrapper: FC<{ children: ReactNode }> = ({ children }) => {
     return <Provider store={store}>{children}</Provider>;
   };
 
-  return { event, ...render(ui, { wrapper: Wrapper, ...options }) };
+  const rendered = await render(ui, { wrapper: Wrapper, ...args });
+  return { event, ...rendered };
 };
 
 export { customRender as render };

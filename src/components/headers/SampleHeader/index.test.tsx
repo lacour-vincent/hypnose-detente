@@ -1,13 +1,13 @@
 import React from "react";
 
-import { render } from "@/testing/render";
+import { render, screen } from "@/testing/react-native";
 
 import SampleHeader from "./index";
 
 describe("<SampleHeader />", () => {
-  it("should render header right without crashing", () => {
-    const { getByRole, getByTestId } = render(<SampleHeader.HeaderRight />);
-    expect(getByRole("button", { name: "Information" })).toBeDefined();
-    expect(getByTestId("information-outline")).toBeDefined();
+  it("should render header right without crashing", async () => {
+    await render(<SampleHeader.HeaderRight />);
+    expect(screen.getByRole("button", { name: "Information" })).toBeDefined();
+    expect(screen.getByTestId("information-outline")).toBeDefined();
   });
 });
