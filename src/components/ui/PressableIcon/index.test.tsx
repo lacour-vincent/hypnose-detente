@@ -14,9 +14,9 @@ describe("<PressableIcon />", () => {
 
   it("should call onPress", async () => {
     const props = { icon: "emoticon" as const, label: "label", onPress: jest.fn() };
-    const {  event } = await render(<PressableIcon {...props} />);
+    const { event } = await render(<PressableIcon {...props} />);
     await event.press(screen.getByRole("button", { name: props.label }));
-    expect(await screen.getByTestId(props.icon)).toBeDefined();
+    expect(screen.getByTestId(props.icon)).toBeDefined();
     expect(props.onPress).toHaveBeenCalled();
   });
 });
