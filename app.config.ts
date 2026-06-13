@@ -6,12 +6,12 @@ const config: ExpoConfig = {
   name: "Hypnose",
   slug: "hypnose-detente",
   owner: "lacour-vincent",
-  version: "2.5.0-SNAPSHOT",
+  version: "2.5.0",
   scheme: "hypnose-detente",
   platforms: ["android"],
   android: {
     package: "com.lacour.vincent.hypnosedetente",
-    versionCode: 43,
+    versionCode: 44,
     adaptiveIcon: { foregroundImage: "./src/assets/icons/adaptive-icon.png", backgroundColor: "#ffffff" },
     permissions: ["android.permission.INTERNET"],
     blockedPermissions: [
