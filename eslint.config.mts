@@ -1,22 +1,18 @@
+import react from "@eslint-react/eslint-plugin";
 import eslint from "@eslint/js";
-import jestlint from "eslint-plugin-jest";
-import reactlint from "eslint-plugin-react";
-import { defineConfig } from "eslint/config";
+import jest from "eslint-plugin-jest";
+import { type Config, defineConfig } from "eslint/config";
 import tseslint from "typescript-eslint";
 
-/** @type {import("eslint/config").Config} */
-const config = defineConfig([
+const config: Config[] = defineConfig([
   {
     files: ["src/**/*.{ts,tsx}"],
-    plugins: { react: reactlint },
-    extends: [eslint.configs.recommended, tseslint.configs.recommended],
-    settings: { react: { version: "detect" } },
-    languageOptions: { parserOptions: { ecmaFeatures: { jsx: true } } },
+    extends: [eslint.configs.recommended, tseslint.configs.recommended, react.configs.recommended],
     rules: {
-      ...reactlint.configs.recommended.rules,
       "@typescript-eslint/consistent-type-imports": "error",
       "no-duplicate-imports": "error",
       "no-console": ["warn", { allow: ["info", "error"] }],
+      "@eslint-react/exhaustive-deps": "off",
       "no-restricted-imports": [
         "error",
         {
@@ -31,8 +27,8 @@ const config = defineConfig([
   },
   {
     files: ["src/**/*.test.{ts,tsx}"],
-    plugins: { jest: jestlint },
-    rules: { ...jestlint.configs.recommended.rules },
+    extends: [jest.configs["flat/recommended"]],
+    rules: {},
   },
 ]);
 

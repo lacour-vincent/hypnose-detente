@@ -20,13 +20,13 @@ type Coordinate = { x: number; y: number };
 const MENU_WIDTH = 0.5 * UnistylesRuntime.screen.width;
 
 const Menu: FC<Props> = ({ position, items }) => {
-  const anchor = useRef<View>(null);
+  const anchorRef = useRef<View>(null);
   const [visible, setVisible] = useState(false);
   const [coordinate, setCoordinate] = useState<Coordinate>({ x: 0, y: 0 });
 
   const onOpen = () => {
-    if (!anchor.current) return;
-    anchor.current.measure((_x, _y, width, height, pageX, pageY) => {
+    if (!anchorRef.current) return;
+    anchorRef.current.measure((_x, _y, width, height, pageX, pageY) => {
       const { vertical, horizontal } = position;
       const target: Coordinate = { x: 0, y: 0 };
       if (vertical === "top") target.y = pageY;
@@ -47,7 +47,7 @@ const Menu: FC<Props> = ({ position, items }) => {
 
   return (
     <View>
-      <View ref={anchor}>
+      <View ref={anchorRef}>
         <PressableIcon label="Menu" icon="dots-vertical" onPress={onOpen} />
       </View>
       <Modal visible={visible} animationType="fade" onRequestClose={onClose} transparent accessibilityViewIsModal>
