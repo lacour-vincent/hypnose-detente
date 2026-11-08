@@ -10,11 +10,11 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 | ------- | ------- | --- | ------------------- | ------- |
 | Node.js | 24.12.x |     | Android Studio      | latest  |
 | Yarn    | 1.22.2  |     | Java                | 18      |
-|         |         |     | Kotlin              | 2.1.x   |
-|         |         |     | Android SDK         | 36      |
+|         |         |     | Kotlin              | 2.2.x   |
+|         |         |     | Android SDK         | 37      |
 |         |         |     | Android Min SDK     | 24      |
-|         |         |     | Android Build Tools | 36.0.0  |
-|         |         |     | Android NDK         | 27.x    |
+|         |         |     | Android Build Tools | 37.0.0  |
+|         |         |     | Android NDK         | 30.x    |
 
 ## Installation
 

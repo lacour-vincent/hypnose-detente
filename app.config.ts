@@ -26,7 +26,17 @@ const config: ExpoConfig = {
   experiments: { reactCompiler: true },
   plugins: [
     "expo-router",
-    ["expo-build-properties", { android: { compileSdkVersion: 36, targetSdkVersion: 36 } }],
+    [
+      "expo-build-properties",
+      {
+        android: {
+          compileSdkVersion: 37,
+          targetSdkVersion: 37,
+          extraProguardRules:
+            "-keep class androidx.work.impl.WorkDatabase_Impl { <init>(); }\n-keepnames class androidx.work.impl.WorkDatabase",
+        },
+      },
+    ],
     [
       "expo-font",
       {

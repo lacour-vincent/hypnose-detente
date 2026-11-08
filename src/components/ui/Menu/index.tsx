@@ -1,5 +1,5 @@
 import React, { type FC, useRef, useState } from "react";
-import { Modal, Pressable, Text, TouchableWithoutFeedback, View } from "react-native";
+import { type HostInstance, Modal, Pressable, Text, TouchableWithoutFeedback, View } from "react-native";
 import { UnistylesRuntime } from "react-native-unistyles";
 
 import PressableIcon from "@ui/PressableIcon";
@@ -20,7 +20,7 @@ type Coordinate = { x: number; y: number };
 const MENU_WIDTH = 0.5 * UnistylesRuntime.screen.width;
 
 const Menu: FC<Props> = ({ position, items }) => {
-  const anchorRef = useRef<View>(null);
+  const anchorRef = useRef<HostInstance>(null);
   const [visible, setVisible] = useState(false);
   const [coordinate, setCoordinate] = useState<Coordinate>({ x: 0, y: 0 });
 

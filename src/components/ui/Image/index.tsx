@@ -1,13 +1,13 @@
 import React, { type FC } from "react";
-import { type ImageSourcePropType, type ImageStyle, type StyleProp } from "react-native";
+import { type ImageStyle, type StyleProp } from "react-native";
 
-import { Image as ImageUI } from "expo-image";
+import { type ImageProps, Image as ImageUI } from "expo-image";
 
 import s from "./styles";
 
 interface Props {
   style?: StyleProp<ImageStyle>;
-  src: ImageSourcePropType;
+  src: ImageProps["source"];
   alt: string;
 }
 
