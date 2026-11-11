@@ -8,7 +8,7 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
 | Common  | Version |     | Android             | Version |
 | ------- | ------- | --- | ------------------- | ------- |
-| Node.js | 24.12.x |     | Android Studio      | latest  |
+| Node.js | 24.22.x |     | Android Studio      | latest  |
 | Yarn    | 1.22.2  |     | Java                | 18      |
 |         |         |     | Kotlin              | 2.2.x   |
 |         |         |     | Android SDK         | 37      |
